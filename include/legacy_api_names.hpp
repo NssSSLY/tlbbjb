@@ -1,0 +1,35 @@
+#pragma once
+#include "game_snippets.hpp"
+#include <utility>
+namespace tlbb {
+inline constexpr std::pair<const char*,int> legacyApiNames[]={{"RunTo",gameplay::RunTo},{"TalkNpc",gameplay::TalkNpc},{"NpcTarget",gameplay::NpcTarget},{"QuestOptions",gameplay::QuestOptions},
+            {"QuestOption",gameplay::QuestOption},{"QuestButton",gameplay::QuestButton},{"BagCount",gameplay::BagCount},{"PlayerData",gameplay::PlayerData},{"TeamCount",gameplay::TeamCount},
+            {"XScript",gameplay::XScript},{"UiCall",gameplay::UiCall},{"WindowVisible",gameplay::WindowVisible},{"CloseAll",gameplay::CloseAll},{"UiEvent",gameplay::UiEvent},
+            {"BankState",gameplay::BankState},{"BankBig",gameplay::BankBig},{"BankMoney",gameplay::BankMoney},{"BankItem",gameplay::BankItem},{"BagStore",gameplay::BagStore},
+            {"TempBag",gameplay::TempBag},{"SweepCount",gameplay::SweepCount},{"SweepEnum",gameplay::SweepEnum},{"SweepData",gameplay::SweepData},
+            {"SweepOpenPage",gameplay::SweepOpenPage},{"SweepBoss",gameplay::SweepBoss},{"CloseNamed",gameplay::CloseNamed},
+            {"ShopMoney",gameplay::ShopMoney},{"GemList",gameplay::GemList},{"GemCombine",gameplay::GemCombine},
+            {"CombatScan",gameplay::CombatScan},{"CombatCast",gameplay::CombatCast},{"CombatSkill",gameplay::CombatSkill},{"CombatName",gameplay::CombatName},
+            {"DebugMessages",gameplay::DebugMessages},{"DictText",gameplay::DictText},
+            {"NpcEventItem",gameplay::NpcEventItem},{"NpcEventAll",gameplay::NpcEventAll},{"GuildInfo",gameplay::GuildInfo},{"ActiveBox",gameplay::ActiveBox},
+            {"UseBagItem",gameplay::UseBagItem},{"MissionFind",gameplay::MissionFind},{"MissionVar",gameplay::MissionVar},{"PlayerState",gameplay::PlayerState},
+            {"Dismount",gameplay::Dismount},{"DoubleTimer",gameplay::DoubleTimer},{"VipLevel",gameplay::VipLevel},{"MsgBoxText",gameplay::MsgBoxText},
+            {"QuitGame",gameplay::QuitGame},{"XingYunCount",gameplay::XingYunCount},{"VipRefresh",gameplay::VipRefresh},
+            {"BagCountIn",gameplay::BagCountIn},{"ItemList",gameplay::ItemList},{"CompoundSelect",gameplay::CompoundSelect},
+            {"AttackAttr",gameplay::AttackAttr},{"CohesionCost",gameplay::CohesionCost},{"LifeCompose",gameplay::LifeCompose},
+            {"BagSpace",gameplay::BagSpace},{"WuhunList",gameplay::WuhunList},{"WuhunCompound",gameplay::WuhunCompound},
+            {"MissionDesc",gameplay::MissionDesc},{"UiEnabled",gameplay::UiEnabled},{"EquipAdjust",gameplay::EquipAdjust},
+            {"CityEnemyHas",gameplay::CityEnemyHas},{"CityEnemyAsk",gameplay::CityEnemyAsk},{"OpenAddEnemy",gameplay::OpenAddEnemy},
+            {"BieYeScene",gameplay::BieYeScene},{"BieYeProduct",gameplay::BieYeProduct},{"BieYeAsk",gameplay::BieYeAsk},
+            {"BieYeGardeners",gameplay::BieYeGardeners},{"WuhunText",gameplay::WuhunText},{"ExamRead",gameplay::ExamRead},
+            {"HuoYueBuy",gameplay::HuoYueBuy},{"DividendBuy",gameplay::DividendBuy},{"HonourBuy",gameplay::HonourBuy},{"GuildShopBuy",gameplay::GuildShopBuy},
+            {"T3ShopBuy",gameplay::T3ShopBuy},{"ChongLouBuy",gameplay::ChongLouBuy},{"GuiShiBuy",gameplay::GuiShiBuy},
+            {"GoldGiftRead",gameplay::GoldGiftRead},{"GoldGiftChoose",gameplay::GoldGiftChoose},
+            {"UseBoxItem",gameplay::UseBoxItem},{"HuoDongCount",gameplay::HuoDongCount},{"HuoDongEnum",gameplay::HuoDongEnum},
+            {"AwakeRead",gameplay::AwakeRead},{"AwakeAdd",gameplay::AwakeAdd},{"SectOper",gameplay::SectOper},{"NpcShopBuy",gameplay::NpcShopBuy},
+            {"EquipDur",gameplay::EquipDur},{"EquipRepair",gameplay::EquipRepair},{"EquipRestore",gameplay::EquipRestore},
+            {"WuhunLife",gameplay::WuhunLife},{"WuhunRepair",gameplay::WuhunRepair},{"BagSell",gameplay::BagSell},
+            {"XiuLianInfo",gameplay::XiuLianInfo},{"XinfaRead",gameplay::XinfaRead},{"XinfaStudy",gameplay::XinfaStudy},
+            {"DianJin",gameplay::DianJin},{"XZGift",gameplay::XZGift},{"GemCarve",gameplay::GemCarve},{"LwScan",gameplay::LwScan},
+            {"LwUnequip",gameplay::LwUnequip},{"LwCombine",gameplay::LwCombine},{"LwEquip",gameplay::LwEquip}};
+}

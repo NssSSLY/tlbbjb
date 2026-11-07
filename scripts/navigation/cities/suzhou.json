@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "city_id": "suzhou",
+  "map_name": "苏州",
+  "scene_id": 1,
+  "map_aliases": [],
+  "npcs": [
+    {
+      "npc_id": "suzhou_transport_01",
+      "name": null,
+      "game_object_id": null,
+      "enabled": false,
+      "verified": false,
+      "position": {"x": null, "y": null},
+      "interaction_radius": 3,
+      "approach_waypoints": [],
+      "destinations": [
+        {
+          "destination_id": "suzhou_to_luoyang_01",
+          "target_city": "luoyang",
+          "enabled": false,
+          "verified": false,
+          "dialog_option": {"text": null, "index_1_based": null},
+          "expected_arrival": {"map_name": "洛阳", "scene_id": null},
+          "notes": "等待用户提供此 NPC 可传城市及实际选项；不假定直达线路已经存在"
+        }
+      ],
+      "notes": "待提供苏州传送 NPC 名称与游戏地图坐标。3 格为可调整的接近容差，未实测。"
+    }
+  ]
+}

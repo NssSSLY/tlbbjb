@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "city_id": "replace_with_unique_city_id",
+  "map_name": "待填写地图名",
+  "scene_id": null,
+  "map_aliases": [],
+  "npcs": [
+    {
+      "npc_id": "replace_with_unique_npc_id",
+      "name": null,
+      "game_object_id": null,
+      "enabled": false,
+      "verified": false,
+      "position": {"x": null, "y": null},
+      "interaction_radius": 3,
+      "approach_waypoints": [],
+      "destinations": []
+    }
+  ]
+}

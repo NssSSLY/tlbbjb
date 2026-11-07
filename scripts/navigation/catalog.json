@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "revision": "0.1.0",
+  "product": "新天龙八部正式服",
+  "runtime_enabled": true,
+  "scope": {"server": null, "client_version": null, "note": "NPC 资料待当前区服和游戏版本核对"},
+  "city_files": [
+    "cities/suzhou.json",
+    "cities/luoyang.json"
+  ],
+  "policy": {
+    "max_hops": 4,
+    "max_action_attempts": 2,
+    "action_timeout_ms": 45000,
+    "task_timeout_ms": 180000,
+    "poll_interval_ms": 500,
+    "require_verified_npc": true,
+    "require_verified_destination": true,
+    "confirm_arrival_from_real_map": true
+  }
+}

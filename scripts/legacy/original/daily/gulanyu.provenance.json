@@ -1,0 +1,12 @@
+{
+  "original_instruction_sha256": "89d3b7d6c4ed11eca41a3e75b62475c54123f9c23fbf43ef8ca4b5cca766e731",
+  "utf8_chunk_sha256": "33a56930c5b0092de62095bd707fdf594ccf7ec71e7e5506e3f4a6d2536a6b59",
+  "instruction_count": 380,
+  "numeric_and_control_flow_unchanged": true,
+  "source": "@..\\tlzs\\Script64\\功能\\古兰玉兑换宝石.lua",
+  "original_chunk_sha256": "982b8581bb3f879a8c6a84d940ab24d2b2163acb20afd700b48a23f11380d43b",
+  "wrapper_sha256": "5443e3b93c0d5e82ebb46e962a27c7cce1fb8825118d9ce0fc87f6e05923642d",
+  "entry": "original/daily/gulanyu.lua",
+  "rules_rewritten": false,
+  "game_executed": false
+}

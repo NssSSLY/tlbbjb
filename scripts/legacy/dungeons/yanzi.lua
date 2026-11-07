@@ -1,0 +1,2 @@
+LoadScript('yanzi')
+Yanzi.run()

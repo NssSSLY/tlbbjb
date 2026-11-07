@@ -1,0 +1,2 @@
+LoadScript('tianlong')
+Tianlong.run()

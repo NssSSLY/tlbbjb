@@ -1,0 +1,2 @@
+LoadScript('saodang')
+Saodang.run()

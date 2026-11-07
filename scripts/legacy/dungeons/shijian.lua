@@ -1,0 +1,2 @@
+LoadScript('shijian')
+Shijian.run()

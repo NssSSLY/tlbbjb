@@ -1,0 +1,2 @@
+LoadScript('piaomiao')
+Piaomiao.run()

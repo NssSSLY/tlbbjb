@@ -1,0 +1,2 @@
+LoadScript('jiaxue')
+Jiaxue.run()

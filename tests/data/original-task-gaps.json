@@ -1,0 +1,39 @@
+{
+  "diagnostics": {
+    "pet_sell_npc": "此任务的原脚本含有允许支付类操作，请在任务设置里打开“允许支付”后再运行"
+  },
+  "sweep": {
+    "dali_flower": "对象字段读取尚未接入：title（称号（如少室山“对萧远山造成伤害”），远古棋魂）",
+    "dig_map": "对象类型尚未接入：包裹",
+    "fixed_rebels": "原程序系统操作未接入：DoSystem(1004)",
+    "new_grind": "原程序系统操作未接入：DoSystem(1007)",
+    "new_treasure_map": "对象类型尚未接入：包裹",
+    "orig_00269b42": "对象类型尚未接入：包裹",
+    "orig_0029bb09": "对象类型尚未接入：包裹",
+    "orig_0029f73e": "对象类型尚未接入：包裹",
+    "orig_002a33bc": "对象类型尚未接入：包裹",
+    "orig_002b2eef": "对象类型尚未接入：包裹",
+    "orig_0036e251": "对象字段读取尚未接入：guid（GUID，远古棋魂）",
+    "orig_00378b88": "下拉配置缺少 text 映射：虎印兑换",
+    "orig_00460396": "原脚本要处理指定物品（删除类），本程序不执行",
+    "orig_0046c580": "原脚本要处理指定物品（删除类），本程序不执行，已停止",
+    "pet_comprehension": "原程序游戏内辅助函数未接入：meGetAllPet",
+    "pet_sell_npc": "原程序系统操作未接入：DoSystem(1002)",
+    "plant_script": "原程序系统操作未接入：DoSystem(6)",
+    "roadbook": "对象类型尚未接入：包裹",
+    "tlzz_huodong_sweep#原脚本": "bad argument #2 to 'fmt' (number expected, got nil)",
+    "tlzz_jiagong#原脚本": "原脚本调用了本程序尚未接入的函数：IsPlayerFollow（?:-1: attempt to call a nil value (field 'IsPlay",
+    "tlzz_jiutian_yusui#原脚本": "attempt to compare number with nil",
+    "tlzz_juexue_guide#原脚本": "attempt to index a nil value (upvalue '?')",
+    "tlzz_longwen#原脚本": "attempt to compare number with nil",
+    "tlzz_manor_fish#原脚本": "attempt to compare number with nil",
+    "tlzz_manor_mine#原脚本": "attempt to compare number with nil",
+    "tlzz_manor_plant#原脚本": "attempt to compare number with nil",
+    "tlzz_offline#原脚本": "原脚本调用了本程序尚未接入的函数：remove（?:-1: attempt to call a nil value (field 'remove')",
+    "tlzz_repair#原脚本": "attempt to compare number with nil",
+    "tlzz_shanhe_wanli#原脚本": "MoveTo 坐标无效",
+    "tlzz_shop_chonglou#原脚本": "bad argument #1 to 'find' (string expected, got nil)",
+    "tlzz_supply#原脚本": "EatBindItem 需要指定物品名（自动消化背包物品未接入）",
+    "tlzz_wuhun#原脚本": "attempt to get length of a nil value"
+  }
+}

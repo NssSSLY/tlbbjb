@@ -1,0 +1,2 @@
+LoadScript('fanzei')
+Fanzei.run()

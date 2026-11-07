@@ -1,0 +1,2 @@
+LoadScript('bingsheng')
+Bingsheng.run()

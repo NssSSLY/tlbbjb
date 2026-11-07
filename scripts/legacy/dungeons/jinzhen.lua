@@ -1,0 +1,2 @@
+LoadScript('jinzhen')
+Jinzhen.run()

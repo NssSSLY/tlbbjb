@@ -1,0 +1,8 @@
+{
+  "task_id": "city_travel",
+  "mode": "scaffold_only",
+  "target_city": "luoyang",
+  "target": {"x": 360, "y": 317, "radius": 0.3},
+  "after_arrival": "stop",
+  "comment": "从实际读取的当前地图规划；这是最终目标点，不是传送 NPC 坐标。未接宿主动作接口，不能直接执行。"
+}

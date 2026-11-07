@@ -1,0 +1,12 @@
+{
+  "original_instruction_sha256": "63db5466f7731984d42471a7c5d1d218fcc6854dc052c30c6f9e26a3551cae83",
+  "utf8_chunk_sha256": "990787c1b8e5bb6ef7cf83fe319cd92b002f9d61f85b06f3cf1ce57dfce7f524",
+  "instruction_count": 178,
+  "numeric_and_control_flow_unchanged": true,
+  "source": "@..\\tlzs\\Script64\\日常\\幸运快活三.lua",
+  "original_chunk_sha256": "eab9187c48c6b7bcde306f3bdc761e8be257da26b8d9a2a279353fabecb1217a",
+  "wrapper_sha256": "69b7022a346a521ffe7f23b5ba895fa8df9bd46419e12fbf79aad0c0c116544e",
+  "entry": "original/daily/xingyun.lua",
+  "rules_rewritten": false,
+  "game_executed": false
+}

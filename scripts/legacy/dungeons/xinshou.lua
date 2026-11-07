@@ -1,0 +1,2 @@
+LoadScript('xinshou')
+Xinshou.run()

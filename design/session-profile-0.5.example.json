@@ -1,0 +1,22 @@
+{
+  "kind": "tlbb_task_profile",
+  "schema": 1,
+  "config": {
+    "panel_schema": 5,
+    "parameter_task": "plant",
+    "tasks": {
+      "luoyang_move": {"map": "洛阳", "x": 360, "y": 317, "rounds": 1, "tolerance": 0.3, "timeout_seconds": 120, "failure": "停止队列", "mode": "preview"}
+    },
+    "queue": [
+      {"node_id": "example-sequence-1", "task": "luoyang_move", "enabled": false, "params": {"map": "洛阳", "x": 360, "y": 317, "rounds": 1, "tolerance": 0.3, "timeout_seconds": 120, "failure": "停止队列", "mode": "preview"}}
+    ],
+    "scheduled": [
+      {"node_id": "example-timed-1", "task": "luoyang_move", "enabled": false, "start_minute": 630, "end_minute": 675, "params": {"map": "洛阳", "x": 360, "y": 317, "rounds": 1, "tolerance": 0.3, "timeout_seconds": 120, "failure": "停止队列", "mode": "preview"}}
+    ],
+    "flow": {"loop": false, "loop_limit": 1, "monitor_scheduled": true, "daily_scheduled": true, "delete_completed": false},
+    "favorites": ["luoyang_move", "plant"],
+    "bag": {"destroy_enabled": false, "preview_valid": false},
+    "trade": {"listings": []},
+    "team": {"role": "独立执行"}
+  }
+}

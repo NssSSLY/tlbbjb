@@ -1,0 +1,2 @@
+LoadScript('langhuan')
+Langhuan.run()

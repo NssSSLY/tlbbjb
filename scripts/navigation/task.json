@@ -1,0 +1,17 @@
+{
+  "task_id": "city_travel",
+  "entry": "city_travel.lua",
+  "version": "0.1.0",
+  "enabled": false,
+  "status": "resident_movement_helper_integrated",
+  "can_run_in_current_worker": false,
+  "required_capabilities": [
+    "map_position",
+    "pathfind_to",
+    "npc_interact",
+    "dialog_read",
+    "dialog_select",
+    "map_change_confirm"
+  ],
+  "comment": "作为驻留引擎 MoveTo 的内部导航能力使用；此纯 step 描述不单独注册为界面任务。实际执行见 legacy/modules/navigation_runtime.lua，NPC 资料仍待填写。"
+}

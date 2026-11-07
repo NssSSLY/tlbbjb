@@ -1,0 +1,35 @@
+{
+  "schema_version": 2,
+  "kind": "design_example_only",
+  "profile_id": "d7187951-e10c-4886-b65e-a581af70cc13",
+  "display_name": "角色甲（示例）",
+  "product": "新天龙八部正式服",
+  "identity": {
+    "district": "网通华北网通一区",
+    "server": "五台山",
+    "character_name": "待选择",
+    "school": "峨嵋",
+    "credential_ref": null
+  },
+  "login_ref": {"account_id": "example-account-a", "server_id": "example-server-wutaishan"},
+  "panel": {"scope": "fixed_game_session", "last_tab": "life", "home": "bind_and_show", "end": "stop_and_detach", "close": "hide", "show_brand_header": false, "show_role_sidebar": false},
+  "revision": 1,
+  "queue": [
+    {"node_id": "move-1", "task_id": "luoyang_move", "enabled": true, "params": {"map": "洛阳", "x": 360, "y": 317, "tolerance": 0.3, "timeout_seconds": 120}, "failure_policy": "stop_queue", "retry_limit": 2},
+    {"node_id": "plant-1", "task_id": "plant", "enabled": false, "params": {"map": "洛阳", "x": 360, "y": 317, "crop": "待填写", "rounds": 1}, "failure_policy": "stop_queue", "retry_limit": 2}
+  ],
+  "battle": {"school": "峨嵋", "skill_bindings": [], "heal_below_percent": 60, "target_filter": "task_required"},
+  "logistics": {
+    "pickup": {"enabled": true, "mode": "allowlist", "item_ids": []},
+    "destroy": {"enabled": false, "item_ids": [], "preview_required": true, "protected_rules": ["equipped", "locked", "quest", "keep_list", "unknown_metadata"]},
+    "supply": {"enabled": false, "minimum_empty_slots": 5}
+  },
+  "schedule": {"enabled": false, "windows": [], "daily_reset_rule": "requires_server_verification"},
+  "activation": {"draft": true, "apply_to_running": "next_safe_checkpoint"},
+  "copy_policy": {
+    "mode": "independent_deep_copy",
+    "exclude": ["profile_id", "identity", "login_ref", "credential_ref", "runtime", "history", "daily_counters"],
+    "school_mismatch": "skip_skill_bindings",
+    "destroy_rules": "copy_content_but_disable_and_require_new_preview"
+  }
+}

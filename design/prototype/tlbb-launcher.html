@@ -1,0 +1,66 @@
+<div class="viz-dotted-background">
+<div id="tlbb-launcher" aria-label="启动器设计预览">
+  <style>
+    #tlbb-launcher{color-scheme:light dark;--la-bg:light-dark(#f4f5f7,#1b222c);--la-paper:light-dark(#fff,#242d39);--la-text:light-dark(#1d2b3b,#e5eaf2);--la-muted:light-dark(#536172,#b4c0d1);--la-line:light-dark(#c9d1dd,#4b586b);--la-active:light-dark(#146e78,#8bd5db);--la-on:light-dark(#fff,#162f35);--la-soft:light-dark(#e5f0f2,#2a414a);font:13px/1.5 'Segoe UI','Microsoft YaHei',sans-serif;color:var(--la-text);background:var(--la-bg);border:1px solid var(--la-line);border-radius:5px;padding:12px;max-width:660px;margin:0 auto;position:relative;overflow-wrap:anywhere}
+    #tlbb-launcher *{box-sizing:border-box}#tlbb-launcher [hidden]{display:none!important}#tlbb-launcher button,#tlbb-launcher input,#tlbb-launcher select{font:inherit;color:inherit;max-width:100%;min-width:0}
+    #tlbb-launcher button{background:var(--la-paper);border:1px solid var(--la-line);padding:5px 9px;border-radius:3px}#tlbb-launcher button.la-primary{background:var(--la-active);color:var(--la-on);border-color:var(--la-active)}#tlbb-launcher button:disabled{opacity:.55}
+    #tlbb-launcher input:not([type=checkbox]),#tlbb-launcher select{background:var(--la-paper);border:1px solid var(--la-line);border-radius:3px;padding:5px 7px;width:100%}#tlbb-launcher label{display:grid;gap:4px;color:var(--la-muted)}
+    #tlbb-launcher .la-path{display:grid;grid-template-columns:60px minmax(0,1fr) auto;gap:7px;align-items:center}#tlbb-launcher .la-columns{display:grid;grid-template-columns:190px minmax(0,1fr);gap:12px;margin-top:12px}#tlbb-launcher .la-stack{display:grid;gap:8px}
+    #tlbb-launcher .la-account-list{display:grid;gap:4px;margin-bottom:8px}#tlbb-launcher .la-account{text-align:left;display:flex;justify-content:space-between;gap:5px}#tlbb-launcher .la-account[aria-pressed=true]{background:var(--la-soft);border-color:var(--la-active)}#tlbb-launcher .la-muted{color:var(--la-muted);font-size:12px}
+    #tlbb-launcher .la-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}#tlbb-launcher .la-wide{grid-column:1/-1}#tlbb-launcher .la-row{display:flex;gap:6px;align-items:center;flex-wrap:wrap}#tlbb-launcher fieldset{border:1px solid var(--la-line);border-radius:3px;margin:0;padding:9px;min-width:0}#tlbb-launcher legend{padding:0 4px;font-size:12px;color:var(--la-muted)}
+    #tlbb-launcher .la-bottom{margin-top:12px;padding-top:9px;border-top:1px solid var(--la-line);display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}#tlbb-launcher .la-status{font-size:12px;color:var(--la-muted)}
+    #tlbb-launcher .la-overlay{position:absolute;inset:0;background:light-dark(#16283c55,#030911aa);z-index:3;padding:30px 18px;border-radius:5px}#tlbb-launcher .la-dialog{background:var(--la-paper);border:1px solid var(--la-line);padding:14px;border-radius:4px;max-width:420px;margin:auto}#tlbb-launcher .la-dialog strong{display:block;margin-bottom:8px}
+    @media(max-width:520px){#tlbb-launcher .la-columns{grid-template-columns:minmax(0,1fr)}#tlbb-launcher .la-account-list{grid-template-columns:repeat(2,minmax(0,1fr))}#tlbb-launcher .la-path{grid-template-columns:minmax(0,1fr) auto}#tlbb-launcher .la-path>span{grid-column:1/-1}#tlbb-launcher .la-form{grid-template-columns:minmax(0,1fr)}}
+    @media(pointer:coarse){#tlbb-launcher button{min-height:44px}#tlbb-launcher input:not([type=checkbox]),#tlbb-launcher select{font-size:16px;min-height:44px}}
+  </style>
+  <div id="la-main">
+    <div class="la-path"><span>游戏目录</span><input aria-label="游戏目录" id="la-path" value="E:\game\tlbb"><button type="button" data-action="save-path">保存</button></div>
+    <div class="la-columns">
+      <div><div id="la-accounts" class="la-account-list"></div><div class="la-row"><button type="button" data-action="add-account">添加账号</button><button type="button" data-action="edit-account">编辑</button></div></div>
+      <fieldset><legend>登录</legend><div id="la-login" class="la-form"></div></fieldset>
+    </div>
+    <div class="la-bottom"><span id="la-status" class="la-status" role="status" aria-live="polite">设计预览 · 未连接</span><div class="la-row"><button type="button" data-action="launch-only">仅启动游戏</button><button type="button" class="la-primary" data-action="login">首次登录</button></div></div>
+    <div id="la-feedback" class="la-row" hidden style="margin-top:8px"><button type="button" data-action="demo-feedback">演示登录反馈</button><button type="button" data-action="cancel-login">取消登录</button></div>
+  </div>
+  <div id="la-modal" hidden></div>
+  <script>
+  (()=>{
+    const root=document.getElementById('tlbb-launcher'),clone=v=>JSON.parse(JSON.stringify(v)),esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const makeDestination=(known=false)=>({district:'area-a',server:'server-a',selected:known?'char-b':'',roster:known?[{id:'char-b',name:'角色乙',school:'逍遥'}]:[],complete:false});
+    const accounts=[{id:'account-a',alias:'示例账号甲',destinations:{'area-a/server-a':makeDestination()}},{id:'account-b',alias:'示例账号乙',destinations:{'area-a/server-a':makeDestination(true)}}];
+    let selected='account-a',district='area-a',server='server-a',pending=null,editing=null;
+    const design={compact:true};
+    const account=()=>accounts.find(a=>a.id===selected);
+    function destination(){const key=district+'/'+server;return account().destinations[key]||(account().destinations[key]={...makeDestination(),district,server});}
+    const status=s=>root.querySelector('#la-status').textContent=s;
+    function render(){
+      const d=destination();root.querySelector('#la-accounts').innerHTML=accounts.map(a=>`<button type="button" class="la-account" data-action="select-account" data-id="${a.id}" aria-pressed="${a.id===selected}"><span>${esc(a.alias)}</span><small>${Object.values(a.destinations).reduce((n,x)=>n+x.roster.length,0)} 角色</small></button>`).join('');
+      root.querySelector('#la-login').innerHTML=`<label>大区<select aria-label="大区" data-choice="district"><option value="area-a" ${district==='area-a'?'selected':''}>网通华北网通一区（示例）</option><option value="area-b" ${district==='area-b'?'selected':''}>其他大区（示例）</option></select></label><label>服务器<select aria-label="服务器" data-choice="server"><option value="server-a" ${server==='server-a'?'selected':''}>五台山（示例）</option><option value="server-b" ${server==='server-b'?'selected':''}>其他服务器（示例）</option></select></label><label class="la-wide">角色<select aria-label="角色" data-choice="character" ${!d.roster.length?'disabled':''}>${d.roster.length?d.roster.map(c=>`<option value="${c.id}" ${d.selected===c.id?'selected':''}>${esc(c.name)} · ${esc(c.school)}</option>`).join(''):'<option value="">首次登录后记录</option>'}</select></label><div class="la-wide la-row"><span class="la-muted">${d.roster.length?'已记录 '+d.roster.length+' 个角色':'未读取角色'}</span><button type="button" data-action="refresh-roles" ${!pending?'disabled':''}>同步角色</button></div>`;
+      root.querySelector('[data-action="login"]').textContent=d.roster.length?'启动并登录所选角色':'首次登录';
+      root.querySelector('[data-action="login"]').disabled=!!pending;
+      root.querySelector('#la-feedback').hidden=!pending;
+      root.querySelectorAll('.la-account,[data-choice="district"],[data-choice="server"],[data-action="add-account"],[data-action="edit-account"],[data-action="launch-only"]').forEach(el=>el.disabled=!!pending);
+      root.style.padding=design.compact?'12px':'18px';
+    }
+    function openEditor(isNew){editing={isNew,alias:isNew?'示例账号'+(accounts.length+1):account().alias};const modal=root.querySelector('#la-modal');modal.hidden=false;root.querySelector('#la-main').inert=true;modal.innerHTML=`<div class="la-overlay"><section class="la-dialog" role="dialog" aria-modal="true" aria-labelledby="la-edit-title"><strong id="la-edit-title">${isNew?'添加账号':'编辑账号'}</strong><div class="la-stack"><label>账号别名<input aria-label="账号别名" data-edit-alias value="${esc(editing.alias)}"></label><label>账号<input aria-label="账号" value="示例账号标识" disabled></label><label>密码<input aria-label="密码" type="password" placeholder="设计预览不可输入凭据" disabled></label><div class="la-row"><button type="button" data-action="save-account" class="la-primary">保存</button><button type="button" data-action="close-editor">取消</button></div></div></section></div>`;modal.querySelector('[data-edit-alias]').focus({preventScroll:true});}
+    function closeEditor(){editing=null;root.querySelector('#la-modal').hidden=true;root.querySelector('#la-modal').innerHTML='';root.querySelector('#la-main').inert=false;root.querySelector('[data-action="edit-account"]').focus({preventScroll:true});}
+    root.addEventListener('click',e=>{const b=e.target.closest('button[data-action]');if(!b||b.disabled)return;const action=b.dataset.action;
+      if(action==='select-account'){selected=b.dataset.id;district='area-a';server='server-a';status('设计预览 · '+account().alias);}
+      if(action==='save-path'){status(root.querySelector('#la-path').value.trim()?'目录已记入示例配置；未检测磁盘':'请填写游戏目录');return;}
+      if(action==='add-account'){openEditor(true);return;}if(action==='edit-account'){openEditor(false);return;}
+      if(action==='save-account'){const alias=root.querySelector('[data-edit-alias]').value.trim();if(!alias){root.querySelector('[data-edit-alias]').setCustomValidity('请填写账号别名');root.querySelector('[data-edit-alias]').reportValidity();return;}if(editing.isNew){const a={id:'account-'+(accounts.length+1),alias,destinations:{}};accounts.push(a);selected=a.id;}else account().alias=alias;closeEditor();status('账号别名已保存到本次预览');}
+      if(action==='close-editor'){closeEditor();return;}
+      if(action==='launch-only'){status('设计预览：仅启动游戏，不执行登录或脚本');return;}
+      if(action==='login'){if(!root.querySelector('#la-path').value.trim()){status('请先配置游戏目录');return;}pending={account:selected,district,server,character:destination().selected};status('设计演示：等待登录反馈');}
+      if(action==='demo-feedback'){const d=destination();if(!d.roster.length)d.roster=[{id:'first-'+selected+'-'+district+'-'+server,name:'角色甲',school:'峨嵋'}];d.selected=d.roster[0].id;d.complete=false;pending=null;status('已记录 '+d.roster.length+' 个角色（示例反馈）');}
+      if(action==='refresh-roles'){status('当前等待真实角色读取；可用演示反馈检查缓存流程');return;}
+      if(action==='cancel-login'){pending=null;status('登录已取消（示例）');}
+      render();
+    });
+    root.addEventListener('change',e=>{if(pending)return;const kind=e.target.dataset.choice;if(kind==='district'){district=e.target.value;server='server-a';}if(kind==='server')server=e.target.value;if(kind==='character')destination().selected=e.target.value;if(kind)render();});
+    root.addEventListener('keydown',e=>{if(e.key==='Escape'&&editing)closeEditor();if(editing&&e.key==='Tab'){const nodes=[...root.querySelectorAll('.la-dialog input:not(:disabled),.la-dialog button')],first=nodes[0],last=nodes.at(-1);if(e.shiftKey&&document.activeElement===first){last.focus();e.preventDefault();}else if(!e.shiftKey&&document.activeElement===last){first.focus();e.preventDefault();}}});
+    render();if(globalThis.Tweak){const tweak=new Tweak({container:root,onChange:render});tweak.addToggle(design,'compact',{label:'紧凑间距'});}
+  })();
+  </script>
+</div>
+</div>

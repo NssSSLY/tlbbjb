@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>EnvironmentPanel</class>
+ <widget class="QWidget" name="EnvironmentPanel">
+  <property name="geometry"><rect><x>0</x><y>0</y><width>320</width><height>160</height></rect></property>
+  <widget class="QLabel" name="statusLabel">
+   <property name="geometry"><rect><x>12</x><y>12</y><width>280</width><height>30</height></rect></property>
+   <property name="text"><string>TLBB environment verification</string></property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

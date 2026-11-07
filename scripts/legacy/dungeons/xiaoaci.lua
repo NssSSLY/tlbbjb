@@ -1,0 +1,2 @@
+LoadScript('xiaoaci')
+Xiaoaci.run()

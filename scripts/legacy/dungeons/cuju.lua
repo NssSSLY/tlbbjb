@@ -1,0 +1,2 @@
+LoadScript('cuju')
+Cuju.run()

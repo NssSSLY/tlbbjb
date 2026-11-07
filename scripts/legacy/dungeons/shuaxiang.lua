@@ -1,0 +1,2 @@
+LoadScript('shuaxiang')
+Shuaxiang.run()

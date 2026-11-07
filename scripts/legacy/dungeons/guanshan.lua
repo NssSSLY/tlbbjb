@@ -1,0 +1,2 @@
+LoadScript('guanshan')
+Guanshan.run()

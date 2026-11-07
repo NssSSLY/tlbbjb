@@ -1,0 +1,2 @@
+LoadScript('shaoshi')
+Shaoshi.run()

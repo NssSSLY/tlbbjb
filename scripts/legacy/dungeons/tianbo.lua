@@ -1,0 +1,2 @@
+LoadScript('tianbo')
+Tianbo.run()

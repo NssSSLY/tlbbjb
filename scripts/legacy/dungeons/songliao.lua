@@ -1,0 +1,2 @@
+LoadScript('songliao')
+Songliao.run()

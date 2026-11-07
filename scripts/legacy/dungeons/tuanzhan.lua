@@ -1,0 +1,2 @@
+LoadScript('tuanzhan')
+Tuanzhan.run()

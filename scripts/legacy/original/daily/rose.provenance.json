@@ -1,0 +1,12 @@
+{
+  "original_instruction_sha256": "6c38abcf415bc3f90fb4bc56a1be3aa6322d0fa079b7f292c83a10996e42411f",
+  "utf8_chunk_sha256": "0ada7203987e99626969619963c419019fadfff775eb28cb460e7998981ebc43",
+  "instruction_count": 77,
+  "numeric_and_control_flow_unchanged": true,
+  "source": "@..\\tlzs\\Script64\\日常\\领取波斯玫瑰.lua",
+  "original_chunk_sha256": "c8e8a3239292eb063e548a45e8732d1dcf04cec86be1be991c8606586c219e16",
+  "wrapper_sha256": "50ed02e9591d0bac65e82521dae317518e66d8e65aaea3ab0d7de0df7ea7dacb",
+  "entry": "original/daily/rose.lua",
+  "rules_rewritten": false,
+  "game_executed": false
+}

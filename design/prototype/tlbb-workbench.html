@@ -1,0 +1,205 @@
+<div id="tlbb-design" aria-label="TLBB 多角色任务工作台设计">
+  <style>
+    #tlbb-design{color-scheme:light dark;--tl-bg:light-dark(#f3f5f8,#181e28);--tl-panel:light-dark(#ffffff,#232c39);--tl-ink:light-dark(#182d46,#e7edf7);--tl-muted:light-dark(#52657c,#b1bfd1);--tl-line:light-dark(#d7dfe9,#455269);--tl-accent:light-dark(#096c77,#78d2d7);--tl-onaccent:light-dark(#ffffff,#122d34);--tl-soft:light-dark(#e6f2f3,#253f48);--tl-warn:light-dark(#80530e,#efd098);--tl-warnbg:light-dark(#fff4dd,#423a2b);--tl-danger:light-dark(#a32d35,#ffb0b7);--tl-gap:16px;--tl-role-width:184px;background:var(--tl-bg);color:var(--tl-ink);font:13px/1.55 'Segoe UI','Microsoft YaHei',sans-serif;border:1px solid var(--tl-line);border-radius:10px;position:relative;overflow-wrap:anywhere}
+    #tlbb-design *{box-sizing:border-box} #tlbb-design [hidden]{display:none!important}
+    #tlbb-design h2,#tlbb-design h3,#tlbb-design p{margin:0} #tlbb-design h2{font-size:17px;font-weight:600} #tlbb-design h3{font-size:14px;font-weight:600}
+    #tlbb-design button,#tlbb-design input,#tlbb-design select{font:inherit;color:inherit;max-width:100%;min-width:0}
+    #tlbb-design button{background:var(--tl-panel);border:1px solid var(--tl-line);border-radius:5px;padding:7px 11px} #tlbb-design button:disabled{opacity:.55}
+    #tlbb-design button.tl-primary{background:var(--tl-accent);color:var(--tl-onaccent);border-color:var(--tl-accent)}
+    #tlbb-design input:not([type=checkbox]),#tlbb-design select{width:100%;background:var(--tl-panel);border:1px solid var(--tl-line);border-radius:4px;padding:7px 8px}
+    #tlbb-design input[type=checkbox]{accent-color:var(--tl-accent);width:15px;height:15px;flex-shrink:0}
+    #tlbb-design label.tl-field{display:grid;gap:4px;color:var(--tl-muted)} #tlbb-design label.tl-check{display:flex;align-items:center;gap:7px;color:var(--tl-ink)}
+    #tlbb-design .tl-head{padding:17px 110px 15px 20px;border-bottom:1px solid var(--tl-line);background:var(--tl-panel);border-radius:10px 10px 0 0}
+    #tlbb-design .tl-brand{font-size:19px;font-weight:600;letter-spacing:.3px} #tlbb-design .tl-sub{color:var(--tl-muted);font-size:12px;margin-top:3px}
+    #tlbb-design .tl-shell{display:grid;grid-template-columns:var(--tl-role-width) minmax(0,1fr)}
+    #tlbb-design .tl-roles{padding:var(--tl-gap) 10px;background:var(--tl-panel);border-right:1px solid var(--tl-line)}
+    #tlbb-design .tl-role-list{display:grid;gap:8px;margin:12px 0 18px} #tlbb-design .tl-role{width:100%;text-align:left;padding:10px;display:grid;gap:3px}
+    #tlbb-design .tl-role[aria-pressed=true]{background:var(--tl-soft);border-color:var(--tl-accent)} #tlbb-design .tl-role small{color:var(--tl-muted);font-size:12px}
+    #tlbb-design .tl-muted{color:var(--tl-muted)} #tlbb-design .tl-small{font-size:12px} #tlbb-design .tl-main{min-width:0}
+    #tlbb-design .tl-context{padding:14px var(--tl-gap);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;background:var(--tl-panel)}
+    #tlbb-design .tl-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap} #tlbb-design .tl-stack{display:grid;gap:12px}
+    #tlbb-design .tl-tabs{display:flex;flex-wrap:wrap;gap:2px;padding:0 12px;background:var(--tl-panel);border-bottom:1px solid var(--tl-line)}
+    #tlbb-design .tl-tabs button{border:0;border-bottom:3px solid transparent;border-radius:0;background:transparent;padding:10px 9px}
+    #tlbb-design .tl-tabs button[aria-selected=true]{border-bottom-color:var(--tl-accent);color:var(--tl-accent);font-weight:600}
+    #tlbb-design .tl-content{padding:var(--tl-gap);min-height:465px} #tlbb-design .tl-titlebar{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+    #tlbb-design .tl-surface{background:var(--tl-panel);border:1px solid var(--tl-line);border-radius:7px;padding:14px}
+    #tlbb-design .tl-note{padding:10px 12px;background:var(--tl-warnbg);color:var(--tl-warn);border-radius:5px;font-size:12px}
+    #tlbb-design .tl-badge{display:inline-block;background:var(--tl-bg);color:var(--tl-muted);border-radius:4px;padding:2px 6px;font-size:11px;white-space:normal}
+    #tlbb-design .tl-badge.tl-ready{color:var(--tl-accent);background:var(--tl-soft)}
+    #tlbb-design .tl-columns{display:grid;grid-template-columns:minmax(0,1fr) 248px;gap:12px;align-items:start}
+    #tlbb-design .tl-node{display:grid;grid-template-columns:22px minmax(0,1fr);gap:6px;padding:12px;border-bottom:1px solid var(--tl-line);align-items:start;background:var(--tl-panel)}
+    #tlbb-design .tl-node:first-child{border-radius:6px 6px 0 0} #tlbb-design .tl-node:last-child{border-bottom:0;border-radius:0 0 6px 6px}
+    #tlbb-design .tl-node.tl-selected{background:var(--tl-soft)} #tlbb-design .tl-node button.tl-node-name{border:0;background:transparent;padding:0;text-align:left;font-weight:600}
+    #tlbb-design .tl-node-meta{font-size:12px;color:var(--tl-muted);margin:3px 0 7px}
+    #tlbb-design .tl-node-actions button{font-size:12px;padding:3px 8px} #tlbb-design .tl-node-list{border:1px solid var(--tl-line);border-radius:7px}
+    #tlbb-design .tl-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px} #tlbb-design .tl-span{grid-column:1/-1}
+    #tlbb-design details{border-top:1px solid var(--tl-line);padding-top:10px} #tlbb-design summary{color:var(--tl-muted)}
+    #tlbb-design .tl-filters{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0} #tlbb-design .tl-filters button{font-size:12px;padding:5px 9px}
+    #tlbb-design .tl-filters button[aria-pressed=true]{background:var(--tl-accent);color:var(--tl-onaccent);border-color:var(--tl-accent)}
+    #tlbb-design .tl-library-item{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--tl-line)}
+    #tlbb-design .tl-library-item:last-child{border-bottom:0} #tlbb-design .tl-library-item button{font-size:12px}
+    #tlbb-design .tl-footer{padding:10px 16px;border-top:1px solid var(--tl-line);display:flex;justify-content:space-between;gap:6px;flex-wrap:wrap;font-size:11px;color:var(--tl-muted);background:var(--tl-panel);border-radius:0 0 10px 10px}
+    #tlbb-design .tl-notice{padding:9px 16px;background:var(--tl-soft);color:var(--tl-accent);border-top:1px solid var(--tl-line);min-height:38px}
+    #tlbb-design .tl-rule-row{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:8px;padding:11px 0;border-bottom:1px solid var(--tl-line);align-items:center}
+    #tlbb-design .tl-step{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:12px 0;color:var(--tl-muted)}
+    #tlbb-design .tl-step span{padding:4px 7px;background:var(--tl-bg);border-radius:4px}
+    #tlbb-design .tl-overlay{position:absolute;inset:0;background:light-dark(#17283d66,#02091699);z-index:5;display:flex;align-items:flex-start;justify-content:center;padding:90px 20px 20px;border-radius:10px}
+    #tlbb-design .tl-dialog{background:var(--tl-panel);border:1px solid var(--tl-line);border-radius:9px;padding:20px;max-width:570px;width:100%;box-shadow:0 12px 40px light-dark(#142b4533,#00000066)}
+    #tlbb-design .tl-dialog .tl-row{margin-top:10px} #tlbb-design .tl-dialog fieldset{border:1px solid var(--tl-line);border-radius:5px;margin:12px 0;padding:10px}
+    #tlbb-design .tl-dialog legend{color:var(--tl-muted);padding:0 5px} #tlbb-design .tl-result{font-size:12px;line-height:1.8;background:var(--tl-bg);padding:10px;border-radius:5px}
+    #tlbb-design .tl-result ul{margin:5px 0;padding-left:20px} #tlbb-design .tl-danger{color:var(--tl-danger)}
+    @media(max-width:850px){#tlbb-design .tl-shell{grid-template-columns:160px minmax(0,1fr)} #tlbb-design .tl-columns{grid-template-columns:minmax(0,1fr)} #tlbb-design .tl-inspector .tl-stack{grid-template-columns:repeat(2,minmax(0,1fr))} #tlbb-design .tl-inspector .tl-stack>h3,#tlbb-design .tl-inspector .tl-stack>details{grid-column:1/-1}}
+    @media(max-width:570px){#tlbb-design .tl-shell{grid-template-columns:minmax(0,1fr)} #tlbb-design .tl-roles{border-right:0;border-bottom:1px solid var(--tl-line)} #tlbb-design .tl-role-list{grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;margin:8px 0} #tlbb-design .tl-role{padding:7px} #tlbb-design .tl-roles>.tl-small{display:none} #tlbb-design .tl-content{min-height:0;padding:12px} #tlbb-design .tl-head{padding-left:12px;padding-right:100px} #tlbb-design .tl-brand{font-size:17px} #tlbb-design .tl-form,#tlbb-design .tl-inspector .tl-stack{grid-template-columns:minmax(0,1fr)} #tlbb-design .tl-tabs{padding:0 5px} #tlbb-design .tl-tabs button{padding:9px 7px} #tlbb-design .tl-library-item{grid-template-columns:minmax(0,1fr)} #tlbb-design .tl-library-item button{justify-self:start} #tlbb-design .tl-overlay{padding:70px 8px 8px} #tlbb-design .tl-dialog{padding:12px}}
+    @media(pointer:coarse){#tlbb-design button{min-height:44px} #tlbb-design input:not([type=checkbox]),#tlbb-design select{font-size:16px;min-height:44px} #tlbb-design .tl-check{min-height:44px}}
+  </style>
+  <header class="tl-head"><div class="tl-brand">TLBB · 多角色任务工作台</div><div class="tl-sub">交互设计预览 · 示例数据 · 不连接游戏</div></header>
+  <div class="tl-shell">
+    <aside class="tl-roles"><div class="tl-row"><strong>角色配置</strong><span class="tl-badge">独立保存</span></div><div id="tl-role-list" class="tl-role-list"></div><p class="tl-small tl-muted">Home 绑定当前游戏<br>End 停止并解绑<br>Insert 呼出 / 隐藏面板</p><p class="tl-small tl-muted" style="margin-top:14px">配置身份与进程身份分开。<br>游戏退出：结束该 Worker，保留角色方案。</p></aside>
+    <main class="tl-main">
+      <div class="tl-context"><div><h2 id="tl-role-title"></h2><div id="tl-role-context" class="tl-sub"></div></div><div class="tl-row"><button data-action="copy">批量复制</button><button data-action="save" class="tl-primary">保存草稿</button></div></div>
+      <nav id="tl-tabs" class="tl-tabs" role="tablist" aria-label="角色配置页面"></nav>
+      <section id="tl-panel" class="tl-content" role="tabpanel"></section>
+    </main>
+  </div>
+  <div id="tl-status" class="tl-notice" role="status" aria-live="polite">每个角色有自己的队列与规则；本页所有操作仅改变示例配置。</div>
+  <footer class="tl-footer"><span>设计状态：草稿　·　实际 0.2 仅验证地图 / 坐标与洛阳近距离移动</span><span>日志 / 诊断在正式客户端使用底部抽屉</span></footer>
+  <div id="tl-modal" hidden></div>
+  <script id="tl-catalog-data" type="application/json">
+  {"schema_version":1,"review_date":"2026-10-24","product":"新天龙八部正式服","scope":"首批设计目录，不代表所有服务器当期开放或已适配","tasks":[
+    {"id":"luoyang_move","name":"洛阳坐标移动","aliases":[],"category":"工具","family":"move","source_refs":["local:0.2"],"source_scope":"项目实测","adapter_status":"verified_luoyang_nearby","requires":["map_position","move"],"notes":"仅已核对版本、洛阳、32 格内；多角色长期运行待验收"},
+    {"id":"yanzi","name":"燕子坞","aliases":[],"category":"副本","family":"dungeon","source_refs":["S04"],"source_scope":"官网玩法资料","adapter_status":"unadapted","methods":["完整通关","游戏内扫荡（需核验资格）"],"requires":["party","npc","combat","instance_state"]},
+    {"id":"shaoshi","name":"少室山","aliases":[],"category":"副本","family":"dungeon","source_refs":["S04"],"source_scope":"官网玩法资料","adapter_status":"unadapted","methods":["完整通关","游戏内扫荡（需核验资格）"]},
+    {"id":"sijue","name":"四绝庄","aliases":[],"category":"副本","family":"dungeon","source_refs":["S04"],"source_scope":"官网玩法资料","adapter_status":"unadapted"},
+    {"id":"piaomiao","name":"挑战缥缈峰","aliases":[],"category":"副本","family":"dungeon","source_refs":["S04"],"source_scope":"官网玩法资料","adapter_status":"unadapted"},
+    {"id":"bingsheng","name":"兵圣奇阵","aliases":[],"category":"副本","family":"dungeon","source_refs":["S04"],"source_scope":"官网玩法资料","adapter_status":"unadapted"},
+    {"id":"langhuan","name":"琅嬛福地","aliases":[],"category":"副本","family":"dungeon","source_refs":["S04"],"source_scope":"官网玩法资料；含难度分支","adapter_status":"unadapted"},
+    {"id":"wangling","name":"凤鸣王陵","aliases":[],"category":"副本","family":"dungeon","source_refs":["S04"],"source_scope":"官网玩法资料","adapter_status":"unadapted"},
+    {"id":"sanshen","name":"三神幻境","aliases":[],"category":"副本","family":"dungeon","source_refs":["S04"],"source_scope":"官网玩法资料","adapter_status":"unadapted"},
+    {"id":"guanshan","name":"观山海","aliases":[],"category":"副本","family":"dungeon","source_refs":["S04"],"source_scope":"官网玩法资料；周奖励需单独核验","adapter_status":"unadapted"},
+    {"id":"shimen","name":"师门任务","aliases":[],"category":"日常","family":"daily","source_refs":["S05","S08"],"source_scope":"官网玩法资料；自动完成入口有服务器条件","adapter_status":"unadapted","requires":["npc","quest","inventory","combat"]},
+    {"id":"cargo","name":"漕运","aliases":["跑漕运"],"category":"日常","family":"cargo","source_refs":["S06"],"source_scope":"旧版官网资料，路线与次数待本服核对","adapter_status":"unadapted"},
+    {"id":"treasure_quest","name":"打宝图任务","aliases":["打图"],"category":"日常","family":"daily","source_refs":["S07"],"source_scope":"旧版官网资料，领取规则待核对","adapter_status":"unadapted"},
+    {"id":"chess","name":"珍珑棋局","aliases":[],"category":"限时","family":"timed","source_refs":["S11"],"source_scope":"官网玩法资料；时段与组队待核对","adapter_status":"unadapted"},
+    {"id":"invasion","name":"贼兵入侵","aliases":[],"category":"限时","family":"timed","source_refs":["S12"],"source_scope":"官网玩法资料；当期时间待核对","adapter_status":"unadapted"},
+    {"id":"xiaoxiao","name":"偷袭门派","aliases":["刷小"],"category":"限时","family":"timed","source_refs":["S13"],"source_scope":"官网玩法资料；门派时段待核对","adapter_status":"unadapted"},
+    {"id":"wendao_kunlun","name":"问道昆仑","aliases":[],"category":"限时","family":"timed","source_refs":["S02"],"source_scope":"2026-10-23 当期公告；角色资格待核对","active_until":"2026-11-04T23:59:59+08:00","adapter_status":"unadapted"},
+    {"id":"hanshan","name":"寒山会武","aliases":[],"category":"限时","family":"timed","source_refs":["S02"],"source_scope":"2026-10-23 当期公告；角色资格待核对","active_until":"2026-11-15T23:59:59+08:00","adapter_status":"unadapted"},
+    {"id":"plant","name":"种植","aliases":["抢种植"],"category":"生活","family":"plant","source_refs":["S09","S10"],"source_scope":"官网生活资料与用户需求","adapter_status":"unadapted","requires":["planting_state","inventory","plant_action","action_feedback"]},
+    {"id":"fish","name":"钓鱼","aliases":[],"category":"生活","family":"gather","source_refs":["S09","S10"],"source_scope":"官网生活资料","adapter_status":"unadapted"},
+    {"id":"mine","name":"采矿","aliases":["挖矿"],"category":"生活","family":"gather","source_refs":["S09","S10"],"source_scope":"官网生活资料","adapter_status":"unadapted"},
+    {"id":"herb","name":"采药","aliases":[],"category":"生活","family":"gather","source_refs":["S09","S10"],"source_scope":"官网生活资料","adapter_status":"unadapted"},
+    {"id":"grind","name":"野外刷怪","aliases":["自动刷怪"],"category":"野外","family":"grind","source_refs":["user"],"source_scope":"用户需求，具体地图与怪物待选","adapter_status":"unadapted"},
+    {"id":"dig_map","name":"藏宝图挖宝","aliases":["挖图"],"category":"野外","family":"treasure","source_refs":["S07"],"source_scope":"旧版官网资料；按物品映射适配","adapter_status":"unadapted"},
+    {"id":"bandits","name":"马贼","aliases":["刷马贼"],"category":"野外","family":"grind","source_refs":["S07"],"source_scope":"官网玩法资料；与打图、挖图分开","adapter_status":"unadapted"},
+    {"id":"new_treasure_map","name":"寻宝图（服务器待核验）","aliases":[],"category":"野外","family":"treasure","source_refs":["S08"],"source_scope":"山海相逢服务器公告，不能默认五台山可用","adapter_status":"unadapted"},
+    {"id":"supply","name":"补给 / 背包维护","aliases":["自动补给"],"category":"工具","family":"maintenance","source_refs":["user"],"source_scope":"用户需求","adapter_status":"unadapted"},
+    {"id":"wait","name":"等待到指定时间","aliases":[],"category":"工具","family":"wait","source_refs":["user"],"source_scope":"编排设计，未接入客户端","adapter_status":"unadapted"},
+    {"id":"manual","name":"人工接管点","aliases":[],"category":"工具","family":"manual","source_refs":["user"],"source_scope":"编排设计，未接入客户端","adapter_status":"unadapted"}
+  ]}
+  </script>
+  <script>
+  (()=>{
+    const root=document.getElementById('tlbb-design');
+    const catalog=JSON.parse(root.querySelector('#tl-catalog-data').textContent).tasks;
+    const tabs=[['run','执行台'],['library','任务库'],['queue','流程编排'],['battle','战斗技能'],['logistics','拾取后勤'],['login','登录角色']];
+    const clone=v=>JSON.parse(JSON.stringify(v));
+    const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    let nextId=20;
+    const task=id=>catalog.find(t=>t.id===id);
+    const defaults=t=>({rounds:1,timeout:120,failure:'stop',retry:2,...(t.family==='move'?{map:'洛阳',x:360,y:317,tolerance:0.3}:{}),...(t.family==='plant'?{map:'洛阳',x:360,y:317,crop:'小麦',style:'一轮播种与收获'}:{}),...(t.family==='gather'?{map:'待选择',route:'待配置',resource:'待选择'}:{}),...(t.family==='dungeon'?{method:'完整通关',difficulty:'默认难度',team:'已有队伍'}:{}),...(t.family==='timed'?{window:'待核对游戏活动日历',late:'跳过本次'}:{}),...(t.family==='grind'?{map:'待选择',target:'待选择',minutes:30}:{}),...(t.family==='cargo'?{route:'待核对本服路线',gold_limit:0}:{}),...(t.family==='treasure'?{item:'待识别物品',branch:'遇到未知分支暂停'}:{}),...(t.family==='wait'?{time:'20:00'}:{})});
+    const node=id=>({uid:'node-'+nextId++,task:id,enabled:true,params:defaults(task(id))});
+    const roles=[
+      {id:'role-a',name:'角色甲',school:'峨嵋',server:'五台山',alias:'账号方案甲',queue:['luoyang_move','plant','shimen','yanzi'].map(node)},
+      {id:'role-b',name:'角色乙',school:'逍遥',server:'五台山',alias:'账号方案乙',queue:['fish','supply'].map(node)},
+      {id:'role-c',name:'角色丙',school:'昆仑',server:'五台山',alias:'账号方案丙',queue:['mine'].map(node)}
+    ].map(r=>({...r,revision:0,battle:{heal:60,target:'任务目标优先',form:'按阶段切换'},loot:{pickup:true,rule:'仅白名单',destroy:false,whitelist:'示例：破旧材料',preview:false},supply:{enabled:false,slots:5},login:{path:'E:\\game\\tlbb',district:'网通华北网通一区',character:r.name+'（示例）',auto:false}}));
+    let active='role-a',tab='queue',selected=roles[0].queue[0].uid,category='全部',search='',page=0,logisticsTab='pickup',notice='',checkResult=null,copyState=null;
+    const current=()=>roles.find(r=>r.id===active);
+    const selectedNode=()=>current().queue.find(n=>n.uid===selected);
+    const design={density:'comfortable',roleWidth:184};
+    function applyDesign(){root.style.setProperty('--tl-gap',design.density==='compact'?'11px':'16px');root.style.setProperty('--tl-role-width',design.roleWidth+'px');}
+    function restore(state){const before=active+':'+tab,s=state?.privateContent;if(s&&roles.some(r=>r.id===s.role))active=s.role;if(s&&tabs.some(t=>t[0]===s.tab))tab=s.tab;return before!==active+':'+tab;}
+    restore(window.openai?.widgetState);
+    window.addEventListener('openai:set_globals',event=>{if(event.detail?.globals?.widgetState&&restore(event.detail.globals.widgetState)){selected=current().queue[0]?.uid;render();}});
+    let lastSavedView='';
+    function remember(){const view=active+':'+tab;if(view===lastSavedView)return;lastSavedView=view;const payload={modelContent:{design:'角色独立配置，支持批量复制',role:current().name,page:tabs.find(t=>t[0]===tab)[1]},privateContent:{role:active,tab}};try{window.openai?.setWidgetState?.(payload)?.catch(()=>{});}catch{}}
+    function say(message){notice=message;root.querySelector('#tl-status').textContent=message;}
+    function button(action,text,attrs=''){return `<button type="button" data-action="${action}" ${attrs}>${text}</button>`;}
+    function selectField(label,key,value,options,scope='param'){return `<label class="tl-field">${label}<select data-${scope}="${key}" aria-label="${label}">${options.map(o=>`<option ${value===o?'selected':''}>${esc(o)}</option>`).join('')}</select></label>`;}
+    function field(label,key,value,type='text',scope='param',extra=''){return `<label class="tl-field">${label}<input type="${type}" data-${scope}="${key}" aria-label="${label}" value="${esc(value)}" ${extra}></label>`;}
+    function check(label,key,value,scope='loot'){return `<label class="tl-check"><input type="checkbox" data-${scope}="${key}" ${value?'checked':''}>${label}</label>`;}
+    function badge(t){return `<span class="tl-badge ${t.id==='luoyang_move'?'tl-ready':''}">${t.id==='luoyang_move'?'0.2 已验证移动':'待适配'}</span>`;}
+    function summary(n){const t=task(n.task),p=n.params;if(t.family==='move')return `${p.map} · ${p.x}, ${p.y} · 容差 ${p.tolerance}`;if(t.family==='plant')return `${p.map} · ${p.x}, ${p.y} · ${p.crop} · ${p.rounds} 轮`;if(t.family==='dungeon')return `${p.method} · ${p.rounds} 次`;if(t.family==='gather')return `${p.map} · ${p.resource} · ${p.rounds} 轮`;return `${p.rounds} 次 · 失败${p.failure==='stop'?'停止队列':p.failure==='skip'?'跳过任务':'等待人工'}`;}
+    function render(){
+      const r=current();
+      root.querySelector('#tl-role-list').innerHTML=roles.map(x=>`<button type="button" class="tl-role" data-action="role" data-id="${x.id}" aria-pressed="${x.id===active}"><strong>${x.name} · ${x.school}</strong><small>示例 · 未连接</small><small>${x.queue.length} 项任务 · 草稿 v${x.revision}</small></button>`).join('');
+      root.querySelector('#tl-role-title').textContent=r.name+' · '+r.school;
+      root.querySelector('#tl-role-context').textContent=r.server+'（示例）　/　未连接游戏　/　独立方案';
+      root.querySelector('#tl-tabs').innerHTML=tabs.map(([id,name])=>`<button type="button" role="tab" id="tl-tab-${id}" aria-controls="tl-panel" aria-selected="${tab===id}" data-action="tab" data-id="${id}">${name}</button>`).join('');
+      const panel=root.querySelector('#tl-panel');panel.setAttribute('aria-labelledby','tl-tab-'+tab);
+      panel.innerHTML=({queue:queueView,library:libraryView,run:runView,battle:battleView,logistics:logisticsView,login:loginView}[tab])();
+      root.querySelector('#tl-status').textContent=notice||'每个角色有自己的队列与规则；本页所有操作仅改变示例配置。';
+      renderModal();applyDesign();
+    }
+    function queueView(){const r=current(),n=selectedNode();return `<div class="tl-titlebar"><div><h3>任务队列</h3><p class="tl-sub">顺序执行 · 每个角色同一时间只执行一个行为任务</p></div><div class="tl-row">${button('open-library','＋ 添加任务')}${button('preflight','检查队列')}</div></div><div class="tl-columns"><div class="tl-stack"><div class="tl-node-list">${r.queue.length?r.queue.map((n,i)=>`<div class="tl-node ${n.uid===selected?'tl-selected':''}"><label class="tl-check"><input type="checkbox" data-node-enabled="${n.uid}" aria-label="启用 ${esc(task(n.task).name)}" ${n.enabled?'checked':''}></label><div><div class="tl-row"><button class="tl-node-name" type="button" data-action="select-node" data-id="${n.uid}">${i+1}. ${esc(task(n.task).name)}</button>${badge(task(n.task))}</div><div class="tl-node-meta">${esc(summary(n))}</div><div class="tl-row tl-node-actions">${button('up','上移',`data-id="${n.uid}" ${i===0?'disabled':''}`)}${button('down','下移',`data-id="${n.uid}" ${i===r.queue.length-1?'disabled':''}`)}${button('remove','移除',`data-id="${n.uid}"`)}</div></div></div>`).join(''):'<p class="tl-surface tl-muted">队列为空，从任务库添加第一项任务。</p>'}</div><div class="tl-note">种植、师门、副本等尚未接入真实动作。可以先配置，检查队列会明确列出阻止执行的原因。</div>${checkResult?resultView():''}<details><summary>串行、时段与中断规则</summary><p class="tl-sub">无限刷怪必须设结束时刻或时长；限时活动只在安全检查点插入。等待作物成熟可释放执行权；战斗中不强行切换。补给完成后回到原节点。</p></details></div><aside class="tl-surface tl-inspector">${n?inspector(n):'<p class="tl-muted">选择任务后编辑参数。</p>'}</aside></div>`;}
+    function inspector(n){const t=task(n.task),p=n.params;let fields='';
+      if(['move','plant'].includes(t.family))fields+=field('地图','map',p.map)+field('目标 X','x',p.x,'number','param','min="0" step="0.1"')+field('目标 Y','y',p.y,'number','param','min="0" step="0.1"');
+      if(t.family==='move')fields+=field('到达容差','tolerance',p.tolerance,'number','param','min="0.1" max="2" step="0.1"');
+      if(t.family==='plant')fields+=field('作物','crop',p.crop)+selectField('种植方式','style',p.style,['一轮播种与收获','等待空地再种','只收获已成熟作物']);
+      if(t.family==='dungeon')fields+=selectField('执行方式','method',p.method,['完整通关','游戏内扫荡（需核验资格）'])+selectField('难度','difficulty',p.difficulty,['默认难度','普通','困难'])+selectField('组队来源','team',p.team,['已有队伍','等待指定队伍']);
+      if(t.family==='gather')fields+=field('地图','map',p.map)+field('采集资源','resource',p.resource)+field('路线方案','route',p.route);
+      if(t.family==='grind')fields+=field('地图','map',p.map)+field('目标 / 范围','target',p.target)+field('最长持续（分钟）','minutes',p.minutes,'number','param','min="1"');
+      if(t.family==='timed')fields+=field('允许时段','window',p.window)+selectField('错过时段','late',p.late,['跳过本次','等待下一窗口']);
+      if(t.family==='cargo')fields+=field('运输路线','route',p.route)+field('携带金额上限','gold_limit',p.gold_limit,'number','param','min="0"');
+      if(t.family==='treasure')fields+=field('图类 / 物品','item',p.item)+field('未知分支','branch',p.branch);
+      if(t.family==='wait')fields+=field('等待至','time',p.time,'time');
+      if(t.family!=='move')fields+=field('执行次数 / 轮数','rounds',p.rounds,'number','param','min="1" max="999"');
+      return `<div class="tl-stack"><h3>${esc(t.name)} · 参数</h3>${fields}<details><summary>超时与异常策略</summary><div class="tl-stack" style="margin-top:10px">${field('任务超时（秒）','timeout',p.timeout,'number','param','min="10"')}${field('最多重试','retry',p.retry,'number','param','min="0" max="5"')}<label class="tl-field">失败后<select data-param="failure" aria-label="失败后"><option value="stop" ${p.failure==='stop'?'selected':''}>停止队列</option><option value="skip" ${p.failure==='skip'?'selected':''}>跳过任务</option><option value="manual" ${p.failure==='manual'?'selected':''}>等待人工</option></select></label></div></details><p class="tl-small tl-muted">${esc(t.source_scope)}。参数覆盖只作用于当前节点。</p></div>`;}
+    function libraryView(){let filtered=catalog.filter(t=>(category==='全部'||t.category===category)&&(!search||[t.name,...t.aliases].join(' ').includes(search)));const pages=Math.max(1,Math.ceil(filtered.length/6));page=Math.min(page,pages-1);return `<div class="tl-titlebar"><div><h3>任务库</h3><p class="tl-sub">官方玩法来源与实际适配状态分开显示</p></div><span class="tl-muted tl-small">首批目录 ${catalog.length} 项</span></div><label class="tl-field">搜索任务 / 别名<input data-search aria-label="搜索任务" value="${esc(search)}" placeholder="例如：师门、刷小、钓鱼"></label><div class="tl-filters" aria-label="任务分类">${['全部','副本','日常','限时','生活','野外','工具'].map(c=>`<button type="button" data-action="category" data-id="${c}" aria-pressed="${category===c}">${c}</button>`).join('')}</div><div class="tl-surface">${filtered.slice(page*6,page*6+6).map(t=>`<div class="tl-library-item"><div><div class="tl-row"><strong>${esc(t.name)}</strong>${badge(t)}</div><p class="tl-sub">${esc(t.source_scope)}${t.active_until?' · 截止 '+t.active_until.slice(0,10):''}</p></div>${button('add','加入队列',`data-id="${t.id}"`)}</div>`).join('')||'<p class="tl-muted">没有匹配任务。</p>'}</div><div class="tl-titlebar" style="margin-top:12px"><span class="tl-small tl-muted">待适配任务可以编排，真实运行前必须通过能力检查。</span><div class="tl-row">${button('prev-page','上一页',page===0?'disabled':'')}<span>${page+1} / ${pages}</span>${button('next-page','下一页',page>=pages-1?'disabled':'')}</div></div>`;}
+    function preflight(){const enabled=current().queue.filter(n=>n.enabled),errors=[];if(!enabled.length)errors.push('没有启用的任务。');for(const n of enabled){const t=task(n.task);if(t.adapter_status!=='verified_luoyang_nearby')errors.push(`${t.name}：真实状态 / 动作适配未完成。`);else if(n.params.map!=='洛阳'||![n.params.x,n.params.y,n.params.tolerance].every(v=>Number.isFinite(Number(v)))||Number(n.params.x)<0||Number(n.params.y)<0||Number(n.params.tolerance)<0.1||Number(n.params.tolerance)>2)errors.push('洛阳坐标移动：地图或数值参数无效。');}
+      checkResult={errors,enabled:enabled.length};say(errors.length?'队列检查未通过：请查看原因。':'示例参数检查通过；还需真实连接、版本及距离核验。本预览不发送动作。');}
+    function resultView(){return `<div class="tl-result" data-check-result><strong>${checkResult.errors.length?'尚不可执行':'示例参数检查通过'}</strong>${checkResult.errors.length?'<ul>'+checkResult.errors.map(e=>'<li>'+esc(e)+'</li>').join('')+'</ul>':'<p>仅检查本页配置；正式执行仍须连接游戏、核验版本与距离，预览不会发送游戏动作。</p>'}</div>`;}
+    function runView(){const r=current();return `<div class="tl-titlebar"><h3>执行台 · ${r.name}</h3><span class="tl-badge">未连接 / 未运行</span></div><div class="tl-stack"><div class="tl-surface tl-stack"><div class="tl-row"><strong>当前任务</strong><span class="tl-muted">—</span></div><p class="tl-muted">地图、坐标、阶段、等待原因和真实结果在连接后显示。本页不模拟角色已经完成任务。</p><div class="tl-row">${button('not-connected','开始队列（未连接）','class="tl-primary" disabled')}${button('not-running','暂停 / 恢复','disabled')}${button('demo-stop','停止此角色')}</div><div class="tl-row">${button('preflight','检查队列')}${button('open-queue','查看队列')}</div></div>${checkResult?resultView():''}<div class="tl-surface"><h3>运行边界</h3><p class="tl-sub">草稿保存不会启动任务。正式客户端开始前核验角色、适配版本、背包与任务条件；游戏退出后结束该会话脚本。</p></div><div class="tl-note">当前可保留的真实能力：地图 / 坐标读取与洛阳 32 格内移动。种植、战斗、NPC、登录等必须分别适配并验收。</div></div>`;}
+    function battleView(){const r=current();return `<div class="tl-titlebar"><h3>战斗技能 · ${r.school}方案</h3><span class="tl-badge">规则设计 / 待适配</span></div><div class="tl-stack"><div class="tl-note">技能列表需从当前角色读取后映射。示例只配置优先级与条件，不把技能名称或序号直接当作可执行接口。</div><div class="tl-surface"><div class="tl-rule-row"><span>1</span><div><strong>保命 / 自我恢复</strong><p class="tl-sub">先判断血量、冷却与施法条件</p></div><span>优先</span></div><div class="tl-rule-row"><span>2</span><div><strong>门派增益 / 任务控制</strong><p class="tl-sub">任务可覆盖策略，技能映射随角色保存</p></div><span>条件触发</span></div><div class="tl-rule-row"><span>3</span><div><strong>输出与普攻</strong><p class="tl-sub">目标合法、距离可达、资源足够</p></div><span>循环</span></div></div><div class="tl-form">${field('恢复触发：血量低于 %','heal',r.battle.heal,'number','battle','min="1" max="100"')}${selectField('选择目标','target',r.battle.target,['任务目标优先','仅选定范围怪物','跟随队伍目标'],'battle')}${r.school==='昆仑'?selectField('昆仑形态策略','form',r.battle.form,['按阶段切换','固定形态，等待适配'],'battle'):''}</div><p class="tl-small tl-muted">不同门派复制时跳过专属技能映射。具体技能绑定在读取与施放接口完成后开放。</p></div>`;}
+    function destroyPreview(){const names=current().loot.whitelist.replace(/^示例[:：]\s*/,'').split(/[,，;；\n]/).map(s=>s.trim()).filter(Boolean);return [['破旧材料',2,false],['低价值材料',3,false],['任务信件',1,true]].map(([name,count,protectedItem])=>`${esc(name)} × ${count} → ${protectedItem?'任务物品，保留':names.includes(name)?'符合白名单（仅示例）':'未匹配白名单，保留'}`).join('<br>')+'<br>这里只展示示例匹配，不删除任何物品。';}
+    function logisticsView(){const r=current();let content='';
+      if(logisticsTab==='pickup')content=`<div class="tl-stack">${check('拾取任务范围内的掉落包裹','pickup',r.loot.pickup)}${selectField('拾取方式','rule',r.loot.rule,['仅白名单','任务物品优先'],'loot')}<p class="tl-muted">拾取与背包清理分别配置。没有物品身份和保护属性时，保持物品不动。</p></div>`;
+      if(logisticsTab==='bag')content=`<div class="tl-stack"><h3>销毁规则</h3><p class="tl-small tl-muted">保护列表、任务物品、已装备、锁定及未知属性物品优先保留。</p>${field('明确允许销毁的物品白名单','whitelist',r.loot.whitelist,'text','loot')}${button('preview-destroy','预览规则匹配')}${r.loot.preview?'<div class="tl-result" data-destroy-preview>'+destroyPreview()+'</div>':''}${check('启用此角色的销毁规则（仅示例）','destroy',r.loot.destroy)}<p class="tl-small tl-muted">${r.loot.preview?'已生成本角色的规则预览。':'先预览再启用；修改或复制规则后需要重新预览。'}</p><details><summary>出售 / 存仓 / 保留</summary><p class="tl-sub">正式客户端为每类物品指定一个处理动作。保护规则优先，单物品不会同时执行多个动作。</p></details></div>`;
+      if(logisticsTab==='supply')content=`<div class="tl-stack">${check('允许补给维护插入队列','enabled',r.supply.enabled,'supply')}${field('背包空位低于此值时维护','slots',r.supply.slots,'number','supply','min="1" max="100"')}<p class="tl-muted">在安全节点执行补药、修理、存仓。维护有次数和时长上限，完成后回到原任务。</p></div>`;
+      if(logisticsTab==='recover')content='<div class="tl-stack"><h3>异常恢复</h3><p>卡住：重新读取状态 → 有限重试 → 停止并说明原因。</p><p>断线：交给登录流程，挑战验证转人工。</p><p>游戏退出：结束对应脚本和 Worker，保留角色配置。</p><p class="tl-small tl-muted">本页展示恢复策略设计，实际动作仍需分别验收。</p></div>';
+      return `<div class="tl-titlebar"><h3>拾取与后勤</h3><span class="tl-badge">此角色默认规则 · 任务可覆盖</span></div><div class="tl-filters">${[['pickup','拾取包裹'],['bag','背包处理'],['supply','补给恢复'],['recover','异常恢复']].map(([id,label])=>`<button type="button" data-action="logistics-tab" data-id="${id}" aria-pressed="${id===logisticsTab}">${label}</button>`).join('')}</div><div class="tl-surface">${content}</div>`;}
+    function loginView(){const r=current();return `<div class="tl-titlebar"><h3>登录与角色身份</h3><span class="tl-badge">流程设计 / 未适配</span></div><div class="tl-stack"><div class="tl-surface"><div class="tl-step"><span>启动器</span>→<span>大区 / 服务器</span>→<span>认证</span>→<span>选择角色</span>→<span>进世界核验</span>→<span>绑定会话</span></div><div class="tl-form">${field('游戏安装路径','path',r.login.path,'text','login')}${field('大区','district',r.login.district,'text','login')}<label class="tl-field">服务器<input value="${esc(r.server)}" disabled aria-label="服务器"></label>${field('角色匹配名称','character',r.login.character,'text','login')}<label class="tl-field tl-span">账号方案<input value="${esc(r.alias)}（示例引用，无密码）" disabled aria-label="账号方案"></label></div></div><div class="tl-note">预览不收集账号密码。正式版凭据使用系统凭据存储；验证挑战交给人工。登录成功核验角色后再允许开始队列。</div><p class="tl-small tl-muted">登录身份不参加批量复制。遇到选错服、角色不匹配、验证码或连续失败时停止该流程；登录重试不能无限循环。</p></div>`;}
+    function renderModal(){const host=root.querySelector('#tl-modal'),wasOpen=!host.hidden,focused=document.activeElement;let focusSelector=null;for(const key of ['data-copy-target','data-copy-scope','data-copy-mode','data-action'])if(host.contains(focused)&&focused.hasAttribute(key)){focusSelector=`[${key}="${focused.getAttribute(key)}"]`;break;}root.querySelectorAll('.tl-head,.tl-shell,.tl-notice,.tl-footer').forEach(el=>el.inert=!!copyState);if(!copyState){host.hidden=true;host.innerHTML='';if(wasOpen)root.querySelector('[data-action="copy"]').focus({preventScroll:true});return;}host.hidden=false;const c=copyState,r=current();host.innerHTML=`<div class="tl-overlay"><section class="tl-dialog" role="dialog" aria-modal="true" aria-labelledby="tl-copy-title"><div class="tl-titlebar"><h2 id="tl-copy-title">从 ${r.name} 批量复制</h2>${button('close-copy','关闭')}</div><p class="tl-small tl-muted">生成独立副本，目标角色以后可单独修改。</p><fieldset><legend>目标角色</legend><div class="tl-row">${roles.filter(x=>x.id!==active).map(x=>`<label class="tl-check"><input type="checkbox" data-copy-target="${x.id}" ${c.targets.includes(x.id)?'checked':''}>${x.name} · ${x.school}</label>`).join('')}</div></fieldset><fieldset><legend>复制内容</legend><div class="tl-row">${[['queue','队列与参数'],['battle','战斗规则'],['loot','拾取 / 背包规则'],['supply','补给规则']].map(([id,name])=>`<label class="tl-check"><input type="checkbox" data-copy-scope="${id}" ${c.scopes.includes(id)?'checked':''}>${name}</label>`).join('')}</div></fieldset><label class="tl-field">目标已有配置时<select data-copy-mode aria-label="复制模式"><option value="replace" ${c.mode==='replace'?'selected':''}>覆盖所选内容</option><option value="fill" ${c.mode==='fill'?'selected':''}>只填空缺内容</option></select></label><div class="tl-result" style="margin-top:12px">不复制账号、登录身份、进程、运行进度与历史。不同门派跳过专属战斗映射。销毁规则仅复制内容，目标保持关闭并重新预览。${c.preview?'<ul>'+copyDiff().map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul>':''}</div><div class="tl-row">${button('copy-preview','预览差异')}${button('copy-apply','应用到目标草稿',`class="tl-primary" ${!c.preview||!c.targets.length||!c.scopes.length?'disabled':''}`)}</div></section></div>`;(focusSelector?host.querySelector(focusSelector):null)?.focus({preventScroll:true});if(!host.contains(document.activeElement))host.querySelector('button').focus({preventScroll:true});}
+    function copyDiff(){const c=copyState,r=current(),out=[];for(const id of c.targets){const target=roles.find(x=>x.id===id);for(const scope of c.scopes){if(scope==='battle'&&r.school!==target.school){out.push(`${target.name}：门派不同，跳过战斗配置。`);continue;}if(c.mode==='fill'&&(scope!=='queue'||target.queue.length)){out.push(`${target.name}：${scope==='queue'?'队列':'此类规则'}已有内容，保持原值。`);continue;}out.push(`${target.name}：${scope==='queue'?`队列 ${target.queue.length} → ${r.queue.length} 项`:scope==='loot'?'复制拾取 / 背包规则，销毁保持关闭':scope==='battle'?'复制战斗规则':'复制补给规则'}。`);}}return out;}
+    function copyApply(){const c=copyState,r=current();if(!c?.preview||!c.targets.length||!c.scopes.length)return;for(const id of c.targets){const target=roles.find(x=>x.id===id);for(const scope of c.scopes){if(scope==='battle'&&r.school!==target.school)continue;if(c.mode==='fill'&&(scope!=='queue'||target.queue.length))continue;target[scope]=clone(r[scope]);if(scope==='queue')target.queue.forEach(n=>n.uid='node-'+nextId++);if(scope==='loot'){target.loot.destroy=false;target.loot.preview=false;}}}copyState=null;say('已复制到目标角色的独立草稿；登录身份保留，销毁保持关闭。');render();}
+    root.addEventListener('click',e=>{const b=e.target.closest('button[data-action]');if(!b||b.disabled)return;const a=b.dataset.action,id=b.dataset.id,r=current();
+      if(a==='role'){active=id;selected=current().queue[0]?.uid;checkResult=null;}
+      if(a==='tab'){tab=id;checkResult=null;}
+      if(a==='open-library')tab='library';if(a==='open-queue')tab='queue';
+      if(a==='select-node')selected=id;
+      if(a==='remove'){r.queue=r.queue.filter(n=>n.uid!==id);if(selected===id)selected=r.queue[0]?.uid;checkResult=null;}
+      if(a==='up'||a==='down'){const i=r.queue.findIndex(n=>n.uid===id),j=i+(a==='up'?-1:1);if(i>=0&&j>=0&&j<r.queue.length)[r.queue[i],r.queue[j]]=[r.queue[j],r.queue[i]];checkResult=null;}
+      if(a==='add'){const n=node(id);r.queue.push(n);selected=n.uid;tab='queue';checkResult=null;say(`已为 ${r.name} 添加 ${task(id).name}；仍是未执行草稿。`);}
+      if(a==='category'){category=id;page=0;}if(a==='prev-page')page=Math.max(0,page-1);if(a==='next-page')page++;
+      if(a==='preflight')preflight();if(a==='save'){r.revision++;say(`${r.name} 草稿已保存在本次预览中，未写入客户端，也未开始任务。`);}
+      if(a==='demo-stop')say('此角色当前未运行；正式客户端的停止只作用于此角色。');
+      if(a==='logistics-tab')logisticsTab=id;
+      if(a==='preview-destroy'){r.loot.preview=!!r.loot.whitelist.trim();say(r.loot.preview?'示例匹配已生成；保护物品始终优先保留。':'白名单为空，不能启用销毁。');}
+      if(a==='copy')copyState={targets:[],scopes:['queue'],mode:'replace',preview:false};if(a==='close-copy')copyState=null;
+      if(a==='copy-preview'){copyState.preview=true;}if(a==='copy-apply'){copyApply();remember();return;}
+      render();remember();
+    });
+    root.addEventListener('input',e=>{const el=e.target;if(el.matches('[data-search]')){search=el.value;page=0;const caret=el.selectionStart;render();const input=root.querySelector('[data-search]');input.focus();input.setSelectionRange(caret,caret);}
+      for(const scope of ['param','battle','loot','supply','login']){const key=el.dataset[scope];if(!key||el.type==='checkbox'||el.tagName==='SELECT')continue;const object=scope==='param'?selectedNode()?.params:current()[scope];if(!object)return;object[key]=el.type==='number'?(el.value===''?'':Number(el.value)):el.value;checkResult=null;root.querySelector('[data-check-result]')?.remove();if(scope==='loot'){object.preview=false;object.destroy=false;const cb=root.querySelector('[data-loot="destroy"]');if(cb)cb.checked=false;root.querySelector('[data-destroy-preview]')?.remove();say('规则已修改，销毁已关闭；需要重新预览。');}else if(scope==='param'){const selectedRow=root.querySelector('.tl-node.tl-selected .tl-node-meta');if(selectedRow)selectedRow.textContent=summary(selectedNode());}}
+    });
+    root.addEventListener('change',e=>{const el=e.target;
+      if(el.dataset.nodeEnabled){const n=current().queue.find(n=>n.uid===el.dataset.nodeEnabled);if(n)n.enabled=el.checked;checkResult=null;render();}
+      for(const scope of ['param','battle','loot','supply','login']){const key=el.dataset[scope];if(!key)continue;const object=scope==='param'?selectedNode()?.params:current()[scope];if(!object)return;if(scope==='loot'&&key==='destroy'&&el.checked&&!object.preview){el.checked=false;say('请先预览当前角色的规则匹配，再启用销毁。');return;}object[key]=el.type==='checkbox'?el.checked:el.type==='number'?(el.value===''?'':Number(el.value)):el.value;if(scope==='loot'&&key==='whitelist'){object.preview=false;object.destroy=false;}checkResult=null;if(el.type==='checkbox'||el.tagName==='SELECT')render();}
+      if(copyState){const c=copyState;if(el.dataset.copyTarget){c.targets=el.checked?[...c.targets,el.dataset.copyTarget]:c.targets.filter(id=>id!==el.dataset.copyTarget);c.preview=false;}if(el.dataset.copyScope){c.scopes=el.checked?[...c.scopes,el.dataset.copyScope]:c.scopes.filter(id=>id!==el.dataset.copyScope);c.preview=false;}if(el.matches('[data-copy-mode]')){c.mode=el.value;c.preview=false;}renderModal();}remember();
+    });
+    root.addEventListener('keydown',e=>{if(e.key==='Escape'&&copyState){copyState=null;renderModal();}if(copyState&&e.key==='Tab'){const items=[...root.querySelectorAll('.tl-dialog button:not(:disabled),.tl-dialog input,.tl-dialog select')],first=items[0],last=items.at(-1);if(e.shiftKey&&document.activeElement===first){last.focus();e.preventDefault();}else if(!e.shiftKey&&document.activeElement===last){first.focus();e.preventDefault();}}});
+    render();
+    if(globalThis.Tweak){const tweak=new Tweak({container:root,onChange:applyDesign});tweak.addSelect(design,'density',{label:'布局密度',options:[{label:'舒展',value:'comfortable'},{label:'紧凑',value:'compact'}]});tweak.addSlider(design,'roleWidth',{label:'角色栏宽度',min:165,max:235,step:5,unit:'px'});}
+  })();
+  </script>
+</div>

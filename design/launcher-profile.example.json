@@ -1,0 +1,13 @@
+{
+  "schema_version": 2,
+  "kind": "design_example_only",
+  "installation": {"game_root": "E:\\game\\tlbb", "data_root": ".\\data", "cache_root": ".\\cache"},
+  "accounts": [
+    {"account_id": "example-account-a", "alias": "示例账号甲", "login_name": null, "credential_ref": null,
+     "destinations": [{"district_id": "example-district", "district_name": "网通华北网通一区", "server_id": "example-server-wutaishan", "server_name": "五台山", "roster_state": "unknown", "roster_complete": false, "last_read_at": null, "characters": [], "selected_character_id": null}]},
+    {"account_id": "example-account-b", "alias": "示例账号乙", "login_name": null, "credential_ref": null,
+     "destinations": [{"district_id": "example-district", "district_name": "网通华北网通一区", "server_id": "example-server-wutaishan", "server_name": "五台山", "roster_state": "cached", "roster_complete": false, "last_read_at": "2026-10-24T00:00:00+08:00", "characters": [{"character_id": "example-character-b", "name": "角色乙（示例）", "school": "逍遥", "identity_verified": true, "source": "example_world_read"}], "selected_character_id": "example-character-b"}]}
+  ],
+  "runtime": {"host": "single_instance", "panel_scope": "fixed_game_session", "home": "bind_and_show_target_panel", "end": "stop_and_detach_target_only", "close_panel": "hide", "auto_start_tasks_after_login": false},
+  "packaging": {"formats": ["full_offline_installer", "full_zip"], "builtin_lua": "scripts/builtin", "user_lua": "scripts/user", "preserve_on_upgrade": ["data", "scripts/user"], "include_all_builtin_scripts": true}
+}

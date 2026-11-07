@@ -1,0 +1,2 @@
+LoadScript('tianjiang')
+Tianjiang.run()

@@ -1,0 +1,2 @@
+LoadScript('xiakexing')
+Xiakexing.run()

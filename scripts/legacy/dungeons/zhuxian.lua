@@ -1,0 +1,2 @@
+LoadScript('zhuxian')
+Zhuxian.run()

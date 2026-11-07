@@ -1,0 +1,2 @@
+LoadScript('nixi')
+Nixi.run()

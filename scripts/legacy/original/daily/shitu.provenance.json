@@ -1,0 +1,12 @@
+{
+  "original_instruction_sha256": "fdf788deb1eedc1d5d902f65353ce72e0640fce6fae06ecd6cb4610daefbfd4c",
+  "utf8_chunk_sha256": "7d90cd303ce8487c878922737904b2efda50e4601d64b7d0a03cd3f42da3166b",
+  "instruction_count": 86,
+  "numeric_and_control_flow_unchanged": true,
+  "source": "@..\\tlzs\\Script64\\日常\\领取师徒心连心.lua",
+  "original_chunk_sha256": "d4d5ecfe6be4a3f637253d660a0d99aadabe22a22545be589ee57cdd08fbce60",
+  "wrapper_sha256": "66265517929d2b719970f12fe12b04ad653f7eea00eee8b85fd7de618c102b29",
+  "entry": "original/daily/shitu.lua",
+  "rules_rewritten": false,
+  "game_executed": false
+}

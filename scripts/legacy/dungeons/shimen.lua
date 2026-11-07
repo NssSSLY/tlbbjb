@@ -1,0 +1,2 @@
+LoadScript('shimen')
+Shimen.run()

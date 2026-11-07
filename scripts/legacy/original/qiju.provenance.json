@@ -1,0 +1,23 @@
+{
+  "original_instruction_sha256": "6928aca39b9d4ff55f1d490b9e22678e02fb505095006ffb073dada1a2e441b0",
+  "utf8_chunk_sha256": "7b056450e2b1e7ffacfeb0eeddcf01a9b7a7a2aaf75278137ae3dfeac0c3c90b",
+  "instruction_count": 605,
+  "numeric_and_control_flow_unchanged": true,
+  "source": "@..\\tlzs\\Script64\\副本\\【副本】刷棋.lua",
+  "original_chunk_sha256": "0a1cd22445085624fac42d3fdbf73f730a74f142e81fa75aec55cb05d8c93bb9",
+  "wrapper_sha256": "9899168fb6af2134da05a9eef091c98192a66e2afe77cc0cd5ff1b9ad8d990bc",
+  "entry": "scripts\\legacy\\original\\qiju.lua",
+  "mode": "original_bytecode_string_transcode",
+  "rules_rewritten": false,
+  "game_executed": false,
+  "scene_id": 61,
+  "minimum_team_count": 3,
+  "scene_upvalue_binding": {
+    "instack": 1,
+    "register": 3
+  },
+  "team_upvalue_binding": {
+    "instack": 1,
+    "register": 1
+  }
+}

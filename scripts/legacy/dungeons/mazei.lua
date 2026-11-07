@@ -1,0 +1,2 @@
+LoadScript('mazei')
+Mazei.run()

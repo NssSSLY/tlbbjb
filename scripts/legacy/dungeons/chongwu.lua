@@ -1,0 +1,2 @@
+LoadScript('chongwu')
+Chongwu.run()

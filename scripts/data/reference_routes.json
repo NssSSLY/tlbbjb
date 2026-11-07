@@ -1,0 +1,6123 @@
+{
+  "schema": 1,
+  "id": "mtx-reference-routes",
+  "runtime_enabled": false,
+  "routes": [
+    {
+      "id": "mtx-ed23d139bbbf9f04",
+      "name": "剑阁",
+      "map": null,
+      "map_hint": "剑阁",
+      "purpose": "unclassified",
+      "verified": false,
+      "runtime_enabled": false,
+      "source": {
+        "pack": "mtxjb",
+        "path": "坐标/剑阁.txt",
+        "sha256": "1d82448d9a37856083ff466d2764e9ab91f3249bdd8d3de33a2f1a387fe10280",
+        "encoding": "utf-8-sig"
+      },
+      "points": [
+        {
+          "x": 61.0,
+          "y": 257.0,
+          "source_line": 1
+        },
+        {
+          "x": 120.0,
+          "y": 258.0,
+          "source_line": 2
+        },
+        {
+          "x": 130.0,
+          "y": 233.0,
+          "source_line": 3
+        },
+        {
+          "x": 161.0,
+          "y": 267.0,
+          "source_line": 4
+        },
+        {
+          "x": 211.0,
+          "y": 268.0,
+          "source_line": 5
+        },
+        {
+          "x": 231.0,
+          "y": 250.0,
+          "source_line": 6
+        },
+        {
+          "x": 202.0,
+          "y": 229.0,
+          "source_line": 7
+        },
+        {
+          "x": 182.0,
+          "y": 227.0,
+          "source_line": 8
+        },
+        {
+          "x": 165.0,
+          "y": 208.0,
+          "source_line": 9
+        },
+        {
+          "x": 238.0,
+          "y": 219.0,
+          "source_line": 10
+        },
+        {
+          "x": 193.0,
+          "y": 180.0,
+          "source_line": 11
+        },
+        {
+          "x": 262.0,
+          "y": 182.0,
+          "source_line": 12
+        },
+        {
+          "x": 204.0,
+          "y": 149.0,
+          "source_line": 13
+        },
+        {
+          "x": 253.0,
+          "y": 127.0,
+          "source_line": 14
+        },
+        {
+          "x": 234.0,
+          "y": 86.0,
+          "source_line": 15
+        },
+        {
+          "x": 230.0,
+          "y": 70.0,
+          "source_line": 16
+        },
+        {
+          "x": 123.0,
+          "y": 97.0,
+          "source_line": 17
+        },
+        {
+          "x": 172.0,
+          "y": 79.0,
+          "source_line": 18
+        },
+        {
+          "x": 99.0,
+          "y": 73.0,
+          "source_line": 19
+        },
+        {
+          "x": 50.0,
+          "y": 86.0,
+          "source_line": 20
+        },
+        {
+          "x": 88.0,
+          "y": 103.0,
+          "source_line": 21
+        },
+        {
+          "x": 135.0,
+          "y": 134.0,
+          "source_line": 22
+        },
+        {
+          "x": 107.0,
+          "y": 200.0,
+          "source_line": 23
+        },
+        {
+          "x": 73.0,
+          "y": 197.0,
+          "source_line": 24
+        },
+        {
+          "x": 92.0,
+          "y": 224.0,
+          "source_line": 25
+        }
+      ]
+    },
+    {
+      "id": "mtx-e24b4fc6880ee4b8",
+      "name": "南海",
+      "map": null,
+      "map_hint": "南海",
+      "purpose": "unclassified",
+      "verified": false,
+      "runtime_enabled": false,
+      "source": {
+        "pack": "mtxjb",
+        "path": "坐标/南海.txt",
+        "sha256": "2700699994950e7d01d73de9b2e565aade22a1a918019cfc1b4cc3b7041413de",
+        "encoding": "utf-8-sig"
+      },
+      "points": [
+        {
+          "x": 52.0,
+          "y": 39.0,
+          "source_line": 1
+        },
+        {
+          "x": 36.0,
+          "y": 86.0,
+          "source_line": 2
+        },
+        {
+          "x": 66.0,
+          "y": 142.0,
+          "source_line": 3
+        },
+        {
+          "x": 84.0,
+          "y": 143.0,
+          "source_line": 4
+        },
+        {
+          "x": 57.0,
+          "y": 201.0,
+          "source_line": 5
+        },
+        {
+          "x": 198.0,
+          "y": 259.0,
+          "source_line": 6
+        },
+        {
+          "x": 254.0,
+          "y": 272.0,
+          "source_line": 7
+        },
+        {
+          "x": 279.0,
+          "y": 247.0,
+          "source_line": 8
+        },
+        {
+          "x": 283.0,
+          "y": 60.0,
+          "source_line": 9
+        },
+        {
+          "x": 257.0,
+          "y": 98.0,
+          "source_line": 10
+        },
+        {
+          "x": 238.0,
+          "y": 177.0,
+          "source_line": 11
+        },
+        {
+          "x": 208.0,
+          "y": 236.0,
+          "source_line": 12
+        },
+        {
+          "x": 218.0,
+          "y": 207.0,
+          "source_line": 13
+        },
+        {
+          "x": 104.0,
+          "y": 180.0,
+          "source_line": 14
+        },
+        {
+          "x": 221.0,
+          "y": 146.0,
+          "source_line": 15
+        },
+        {
+          "x": 134.0,
+          "y": 131.0,
+          "source_line": 16
+        },
+        {
+          "x": 194.0,
+          "y": 98.0,
+          "source_line": 17
+        },
+        {
+          "x": 232.0,
+          "y": 43.0,
+          "source_line": 18
+        },
+        {
+          "x": 107.0,
+          "y": 74.0,
+          "source_line": 19
+        },
+        {
+          "x": 158.0,
+          "y": 46.0,
+          "source_line": 20
+        },
+        {
+          "x": 84.0,
+          "y": 42.0,
+          "source_line": 21
+        }
+      ]
+    },
+    {
+      "id": "mtx-545758016f2cdea3",
+      "name": "南诏",
+      "map": null,
+      "map_hint": "南诏",
+      "purpose": "unclassified",
+      "verified": false,
+      "runtime_enabled": false,
+      "source": {
+        "pack": "mtxjb",
+        "path": "坐标/南诏.txt",
+        "sha256": "468b91a6ad6d0fd8e0e5102b273f54e69b74ecc48c6d6e25be18b89d943a6a29",
+        "encoding": "utf-8-sig"
+      },
+      "points": [
+        {
+          "x": 71.0,
+          "y": 48.0,
+          "source_line": 1
+        },
+        {
+          "x": 52.0,
+          "y": 240.0,
+          "source_line": 2
+        },
+        {
+          "x": 264.0,
+          "y": 262.0,
+          "source_line": 3
+        },
+        {
+          "x": 87.0,
+          "y": 215.0,
+          "source_line": 4
+        },
+        {
+          "x": 258.0,
+          "y": 236.0,
+          "source_line": 5
+        },
+        {
+          "x": 74.0,
+          "y": 165.0,
+          "source_line": 6
+        },
+        {
+          "x": 276.0,
+          "y": 189.0,
+          "source_line": 7
+        },
+        {
+          "x": 117.0,
+          "y": 111.0,
+          "source_line": 8
+        },
+        {
+          "x": 147.0,
+          "y": 69.0,
+          "source_line": 9
+        },
+        {
+          "x": 215.0,
+          "y": 115.0,
+          "source_line": 10
+        },
+        {
+          "x": 264.0,
+          "y": 151.0,
+          "source_line": 11
+        },
+        {
+          "x": 276.0,
+          "y": 76.0,
+          "source_line": 12
+        },
+        {
+          "x": 243.0,
+          "y": 118.0,
+          "source_line": 13
+        },
+        {
+          "x": 250.0,
+          "y": 63.0,
+          "source_line": 14
+        }
+      ]
+    },
+    {
+      "id": "mtx-be31c8dc22539600",
+      "name": "圣兽山",
+      "map": null,
+      "map_hint": "圣兽山",
+      "purpose": "unclassified",
+      "verified": false,
+      "runtime_enabled": false,
+      "source": {
+        "pack": "mtxjb",
+        "path": "坐标/圣兽山.txt",
+        "sha256": "cd4d82f1bed50a9d574104fbde84fbb3bd8e1ee25a95219981d04e74a73f5334",
+        "encoding": "utf-8-sig"
+      },
+      "points": [
+        {
+          "x": 192.0,
+          "y": 211.0,
+          "source_line": 1
+        },
+        {
+          "x": 166.0,
+          "y": 207.0,
+          "source_line": 2
+        },
+        {
+          "x": 148.0,
+          "y": 218.0,
+          "source_line": 3
+        },
+        {
+          "x": 150.0,
+          "y": 228.0,
+          "source_line": 4
+        },
+        {
+          "x": 170.0,
+          "y": 236.0,
+          "source_line": 5
+        },
+        {
+          "x": 166.0,
+          "y": 224.0,
+          "source_line": 6
+        },
+        {
+          "x": 228.0,
+          "y": 214.0,
+          "source_line": 7
+        },
+        {
+          "x": 225.0,
+          "y": 191.0,
+          "source_line": 8
+        },
+        {
+          "x": 220.0,
+          "y": 124.0,
+          "source_line": 9
+        },
+        {
+          "x": 233.0,
+          "y": 148.0,
+          "source_line": 10
+        },
+        {
+          "x": 200.0,
+          "y": 139.0,
+          "source_line": 11
+        },
+        {
+          "x": 139.0,
+          "y": 189.0,
+          "source_line": 12
+        },
+        {
+          "x": 137.0,
+          "y": 162.0,
+          "source_line": 13
+        },
+        {
+          "x": 55.0,
+          "y": 212.0,
+          "source_line": 14
+        },
+        {
+          "x": 52.0,
+          "y": 185.0,
+          "source_line": 15
+        },
+        {
+          "x": 107.0,
+          "y": 207.0,
+          "source_line": 16
+        },
+        {
+          "x": 88.0,
+          "y": 158.0,
+          "source_line": 17
+        },
+        {
+          "x": 24.0,
+          "y": 176.0,
+          "source_line": 18
+        },
+        {
+          "x": 50.0,
+          "y": 106.0,
+          "source_line": 19
+        },
+        {
+          "x": 62.0,
+          "y": 41.0,
+          "source_line": 20
+        },
+        {
+          "x": 32.0,
+          "y": 72.0,
+          "source_line": 21
+        },
+        {
+          "x": 20.0,
+          "y": 31.0,
+          "source_line": 22
+        },
+        {
+          "x": 43.0,
+          "y": 26.0,
+          "source_line": 23
+        },
+        {
+          "x": 29.0,
+          "y": 48.0,
+          "source_line": 24
+        },
+        {
+          "x": 69.0,
+          "y": 25.0,
+          "source_line": 25
+        },
+        {
+          "x": 98.0,
+          "y": 15.0,
+          "source_line": 26
+        },
+        {
+          "x": 119.0,
+          "y": 120.0,
+          "source_line": 27
+        },
+        {
+          "x": 144.0,
+          "y": 82.0,
+          "source_line": 28
+        },
+        {
+          "x": 154.0,
+          "y": 100.0,
+          "source_line": 29
+        },
+        {
+          "x": 122.0,
+          "y": 55.0,
+          "source_line": 30
+        },
+        {
+          "x": 149.0,
+          "y": 25.0,
+          "source_line": 31
+        },
+        {
+          "x": 166.0,
+          "y": 57.0,
+          "source_line": 32
+        },
+        {
+          "x": 190.0,
+          "y": 20.0,
+          "source_line": 33
+        },
+        {
+          "x": 228.0,
+          "y": 72.0,
+          "source_line": 34
+        },
+        {
+          "x": 188.0,
+          "y": 81.0,
+          "source_line": 35
+        },
+        {
+          "x": 205.0,
+          "y": 110.0,
+          "source_line": 36
+        }
+      ]
+    },
+    {
+      "id": "mtx-a4ae7641ecceb8bf",
+      "name": "塔里木",
+      "map": null,
+      "map_hint": "塔里木",
+      "purpose": "unclassified",
+      "verified": false,
+      "runtime_enabled": false,
+      "source": {
+        "pack": "mtxjb",
+        "path": "坐标/塔里木.txt",
+        "sha256": "1d82448d9a37856083ff466d2764e9ab91f3249bdd8d3de33a2f1a387fe10280",
+        "encoding": "utf-8-sig"
+      },
+      "points": [
+        {
+          "x": 61.0,
+          "y": 257.0,
+          "source_line": 1
+        },
+        {
+          "x": 120.0,
+          "y": 258.0,
+          "source_line": 2
+        },
+        {
+          "x": 130.0,
+          "y": 233.0,
+          "source_line": 3
+        },
+        {
+          "x": 161.0,
+          "y": 267.0,
+          "source_line": 4
+        },
+        {
+          "x": 211.0,
+          "y": 268.0,
+          "source_line": 5
+        },
+        {
+          "x": 231.0,
+          "y": 250.0,
+          "source_line": 6
+        },
+        {
+          "x": 202.0,
+          "y": 229.0,
+          "source_line": 7
+        },
+        {
+          "x": 182.0,
+          "y": 227.0,
+          "source_line": 8
+        },
+        {
+          "x": 165.0,
+          "y": 208.0,
+          "source_line": 9
+        },
+        {
+          "x": 238.0,
+          "y": 219.0,
+          "source_line": 10
+        },
+        {
+          "x": 193.0,
+          "y": 180.0,
+          "source_line": 11
+        },
+        {
+          "x": 262.0,
+          "y": 182.0,
+          "source_line": 12
+        },
+        {
+          "x": 204.0,
+          "y": 149.0,
+          "source_line": 13
+        },
+        {
+          "x": 253.0,
+          "y": 127.0,
+          "source_line": 14
+        },
+        {
+          "x": 234.0,
+          "y": 86.0,
+          "source_line": 15
+        },
+        {
+          "x": 230.0,
+          "y": 70.0,
+          "source_line": 16
+        },
+        {
+          "x": 123.0,
+          "y": 97.0,
+          "source_line": 17
+        },
+        {
+          "x": 172.0,
+          "y": 79.0,
+          "source_line": 18
+        },
+        {
+          "x": 99.0,
+          "y": 73.0,
+          "source_line": 19
+        },
+        {
+          "x": 50.0,
+          "y": 86.0,
+          "source_line": 20
+        },
+        {
+          "x": 88.0,
+          "y": 103.0,
+          "source_line": 21
+        },
+        {
+          "x": 135.0,
+          "y": 134.0,
+          "source_line": 22
+        },
+        {
+          "x": 107.0,
+          "y": 200.0,
+          "source_line": 23
+        },
+        {
+          "x": 73.0,
+          "y": 197.0,
+          "source_line": 24
+        },
+        {
+          "x": 92.0,
+          "y": 224.0,
+          "source_line": 25
+        }
+      ]
+    },
+    {
+      "id": "mtx-70077f8bc225467c",
+      "name": "大宛",
+      "map": null,
+      "map_hint": "大宛",
+      "purpose": "unclassified",
+      "verified": false,
+      "runtime_enabled": false,
+      "source": {
+        "pack": "mtxjb",
+        "path": "坐标/大宛.txt",
+        "sha256": "1d82448d9a37856083ff466d2764e9ab91f3249bdd8d3de33a2f1a387fe10280",
+        "encoding": "utf-8-sig"
+      },
+      "points": [
+        {
+          "x": 61.0,
+          "y": 257.0,
+          "source_line": 1
+        },
+        {
+          "x": 120.0,
+          "y": 258.0,
+          "source_line": 2
+        },
+        {
+          "x": 130.0,
+          "y": 233.0,
+          "source_line": 3
+        },
+        {
+          "x": 161.0,
+          "y": 267.0,
+          "source_line": 4
+        },
+        {
+          "x": 211.0,
+          "y": 268.0,
+          "source_line": 5
+        },
+        {
+          "x": 231.0,
+          "y": 250.0,
+          "source_line": 6
+        },
+        {
+          "x": 202.0,
+          "y": 229.0,
+          "source_line": 7
+        },
+        {
+          "x": 182.0,
+          "y": 227.0,
+          "source_line": 8
+        },
+        {
+          "x": 165.0,
+          "y": 208.0,
+          "source_line": 9
+        },
+        {
+          "x": 238.0,
+          "y": 219.0,
+          "source_line": 10
+        },
+        {
+          "x": 193.0,
+          "y": 180.0,
+          "source_line": 11
+        },
+        {
+          "x": 262.0,
+          "y": 182.0,
+          "source_line": 12
+        },
+        {
+          "x": 204.0,
+          "y": 149.0,
+          "source_line": 13
+        },
+        {
+          "x": 253.0,
+          "y": 127.0,
+          "source_line": 14
+        },
+        {
+          "x": 234.0,
+          "y": 86.0,
+          "source_line": 15
+        },
+        {
+          "x": 230.0,
+          "y": 70.0,
+          "source_line": 16
+        },
+        {
+          "x": 123.0,
+          "y": 97.0,
+          "source_line": 17
+        },
+        {
+          "x": 172.0,
+          "y": 79.0,
+          "source_line": 18
+        },
+        {
+          "x": 99.0,
+          "y": 73.0,
+          "source_line": 19
+        },
+        {
+          "x": 50.0,
+          "y": 86.0,
+          "source_line": 20
+        },
+        {
+          "x": 88.0,
+          "y": 103.0,
+          "source_line": 21
+        },
+        {
+          "x": 135.0,
+          "y": 134.0,
+          "source_line": 22
+        },
+        {
+          "x": 107.0,
+          "y": 200.0,
+          "source_line": 23
+        },
+        {
+          "x": 73.0,
+          "y": 197.0,
+          "source_line": 24
+        },
+        {
+          "x": 92.0,
+          "y": 224.0,
+          "source_line": 25
+        }
+      ]
+    },
+    {
+      "id": "mtx-489dc0dc76d8ffe9",
+      "name": "天岐南淮",
+      "map": null,
+      "map_hint": "天岐南淮",
+      "purpose": "unclassified",
+      "verified": false,
+      "runtime_enabled": false,
+      "source": {
+        "pack": "mtxjb",
+        "path": "坐标/天岐南淮.txt",
+        "sha256": "463336c065e452f62ab89b04c122081ecc0ffed0fe7d49b1116eaeb3919664d1",
+        "encoding": "utf-8-sig"
+      },
+      "points": [
+        {
+          "x": 38.0,
+          "y": 206.0,
+          "source_line": 1
+        },
+        {
+          "x": 53.0,
+          "y": 201.0,
+          "source_line": 2
+        },
+        {
+          "x": 52.0,
+          "y": 170.0,
+          "source_line": 3
+        },
+        {
+          "x": 23.0,
+          "y": 152.0,
+          "source_line": 4
+        },
+        {
+          "x": 25.0,
+          "y": 127.0,
+          "source_line": 5
+        },
+        {
+          "x": 35.0,
+          "y": 119.0,
+          "source_line": 6
+        },
+        {
+          "x": 71.0,
+          "y": 145.0,
+          "source_line": 7
+        },
+        {
+          "x": 124.0,
+          "y": 181.0,
+          "source_line": 8
+        },
+        {
+          "x": 137.0,
+          "y": 188.0,
+          "source_line": 9
+        },
+        {
+          "x": 129.0,
+          "y": 217.0,
+          "source_line": 10
+        },
+        {
+          "x": 84.0,
+          "y": 219.0,
+          "source_line": 11
+        },
+        {
+          "x": 90.0,
+          "y": 181.0,
+          "source_line": 12
+        },
+        {
+          "x": 155.0,
+          "y": 204.0,
+          "source_line": 13
+        },
+        {
+          "x": 213.0,
+          "y": 209.0,
+          "source_line": 14
+        },
+        {
+          "x": 228.0,
+          "y": 208.0,
+          "source_line": 15
+        },
+        {
+          "x": 229.0,
+          "y": 185.0,
+          "source_line": 16
+        },
+        {
+          "x": 204.0,
+          "y": 171.0,
+          "source_line": 17
+        },
+        {
+          "x": 148.0,
+          "y": 145.0,
+          "source_line": 18
+        },
+        {
+          "x": 103.0,
+          "y": 133.0,
+          "source_line": 19
+        },
+        {
+          "x": 153.0,
+          "y": 105.0,
+          "source_line": 20
+        },
+        {
+          "x": 174.0,
+          "y": 105.0,
+          "source_line": 21
+        },
+        {
+          "x": 169.0,
+          "y": 73.0,
+          "source_line": 22
+        },
+        {
+          "x": 191.0,
+          "y": 77.0,
+          "source_line": 23
+        },
+        {
+          "x": 223.0,
+          "y": 92.0,
+          "source_line": 24
+        },
+        {
+          "x": 223.0,
+          "y": 130.0,
+          "source_line": 25
+        },
+        {
+          "x": 196.0,
+          "y": 115.0,
+          "source_line": 26
+        },
+        {
+          "x": 182.0,
+          "y": 41.0,
+          "source_line": 27
+        },
+        {
+          "x": 149.0,
+          "y": 38.0,
+          "source_line": 28
+        },
+        {
+          "x": 68.0,
+          "y": 41.0,
+          "source_line": 29
+        },
+        {
+          "x": 47.0,
+          "y": 39.0,
+          "source_line": 30
+        },
+        {
+          "x": 53.0,
+          "y": 58.0,
+          "source_line": 31
+        },
+        {
+          "x": 39.0,
+          "y": 76.0,
+          "source_line": 32
+        },
+        {
+          "x": 81.0,
+          "y": 95.0,
+          "source_line": 33
+        },
+        {
+          "x": 81.0,
+          "y": 72.0,
+          "source_line": 34
+        },
+        {
+          "x": 97.0,
+          "y": 102.0,
+          "source_line": 35
+        }
+      ]
+    },
+    {
+      "id": "mtx-ccd6f20e80ccffbe",
+      "name": "太湖",
+      "map": null,
+      "map_hint": "太湖",
+      "purpose": "unclassified",
+      "verified": false,
+      "runtime_enabled": false,
+      "source": {
+        "pack": "mtxjb",
+        "path": "坐标/太湖.txt",
+        "sha256": "3485218050a4ad36f913f0716ded36c5e8e2626d2dc66909eb2e68d601ff9efb",
+        "encoding": "utf-8-sig"
+      },
+      "points": [
+        {
+          "x": 197.0,
+          "y": 265.0,
+          "source_line": 1
+        },
+        {
+          "x": 152.0,
+          "y": 256.0,
+          "source_line": 2
+        },
+        {
+          "x": 84.0,
+          "y": 275.0,
+          "source_line": 3
+        },
+        {
+          "x": 104.0,
+          "y": 251.0,
+          "source_line": 4
+        },
+        {
+          "x": 52.0,
+          "y": 215.0,
+          "source_line": 5
+        },
+        {
+          "x": 97.0,
+          "y": 244.0,
+          "source_line": 6
+        },
+        {
+          "x": 133.0,
+          "y": 197.0,
+          "source_line": 7
+        },
+        {
+          "x": 135.0,
+          "y": 122.0,
+          "source_line": 8
+        },
+        {
+          "x": 110.0,
+          "y": 41.0,
+          "source_line": 9
+        },
+        {
+          "x": 122.0,
+          "y": 36.0,
+          "source_line": 10
+        },
+        {
+          "x": 161.0,
+          "y": 51.0,
+          "source_line": 11
+        },
+        {
+          "x": 209.0,
+          "y": 45.0,
+          "source_line": 12
+        },
+        {
+          "x": 232.0,
+          "y": 65.0,
+          "source_line": 13
+        },
+        {
+          "x": 277.0,
+          "y": 73.0,
+          "source_line": 14
+        },
+        {
+          "x": 279.0,
+          "y": 112.0,
+          "source_line": 15
+        },
+        {
+          "x": 287.0,
+          "y": 128.0,
+          "source_line": 16
+        },
+        {
+          "x": 269.0,
+          "y": 177.0,
+          "source_line": 17
+        },
+        {
+          "x": 275.0,
+          "y": 225.0,
+          "source_line": 18
+        },
+        {
+          "x": 268.0,
+          "y": 235.0,
+          "source_line": 19
+        },
+        {
+          "x": 261.0,
+          "y": 252.0,
+          "source_line": 20
+        },
+        {
+          "x": 255.0,
+          "y": 262.0,
+          "source_line": 21
+        },
+        {
+          "x": 236.0,
+          "y": 266.0,
+          "source_line": 22
+        },
+        {
+          "x": 226.0,
+          "y": 265.0,
+          "source_line": 23
+        },
+        {
+          "x": 189.0,
+          "y": 263.0,
+          "source_line": 24
+        },
+        {
+          "x": 237.0,
+          "y": 232.0,
+          "source_line": 25
+        },
+        {
+          "x": 177.0,
+          "y": 177.0,
+          "source_line": 26
+        },
+        {
+          "x": 186.0,
+          "y": 146.0,
+          "source_line": 27
+        },
+        {
+          "x": 233.0,
+          "y": 124.0,
+          "source_line": 28
+        },
+        {
+          "x": 251.0,
+          "y": 152.0,
+          "source_line": 29
+        },
+        {
+          "x": 216.0,
+          "y": 96.0,
+          "source_line": 30
+        },
+        {
+          "x": 166.0,
+          "y": 88.0,
+          "source_line": 31
+        },
+        {
+          "x": 239.0,
+          "y": 100.0,
+          "source_line": 32
+        },
+        {
+          "x": 233.0,
+          "y": 146.0,
+          "source_line": 33
+        },
+        {
+          "x": 206.0,
+          "y": 159.0,
+          "source_line": 34
+        },
+        {
+          "x": 203.0,
+          "y": 172.0,
+          "source_line": 35
+        },
+        {
+          "x": 183.0,
+          "y": 215.0,
+          "source_line": 36
+        },
+        {
+          "x": 206.0,
+          "y": 254.0,
+          "source_line": 37
+        },
+        {
+          "x": 202.0,
+          "y": 258.0,
+          "source_line": 38
+        },
+        {
+          "x": 193.0,
+          "y": 265.0,
+          "source_line": 39
+        }
+      ]
+    },
+    {
+      "id": "mtx-b245bfc13a399c91",
+      "name": "嵩山",
+      "map": null,
+      "map_hint": "嵩山",
+      "purpose": "unclassified",
+      "verified": false,
+      "runtime_enabled": false,
+      "source": {
+        "pack": "mtxjb",
+        "path": "坐标/嵩山.txt",
+        "sha256": "98fda774eed80009a7f1fc48737794ca0607e39463c877788db535e4c3087f9c",
+        "encoding": "utf-8-sig"
+      },
+      "points": [
+        {
+          "x": 90.0,
+          "y": 66.0,
+          "source_line": 1
+        },
+        {
+          "x": 122.0,
+          "y": 92.0,
+          "source_line": 2
+        },
+        {
+          "x": 57.0,
+          "y": 93.0,
+          "source_line": 3
+        },
+        {
+          "x": 86.0,
+          "y": 101.0,
+          "source_line": 4
+        },
+        {
+          "x": 62.0,
+          "y": 122.0,
+          "source_line": 5
+        },
+        {
+          "x": 92.0,
+          "y": 159.0,
+          "source_line": 6
+        },
+        {
+          "x": 53.0,
+          "y": 180.0,
+          "source_line": 7
+        },
+        {
+          "x": 44.0,
+          "y": 218.0,
+          "source_line": 8
+        },
+        {
+          "x": 47.0,
+          "y": 257.0,
+          "source_line": 9
+        },
+        {
+          "x": 170.0,
+          "y": 158.0,
+          "source_line": 10
+        },
+        {
+          "x": 190.0,
+          "y": 166.0,
+          "source_line": 11
+        },
+        {
+          "x": 191.0,
+          "y": 200.0,
+          "source_line": 12
+        },
+        {
+          "x": 253.0,
+          "y": 92.0,
+          "source_line": 13
+        },
+        {
+          "x": 231.0,
+          "y": 94.0,
+          "source_line": 14
+        },
+        {
+          "x": 234.0,
+          "y": 206.0,
+          "source_line": 15
+        },
+        {
+          "x": 199.0,
+          "y": 261.0,
+          "source_line": 16
+        },
+        {
+          "x": 243.0,
+          "y": 262.0,
+          "source_line": 17
+        },
+        {
+          "x": 264.0,
+          "y": 215.0,
+          "source_line": 18
+        },
+        {
+          "x": 277.0,
+          "y": 76.0,
+          "source_line": 19
+        }
+      ]
+    },
+    {
+      "id": "mtx-7b6171c60c793688",
+      "name": "忘川花海",
+      "map": null,
+      "map_hint": "忘川花海",
+      "purpose": "unclassified",
+      "verified": false,
+      "runtime_enabled": false,
+      "source": {
+        "pack": "mtxjb",
+        "path": "坐标/忘川花海.txt",
+        "sha256": "a0ff69d223dae5179347bd81ec5101cf987d59ed75b6b36bf0c0331ad86e3505",
+        "encoding": "utf-8-sig"
+      },
+      "points": [
+        {
+          "x": 50.0,
+          "y": 60.0,
+          "source_line": 1
+        },
+        {
+          "x": 163.0,
+          "y": 31.0,
+          "source_line": 2
+        },
+        {
+          "x": 196.0,
+          "y": 48.0,
+          "source_line": 3
+        },
+        {
+          "x": 141.0,
+          "y": 61.0,
+          "source_line": 4
+        },
+        {
+          "x": 50.0,
+          "y": 59.0,
+          "source_line": 5
+        },
+        {
+          "x": 67.0,
+          "y": 85.0,
+          "source_line": 6
+        },
+        {
+          "x": 68.0,
+          "y": 112.0,
+          "source_line": 7
+        },
+        {
+          "x": 139.0,
+          "y": 125.0,
+          "source_line": 8
+        },
+        {
+          "x": 205.0,
+          "y": 75.0,
+          "source_line": 9
+        },
+        {
+          "x": 180.0,
+          "y": 115.0,
+          "source_line": 10
+        },
+        {
+          "x": 160.0,
+          "y": 145.0,
+          "source_line": 11
+        },
+        {
+          "x": 110.0,
+          "y": 125.0,
+          "source_line": 12
+        },
+        {
+          "x": 205.0,
+          "y": 160.0,
+          "source_line": 13
+        },
+        {
+          "x": 162.0,
+          "y": 173.0,
+          "source_line": 14
+        },
+        {
+          "x": 120.0,
+          "y": 203.0,
+          "source_line": 15
+        },
+        {
+          "x": 215.0,
+          "y": 195.0,
+          "source_line": 16
+        },
+        {
+          "x": 203.0,
+          "y": 221.0,
+          "source_line": 17
+        },
+        {
+          "x": 163.0,
+          "y": 215.0,
+          "source_line": 18
+        },
+        {
+          "x": 50.0,
+          "y": 145.0,
+          "source_line": 19
+        },
+        {
+          "x": 35.0,
+          "y": 195.0,
+          "source_line": 20
+        },
+        {
+          "x": 65.0,
+          "y": 215.0,
+          "source_line": 21
+        }
+      ]
+    },
+    {
+      "id": "mtx-dcca0fb039aa2142",
+      "name": "撒马",
+      "map": null,
+      "map_hint": "撒马",
+      "purpose": "unclassified",
+      "verified": false,
+      "runtime_enabled": false,
+      "source": {
+        "pack": "mtxjb",
+        "path": "坐标/撒马.txt",
+        "sha256": "02f92034b00a5b6fc2da8566fad762880ad96b014e9efeb829b9d7205ffb5b9a",
+        "encoding": "utf-8-sig"
+      },
+      "points": [
+        {
+          "x": 237.0,
+          "y": 261.0,
+          "source_line": 1
+        },
+        {
+          "x": 223.0,
+          "y": 258.0,
+          "source_line": 2
+        },
+        {
+          "x": 176.0,
+          "y": 275.0,
+          "source_line": 3
+        },
+        {
+          "x": 235.0,
+          "y": 223.0,
+          "source_line": 4
+        },
+        {
+          "x": 213.0,
+          "y": 224.0,
+          "source_line": 5
+        },
+        {
+          "x": 216.0,
+          "y": 208.0,
+          "source_line": 6
+        },
+        {
+          "x": 218.0,
+          "y": 180.0,
+          "source_line": 7
+        },
+        {
+          "x": 205.0,
+          "y": 172.0,
+          "source_line": 8
+        },
+        {
+          "x": 196.0,
+          "y": 172.0,
+          "source_line": 9
+        },
+        {
+          "x": 114.0,
+          "y": 113.0,
+          "source_line": 10
+        },
+        {
+          "x": 131.0,
+          "y": 112.0,
+          "source_line": 11
+        },
+        {
+          "x": 44.0,
+          "y": 92.0,
+          "source_line": 12
+        },
+        {
+          "x": 42.0,
+          "y": 114.0,
+          "source_line": 13
+        },
+        {
+          "x": 40.0,
+          "y": 152.0,
+          "source_line": 14
+        },
+        {
+          "x": 73.0,
+          "y": 166.0,
+          "source_line": 15
+        },
+        {
+          "x": 100.0,
+          "y": 174.0,
+          "source_line": 16
+        },
+        {
+          "x": 142.0,
+          "y": 149.0,
+          "source_line": 17
+        },
+        {
+          "x": 109.0,
+          "y": 194.0,
+          "source_line": 18
+        },
+        {
+          "x": 89.0,
+          "y": 234.0,
+          "source_line": 19
+        },
+        {
+          "x": 99.0,
+          "y": 257.0,
+          "source_line": 20
+        },
+        {
+          "x": 95.0,
+          "y": 277.0,
+          "source_line": 21
+        },
+        {
+          "x": 67.0,
+          "y": 270.0,
+          "source_line": 22
+        },
+        {
+          "x": 43.0,
+          "y": 268.0,
+          "source_line": 23
+        },
+        {
+          "x": 197.0,
+          "y": 208.0,
+          "source_line": 24
+        }
+      ]
+    },
+    {
+      "id": "mtx-225c172338b16df7",
+      "name": "敦煌",
+      "map": null,
+      "map_hint": "敦煌",
+      "purpose": "unclassified",
+      "verified": false,
+      "runtime_enabled": false,
+      "source": {
+        "pack": "mtxjb",
+        "path": "坐标/敦煌.txt",
+        "sha256": "5e40cef7bddeaa10bfc57ea3e72e3b1101630fff53b44bb030854918eaa17b4e",
+        "encoding": "utf-8-sig"
+      },
+      "points": [
+        {
+          "x": 229.0,
+          "y": 143.0,
+          "source_line": 1
+        },
+        {
+          "x": 264.0,
+          "y": 79.0,
+          "source_line": 2
+        },
+        {
+          "x": 279.0,
+          "y": 37.0,
+          "source_line": 3
+        },
+        {
+          "x": 201.0,
+          "y": 89.0,
+          "source_line": 4
+        },
+        {
+          "x": 169.0,
+          "y": 99.0,
+          "source_line": 5
+        },
+        {
+          "x": 148.0,
+          "y": 96.0,
+          "source_line": 6
+        },
+        {
+          "x": 128.0,
+          "y": 80.0,
+          "source_line": 7
+        },
+        {
+          "x": 110.0,
+          "y": 98.0,
+          "source_line": 8
+        },
+        {
+          "x": 91.0,
+          "y": 109.0,
+          "source_line": 9
+        },
+        {
+          "x": 93.0,
+          "y": 124.0,
+          "source_line": 10
+        },
+        {
+          "x": 110.0,
+          "y": 117.0,
+          "source_line": 11
+        },
+        {
+          "x": 110.0,
+          "y": 146.0,
+          "source_line": 12
+        },
+        {
+          "x": 105.0,
+          "y": 177.0,
+          "source_line": 13
+        },
+        {
+          "x": 64.0,
+          "y": 173.0,
+          "source_line": 14
+        },
+        {
+          "x": 43.0,
+          "y": 235.0,
+          "source_line": 15
+        },
+        {
+          "x": 61.0,
+          "y": 162.0,
+          "source_line": 16
+        },
+        {
+          "x": 74.0,
+          "y": 197.0,
+          "source_line": 17
+        },
+        {
+          "x": 76.0,
+          "y": 242.0,
+          "source_line": 18
+        },
+        {
+          "x": 58.0,
+          "y": 267.0,
+          "source_line": 19
+        },
+        {
+          "x": 76.0,
+          "y": 242.0,
+          "source_line": 20
+        },
+        {
+          "x": 177.0,
+          "y": 229.0,
+          "source_line": 21
+        },
+        {
+          "x": 222.0,
+          "y": 249.0,
+          "source_line": 22
+        },
+        {
+          "x": 177.0,
+          "y": 229.0,
+          "source_line": 23
+        },
+        {
+          "x": 130.0,
+          "y": 228.0,
+          "source_line": 24
+        },
+        {
+          "x": 129.0,
+          "y": 194.0,
+          "source_line": 25
+        },
+        {
+          "x": 133.0,
+          "y": 105.0,
+          "source_line": 26
+        },
+        {
+          "x": 192.0,
+          "y": 144.0,
+          "source_line": 27
+        },
+        {
+          "x": 171.0,
+          "y": 158.0,
+          "source_line": 28
+        },
+        {
+          "x": 246.0,
+          "y": 166.0,
+          "source_line": 29
+        },
+        {
+          "x": 247.0,
+          "y": 149.0,
+          "source_line": 30
+        },
+        {
+          "x": 229.0,
+          "y": 143.0,
+          "source_line": 31
+        }
+      ]
+    },
+    {
+      "id": "mtx-3d262bc7b121c1da",
+      "name": "无量山",
+      "map": null,
+      "map_hint": "无量山",
+      "purpose": "unclassified",
+      "verified": false,
+      "runtime_enabled": false,
+      "source": {
+        "pack": "mtxjb",
+        "path": "坐标/无量山.txt",
+        "sha256": "8881949f27e2a157f4393032ab1a3129ec3bebe2999f64caa0094dba2e19c570",
+        "encoding": "utf-8-sig"
+      },
+      "points": [
+        {
+          "x": 47.0,
+          "y": 167.0,
+          "source_line": 1
+        },
+        {
+          "x": 39.0,
+          "y": 67.0,
+          "source_line": 2
+        },
+        {
+          "x": 58.0,
+          "y": 119.0,
+          "source_line": 3
+        },
+        {
+          "x": 110.0,
+          "y": 132.0,
+          "source_line": 4
+        },
+        {
+          "x": 94.0,
+          "y": 77.0,
+          "source_line": 5
+        },
+        {
+          "x": 60.0,
+          "y": 51.0,
+          "source_line": 6
+        },
+        {
+          "x": 137.0,
+          "y": 89.0,
+          "source_line": 7
+        },
+        {
+          "x": 175.0,
+          "y": 53.0,
+          "source_line": 8
+        },
+        {
+          "x": 126.0,
+          "y": 208.0,
+          "source_line": 9
+        },
+        {
+          "x": 138.0,
+          "y": 275.0,
+          "source_line": 10
+        },
+        {
+          "x": 152.0,
+          "y": 253.0,
+          "source_line": 11
+        },
+        {
+          "x": 167.0,
+          "y": 275.0,
+          "source_line": 12
+        },
+        {
+          "x": 46.0,
+          "y": 269.0,
+          "source_line": 13
+        },
+        {
+          "x": 80.0,
+          "y": 183.0,
+          "source_line": 14
+        }
+      ]
+    },
+    {
+      "id": "mtx-38301dfefb1c176d",
+      "name": "昆仑山",
+      "map": null,
+      "map_hint": "昆仑山",
+      "purpose": "unclassified",
+      "verified": false,
+      "runtime_enabled": false,
+      "source": {
+        "pack": "mtxjb",
+        "path": "坐标/昆仑山.txt",
+        "sha256": "1d82448d9a37856083ff466d2764e9ab91f3249bdd8d3de33a2f1a387fe10280",
+        "encoding": "utf-8-sig"
+      },
+      "points": [
+        {
+          "x": 61.0,
+          "y": 257.0,
+          "source_line": 1
+        },
+        {
+          "x": 120.0,
+          "y": 258.0,
+          "source_line": 2
+        },
+        {
+          "x": 130.0,
+          "y": 233.0,
+          "source_line": 3
+        },
+        {
+          "x": 161.0,
+          "y": 267.0,
+          "source_line": 4
+        },
+        {
+          "x": 211.0,
+          "y": 268.0,
+          "source_line": 5
+        },
+        {
+          "x": 231.0,
+          "y": 250.0,
+          "source_line": 6
+        },
+        {
+          "x": 202.0,
+          "y": 229.0,
+          "source_line": 7
+        },
+        {
+          "x": 182.0,
+          "y": 227.0,
+          "source_line": 8
+        },
+        {
+          "x": 165.0,
+          "y": 208.0,
+          "source_line": 9
+        },
+        {
+          "x": 238.0,
+          "y": 219.0,
+          "source_line": 10
+        },
+        {
+          "x": 193.0,
+          "y": 180.0,
+          "source_line": 11
+        },
+        {
+          "x": 262.0,
+          "y": 182.0,
+          "source_line": 12
+        },
+        {
+          "x": 204.0,
+          "y": 149.0,
+          "source_line": 13
+        },
+        {
+          "x": 253.0,
+          "y": 127.0,
+          "source_line": 14
+        },
+        {
+          "x": 234.0,
+          "y": 86.0,
+          "source_line": 15
+        },
+        {
+          "x": 230.0,
+          "y": 70.0,
+          "source_line": 16
+        },
+        {
+          "x": 123.0,
+          "y": 97.0,
+          "source_line": 17
+        },
+        {
+          "x": 172.0,
+          "y": 79.0,
+          "source_line": 18
+        },
+        {
+          "x": 99.0,
+          "y": 73.0,
+          "source_line": 19
+        },
+        {
+          "x": 50.0,
+          "y": 86.0,
+          "source_line": 20
+        },
+        {
+          "x": 88.0,
+          "y": 103.0,
+          "source_line": 21
+        },
+        {
+          "x": 135.0,
+          "y": 134.0,
+          "source_line": 22
+        },
+        {
+          "x": 107.0,
+          "y": 200.0,
+          "source_line": 23
+        },
+        {
+          "x": 73.0,
+          "y": 197.0,
+          "source_line": 24
+        },
+        {
+          "x": 92.0,
+          "y": 224.0,
+          "source_line": 25
+        }
+      ]
+    },
+    {
+      "id": "mtx-05e677ae79bffb7f",
+      "name": "林海溪谷",
+      "map": null,
+      "map_hint": "林海溪谷",
+      "purpose": "unclassified",
+      "verified": false,
+      "runtime_enabled": false,
+      "source": {
+        "pack": "mtxjb",
+        "path": "坐标/林海溪谷.txt",
+        "sha256": "aa7303beb1e18d3e59cb3db1053d5ae4c0473bf1a18b6ccfacd33b718b57fe6a",
+        "encoding": "utf-8-sig"
+      },
+      "points": [
+        {
+          "x": 218.0,
+          "y": 200.0,
+          "source_line": 1
+        },
+        {
+          "x": 218.0,
+          "y": 170.0,
+          "source_line": 2
+        },
+        {
+          "x": 227.0,
+          "y": 102.0,
+          "source_line": 3
+        },
+        {
+          "x": 164.0,
+          "y": 55.0,
+          "source_line": 4
+        },
+        {
+          "x": 66.0,
+          "y": 40.0,
+          "source_line": 5
+        },
+        {
+          "x": 59.0,
+          "y": 69.0,
+          "source_line": 6
+        },
+        {
+          "x": 33.0,
+          "y": 104.0,
+          "source_line": 7
+        },
+        {
+          "x": 72.0,
+          "y": 187.0,
+          "source_line": 8
+        },
+        {
+          "x": 71.0,
+          "y": 223.0,
+          "source_line": 9
+        },
+        {
+          "x": 96.0,
+          "y": 211.0,
+          "source_line": 10
+        },
+        {
+          "x": 184.0,
+          "y": 222.0,
+          "source_line": 11
+        },
+        {
+          "x": 199.0,
+          "y": 214.0,
+          "source_line": 12
+        },
+        {
+          "x": 219.0,
+          "y": 129.0,
+          "source_line": 13
+        },
+        {
+          "x": 225.0,
+          "y": 75.0,
+          "source_line": 14
+        },
+        {
+          "x": 163.0,
+          "y": 66.0,
+          "source_line": 15
+        },
+        {
+          "x": 65.0,
+          "y": 33.0,
+          "source_line": 16
+        },
+        {
+          "x": 60.0,
+          "y": 50.0,
+          "source_line": 17
+        },
+        {
+          "x": 51.0,
+          "y": 81.0,
+          "source_line": 18
+        },
+        {
+          "x": 28.0,
+          "y": 122.0,
+          "source_line": 19
+        },
+        {
+          "x": 32.0,
+          "y": 172.0,
+          "source_line": 20
+        },
+        {
+          "x": 49.0,
+          "y": 224.0,
+          "source_line": 21
+        },
+        {
+          "x": 159.0,
+          "y": 216.0,
+          "source_line": 22
+        },
+        {
+          "x": 163.0,
+          "y": 214.0,
+          "source_line": 23
+        },
+        {
+          "x": 154.0,
+          "y": 159.0,
+          "source_line": 24
+        },
+        {
+          "x": 136.0,
+          "y": 78.0,
+          "source_line": 25
+        },
+        {
+          "x": 145.0,
+          "y": 130.0,
+          "source_line": 26
+        },
+        {
+          "x": 134.0,
+          "y": 117.0,
+          "source_line": 27
+        },
+        {
+          "x": 107.0,
+          "y": 121.0,
+          "source_line": 28
+        },
+        {
+          "x": 166.0,
+          "y": 135.0,
+          "source_line": 29
+        },
+        {
+          "x": 171.0,
+          "y": 109.0,
+          "source_line": 30
+        },
+        {
+          "x": 133.0,
+          "y": 146.0,
+          "source_line": 31
+        },
+        {
+          "x": 129.0,
+          "y": 133.0,
+          "source_line": 32
+        },
+        {
+          "x": 144.0,
+          "y": 121.0,
+          "source_line": 33
+        },
+        {
+          "x": 111.0,
+          "y": 109.0,
+          "source_line": 34
+        }
+      ]
+    },
+    {
+      "id": "mtx-7f1f003807bbbac7",
+      "name": "梅岭",
+      "map": null,
+      "map_hint": "梅岭",
+      "purpose": "unclassified",
+      "verified": false,
+      "runtime_enabled": false,
+      "source": {
+        "pack": "mtxjb",
+        "path": "坐标/梅岭.txt",
+        "sha256": "67f5e9de4b5040dbcb0424e643d0bfecaa418f4ce7fb709b50616f51d1f5e5f5",
+        "encoding": "utf-8-sig"
+      },
+      "points": [
+        {
+          "x": 60.0,
+          "y": 126.0,
+          "source_line": 1
+        },
+        {
+          "x": 55.0,
+          "y": 137.0,
+          "source_line": 2
+        },
+        {
+          "x": 42.0,
+          "y": 38.0,
+          "source_line": 3
+        },
+        {
+          "x": 127.0,
+          "y": 15.0,
+          "source_line": 4
+        },
+        {
+          "x": 81.0,
+          "y": 68.0,
+          "source_line": 5
+        },
+        {
+          "x": 81.0,
+          "y": 140.0,
+          "source_line": 6
+        },
+        {
+          "x": 94.0,
+          "y": 207.0,
+          "source_line": 7
+        },
+        {
+          "x": 61.0,
+          "y": 279.0,
+          "source_line": 8
+        },
+        {
+          "x": 118.0,
+          "y": 272.0,
+          "source_line": 9
+        },
+        {
+          "x": 142.0,
+          "y": 238.0,
+          "source_line": 10
+        },
+        {
+          "x": 123.0,
+          "y": 267.0,
+          "source_line": 11
+        },
+        {
+          "x": 191.0,
+          "y": 213.0,
+          "source_line": 12
+        },
+        {
+          "x": 185.0,
+          "y": 264.0,
+          "source_line": 13
+        },
+        {
+          "x": 274.0,
+          "y": 271.0,
+          "source_line": 14
+        },
+        {
+          "x": 271.0,
+          "y": 235.0,
+          "source_line": 15
+        },
+        {
+          "x": 233.0,
+          "y": 225.0,
+          "source_line": 16
+        },
+        {
+          "x": 223.0,
+          "y": 163.0,
+          "source_line": 17
+        },
+        {
+          "x": 243.0,
+          "y": 161.0,
+          "source_line": 18
+        },
+        {
+          "x": 277.0,
+          "y": 177.0,
+          "source_line": 19
+        },
+        {
+          "x": 261.0,
+          "y": 40.0,
+          "source_line": 20
+        },
+        {
+          "x": 232.0,
+          "y": 73.0,
+          "source_line": 21
+        },
+        {
+          "x": 238.0,
+          "y": 115.0,
+          "source_line": 22
+        },
+        {
+          "x": 190.0,
+          "y": 118.0,
+          "source_line": 23
+        },
+        {
+          "x": 160.0,
+          "y": 126.0,
+          "source_line": 24
+        },
+        {
+          "x": 201.0,
+          "y": 44.0,
+          "source_line": 25
+        },
+        {
+          "x": 131.0,
+          "y": 120.0,
+          "source_line": 26
+        },
+        {
+          "x": 95.0,
+          "y": 112.0,
+          "source_line": 27
+        }
+      ]
+    },
+    {
+      "id": "mtx-c08e30aaa62d8eaa",
+      "name": "武夷",
+      "map": null,
+      "map_hint": "武夷",
+      "purpose": "unclassified",
+      "verified": false,
+      "runtime_enabled": false,
+      "source": {
+        "pack": "mtxjb",
+        "path": "坐标/武夷.txt",
+        "sha256": "b2601b356a121dc3aadeddccb44da2ac0c187a317d4d3a94ff55f76674711724",
+        "encoding": "utf-8-sig"
+      },
+      "points": [
+        {
+          "x": 50.0,
+          "y": 53.0,
+          "source_line": 1
+        },
+        {
+          "x": 45.0,
+          "y": 90.0,
+          "source_line": 2
+        },
+        {
+          "x": 77.0,
+          "y": 145.0,
+          "source_line": 3
+        },
+        {
+          "x": 98.0,
+          "y": 174.0,
+          "source_line": 4
+        },
+        {
+          "x": 119.0,
+          "y": 205.0,
+          "source_line": 5
+        },
+        {
+          "x": 103.0,
+          "y": 260.0,
+          "source_line": 6
+        },
+        {
+          "x": 129.0,
+          "y": 257.0,
+          "source_line": 7
+        },
+        {
+          "x": 134.0,
+          "y": 222.0,
+          "source_line": 8
+        },
+        {
+          "x": 146.0,
+          "y": 169.0,
+          "source_line": 9
+        },
+        {
+          "x": 179.0,
+          "y": 132.0,
+          "source_line": 10
+        },
+        {
+          "x": 203.0,
+          "y": 173.0,
+          "source_line": 11
+        },
+        {
+          "x": 200.0,
+          "y": 204.0,
+          "source_line": 12
+        },
+        {
+          "x": 175.0,
+          "y": 226.0,
+          "source_line": 13
+        },
+        {
+          "x": 149.0,
+          "y": 255.0,
+          "source_line": 14
+        },
+        {
+          "x": 199.0,
+          "y": 266.0,
+          "source_line": 15
+        },
+        {
+          "x": 238.0,
+          "y": 242.0,
+          "source_line": 16
+        },
+        {
+          "x": 272.0,
+          "y": 244.0,
+          "source_line": 17
+        },
+        {
+          "x": 275.0,
+          "y": 236.0,
+          "source_line": 18
+        },
+        {
+          "x": 260.0,
+          "y": 233.0,
+          "source_line": 19
+        },
+        {
+          "x": 279.0,
+          "y": 208.0,
+          "source_line": 20
+        },
+        {
+          "x": 260.0,
+          "y": 190.0,
+          "source_line": 21
+        },
+        {
+          "x": 227.0,
+          "y": 182.0,
+          "source_line": 22
+        },
+        {
+          "x": 260.0,
+          "y": 170.0,
+          "source_line": 23
+        },
+        {
+          "x": 235.0,
+          "y": 137.0,
+          "source_line": 24
+        },
+        {
+          "x": 270.0,
+          "y": 118.0,
+          "source_line": 25
+        },
+        {
+          "x": 272.0,
+          "y": 52.0,
+          "source_line": 26
+        },
+        {
+          "x": 251.0,
+          "y": 70.0,
+          "source_line": 27
+        },
+        {
+          "x": 230.0,
+          "y": 112.0,
+          "source_line": 28
+        },
+        {
+          "x": 180.0,
+          "y": 90.0,
+          "source_line": 29
+        },
+        {
+          "x": 146.0,
+          "y": 110.0,
+          "source_line": 30
+        },
+        {
+          "x": 155.0,
+          "y": 52.0,
+          "source_line": 31
+        },
+        {
+          "x": 165.0,
+          "y": 41.0,
+          "source_line": 32
+        },
+        {
+          "x": 116.0,
+          "y": 40.0,
+          "source_line": 33
+        },
+        {
+          "x": 100.0,
+          "y": 80.0,
+          "source_line": 34
+        }
+      ]
+    },
+    {
+      "id": "mtx-7fcd4ad804fe853d",
+      "name": "洱海",
+      "map": null,
+      "map_hint": "洱海",
+      "purpose": "unclassified",
+      "verified": false,
+      "runtime_enabled": false,
+      "source": {
+        "pack": "mtxjb",
+        "path": "坐标/洱海.txt",
+        "sha256": "1231a2cd0472d50f21674100d6bf920db0a92b37362fdc640945c48f679977ad",
+        "encoding": "utf-8-sig"
+      },
+      "points": [
+        {
+          "x": 242.0,
+          "y": 122.0,
+          "source_line": 1
+        },
+        {
+          "x": 162.0,
+          "y": 89.0,
+          "source_line": 2
+        },
+        {
+          "x": 140.0,
+          "y": 130.0,
+          "source_line": 3
+        },
+        {
+          "x": 269.0,
+          "y": 139.0,
+          "source_line": 4
+        },
+        {
+          "x": 78.0,
+          "y": 185.0,
+          "source_line": 5
+        },
+        {
+          "x": 77.0,
+          "y": 159.0,
+          "source_line": 6
+        },
+        {
+          "x": 141.0,
+          "y": 184.0,
+          "source_line": 7
+        },
+        {
+          "x": 98.0,
+          "y": 211.0,
+          "source_line": 8
+        },
+        {
+          "x": 184.0,
+          "y": 67.0,
+          "source_line": 9
+        },
+        {
+          "x": 189.0,
+          "y": 220.0,
+          "source_line": 10
+        },
+        {
+          "x": 240.0,
+          "y": 235.0,
+          "source_line": 11
+        },
+        {
+          "x": 220.0,
+          "y": 217.0,
+          "source_line": 12
+        },
+        {
+          "x": 197.0,
+          "y": 254.0,
+          "source_line": 13
+        },
+        {
+          "x": 71.0,
+          "y": 65.0,
+          "source_line": 14
+        },
+        {
+          "x": 59.0,
+          "y": 220.0,
+          "source_line": 15
+        },
+        {
+          "x": 55.0,
+          "y": 230.0,
+          "source_line": 16
+        },
+        {
+          "x": 43.0,
+          "y": 238.0,
+          "source_line": 17
+        },
+        {
+          "x": 97.0,
+          "y": 56.0,
+          "source_line": 18
+        },
+        {
+          "x": 164.0,
+          "y": 211.0,
+          "source_line": 19
+        },
+        {
+          "x": 218.0,
+          "y": 193.0,
+          "source_line": 20
+        },
+        {
+          "x": 39.0,
+          "y": 50.0,
+          "source_line": 21
+        },
+        {
+          "x": 271.0,
+          "y": 79.0,
+          "source_line": 22
+        },
+        {
+          "x": 196.0,
+          "y": 64.0,
+          "source_line": 23
+        },
+        {
+          "x": 154.0,
+          "y": 42.0,
+          "source_line": 24
+        },
+        {
+          "x": 117.0,
+          "y": 44.0,
+          "source_line": 25
+        },
+        {
+          "x": 121.0,
+          "y": 65.0,
+          "source_line": 26
+        },
+        {
+          "x": 59.0,
+          "y": 272.0,
+          "source_line": 27
+        },
+        {
+          "x": 67.0,
+          "y": 274.0,
+          "source_line": 28
+        },
+        {
+          "x": 70.0,
+          "y": 265.0,
+          "source_line": 29
+        },
+        {
+          "x": 83.0,
+          "y": 251.0,
+          "source_line": 30
+        },
+        {
+          "x": 71.0,
+          "y": 254.0,
+          "source_line": 31
+        },
+        {
+          "x": 95.0,
+          "y": 288.0,
+          "source_line": 32
+        },
+        {
+          "x": 125.0,
+          "y": 284.0,
+          "source_line": 33
+        },
+        {
+          "x": 147.0,
+          "y": 282.0,
+          "source_line": 34
+        },
+        {
+          "x": 197.0,
+          "y": 284.0,
+          "source_line": 35
+        },
+        {
+          "x": 207.0,
+          "y": 267.0,
+          "source_line": 36
+        },
+        {
+          "x": 255.0,
+          "y": 261.0,
+          "source_line": 37
+        },
+        {
+          "x": 255.0,
+          "y": 192.0,
+          "source_line": 38
+        },
+        {
+          "x": 231.0,
+          "y": 180.0,
+          "source_line": 39
+        },
+        {
+          "x": 218.0,
+          "y": 166.0,
+          "source_line": 40
+        },
+        {
+          "x": 183.0,
+          "y": 111.0,
+          "source_line": 41
+        },
+        {
+          "x": 142.0,
+          "y": 118.0,
+          "source_line": 42
+        },
+        {
+          "x": 122.0,
+          "y": 111.0,
+          "source_line": 43
+        },
+        {
+          "x": 150.0,
+          "y": 178.0,
+          "source_line": 44
+        },
+        {
+          "x": 164.0,
+          "y": 240.0,
+          "source_line": 45
+        },
+        {
+          "x": 134.0,
+          "y": 248.0,
+          "source_line": 46
+        },
+        {
+          "x": 134.0,
+          "y": 188.0,
+          "source_line": 47
+        },
+        {
+          "x": 60.0,
+          "y": 52.0,
+          "source_line": 48
+        },
+        {
+          "x": 123.0,
+          "y": 128.0,
+          "source_line": 49
+        },
+        {
+          "x": 119.0,
+          "y": 56.0,
+          "source_line": 50
+        },
+        {
+          "x": 174.0,
+          "y": 65.0,
+          "source_line": 51
+        }
+      ]
+    },
+    {
+      "id": "mtx-34a9dbcd500df4b5",
+      "name": "清源",
+      "map": null,
+      "map_hint": "清源",
+      "purpose": "unclassified",
+      "verified": false,
+      "runtime_enabled": false,
+      "source": {
+        "pack": "mtxjb",
+        "path": "坐标/清源.txt",
+        "sha256": "efa9473bd831e91d80dd8f43b0e9e3519b7565c0c8dc6ef0a7a8843fa8c28722",
+        "encoding": "utf-8-sig"
+      },
+      "points": [
+        {
+          "x": 226.0,
+          "y": 64.0,
+          "source_line": 1
+        },
+        {
+          "x": 194.0,
+          "y": 100.0,
+          "source_line": 2
+        },
+        {
+          "x": 156.0,
+          "y": 120.0,
+          "source_line": 3
+        },
+        {
+          "x": 71.0,
+          "y": 40.0,
+          "source_line": 4
+        },
+        {
+          "x": 43.0,
+          "y": 132.0,
+          "source_line": 5
+        },
+        {
+          "x": 43.0,
+          "y": 176.0,
+          "source_line": 6
+        },
+        {
+          "x": 47.0,
+          "y": 231.0,
+          "source_line": 7
+        },
+        {
+          "x": 95.0,
+          "y": 210.0,
+          "source_line": 8
+        },
+        {
+          "x": 111.0,
+          "y": 227.0,
+          "source_line": 9
+        },
+        {
+          "x": 109.0,
+          "y": 277.0,
+          "source_line": 10
+        },
+        {
+          "x": 156.0,
+          "y": 271.0,
+          "source_line": 11
+        },
+        {
+          "x": 172.0,
+          "y": 293.0,
+          "source_line": 12
+        },
+        {
+          "x": 205.0,
+          "y": 262.0,
+          "source_line": 13
+        },
+        {
+          "x": 242.0,
+          "y": 213.0,
+          "source_line": 14
+        },
+        {
+          "x": 271.0,
+          "y": 191.0,
+          "source_line": 15
+        },
+        {
+          "x": 204.0,
+          "y": 147.0,
+          "source_line": 16
+        },
+        {
+          "x": 249.0,
+          "y": 124.0,
+          "source_line": 17
+        }
+      ]
+    },
+    {
+      "id": "mtx-a16ef9c632e57af3",
+      "name": "漠南青原",
+      "map": null,
+      "map_hint": "漠南青原",
+      "purpose": "unclassified",
+      "verified": false,
+      "runtime_enabled": false,
+      "source": {
+        "pack": "mtxjb",
+        "path": "坐标/漠南青原.txt",
+        "sha256": "df51d1b559051eba5f9a7847fcdad1a8f9f4b4e1ac716f9754d98a63076d2421",
+        "encoding": "utf-8-sig"
+      },
+      "points": [
+        {
+          "x": 180.0,
+          "y": 195.0,
+          "source_line": 1
+        },
+        {
+          "x": 196.0,
+          "y": 201.0,
+          "source_line": 2
+        },
+        {
+          "x": 195.0,
+          "y": 108.0,
+          "source_line": 3
+        },
+        {
+          "x": 189.0,
+          "y": 75.0,
+          "source_line": 4
+        },
+        {
+          "x": 215.0,
+          "y": 53.0,
+          "source_line": 5
+        },
+        {
+          "x": 156.0,
+          "y": 28.0,
+          "source_line": 6
+        },
+        {
+          "x": 170.0,
+          "y": 130.0,
+          "source_line": 7
+        },
+        {
+          "x": 189.0,
+          "y": 140.0,
+          "source_line": 8
+        },
+        {
+          "x": 107.0,
+          "y": 120.0,
+          "source_line": 9
+        },
+        {
+          "x": 88.0,
+          "y": 68.0,
+          "source_line": 10
+        },
+        {
+          "x": 67.0,
+          "y": 43.0,
+          "source_line": 11
+        },
+        {
+          "x": 65.0,
+          "y": 89.0,
+          "source_line": 12
+        },
+        {
+          "x": 67.0,
+          "y": 122.0,
+          "source_line": 13
+        },
+        {
+          "x": 63.0,
+          "y": 172.0,
+          "source_line": 14
+        },
+        {
+          "x": 73.0,
+          "y": 222.0,
+          "source_line": 15
+        },
+        {
+          "x": 105.0,
+          "y": 190.0,
+          "source_line": 16
+        },
+        {
+          "x": 98.0,
+          "y": 166.0,
+          "source_line": 17
+        },
+        {
+          "x": 169.0,
+          "y": 202.0,
+          "source_line": 18
+        },
+        {
+          "x": 212.0,
+          "y": 193.0,
+          "source_line": 19
+        },
+        {
+          "x": 218.0,
+          "y": 160.0,
+          "source_line": 20
+        },
+        {
+          "x": 219.0,
+          "y": 109.0,
+          "source_line": 21
+        },
+        {
+          "x": 215.0,
+          "y": 75.0,
+          "source_line": 22
+        },
+        {
+          "x": 195.0,
+          "y": 41.0,
+          "source_line": 23
+        },
+        {
+          "x": 164.0,
+          "y": 37.0,
+          "source_line": 24
+        },
+        {
+          "x": 169.0,
+          "y": 63.0,
+          "source_line": 25
+        },
+        {
+          "x": 157.0,
+          "y": 110.0,
+          "source_line": 26
+        },
+        {
+          "x": 170.0,
+          "y": 148.0,
+          "source_line": 27
+        },
+        {
+          "x": 118.0,
+          "y": 162.0,
+          "source_line": 28
+        },
+        {
+          "x": 117.0,
+          "y": 133.0,
+          "source_line": 29
+        },
+        {
+          "x": 37.0,
+          "y": 62.0,
+          "source_line": 30
+        },
+        {
+          "x": 36.0,
+          "y": 100.0,
+          "source_line": 31
+        },
+        {
+          "x": 38.0,
+          "y": 127.0,
+          "source_line": 32
+        },
+        {
+          "x": 60.0,
+          "y": 212.0,
+          "source_line": 33
+        }
+      ]
+    },
+    {
+      "id": "mtx-3d0128ab9262cf49",
+      "name": "火焰山",
+      "map": null,
+      "map_hint": "火焰山",
+      "purpose": "unclassified",
+      "verified": false,
+      "runtime_enabled": false,
+      "source": {
+        "pack": "mtxjb",
+        "path": "坐标/火焰山.txt",
+        "sha256": "ddf631f6fec6cb96d6a384ce80e8edcb9a195fd3ccf1437d0235a65bea9a706e",
+        "encoding": "utf-8-sig"
+      },
+      "points": [
+        {
+          "x": 109.0,
+          "y": 221.0,
+          "source_line": 1
+        },
+        {
+          "x": 134.0,
+          "y": 218.0,
+          "source_line": 2
+        },
+        {
+          "x": 216.0,
+          "y": 216.0,
+          "source_line": 3
+        },
+        {
+          "x": 220.0,
+          "y": 190.0,
+          "source_line": 4
+        },
+        {
+          "x": 210.0,
+          "y": 161.0,
+          "source_line": 5
+        },
+        {
+          "x": 217.0,
+          "y": 103.0,
+          "source_line": 6
+        },
+        {
+          "x": 65.0,
+          "y": 95.0,
+          "source_line": 7
+        },
+        {
+          "x": 71.0,
+          "y": 124.0,
+          "source_line": 8
+        },
+        {
+          "x": 93.0,
+          "y": 133.0,
+          "source_line": 9
+        },
+        {
+          "x": 106.0,
+          "y": 153.0,
+          "source_line": 10
+        },
+        {
+          "x": 62.0,
+          "y": 151.0,
+          "source_line": 11
+        },
+        {
+          "x": 37.0,
+          "y": 128.0,
+          "source_line": 12
+        },
+        {
+          "x": 93.0,
+          "y": 176.0,
+          "source_line": 13
+        },
+        {
+          "x": 126.0,
+          "y": 176.0,
+          "source_line": 14
+        },
+        {
+          "x": 157.0,
+          "y": 166.0,
+          "source_line": 15
+        },
+        {
+          "x": 184.0,
+          "y": 182.0,
+          "source_line": 16
+        },
+        {
+          "x": 43.0,
+          "y": 98.0,
+          "source_line": 17
+        },
+        {
+          "x": 41.0,
+          "y": 57.0,
+          "source_line": 18
+        },
+        {
+          "x": 87.0,
+          "y": 54.0,
+          "source_line": 19
+        },
+        {
+          "x": 74.0,
+          "y": 33.0,
+          "source_line": 20
+        },
+        {
+          "x": 137.0,
+          "y": 32.0,
+          "source_line": 21
+        },
+        {
+          "x": 133.0,
+          "y": 63.0,
+          "source_line": 22
+        },
+        {
+          "x": 159.0,
+          "y": 69.0,
+          "source_line": 23
+        },
+        {
+          "x": 156.0,
+          "y": 33.0,
+          "source_line": 24
+        },
+        {
+          "x": 193.0,
+          "y": 27.0,
+          "source_line": 25
+        },
+        {
+          "x": 185.0,
+          "y": 55.0,
+          "source_line": 26
+        },
+        {
+          "x": 209.0,
+          "y": 79.0,
+          "source_line": 27
+        },
+        {
+          "x": 223.0,
+          "y": 77.0,
+          "source_line": 28
+        },
+        {
+          "x": 229.0,
+          "y": 48.0,
+          "source_line": 29
+        },
+        {
+          "x": 230.0,
+          "y": 34.0,
+          "source_line": 30
+        },
+        {
+          "x": 204.0,
+          "y": 24.0,
+          "source_line": 31
+        },
+        {
+          "x": 196.0,
+          "y": 36.0,
+          "source_line": 32
+        }
+      ]
+    },
+    {
+      "id": "mtx-b9fc9fa4bf00606c",
+      "name": "琼州",
+      "map": null,
+      "map_hint": "琼州",
+      "purpose": "unclassified",
+      "verified": false,
+      "runtime_enabled": false,
+      "source": {
+        "pack": "mtxjb",
+        "path": "坐标/琼州.txt",
+        "sha256": "577818683b258fade48fab974598139cee43747a93065b252290bf38b99187f8",
+        "encoding": "utf-8-sig"
+      },
+      "points": [
+        {
+          "x": 270.0,
+          "y": 272.0,
+          "source_line": 1
+        },
+        {
+          "x": 241.0,
+          "y": 157.0,
+          "source_line": 2
+        },
+        {
+          "x": 254.0,
+          "y": 61.0,
+          "source_line": 3
+        },
+        {
+          "x": 58.0,
+          "y": 44.0,
+          "source_line": 4
+        },
+        {
+          "x": 252.0,
+          "y": 242.0,
+          "source_line": 5
+        },
+        {
+          "x": 225.0,
+          "y": 104.0,
+          "source_line": 6
+        },
+        {
+          "x": 185.0,
+          "y": 60.0,
+          "source_line": 7
+        },
+        {
+          "x": 79.0,
+          "y": 66.0,
+          "source_line": 8
+        },
+        {
+          "x": 108.0,
+          "y": 51.0,
+          "source_line": 9
+        },
+        {
+          "x": 109.0,
+          "y": 105.0,
+          "source_line": 10
+        },
+        {
+          "x": 155.0,
+          "y": 142.0,
+          "source_line": 11
+        },
+        {
+          "x": 81.0,
+          "y": 139.0,
+          "source_line": 12
+        },
+        {
+          "x": 89.0,
+          "y": 252.0,
+          "source_line": 13
+        },
+        {
+          "x": 132.0,
+          "y": 211.0,
+          "source_line": 14
+        },
+        {
+          "x": 144.0,
+          "y": 73.0,
+          "source_line": 15
+        },
+        {
+          "x": 104.0,
+          "y": 196.0,
+          "source_line": 16
+        },
+        {
+          "x": 158.0,
+          "y": 239.0,
+          "source_line": 17
+        },
+        {
+          "x": 254.0,
+          "y": 268.0,
+          "source_line": 18
+        },
+        {
+          "x": 170.0,
+          "y": 178.0,
+          "source_line": 19
+        },
+        {
+          "x": 218.0,
+          "y": 202.0,
+          "source_line": 20
+        }
+      ]
+    },
+    {
+      "id": "mtx-89d35f33f7715be7",
+      "name": "盐湖",
+      "map": null,
+      "map_hint": "盐湖",
+      "purpose": "unclassified",
+      "verified": false,
+      "runtime_enabled": false,
+      "source": {
+        "pack": "mtxjb",
+        "path": "坐标/盐湖.txt",
+        "sha256": "26dab36467ddca96dd710cca85dd8bbe9ca031147555fc7fa492a55c6b72d374",
+        "encoding": "utf-8-sig"
+      },
+      "points": [
+        {
+          "x": 92.0,
+          "y": 26.0,
+          "source_line": 1
+        },
+        {
+          "x": 106.0,
+          "y": 44.0,
+          "source_line": 2
+        },
+        {
+          "x": 125.0,
+          "y": 65.0,
+          "source_line": 3
+        },
+        {
+          "x": 127.0,
+          "y": 30.0,
+          "source_line": 4
+        },
+        {
+          "x": 175.0,
+          "y": 25.0,
+          "source_line": 5
+        },
+        {
+          "x": 218.0,
+          "y": 26.0,
+          "source_line": 6
+        },
+        {
+          "x": 225.0,
+          "y": 55.0,
+          "source_line": 7
+        },
+        {
+          "x": 196.0,
+          "y": 59.0,
+          "source_line": 8
+        },
+        {
+          "x": 226.0,
+          "y": 64.0,
+          "source_line": 9
+        },
+        {
+          "x": 214.0,
+          "y": 114.0,
+          "source_line": 10
+        },
+        {
+          "x": 221.0,
+          "y": 163.0,
+          "source_line": 11
+        },
+        {
+          "x": 223.0,
+          "y": 233.0,
+          "source_line": 12
+        },
+        {
+          "x": 175.0,
+          "y": 228.0,
+          "source_line": 13
+        },
+        {
+          "x": 196.0,
+          "y": 199.0,
+          "source_line": 14
+        },
+        {
+          "x": 214.0,
+          "y": 173.0,
+          "source_line": 15
+        },
+        {
+          "x": 177.0,
+          "y": 162.0,
+          "source_line": 16
+        },
+        {
+          "x": 165.0,
+          "y": 199.0,
+          "source_line": 17
+        },
+        {
+          "x": 117.0,
+          "y": 217.0,
+          "source_line": 18
+        },
+        {
+          "x": 64.0,
+          "y": 223.0,
+          "source_line": 19
+        },
+        {
+          "x": 33.0,
+          "y": 207.0,
+          "source_line": 20
+        },
+        {
+          "x": 83.0,
+          "y": 188.0,
+          "source_line": 21
+        },
+        {
+          "x": 37.0,
+          "y": 171.0,
+          "source_line": 22
+        },
+        {
+          "x": 54.0,
+          "y": 127.0,
+          "source_line": 23
+        },
+        {
+          "x": 90.0,
+          "y": 147.0,
+          "source_line": 24
+        },
+        {
+          "x": 116.0,
+          "y": 126.0,
+          "source_line": 25
+        },
+        {
+          "x": 138.0,
+          "y": 97.0,
+          "source_line": 26
+        },
+        {
+          "x": 87.0,
+          "y": 108.0,
+          "source_line": 27
+        },
+        {
+          "x": 45.0,
+          "y": 100.0,
+          "source_line": 28
+        }
+      ]
+    },
+    {
+      "id": "mtx-0b2dc7f2ccd19513",
+      "name": "石林",
+      "map": null,
+      "map_hint": "石林",
+      "purpose": "unclassified",
+      "verified": false,
+      "runtime_enabled": false,
+      "source": {
+        "pack": "mtxjb",
+        "path": "坐标/石林.txt",
+        "sha256": "dfa8b0a53d6aef72bb332b564ae3883c7081fb75607ea3a185e526290456bdbd",
+        "encoding": "utf-8-sig"
+      },
+      "points": [
+        {
+          "x": 245.0,
+          "y": 121.0,
+          "source_line": 1
+        },
+        {
+          "x": 252.0,
+          "y": 81.0,
+          "source_line": 2
+        },
+        {
+          "x": 278.0,
+          "y": 79.0,
+          "source_line": 3
+        },
+        {
+          "x": 265.0,
+          "y": 44.0,
+          "source_line": 4
+        },
+        {
+          "x": 149.0,
+          "y": 52.0,
+          "source_line": 5
+        },
+        {
+          "x": 89.0,
+          "y": 62.0,
+          "source_line": 6
+        },
+        {
+          "x": 43.0,
+          "y": 120.0,
+          "source_line": 7
+        },
+        {
+          "x": 74.0,
+          "y": 182.0,
+          "source_line": 8
+        },
+        {
+          "x": 124.0,
+          "y": 139.0,
+          "source_line": 9
+        },
+        {
+          "x": 150.0,
+          "y": 145.0,
+          "source_line": 10
+        },
+        {
+          "x": 229.0,
+          "y": 236.0,
+          "source_line": 11
+        },
+        {
+          "x": 215.0,
+          "y": 270.0,
+          "source_line": 12
+        },
+        {
+          "x": 262.0,
+          "y": 265.0,
+          "source_line": 13
+        },
+        {
+          "x": 107.0,
+          "y": 189.0,
+          "source_line": 14
+        },
+        {
+          "x": 50.0,
+          "y": 236.0,
+          "source_line": 15
+        },
+        {
+          "x": 83.0,
+          "y": 264.0,
+          "source_line": 16
+        },
+        {
+          "x": 174.0,
+          "y": 259.0,
+          "source_line": 17
+        },
+        {
+          "x": 204.0,
+          "y": 233.0,
+          "source_line": 18
+        }
+      ]
+    },
+    {
+      "id": "mtx-101a522448841c6c",
+      "name": "苍山",
+      "map": null,
+      "map_hint": "苍山",
+      "purpose": "unclassified",
+      "verified": false,
+      "runtime_enabled": false,
+      "source": {
+        "pack": "mtxjb",
+        "path": "坐标/苍山.txt",
+        "sha256": "228034616141cf53ff0f1fda65d7c4f3cc7cb23c8c3e8eb321d21d334cbe0518",
+        "encoding": "utf-8-sig"
+      },
+      "points": [
+        {
+          "x": 138.0,
+          "y": 87.0,
+          "source_line": 1
+        },
+        {
+          "x": 116.0,
+          "y": 87.0,
+          "source_line": 2
+        },
+        {
+          "x": 105.0,
+          "y": 96.0,
+          "source_line": 3
+        },
+        {
+          "x": 96.0,
+          "y": 84.0,
+          "source_line": 4
+        },
+        {
+          "x": 114.0,
+          "y": 75.0,
+          "source_line": 5
+        },
+        {
+          "x": 129.0,
+          "y": 52.0,
+          "source_line": 6
+        },
+        {
+          "x": 92.0,
+          "y": 59.0,
+          "source_line": 7
+        },
+        {
+          "x": 42.0,
+          "y": 57.0,
+          "source_line": 8
+        },
+        {
+          "x": 46.0,
+          "y": 74.0,
+          "source_line": 9
+        },
+        {
+          "x": 47.0,
+          "y": 102.0,
+          "source_line": 10
+        },
+        {
+          "x": 44.0,
+          "y": 127.0,
+          "source_line": 11
+        },
+        {
+          "x": 56.0,
+          "y": 125.0,
+          "source_line": 12
+        },
+        {
+          "x": 66.0,
+          "y": 141.0,
+          "source_line": 13
+        },
+        {
+          "x": 98.0,
+          "y": 128.0,
+          "source_line": 14
+        },
+        {
+          "x": 132.0,
+          "y": 103.0,
+          "source_line": 15
+        },
+        {
+          "x": 162.0,
+          "y": 86.0,
+          "source_line": 16
+        },
+        {
+          "x": 159.0,
+          "y": 122.0,
+          "source_line": 17
+        },
+        {
+          "x": 145.0,
+          "y": 140.0,
+          "source_line": 18
+        },
+        {
+          "x": 111.0,
+          "y": 169.0,
+          "source_line": 19
+        },
+        {
+          "x": 76.0,
+          "y": 187.0,
+          "source_line": 20
+        },
+        {
+          "x": 32.0,
+          "y": 166.0,
+          "source_line": 21
+        },
+        {
+          "x": 36.0,
+          "y": 190.0,
+          "source_line": 22
+        },
+        {
+          "x": 59.0,
+          "y": 189.0,
+          "source_line": 23
+        },
+        {
+          "x": 76.0,
+          "y": 206.0,
+          "source_line": 24
+        },
+        {
+          "x": 100.0,
+          "y": 200.0,
+          "source_line": 25
+        },
+        {
+          "x": 122.0,
+          "y": 232.0,
+          "source_line": 26
+        },
+        {
+          "x": 129.0,
+          "y": 279.0,
+          "source_line": 27
+        },
+        {
+          "x": 166.0,
+          "y": 263.0,
+          "source_line": 28
+        },
+        {
+          "x": 188.0,
+          "y": 260.0,
+          "source_line": 29
+        },
+        {
+          "x": 225.0,
+          "y": 268.0,
+          "source_line": 30
+        },
+        {
+          "x": 262.0,
+          "y": 268.0,
+          "source_line": 31
+        },
+        {
+          "x": 278.0,
+          "y": 278.0,
+          "source_line": 32
+        },
+        {
+          "x": 269.0,
+          "y": 249.0,
+          "source_line": 33
+        },
+        {
+          "x": 240.0,
+          "y": 255.0,
+          "source_line": 34
+        },
+        {
+          "x": 226.0,
+          "y": 248.0,
+          "source_line": 35
+        },
+        {
+          "x": 231.0,
+          "y": 233.0,
+          "source_line": 36
+        },
+        {
+          "x": 250.0,
+          "y": 227.0,
+          "source_line": 37
+        },
+        {
+          "x": 203.0,
+          "y": 234.0,
+          "source_line": 38
+        },
+        {
+          "x": 186.0,
+          "y": 237.0,
+          "source_line": 39
+        },
+        {
+          "x": 195.0,
+          "y": 208.0,
+          "source_line": 40
+        },
+        {
+          "x": 208.0,
+          "y": 208.0,
+          "source_line": 41
+        },
+        {
+          "x": 205.0,
+          "y": 198.0,
+          "source_line": 42
+        },
+        {
+          "x": 215.0,
+          "y": 175.0,
+          "source_line": 43
+        },
+        {
+          "x": 198.0,
+          "y": 166.0,
+          "source_line": 44
+        },
+        {
+          "x": 185.0,
+          "y": 171.0,
+          "source_line": 45
+        },
+        {
+          "x": 164.0,
+          "y": 168.0,
+          "source_line": 46
+        },
+        {
+          "x": 167.0,
+          "y": 145.0,
+          "source_line": 47
+        },
+        {
+          "x": 191.0,
+          "y": 154.0,
+          "source_line": 48
+        },
+        {
+          "x": 226.0,
+          "y": 158.0,
+          "source_line": 49
+        },
+        {
+          "x": 269.0,
+          "y": 149.0,
+          "source_line": 50
+        },
+        {
+          "x": 277.0,
+          "y": 139.0,
+          "source_line": 51
+        },
+        {
+          "x": 251.0,
+          "y": 134.0,
+          "source_line": 52
+        },
+        {
+          "x": 237.0,
+          "y": 123.0,
+          "source_line": 53
+        },
+        {
+          "x": 191.0,
+          "y": 104.0,
+          "source_line": 54
+        },
+        {
+          "x": 193.0,
+          "y": 72.0,
+          "source_line": 55
+        },
+        {
+          "x": 230.0,
+          "y": 52.0,
+          "source_line": 56
+        }
+      ]
+    },
+    {
+      "id": "mtx-16a27ddf5b12bf06",
+      "name": "苗疆",
+      "map": null,
+      "map_hint": "苗疆",
+      "purpose": "unclassified",
+      "verified": false,
+      "runtime_enabled": false,
+      "source": {
+        "pack": "mtxjb",
+        "path": "坐标/苗疆.txt",
+        "sha256": "529b42f1eb41bab1dd0206da73847a523c65209842c670acbd9d5aea2ce5c189",
+        "encoding": "utf-8-sig"
+      },
+      "points": [
+        {
+          "x": 65.0,
+          "y": 44.0,
+          "source_line": 1
+        },
+        {
+          "x": 41.0,
+          "y": 236.0,
+          "source_line": 2
+        },
+        {
+          "x": 68.0,
+          "y": 253.0,
+          "source_line": 3
+        },
+        {
+          "x": 271.0,
+          "y": 277.0,
+          "source_line": 4
+        },
+        {
+          "x": 259.0,
+          "y": 169.0,
+          "source_line": 5
+        },
+        {
+          "x": 258.0,
+          "y": 201.0,
+          "source_line": 6
+        },
+        {
+          "x": 251.0,
+          "y": 249.0,
+          "source_line": 7
+        },
+        {
+          "x": 218.0,
+          "y": 234.0,
+          "source_line": 8
+        },
+        {
+          "x": 111.0,
+          "y": 218.0,
+          "source_line": 9
+        },
+        {
+          "x": 216.0,
+          "y": 143.0,
+          "source_line": 10
+        },
+        {
+          "x": 90.0,
+          "y": 123.0,
+          "source_line": 11
+        },
+        {
+          "x": 103.0,
+          "y": 178.0,
+          "source_line": 12
+        },
+        {
+          "x": 214.0,
+          "y": 139.0,
+          "source_line": 13
+        },
+        {
+          "x": 258.0,
+          "y": 117.0,
+          "source_line": 14
+        },
+        {
+          "x": 218.0,
+          "y": 104.0,
+          "source_line": 15
+        },
+        {
+          "x": 242.0,
+          "y": 50.0,
+          "source_line": 16
+        },
+        {
+          "x": 183.0,
+          "y": 119.0,
+          "source_line": 17
+        },
+        {
+          "x": 88.0,
+          "y": 90.0,
+          "source_line": 18
+        },
+        {
+          "x": 126.0,
+          "y": 86.0,
+          "source_line": 19
+        },
+        {
+          "x": 182.0,
+          "y": 69.0,
+          "source_line": 20
+        },
+        {
+          "x": 179.0,
+          "y": 44.0,
+          "source_line": 21
+        },
+        {
+          "x": 99.0,
+          "y": 56.0,
+          "source_line": 22
+        }
+      ]
+    },
+    {
+      "id": "mtx-73b4b2d68e32fa95",
+      "name": "草原",
+      "map": null,
+      "map_hint": "草原",
+      "purpose": "unclassified",
+      "verified": false,
+      "runtime_enabled": false,
+      "source": {
+        "pack": "mtxjb",
+        "path": "坐标/草原.txt",
+        "sha256": "b513523223cbb916dd41407b0dcaf481c99f100c38ad700824623f83fef9b0ad",
+        "encoding": "utf-8-sig"
+      },
+      "points": [
+        {
+          "x": 258.0,
+          "y": 276.0,
+          "source_line": 1
+        },
+        {
+          "x": 206.0,
+          "y": 271.0,
+          "source_line": 2
+        },
+        {
+          "x": 182.0,
+          "y": 242.0,
+          "source_line": 3
+        },
+        {
+          "x": 129.0,
+          "y": 273.0,
+          "source_line": 4
+        },
+        {
+          "x": 50.0,
+          "y": 270.0,
+          "source_line": 5
+        },
+        {
+          "x": 54.0,
+          "y": 234.0,
+          "source_line": 6
+        },
+        {
+          "x": 79.0,
+          "y": 236.0,
+          "source_line": 7
+        },
+        {
+          "x": 228.0,
+          "y": 230.0,
+          "source_line": 8
+        },
+        {
+          "x": 242.0,
+          "y": 193.0,
+          "source_line": 9
+        },
+        {
+          "x": 254.0,
+          "y": 220.0,
+          "source_line": 10
+        },
+        {
+          "x": 266.0,
+          "y": 201.0,
+          "source_line": 11
+        },
+        {
+          "x": 184.0,
+          "y": 119.0,
+          "source_line": 12
+        },
+        {
+          "x": 109.0,
+          "y": 139.0,
+          "source_line": 13
+        },
+        {
+          "x": 214.0,
+          "y": 115.0,
+          "source_line": 14
+        },
+        {
+          "x": 240.0,
+          "y": 69.0,
+          "source_line": 15
+        },
+        {
+          "x": 272.0,
+          "y": 87.0,
+          "source_line": 16
+        },
+        {
+          "x": 268.0,
+          "y": 118.0,
+          "source_line": 17
+        },
+        {
+          "x": 252.0,
+          "y": 109.0,
+          "source_line": 18
+        },
+        {
+          "x": 259.0,
+          "y": 135.0,
+          "source_line": 19
+        },
+        {
+          "x": 100.0,
+          "y": 78.0,
+          "source_line": 20
+        },
+        {
+          "x": 285.0,
+          "y": 90.0,
+          "source_line": 21
+        },
+        {
+          "x": 272.0,
+          "y": 149.0,
+          "source_line": 22
+        }
+      ]
+    },
+    {
+      "id": "mtx-39b7e1420eebcc52",
+      "name": "西湖",
+      "map": null,
+      "map_hint": "西湖",
+      "purpose": "unclassified",
+      "verified": false,
+      "runtime_enabled": false,
+      "source": {
+        "pack": "mtxjb",
+        "path": "坐标/西湖.txt",
+        "sha256": "33b7be5787e1d6bff2d0c69f827712e9314d7e75d47940559459f1f6ca9328bd",
+        "encoding": "utf-8-sig"
+      },
+      "points": [
+        {
+          "x": 105.0,
+          "y": 84.0,
+          "source_line": 1
+        },
+        {
+          "x": 194.0,
+          "y": 97.0,
+          "source_line": 2
+        },
+        {
+          "x": 224.0,
+          "y": 81.0,
+          "source_line": 3
+        },
+        {
+          "x": 238.0,
+          "y": 114.0,
+          "source_line": 4
+        },
+        {
+          "x": 195.0,
+          "y": 129.0,
+          "source_line": 5
+        },
+        {
+          "x": 165.0,
+          "y": 146.0,
+          "source_line": 6
+        },
+        {
+          "x": 73.0,
+          "y": 133.0,
+          "source_line": 7
+        },
+        {
+          "x": 71.0,
+          "y": 184.0,
+          "source_line": 8
+        },
+        {
+          "x": 50.0,
+          "y": 177.0,
+          "source_line": 9
+        },
+        {
+          "x": 50.0,
+          "y": 210.0,
+          "source_line": 10
+        },
+        {
+          "x": 70.0,
+          "y": 250.0,
+          "source_line": 11
+        },
+        {
+          "x": 123.0,
+          "y": 258.0,
+          "source_line": 12
+        },
+        {
+          "x": 96.0,
+          "y": 216.0,
+          "source_line": 13
+        },
+        {
+          "x": 114.0,
+          "y": 215.0,
+          "source_line": 14
+        },
+        {
+          "x": 137.0,
+          "y": 166.0,
+          "source_line": 15
+        },
+        {
+          "x": 200.0,
+          "y": 166.0,
+          "source_line": 16
+        },
+        {
+          "x": 172.0,
+          "y": 199.0,
+          "source_line": 17
+        },
+        {
+          "x": 198.0,
+          "y": 210.0,
+          "source_line": 18
+        },
+        {
+          "x": 241.0,
+          "y": 257.0,
+          "source_line": 19
+        },
+        {
+          "x": 269.0,
+          "y": 246.0,
+          "source_line": 20
+        }
+      ]
+    },
+    {
+      "id": "mtx-56b4ff8f19d12b9a",
+      "name": "银皑雪原",
+      "map": null,
+      "map_hint": "银皑雪原",
+      "purpose": "unclassified",
+      "verified": false,
+      "runtime_enabled": false,
+      "source": {
+        "pack": "mtxjb",
+        "path": "坐标/银皑雪原.txt",
+        "sha256": "81d8dfbe2bfe9c0f4d3090c8fc45b2dbcea5a46e85021b60af36a0b2e9630eb9",
+        "encoding": "utf-8-sig"
+      },
+      "points": [
+        {
+          "x": 42.0,
+          "y": 218.0,
+          "source_line": 1
+        },
+        {
+          "x": 41.0,
+          "y": 199.0,
+          "source_line": 2
+        },
+        {
+          "x": 40.0,
+          "y": 169.0,
+          "source_line": 3
+        },
+        {
+          "x": 53.0,
+          "y": 137.0,
+          "source_line": 4
+        },
+        {
+          "x": 71.0,
+          "y": 119.0,
+          "source_line": 5
+        },
+        {
+          "x": 99.0,
+          "y": 108.0,
+          "source_line": 6
+        },
+        {
+          "x": 122.0,
+          "y": 105.0,
+          "source_line": 7
+        },
+        {
+          "x": 48.0,
+          "y": 82.0,
+          "source_line": 8
+        },
+        {
+          "x": 79.0,
+          "y": 60.0,
+          "source_line": 9
+        },
+        {
+          "x": 187.0,
+          "y": 25.0,
+          "source_line": 10
+        },
+        {
+          "x": 217.0,
+          "y": 27.0,
+          "source_line": 11
+        },
+        {
+          "x": 225.0,
+          "y": 49.0,
+          "source_line": 12
+        },
+        {
+          "x": 204.0,
+          "y": 79.0,
+          "source_line": 13
+        },
+        {
+          "x": 200.0,
+          "y": 110.0,
+          "source_line": 14
+        },
+        {
+          "x": 204.0,
+          "y": 157.0,
+          "source_line": 15
+        },
+        {
+          "x": 202.0,
+          "y": 188.0,
+          "source_line": 16
+        },
+        {
+          "x": 228.0,
+          "y": 204.0,
+          "source_line": 17
+        },
+        {
+          "x": 229.0,
+          "y": 222.0,
+          "source_line": 18
+        },
+        {
+          "x": 157.0,
+          "y": 218.0,
+          "source_line": 19
+        },
+        {
+          "x": 173.0,
+          "y": 159.0,
+          "source_line": 20
+        },
+        {
+          "x": 138.0,
+          "y": 131.0,
+          "source_line": 21
+        },
+        {
+          "x": 120.0,
+          "y": 140.0,
+          "source_line": 22
+        },
+        {
+          "x": 125.0,
+          "y": 163.0,
+          "source_line": 23
+        },
+        {
+          "x": 131.0,
+          "y": 197.0,
+          "source_line": 24
+        },
+        {
+          "x": 93.0,
+          "y": 163.0,
+          "source_line": 25
+        },
+        {
+          "x": 80.0,
+          "y": 186.0,
+          "source_line": 26
+        }
+      ]
+    },
+    {
+      "id": "mtx-5b2bdf9ff577bfbb",
+      "name": "镜湖",
+      "map": null,
+      "map_hint": "镜湖",
+      "purpose": "unclassified",
+      "verified": false,
+      "runtime_enabled": false,
+      "source": {
+        "pack": "mtxjb",
+        "path": "坐标/镜湖.txt",
+        "sha256": "1138cc232bd95f52e849d61e00b3675ccd34c7a56cc1b49adb6788983cf7df14",
+        "encoding": "utf-8-sig"
+      },
+      "points": [
+        {
+          "x": 262.0,
+          "y": 110.0,
+          "source_line": 1
+        },
+        {
+          "x": 240.0,
+          "y": 102.0,
+          "source_line": 2
+        },
+        {
+          "x": 230.0,
+          "y": 180.0,
+          "source_line": 3
+        },
+        {
+          "x": 250.0,
+          "y": 260.0,
+          "source_line": 4
+        },
+        {
+          "x": 199.0,
+          "y": 246.0,
+          "source_line": 5
+        },
+        {
+          "x": 225.0,
+          "y": 208.0,
+          "source_line": 6
+        },
+        {
+          "x": 195.0,
+          "y": 204.0,
+          "source_line": 7
+        },
+        {
+          "x": 186.0,
+          "y": 175.0,
+          "source_line": 8
+        },
+        {
+          "x": 114.0,
+          "y": 94.0,
+          "source_line": 9
+        },
+        {
+          "x": 116.0,
+          "y": 177.0,
+          "source_line": 10
+        },
+        {
+          "x": 72.0,
+          "y": 116.0,
+          "source_line": 11
+        },
+        {
+          "x": 98.0,
+          "y": 257.0,
+          "source_line": 12
+        },
+        {
+          "x": 57.0,
+          "y": 270.0,
+          "source_line": 13
+        }
+      ]
+    },
+    {
+      "id": "mtx-709cba6d0f223438",
+      "name": "长白山",
+      "map": null,
+      "map_hint": "长白山",
+      "purpose": "unclassified",
+      "verified": false,
+      "runtime_enabled": false,
+      "source": {
+        "pack": "mtxjb",
+        "path": "坐标/长白山.txt",
+        "sha256": "6e3c28dfde835c18aff91f2d853e754048384bfa7d46421d3162ae2c00a4ac5a",
+        "encoding": "utf-8-sig"
+      },
+      "points": [
+        {
+          "x": 52.0,
+          "y": 273.0,
+          "source_line": 1
+        },
+        {
+          "x": 213.0,
+          "y": 271.0,
+          "source_line": 2
+        },
+        {
+          "x": 256.0,
+          "y": 259.0,
+          "source_line": 3
+        },
+        {
+          "x": 270.0,
+          "y": 153.0,
+          "source_line": 4
+        },
+        {
+          "x": 276.0,
+          "y": 75.0,
+          "source_line": 5
+        },
+        {
+          "x": 235.0,
+          "y": 40.0,
+          "source_line": 6
+        },
+        {
+          "x": 143.0,
+          "y": 50.0,
+          "source_line": 7
+        },
+        {
+          "x": 92.0,
+          "y": 62.0,
+          "source_line": 8
+        },
+        {
+          "x": 50.0,
+          "y": 54.0,
+          "source_line": 9
+        },
+        {
+          "x": 45.0,
+          "y": 89.0,
+          "source_line": 10
+        },
+        {
+          "x": 74.0,
+          "y": 125.0,
+          "source_line": 11
+        },
+        {
+          "x": 43.0,
+          "y": 222.0,
+          "source_line": 12
+        },
+        {
+          "x": 156.0,
+          "y": 82.0,
+          "source_line": 13
+        },
+        {
+          "x": 154.0,
+          "y": 117.0,
+          "source_line": 14
+        },
+        {
+          "x": 119.0,
+          "y": 161.0,
+          "source_line": 15
+        },
+        {
+          "x": 164.0,
+          "y": 178.0,
+          "source_line": 16
+        },
+        {
+          "x": 133.0,
+          "y": 234.0,
+          "source_line": 17
+        },
+        {
+          "x": 222.0,
+          "y": 95.0,
+          "source_line": 18
+        },
+        {
+          "x": 200.0,
+          "y": 236.0,
+          "source_line": 19
+        },
+        {
+          "x": 162.0,
+          "y": 232.0,
+          "source_line": 20
+        },
+        {
+          "x": 217.0,
+          "y": 187.0,
+          "source_line": 21
+        },
+        {
+          "x": 153.0,
+          "y": 148.0,
+          "source_line": 22
+        },
+        {
+          "x": 109.0,
+          "y": 249.0,
+          "source_line": 23
+        }
+      ]
+    },
+    {
+      "id": "mtx-525846a01cd9694d",
+      "name": "雁北",
+      "map": null,
+      "map_hint": "雁北",
+      "purpose": "unclassified",
+      "verified": false,
+      "runtime_enabled": false,
+      "source": {
+        "pack": "mtxjb",
+        "path": "坐标/雁北.txt",
+        "sha256": "fbb9cdda8e41746e52ef2344ffb2b17b3939c448b7865e4490d4ff6942a10fcd",
+        "encoding": "utf-8-sig"
+      },
+      "points": [
+        {
+          "x": 217.0,
+          "y": 168.0,
+          "source_line": 1
+        },
+        {
+          "x": 204.0,
+          "y": 177.0,
+          "source_line": 2
+        },
+        {
+          "x": 217.0,
+          "y": 130.0,
+          "source_line": 3
+        },
+        {
+          "x": 252.0,
+          "y": 106.0,
+          "source_line": 4
+        },
+        {
+          "x": 223.0,
+          "y": 90.0,
+          "source_line": 5
+        },
+        {
+          "x": 177.0,
+          "y": 62.0,
+          "source_line": 6
+        },
+        {
+          "x": 120.0,
+          "y": 62.0,
+          "source_line": 7
+        },
+        {
+          "x": 75.0,
+          "y": 97.0,
+          "source_line": 8
+        },
+        {
+          "x": 54.0,
+          "y": 70.0,
+          "source_line": 9
+        },
+        {
+          "x": 71.0,
+          "y": 128.0,
+          "source_line": 10
+        },
+        {
+          "x": 85.0,
+          "y": 137.0,
+          "source_line": 11
+        },
+        {
+          "x": 60.0,
+          "y": 148.0,
+          "source_line": 12
+        },
+        {
+          "x": 78.0,
+          "y": 177.0,
+          "source_line": 13
+        },
+        {
+          "x": 71.0,
+          "y": 210.0,
+          "source_line": 14
+        },
+        {
+          "x": 94.0,
+          "y": 202.0,
+          "source_line": 15
+        },
+        {
+          "x": 109.0,
+          "y": 215.0,
+          "source_line": 16
+        },
+        {
+          "x": 117.0,
+          "y": 265.0,
+          "source_line": 17
+        },
+        {
+          "x": 140.0,
+          "y": 209.0,
+          "source_line": 18
+        },
+        {
+          "x": 148.0,
+          "y": 190.0,
+          "source_line": 19
+        },
+        {
+          "x": 158.0,
+          "y": 217.0,
+          "source_line": 20
+        }
+      ]
+    },
+    {
+      "id": "mtx-5c7aeecb975ef69c",
+      "name": "雁南",
+      "map": null,
+      "map_hint": "雁南",
+      "purpose": "unclassified",
+      "verified": false,
+      "runtime_enabled": false,
+      "source": {
+        "pack": "mtxjb",
+        "path": "坐标/雁南.txt",
+        "sha256": "18dbed520f4c965038e7a95d8a08ff23f1ff3a1ab7d22a6154cadf21573a73ab",
+        "encoding": "utf-8-sig"
+      },
+      "points": [
+        {
+          "x": 237.0,
+          "y": 261.0,
+          "source_line": 1
+        },
+        {
+          "x": 223.0,
+          "y": 258.0,
+          "source_line": 2
+        },
+        {
+          "x": 176.0,
+          "y": 275.0,
+          "source_line": 3
+        },
+        {
+          "x": 235.0,
+          "y": 223.0,
+          "source_line": 4
+        },
+        {
+          "x": 213.0,
+          "y": 224.0,
+          "source_line": 5
+        },
+        {
+          "x": 216.0,
+          "y": 208.0,
+          "source_line": 6
+        },
+        {
+          "x": 218.0,
+          "y": 180.0,
+          "source_line": 7
+        },
+        {
+          "x": 205.0,
+          "y": 172.0,
+          "source_line": 8
+        },
+        {
+          "x": 196.0,
+          "y": 172.0,
+          "source_line": 9
+        },
+        {
+          "x": 114.0,
+          "y": 113.0,
+          "source_line": 10
+        },
+        {
+          "x": 131.0,
+          "y": 112.0,
+          "source_line": 11
+        },
+        {
+          "x": 44.0,
+          "y": 92.0,
+          "source_line": 12
+        },
+        {
+          "x": 42.0,
+          "y": 114.0,
+          "source_line": 13
+        },
+        {
+          "x": 40.0,
+          "y": 152.0,
+          "source_line": 14
+        },
+        {
+          "x": 73.0,
+          "y": 166.0,
+          "source_line": 15
+        },
+        {
+          "x": 100.0,
+          "y": 174.0,
+          "source_line": 16
+        },
+        {
+          "x": 141.0,
+          "y": 179.0,
+          "source_line": 17
+        },
+        {
+          "x": 142.0,
+          "y": 149.0,
+          "source_line": 18
+        },
+        {
+          "x": 141.0,
+          "y": 179.0,
+          "source_line": 19
+        },
+        {
+          "x": 109.0,
+          "y": 194.0,
+          "source_line": 20
+        },
+        {
+          "x": 89.0,
+          "y": 234.0,
+          "source_line": 21
+        },
+        {
+          "x": 99.0,
+          "y": 257.0,
+          "source_line": 22
+        },
+        {
+          "x": 95.0,
+          "y": 277.0,
+          "source_line": 23
+        },
+        {
+          "x": 67.0,
+          "y": 270.0,
+          "source_line": 24
+        },
+        {
+          "x": 43.0,
+          "y": 268.0,
+          "source_line": 25
+        },
+        {
+          "x": 197.0,
+          "y": 208.0,
+          "source_line": 26
+        }
+      ]
+    },
+    {
+      "id": "mtx-89baccb81a4f238d",
+      "name": "雪原10矿",
+      "map": null,
+      "map_hint": "银皑雪原",
+      "purpose": "unclassified",
+      "verified": false,
+      "runtime_enabled": false,
+      "source": {
+        "pack": "mtxjb",
+        "path": "坐标/雪原10矿.txt",
+        "sha256": "bd5518fe44a54c95262598aec74d2c3d3459ba67e892cfa3e3c46db95758c1d0",
+        "encoding": "utf-8-sig"
+      },
+      "points": [
+        {
+          "x": 100.0,
+          "y": 203.0,
+          "source_line": 1
+        },
+        {
+          "x": 90.0,
+          "y": 207.0,
+          "source_line": 2
+        },
+        {
+          "x": 79.0,
+          "y": 187.0,
+          "source_line": 3
+        },
+        {
+          "x": 91.0,
+          "y": 180.0,
+          "source_line": 4
+        },
+        {
+          "x": 98.0,
+          "y": 168.0,
+          "source_line": 5
+        },
+        {
+          "x": 87.0,
+          "y": 158.0,
+          "source_line": 6
+        },
+        {
+          "x": 125.0,
+          "y": 171.0,
+          "source_line": 7
+        },
+        {
+          "x": 126.0,
+          "y": 192.0,
+          "source_line": 8
+        },
+        {
+          "x": 122.0,
+          "y": 199.0,
+          "source_line": 9
+        },
+        {
+          "x": 134.0,
+          "y": 153.0,
+          "source_line": 10
+        },
+        {
+          "x": 156.0,
+          "y": 145.0,
+          "source_line": 11
+        },
+        {
+          "x": 157.0,
+          "y": 138.0,
+          "source_line": 12
+        },
+        {
+          "x": 145.0,
+          "y": 128.0,
+          "source_line": 13
+        },
+        {
+          "x": 121.0,
+          "y": 132.0,
+          "source_line": 14
+        },
+        {
+          "x": 106.0,
+          "y": 137.0,
+          "source_line": 15
+        },
+        {
+          "x": 62.0,
+          "y": 134.0,
+          "source_line": 16
+        },
+        {
+          "x": 60.0,
+          "y": 124.0,
+          "source_line": 17
+        },
+        {
+          "x": 80.0,
+          "y": 120.0,
+          "source_line": 18
+        },
+        {
+          "x": 98.0,
+          "y": 118.0,
+          "source_line": 19
+        },
+        {
+          "x": 100.0,
+          "y": 104.0,
+          "source_line": 20
+        },
+        {
+          "x": 113.0,
+          "y": 106.0,
+          "source_line": 21
+        },
+        {
+          "x": 203.0,
+          "y": 91.0,
+          "source_line": 22
+        },
+        {
+          "x": 203.0,
+          "y": 81.0,
+          "source_line": 23
+        },
+        {
+          "x": 210.0,
+          "y": 75.0,
+          "source_line": 24
+        },
+        {
+          "x": 216.0,
+          "y": 56.0,
+          "source_line": 25
+        },
+        {
+          "x": 231.0,
+          "y": 44.0,
+          "source_line": 26
+        },
+        {
+          "x": 191.0,
+          "y": 45.0,
+          "source_line": 27
+        },
+        {
+          "x": 190.0,
+          "y": 26.0,
+          "source_line": 28
+        },
+        {
+          "x": 213.0,
+          "y": 26.0,
+          "source_line": 29
+        },
+        {
+          "x": 195.0,
+          "y": 136.0,
+          "source_line": 30
+        },
+        {
+          "x": 178.0,
+          "y": 162.0,
+          "source_line": 31
+        },
+        {
+          "x": 196.0,
+          "y": 186.0,
+          "source_line": 32
+        },
+        {
+          "x": 229.0,
+          "y": 199.0,
+          "source_line": 33
+        },
+        {
+          "x": 232.0,
+          "y": 224.0,
+          "source_line": 34
+        },
+        {
+          "x": 146.0,
+          "y": 223.0,
+          "source_line": 35
+        },
+        {
+          "x": 37.0,
+          "y": 216.0,
+          "source_line": 36
+        },
+        {
+          "x": 47.0,
+          "y": 204.0,
+          "source_line": 37
+        },
+        {
+          "x": 41.0,
+          "y": 197.0,
+          "source_line": 38
+        },
+        {
+          "x": 34.0,
+          "y": 162.0,
+          "source_line": 39
+        },
+        {
+          "x": 32.0,
+          "y": 152.0,
+          "source_line": 40
+        },
+        {
+          "x": 36.0,
+          "y": 108.0,
+          "source_line": 41
+        },
+        {
+          "x": 25.0,
+          "y": 93.0,
+          "source_line": 42
+        },
+        {
+          "x": 62.0,
+          "y": 68.0,
+          "source_line": 43
+        },
+        {
+          "x": 24.0,
+          "y": 60.0,
+          "source_line": 44
+        },
+        {
+          "x": 32.0,
+          "y": 45.0,
+          "source_line": 45
+        },
+        {
+          "x": 44.0,
+          "y": 35.0,
+          "source_line": 46
+        },
+        {
+          "x": 99.0,
+          "y": 32.0,
+          "source_line": 47
+        },
+        {
+          "x": 118.0,
+          "y": 34.0,
+          "source_line": 48
+        },
+        {
+          "x": 160.0,
+          "y": 59.0,
+          "source_line": 49
+        },
+        {
+          "x": 162.0,
+          "y": 69.0,
+          "source_line": 50
+        },
+        {
+          "x": 181.0,
+          "y": 65.0,
+          "source_line": 51
+        },
+        {
+          "x": 182.0,
+          "y": 56.0,
+          "source_line": 52
+        },
+        {
+          "x": 226.0,
+          "y": 99.0,
+          "source_line": 53
+        },
+        {
+          "x": 226.0,
+          "y": 111.0,
+          "source_line": 54
+        },
+        {
+          "x": 230.0,
+          "y": 117.0,
+          "source_line": 55
+        },
+        {
+          "x": 227.0,
+          "y": 121.0,
+          "source_line": 56
+        },
+        {
+          "x": 230.0,
+          "y": 129.0,
+          "source_line": 57
+        },
+        {
+          "x": 230.0,
+          "y": 144.0,
+          "source_line": 58
+        },
+        {
+          "x": 230.0,
+          "y": 158.0,
+          "source_line": 59
+        },
+        {
+          "x": 230.0,
+          "y": 171.0,
+          "source_line": 60
+        },
+        {
+          "x": 230.0,
+          "y": 185.0,
+          "source_line": 61
+        },
+        {
+          "x": 203.0,
+          "y": 224.0,
+          "source_line": 62
+        },
+        {
+          "x": 190.0,
+          "y": 220.0,
+          "source_line": 63
+        },
+        {
+          "x": 178.0,
+          "y": 209.0,
+          "source_line": 64
+        },
+        {
+          "x": 167.0,
+          "y": 205.0,
+          "source_line": 65
+        },
+        {
+          "x": 51.0,
+          "y": 211.0,
+          "source_line": 66
+        }
+      ]
+    },
+    {
+      "id": "mtx-430a5e1628b5bcdb",
+      "name": "雪原9矿",
+      "map": null,
+      "map_hint": "银皑雪原",
+      "purpose": "unclassified",
+      "verified": false,
+      "runtime_enabled": false,
+      "source": {
+        "pack": "mtxjb",
+        "path": "坐标/雪原9矿.txt",
+        "sha256": "bd5518fe44a54c95262598aec74d2c3d3459ba67e892cfa3e3c46db95758c1d0",
+        "encoding": "utf-8-sig"
+      },
+      "points": [
+        {
+          "x": 100.0,
+          "y": 203.0,
+          "source_line": 1
+        },
+        {
+          "x": 90.0,
+          "y": 207.0,
+          "source_line": 2
+        },
+        {
+          "x": 79.0,
+          "y": 187.0,
+          "source_line": 3
+        },
+        {
+          "x": 91.0,
+          "y": 180.0,
+          "source_line": 4
+        },
+        {
+          "x": 98.0,
+          "y": 168.0,
+          "source_line": 5
+        },
+        {
+          "x": 87.0,
+          "y": 158.0,
+          "source_line": 6
+        },
+        {
+          "x": 125.0,
+          "y": 171.0,
+          "source_line": 7
+        },
+        {
+          "x": 126.0,
+          "y": 192.0,
+          "source_line": 8
+        },
+        {
+          "x": 122.0,
+          "y": 199.0,
+          "source_line": 9
+        },
+        {
+          "x": 134.0,
+          "y": 153.0,
+          "source_line": 10
+        },
+        {
+          "x": 156.0,
+          "y": 145.0,
+          "source_line": 11
+        },
+        {
+          "x": 157.0,
+          "y": 138.0,
+          "source_line": 12
+        },
+        {
+          "x": 145.0,
+          "y": 128.0,
+          "source_line": 13
+        },
+        {
+          "x": 121.0,
+          "y": 132.0,
+          "source_line": 14
+        },
+        {
+          "x": 106.0,
+          "y": 137.0,
+          "source_line": 15
+        },
+        {
+          "x": 62.0,
+          "y": 134.0,
+          "source_line": 16
+        },
+        {
+          "x": 60.0,
+          "y": 124.0,
+          "source_line": 17
+        },
+        {
+          "x": 80.0,
+          "y": 120.0,
+          "source_line": 18
+        },
+        {
+          "x": 98.0,
+          "y": 118.0,
+          "source_line": 19
+        },
+        {
+          "x": 100.0,
+          "y": 104.0,
+          "source_line": 20
+        },
+        {
+          "x": 113.0,
+          "y": 106.0,
+          "source_line": 21
+        },
+        {
+          "x": 203.0,
+          "y": 91.0,
+          "source_line": 22
+        },
+        {
+          "x": 203.0,
+          "y": 81.0,
+          "source_line": 23
+        },
+        {
+          "x": 210.0,
+          "y": 75.0,
+          "source_line": 24
+        },
+        {
+          "x": 216.0,
+          "y": 56.0,
+          "source_line": 25
+        },
+        {
+          "x": 231.0,
+          "y": 44.0,
+          "source_line": 26
+        },
+        {
+          "x": 191.0,
+          "y": 45.0,
+          "source_line": 27
+        },
+        {
+          "x": 190.0,
+          "y": 26.0,
+          "source_line": 28
+        },
+        {
+          "x": 213.0,
+          "y": 26.0,
+          "source_line": 29
+        },
+        {
+          "x": 195.0,
+          "y": 136.0,
+          "source_line": 30
+        },
+        {
+          "x": 178.0,
+          "y": 162.0,
+          "source_line": 31
+        },
+        {
+          "x": 196.0,
+          "y": 186.0,
+          "source_line": 32
+        },
+        {
+          "x": 229.0,
+          "y": 199.0,
+          "source_line": 33
+        },
+        {
+          "x": 232.0,
+          "y": 224.0,
+          "source_line": 34
+        },
+        {
+          "x": 146.0,
+          "y": 223.0,
+          "source_line": 35
+        },
+        {
+          "x": 37.0,
+          "y": 216.0,
+          "source_line": 36
+        },
+        {
+          "x": 47.0,
+          "y": 204.0,
+          "source_line": 37
+        },
+        {
+          "x": 41.0,
+          "y": 197.0,
+          "source_line": 38
+        },
+        {
+          "x": 34.0,
+          "y": 162.0,
+          "source_line": 39
+        },
+        {
+          "x": 32.0,
+          "y": 152.0,
+          "source_line": 40
+        },
+        {
+          "x": 36.0,
+          "y": 108.0,
+          "source_line": 41
+        },
+        {
+          "x": 25.0,
+          "y": 93.0,
+          "source_line": 42
+        },
+        {
+          "x": 62.0,
+          "y": 68.0,
+          "source_line": 43
+        },
+        {
+          "x": 24.0,
+          "y": 60.0,
+          "source_line": 44
+        },
+        {
+          "x": 32.0,
+          "y": 45.0,
+          "source_line": 45
+        },
+        {
+          "x": 44.0,
+          "y": 35.0,
+          "source_line": 46
+        },
+        {
+          "x": 99.0,
+          "y": 32.0,
+          "source_line": 47
+        },
+        {
+          "x": 118.0,
+          "y": 34.0,
+          "source_line": 48
+        },
+        {
+          "x": 160.0,
+          "y": 59.0,
+          "source_line": 49
+        },
+        {
+          "x": 162.0,
+          "y": 69.0,
+          "source_line": 50
+        },
+        {
+          "x": 181.0,
+          "y": 65.0,
+          "source_line": 51
+        },
+        {
+          "x": 182.0,
+          "y": 56.0,
+          "source_line": 52
+        },
+        {
+          "x": 226.0,
+          "y": 99.0,
+          "source_line": 53
+        },
+        {
+          "x": 226.0,
+          "y": 111.0,
+          "source_line": 54
+        },
+        {
+          "x": 230.0,
+          "y": 117.0,
+          "source_line": 55
+        },
+        {
+          "x": 227.0,
+          "y": 121.0,
+          "source_line": 56
+        },
+        {
+          "x": 230.0,
+          "y": 129.0,
+          "source_line": 57
+        },
+        {
+          "x": 230.0,
+          "y": 144.0,
+          "source_line": 58
+        },
+        {
+          "x": 230.0,
+          "y": 158.0,
+          "source_line": 59
+        },
+        {
+          "x": 230.0,
+          "y": 171.0,
+          "source_line": 60
+        },
+        {
+          "x": 230.0,
+          "y": 185.0,
+          "source_line": 61
+        },
+        {
+          "x": 203.0,
+          "y": 224.0,
+          "source_line": 62
+        },
+        {
+          "x": 190.0,
+          "y": 220.0,
+          "source_line": 63
+        },
+        {
+          "x": 178.0,
+          "y": 209.0,
+          "source_line": 64
+        },
+        {
+          "x": 167.0,
+          "y": 205.0,
+          "source_line": 65
+        },
+        {
+          "x": 51.0,
+          "y": 211.0,
+          "source_line": 66
+        }
+      ]
+    },
+    {
+      "id": "mtx-12d17bec15841b0b",
+      "name": "高昌",
+      "map": null,
+      "map_hint": "高昌",
+      "purpose": "unclassified",
+      "verified": false,
+      "runtime_enabled": false,
+      "source": {
+        "pack": "mtxjb",
+        "path": "坐标/高昌.txt",
+        "sha256": "23654c6933187edd8ea5d86aa5b1e975ed54c1a474aa49eb1586a508631e8e41",
+        "encoding": "utf-8-sig"
+      },
+      "points": [
+        {
+          "x": 34.0,
+          "y": 19.0,
+          "source_line": 1
+        },
+        {
+          "x": 57.0,
+          "y": 20.0,
+          "source_line": 2
+        },
+        {
+          "x": 80.0,
+          "y": 33.0,
+          "source_line": 3
+        },
+        {
+          "x": 104.0,
+          "y": 44.0,
+          "source_line": 4
+        },
+        {
+          "x": 74.0,
+          "y": 67.0,
+          "source_line": 5
+        },
+        {
+          "x": 77.0,
+          "y": 83.0,
+          "source_line": 6
+        },
+        {
+          "x": 55.0,
+          "y": 85.0,
+          "source_line": 7
+        },
+        {
+          "x": 30.0,
+          "y": 64.0,
+          "source_line": 8
+        },
+        {
+          "x": 31.0,
+          "y": 102.0,
+          "source_line": 9
+        },
+        {
+          "x": 32.0,
+          "y": 124.0,
+          "source_line": 10
+        },
+        {
+          "x": 35.0,
+          "y": 151.0,
+          "source_line": 11
+        },
+        {
+          "x": 28.0,
+          "y": 174.0,
+          "source_line": 12
+        },
+        {
+          "x": 45.0,
+          "y": 180.0,
+          "source_line": 13
+        },
+        {
+          "x": 27.0,
+          "y": 203.0,
+          "source_line": 14
+        },
+        {
+          "x": 56.0,
+          "y": 213.0,
+          "source_line": 15
+        },
+        {
+          "x": 92.0,
+          "y": 194.0,
+          "source_line": 16
+        },
+        {
+          "x": 112.0,
+          "y": 200.0,
+          "source_line": 17
+        },
+        {
+          "x": 112.0,
+          "y": 155.0,
+          "source_line": 18
+        },
+        {
+          "x": 104.0,
+          "y": 132.0,
+          "source_line": 19
+        },
+        {
+          "x": 128.0,
+          "y": 99.0,
+          "source_line": 20
+        },
+        {
+          "x": 134.0,
+          "y": 68.0,
+          "source_line": 21
+        },
+        {
+          "x": 125.0,
+          "y": 33.0,
+          "source_line": 22
+        },
+        {
+          "x": 146.0,
+          "y": 34.0,
+          "source_line": 23
+        },
+        {
+          "x": 154.0,
+          "y": 56.0,
+          "source_line": 24
+        },
+        {
+          "x": 168.0,
+          "y": 28.0,
+          "source_line": 25
+        },
+        {
+          "x": 184.0,
+          "y": 22.0,
+          "source_line": 26
+        },
+        {
+          "x": 215.0,
+          "y": 22.0,
+          "source_line": 27
+        },
+        {
+          "x": 234.0,
+          "y": 21.0,
+          "source_line": 28
+        },
+        {
+          "x": 206.0,
+          "y": 48.0,
+          "source_line": 29
+        },
+        {
+          "x": 186.0,
+          "y": 45.0,
+          "source_line": 30
+        },
+        {
+          "x": 192.0,
+          "y": 107.0,
+          "source_line": 31
+        },
+        {
+          "x": 168.0,
+          "y": 106.0,
+          "source_line": 32
+        },
+        {
+          "x": 146.0,
+          "y": 126.0,
+          "source_line": 33
+        },
+        {
+          "x": 162.0,
+          "y": 161.0,
+          "source_line": 34
+        },
+        {
+          "x": 161.0,
+          "y": 214.0,
+          "source_line": 35
+        },
+        {
+          "x": 193.0,
+          "y": 223.0,
+          "source_line": 36
+        },
+        {
+          "x": 191.0,
+          "y": 198.0,
+          "source_line": 37
+        },
+        {
+          "x": 226.0,
+          "y": 196.0,
+          "source_line": 38
+        },
+        {
+          "x": 224.0,
+          "y": 176.0,
+          "source_line": 39
+        }
+      ]
+    },
+    {
+      "id": "mtx-fea9447569041b23",
+      "name": "黄龙府",
+      "map": null,
+      "map_hint": "黄龙府",
+      "purpose": "unclassified",
+      "verified": false,
+      "runtime_enabled": false,
+      "source": {
+        "pack": "mtxjb",
+        "path": "坐标/黄龙府.txt",
+        "sha256": "9ea375f4ad0f4d511c1390483655afecaee36f4c37f2af2a07f87229905d2a20",
+        "encoding": "utf-8-sig"
+      },
+      "points": [
+        {
+          "x": 49.0,
+          "y": 262.0,
+          "source_line": 1
+        },
+        {
+          "x": 36.0,
+          "y": 156.0,
+          "source_line": 2
+        },
+        {
+          "x": 34.0,
+          "y": 43.0,
+          "source_line": 3
+        },
+        {
+          "x": 168.0,
+          "y": 46.0,
+          "source_line": 4
+        },
+        {
+          "x": 274.0,
+          "y": 75.0,
+          "source_line": 5
+        },
+        {
+          "x": 276.0,
+          "y": 276.0,
+          "source_line": 6
+        },
+        {
+          "x": 215.0,
+          "y": 271.0,
+          "source_line": 7
+        },
+        {
+          "x": 244.0,
+          "y": 205.0,
+          "source_line": 8
+        },
+        {
+          "x": 236.0,
+          "y": 80.0,
+          "source_line": 9
+        },
+        {
+          "x": 71.0,
+          "y": 75.0,
+          "source_line": 10
+        },
+        {
+          "x": 68.0,
+          "y": 243.0,
+          "source_line": 11
+        },
+        {
+          "x": 114.0,
+          "y": 72.0,
+          "source_line": 12
+        },
+        {
+          "x": 162.0,
+          "y": 199.0,
+          "source_line": 13
+        },
+        {
+          "x": 220.0,
+          "y": 92.0,
+          "source_line": 14
+        },
+        {
+          "x": 242.0,
+          "y": 165.0,
+          "source_line": 15
+        },
+        {
+          "x": 280.0,
+          "y": 230.0,
+          "source_line": 16
+        },
+        {
+          "x": 245.0,
+          "y": 110.0,
+          "source_line": 17
+        },
+        {
+          "x": 167.0,
+          "y": 269.0,
+          "source_line": 18
+        },
+        {
+          "x": 135.0,
+          "y": 274.0,
+          "source_line": 19
+        },
+        {
+          "x": 85.0,
+          "y": 272.0,
+          "source_line": 20
+        },
+        {
+          "x": 122.0,
+          "y": 148.0,
+          "source_line": 21
+        },
+        {
+          "x": 66.0,
+          "y": 260.0,
+          "source_line": 22
+        }
+      ]
+    },
+    {
+      "id": "mtx-20c7d53ac6e5fda3",
+      "name": "龙泉",
+      "map": null,
+      "map_hint": "龙泉",
+      "purpose": "unclassified",
+      "verified": false,
+      "runtime_enabled": false,
+      "source": {
+        "pack": "mtxjb",
+        "path": "坐标/龙泉.txt",
+        "sha256": "1d82448d9a37856083ff466d2764e9ab91f3249bdd8d3de33a2f1a387fe10280",
+        "encoding": "utf-8-sig"
+      },
+      "points": [
+        {
+          "x": 61.0,
+          "y": 257.0,
+          "source_line": 1
+        },
+        {
+          "x": 120.0,
+          "y": 258.0,
+          "source_line": 2
+        },
+        {
+          "x": 130.0,
+          "y": 233.0,
+          "source_line": 3
+        },
+        {
+          "x": 161.0,
+          "y": 267.0,
+          "source_line": 4
+        },
+        {
+          "x": 211.0,
+          "y": 268.0,
+          "source_line": 5
+        },
+        {
+          "x": 231.0,
+          "y": 250.0,
+          "source_line": 6
+        },
+        {
+          "x": 202.0,
+          "y": 229.0,
+          "source_line": 7
+        },
+        {
+          "x": 182.0,
+          "y": 227.0,
+          "source_line": 8
+        },
+        {
+          "x": 165.0,
+          "y": 208.0,
+          "source_line": 9
+        },
+        {
+          "x": 238.0,
+          "y": 219.0,
+          "source_line": 10
+        },
+        {
+          "x": 193.0,
+          "y": 180.0,
+          "source_line": 11
+        },
+        {
+          "x": 262.0,
+          "y": 182.0,
+          "source_line": 12
+        },
+        {
+          "x": 204.0,
+          "y": 149.0,
+          "source_line": 13
+        },
+        {
+          "x": 253.0,
+          "y": 127.0,
+          "source_line": 14
+        },
+        {
+          "x": 234.0,
+          "y": 86.0,
+          "source_line": 15
+        },
+        {
+          "x": 230.0,
+          "y": 70.0,
+          "source_line": 16
+        },
+        {
+          "x": 123.0,
+          "y": 97.0,
+          "source_line": 17
+        },
+        {
+          "x": 172.0,
+          "y": 79.0,
+          "source_line": 18
+        },
+        {
+          "x": 99.0,
+          "y": 73.0,
+          "source_line": 19
+        },
+        {
+          "x": 50.0,
+          "y": 86.0,
+          "source_line": 20
+        },
+        {
+          "x": 88.0,
+          "y": 103.0,
+          "source_line": 21
+        },
+        {
+          "x": 135.0,
+          "y": 134.0,
+          "source_line": 22
+        },
+        {
+          "x": 107.0,
+          "y": 200.0,
+          "source_line": 23
+        },
+        {
+          "x": 73.0,
+          "y": 197.0,
+          "source_line": 24
+        },
+        {
+          "x": 92.0,
+          "y": 224.0,
+          "source_line": 25
+        }
+      ]
+    }
+  ]
+}

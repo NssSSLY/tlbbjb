@@ -1,0 +1,2 @@
+LoadScript('yijue')
+Yijue.run()

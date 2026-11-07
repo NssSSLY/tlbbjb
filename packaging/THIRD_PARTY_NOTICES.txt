@@ -1,0 +1,6 @@
+TLBBClient 0.3.0 uses Qt 6.8.3 (dynamically linked) and Lua 5.4.9.
+Qt project and source/license information: https://www.qt.io/licensing/ and https://download.qt.io/archive/qt/6.8/6.8.3/
+Qt runtime DLLs are distributed unchanged. Applicable licenses and third-party notices: https://doc.qt.io/qt-6/licenses-used-in-qt.html
+Lua is Copyright (C) 1994-2026 Lua.org, PUC-Rio, under the MIT license: https://www.lua.org/license.html
+The Lua license text is included as LICENSE-LUA.txt by the release packaging step.
+The installer is built with Inno Setup: https://jrsoftware.org/

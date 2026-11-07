@@ -1,0 +1,17 @@
+# Local build environment and generated evidence
+.tools/
+artifacts/
+build/
+aqtinstall.log
+__pycache__/
+dist/
+user-data/
+# Third-party programs, credentials and archives kept beside the project
+满天星/
+满天星1/
+满天星.rar
+满天星.zip
+新建文件夹/
+测试/
+账号密码.txt
+*.rar

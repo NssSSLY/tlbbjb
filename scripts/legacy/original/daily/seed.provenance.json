@@ -1,0 +1,12 @@
+{
+  "original_instruction_sha256": "515c722dc6fdabf287d396913f644079d74cc32443737328d89072ec19070f78",
+  "utf8_chunk_sha256": "574e30483ea0eef58bc6ef5a4f9db0fe3bba5043c1291230a152c2e3986db191",
+  "instruction_count": 78,
+  "numeric_and_control_flow_unchanged": true,
+  "source": "@..\\tlzs\\Script64\\日常\\领取鲜花种子.lua",
+  "original_chunk_sha256": "35c1ea3802c53d010486a433532865c35f0b9e71ec636a404f5df489ca0f9222",
+  "wrapper_sha256": "b431a901e5921853faa2b57d9a3b6177f87f7f1c0f9b553ec881db1634109b22",
+  "entry": "original/daily/seed.lua",
+  "rules_rewritten": false,
+  "game_executed": false
+}

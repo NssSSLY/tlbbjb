@@ -1,0 +1,410 @@
+{
+  "captured_at": "2026-10-24T00:46:43.813993+08:00",
+  "scope": "Official links and metadata only. Old reference pages do not establish live server eligibility.",
+  "pages": [
+    {
+      "url": "https://tl.changyou.com/data/index.shtml",
+      "title": "《新天龙八部》官方资料站",
+      "encoding": "utf-8",
+      "sha256": "c367602f61ba2968499eb402862b805a0ac5b5cd8f3065e2b7bd3b411c40f1f4",
+      "bytes_read": 86930,
+      "links": [
+        {
+          "title": "登录游戏",
+          "url": "https://tl.changyou.com/data/new/dlyx.shtml"
+        },
+        {
+          "title": "加入门派",
+          "url": "https://tl.changyou.com/data/new/jrmp.shtml"
+        },
+        {
+          "title": "副本扫荡规则",
+          "url": "https://tl.changyou.com/data/bbs/fbsdgz.shtml"
+        },
+        {
+          "title": "昆仑",
+          "url": "https://event.changyou.com/xtl/202610/smkl/oct10/pc/index.shtml"
+        },
+        {
+          "title": "副本：琅嬛福地",
+          "url": "https://tl.changyou.com/data/bbs/xlqk_1.shtml"
+        },
+        {
+          "title": "棋局",
+          "url": "https://tl.changyou.com/data/bbs/zlqj.shtml"
+        },
+        {
+          "title": "贼兵入侵",
+          "url": "https://tl.changyou.com/data/bbs/zbrq.shtml"
+        },
+        {
+          "title": "偷袭门派",
+          "url": "https://tl.changyou.com/data/bbs/txmp.shtml"
+        },
+        {
+          "title": "讨伐燕子坞",
+          "url": "https://tl.changyou.com/data/bbs/tfyzw.shtml"
+        },
+        {
+          "title": "少室山",
+          "url": "https://tl.changyou.com/data/bbs/sss.shtml"
+        },
+        {
+          "title": "苏州四绝庄",
+          "url": "https://tl.changyou.com/data/bbs/sjz.shtml"
+        },
+        {
+          "title": "楼兰寻宝",
+          "url": "https://tl.changyou.com/data/bbs/llxb.shtml"
+        },
+        {
+          "title": "王陵副本",
+          "url": "https://tl.changyou.com/data/bbs/wlfb.shtml"
+        },
+        {
+          "title": "楼兰大缥缈",
+          "url": "https://tl.changyou.com/data/bbs/lldpm.shtml"
+        },
+        {
+          "title": "全服各门派装备评分",
+          "url": "https://tl.changyou.com/data/paihang/allservers/mp_tm.shtml#nav"
+        },
+        {
+          "title": "双面昆仑",
+          "url": "https://event.changyou.com/xtl/202610/smkl/oct10/pc/index.shtml"
+        },
+        {
+          "title": "师门逆徒",
+          "url": "http://event.changyou.com/xtl/201810/version/pc/index.shtml"
+        },
+        {
+          "title": "门派生活技能",
+          "url": "https://tl.changyou.com/data/mission/mpsh.shtml"
+        },
+        {
+          "title": "师门任务",
+          "url": "https://tl.changyou.com/data/info/smrw.shtml"
+        },
+        {
+          "title": "漕运任务",
+          "url": "https://tl.changyou.com/data/info/cyrw.shtml"
+        },
+        {
+          "title": "门派套装",
+          "url": "https://tl.changyou.com/data/taozh/menpai01_10.shtml"
+        },
+        {
+          "title": "少室山套装",
+          "url": "https://tl.changyou.com/data/taozh/shaoshishan01.shtml"
+        },
+        {
+          "title": "缥缈峰套装",
+          "url": "https://tl.changyou.com/data/taozh/piaomiao.shtml"
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "url": "https://tl.changyou.com/xtl/announce/general/20261023/186264.shtml",
+      "title": "10月23日全新门派“昆仑”正式出山-《新天龙八部》官方网站",
+      "encoding": "utf-8",
+      "sha256": "eed50339ecf5359b8528370d6343eb47e2352623ec7632ca301d319e4320d789",
+      "bytes_read": 101496,
+      "links": [
+        {
+          "title": "更多门派详情可点此查看。",
+          "url": "https://event.changyou.com/xtl/202610/smkl/oct10/pc/index.shtml"
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "url": "https://tl.changyou.com/download/index.shtml",
+      "title": "经典天龙 代言人焦恩俊携新门派昆仑邀你共赴江湖！",
+      "encoding": "utf-8",
+      "sha256": "678842f092e33156628b37ad82ed4882f9bfafc223e2bf64fae60dd079f81461",
+      "bytes_read": 111334,
+      "links": [],
+      "status": "ok"
+    },
+    {
+      "url": "https://tl.changyou.com/data/bbs/fbsdgz.shtml",
+      "title": "副本扫荡规则-特色功能-高手进阶-游戏资料-《新天龙八部》官方网站",
+      "encoding": "utf-8",
+      "sha256": "87863eaad9a53f489540220fc4568a8bab648892d8b34ca28e9cecb3f576dd8c",
+      "bytes_read": 57841,
+      "links": [
+        {
+          "title": "登录游戏",
+          "url": "https://tl.changyou.com/data/new/dlyx.shtml"
+        },
+        {
+          "title": "加入门派",
+          "url": "https://tl.changyou.com/data/new/jrmp.shtml"
+        },
+        {
+          "title": "副本扫荡规则",
+          "url": "https://tl.changyou.com/data/bbs/fbsdgz.shtml"
+        },
+        {
+          "title": "昆仑",
+          "url": "https://event.changyou.com/xtl/202610/smkl/oct10/pc/index.shtml"
+        },
+        {
+          "title": "副本：琅嬛福地",
+          "url": "https://tl.changyou.com/data/bbs/xlqk_1.shtml"
+        },
+        {
+          "title": "棋局",
+          "url": "https://tl.changyou.com/data/bbs/zlqj.shtml"
+        },
+        {
+          "title": "贼兵入侵",
+          "url": "https://tl.changyou.com/data/bbs/zbrq.shtml"
+        },
+        {
+          "title": "偷袭门派",
+          "url": "https://tl.changyou.com/data/bbs/txmp.shtml"
+        },
+        {
+          "title": "讨伐燕子坞",
+          "url": "https://tl.changyou.com/data/bbs/tfyzw.shtml"
+        },
+        {
+          "title": "少室山",
+          "url": "https://tl.changyou.com/data/bbs/sss.shtml"
+        },
+        {
+          "title": "苏州四绝庄",
+          "url": "https://tl.changyou.com/data/bbs/sjz.shtml"
+        },
+        {
+          "title": "楼兰寻宝",
+          "url": "https://tl.changyou.com/data/bbs/llxb.shtml"
+        },
+        {
+          "title": "王陵副本",
+          "url": "https://tl.changyou.com/data/bbs/wlfb.shtml"
+        },
+        {
+          "title": "楼兰大缥缈",
+          "url": "https://tl.changyou.com/data/bbs/lldpm.shtml"
+        },
+        {
+          "title": "全服各门派装备评分",
+          "url": "https://tl.changyou.com/data/paihang/allservers/mp_tm.shtml#nav"
+        },
+        {
+          "title": "双面昆仑",
+          "url": "https://event.changyou.com/xtl/202610/smkl/oct10/pc/index.shtml"
+        },
+        {
+          "title": "师门逆徒",
+          "url": "http://event.changyou.com/xtl/201810/version/pc/index.shtml"
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "url": "https://tl.changyou.com/data/mission/jbsh.shtml",
+      "title": "基本生活技能-技能大全-游戏资料-《新天龙八部》官方网站",
+      "encoding": "utf-8",
+      "sha256": "00646dabe6bd7fa1fa3dec47361a1b9b76828351ed73fe302cb63fe93d1f9bc9",
+      "bytes_read": 76445,
+      "links": [
+        {
+          "title": "门派生活技能",
+          "url": "https://tl.changyou.com/data/mission/mpsh.shtml"
+        },
+        {
+          "title": "采矿",
+          "url": "http://tl.changyou.com/game/skill/normal/liveskill6.shtml"
+        },
+        {
+          "title": "钓鱼",
+          "url": "http://tl.changyou.com/game/skill/normal/liveskill8.shtml"
+        },
+        {
+          "title": "种植",
+          "url": "http://tl.changyou.com/game/skill/normal/liveskill9.shtml"
+        },
+        {
+          "title": "登录游戏",
+          "url": "https://tl.changyou.com/data/new/dlyx.shtml"
+        },
+        {
+          "title": "加入门派",
+          "url": "https://tl.changyou.com/data/new/jrmp.shtml"
+        },
+        {
+          "title": "副本扫荡规则",
+          "url": "https://tl.changyou.com/data/bbs/fbsdgz.shtml"
+        },
+        {
+          "title": "昆仑",
+          "url": "https://event.changyou.com/xtl/202610/smkl/oct10/pc/index.shtml"
+        },
+        {
+          "title": "副本：琅嬛福地",
+          "url": "https://tl.changyou.com/data/bbs/xlqk_1.shtml"
+        },
+        {
+          "title": "棋局",
+          "url": "https://tl.changyou.com/data/bbs/zlqj.shtml"
+        },
+        {
+          "title": "贼兵入侵",
+          "url": "https://tl.changyou.com/data/bbs/zbrq.shtml"
+        },
+        {
+          "title": "偷袭门派",
+          "url": "https://tl.changyou.com/data/bbs/txmp.shtml"
+        },
+        {
+          "title": "讨伐燕子坞",
+          "url": "https://tl.changyou.com/data/bbs/tfyzw.shtml"
+        },
+        {
+          "title": "少室山",
+          "url": "https://tl.changyou.com/data/bbs/sss.shtml"
+        },
+        {
+          "title": "苏州四绝庄",
+          "url": "https://tl.changyou.com/data/bbs/sjz.shtml"
+        },
+        {
+          "title": "楼兰寻宝",
+          "url": "https://tl.changyou.com/data/bbs/llxb.shtml"
+        },
+        {
+          "title": "王陵副本",
+          "url": "https://tl.changyou.com/data/bbs/wlfb.shtml"
+        },
+        {
+          "title": "楼兰大缥缈",
+          "url": "https://tl.changyou.com/data/bbs/lldpm.shtml"
+        },
+        {
+          "title": "全服各门派装备评分",
+          "url": "https://tl.changyou.com/data/paihang/allservers/mp_tm.shtml#nav"
+        },
+        {
+          "title": "双面昆仑",
+          "url": "https://event.changyou.com/xtl/202610/smkl/oct10/pc/index.shtml"
+        },
+        {
+          "title": "师门逆徒",
+          "url": "http://event.changyou.com/xtl/201810/version/pc/index.shtml"
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "url": "https://tl.changyou.com/data/info/xhrw3.shtml",
+      "title": "惩凶打图任务-循环任务-任务大全-游戏资料-《新天龙八部》官方网站",
+      "encoding": "utf-8",
+      "sha256": "8521350d6fea41275a4b192577b1c4f70ecf2ac576059f8c73d09eb864d66dfc",
+      "bytes_read": 59356,
+      "links": [
+        {
+          "title": "师门任务",
+          "url": "https://tl.changyou.com/data/info/smrw.shtml"
+        },
+        {
+          "title": "漕运任务",
+          "url": "https://tl.changyou.com/data/info/cyrw.shtml"
+        },
+        {
+          "title": "【棋局任务】",
+          "url": "https://tl.changyou.com/data/info/xhrw.shtml"
+        },
+        {
+          "title": "【连环副本任务】",
+          "url": "https://tl.changyou.com/data/info/xhrw2.shtml"
+        },
+        {
+          "title": "【无敌三大副本】",
+          "url": "https://tl.changyou.com/data/info/xhrw4.shtml"
+        },
+        {
+          "title": "登录游戏",
+          "url": "https://tl.changyou.com/data/new/dlyx.shtml"
+        },
+        {
+          "title": "加入门派",
+          "url": "https://tl.changyou.com/data/new/jrmp.shtml"
+        },
+        {
+          "title": "副本扫荡规则",
+          "url": "https://tl.changyou.com/data/bbs/fbsdgz.shtml"
+        },
+        {
+          "title": "昆仑",
+          "url": "https://event.changyou.com/xtl/202610/smkl/oct10/pc/index.shtml"
+        },
+        {
+          "title": "副本：琅嬛福地",
+          "url": "https://tl.changyou.com/data/bbs/xlqk_1.shtml"
+        },
+        {
+          "title": "棋局",
+          "url": "https://tl.changyou.com/data/bbs/zlqj.shtml"
+        },
+        {
+          "title": "贼兵入侵",
+          "url": "https://tl.changyou.com/data/bbs/zbrq.shtml"
+        },
+        {
+          "title": "偷袭门派",
+          "url": "https://tl.changyou.com/data/bbs/txmp.shtml"
+        },
+        {
+          "title": "讨伐燕子坞",
+          "url": "https://tl.changyou.com/data/bbs/tfyzw.shtml"
+        },
+        {
+          "title": "少室山",
+          "url": "https://tl.changyou.com/data/bbs/sss.shtml"
+        },
+        {
+          "title": "苏州四绝庄",
+          "url": "https://tl.changyou.com/data/bbs/sjz.shtml"
+        },
+        {
+          "title": "楼兰寻宝",
+          "url": "https://tl.changyou.com/data/bbs/llxb.shtml"
+        },
+        {
+          "title": "王陵副本",
+          "url": "https://tl.changyou.com/data/bbs/wlfb.shtml"
+        },
+        {
+          "title": "楼兰大缥缈",
+          "url": "https://tl.changyou.com/data/bbs/lldpm.shtml"
+        },
+        {
+          "title": "全服各门派装备评分",
+          "url": "https://tl.changyou.com/data/paihang/allservers/mp_tm.shtml#nav"
+        },
+        {
+          "title": "双面昆仑",
+          "url": "https://event.changyou.com/xtl/202610/smkl/oct10/pc/index.shtml"
+        },
+        {
+          "title": "师门逆徒",
+          "url": "http://event.changyou.com/xtl/201810/version/pc/index.shtml"
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "url": "https://tl.changyou.com/xtl/announce/general/20260529/184050.shtml",
+      "title": "搬砖2.0：寻宝必赚，6月5日相约【山海相逢】-《新天龙八部》官方网站",
+      "encoding": "utf-8",
+      "sha256": "adac7213241d9505d61acd170f03d55e1fcda635f0cc357c3e447f09669893b0",
+      "bytes_read": 404654,
+      "links": [],
+      "status": "ok"
+    }
+  ]
+}

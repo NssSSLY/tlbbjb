@@ -1,0 +1,2 @@
+LoadScript('xiaoxiao')
+Xiaoxiao.run()

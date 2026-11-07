@@ -1,0 +1,2946 @@
+{
+ "schema": 1,
+ "kind": "tlbb_original_source",
+ "origin": "原脚本源码 (tools/decompile-original.py)",
+ "verification": "Lua 5.4.9 compile + per-function structural comparison with the original bytecode",
+ "modules": {
+  "0023d14c": {
+   "name": "主线任务",
+   "group": "任务",
+   "path": "Script64/任务/主线任务.lua",
+   "sha256": "bdbb294bf2c952ba07aa669f94def35a26434c18e1c6538cc4c3966db15730c5",
+   "bytes": 82250,
+   "kind": "decompiled"
+  },
+  "0024e474": {
+   "name": "主线剧情任务",
+   "group": "任务",
+   "path": "Script64/任务/主线剧情任务.lua",
+   "sha256": "3bc194de5aa1df08ca7ecccadae645a414a022610497e1882e1e40911a4258ec",
+   "bytes": 6190,
+   "kind": "decompiled"
+  },
+  "0024f50f": {
+   "name": "九宫盒任务",
+   "group": "任务",
+   "path": "Script64/任务/九宫盒任务.lua",
+   "sha256": "ebb4d89fbd34002c7852b11cb454c07b7cfa1952141e92c0a0aab5e97235d877",
+   "bytes": 15466,
+   "kind": "decompiled"
+  },
+  "00252a6a": {
+   "name": "伉俪情深",
+   "group": "任务",
+   "path": "Script64/任务/伉俪情深.lua",
+   "sha256": "c4c9b699211716ca8d983be02e17988cf7745f7776363e87ecefb622908105bb",
+   "bytes": 10338,
+   "kind": "decompiled"
+  },
+  "00254c2b": {
+   "name": "元丹任务",
+   "group": "任务",
+   "path": "Script64/任务/元丹任务.lua",
+   "sha256": "b5745efd6f16359d59ce968714985557f9ad5bcba8297623663a7fbd3bfd2a70",
+   "bytes": 10790,
+   "kind": "decompiled"
+  },
+  "00257006": {
+   "name": "剑纵群雄",
+   "group": "任务",
+   "path": "Script64/任务/剑纵群雄.lua",
+   "sha256": "2ee126bc4bbab7a3a63dc277a9e34f66e6bdaf5527eecb8c435e5b2dbae37ed9",
+   "bytes": 5967,
+   "kind": "decompiled"
+  },
+  "002585c4": {
+   "name": "子女天下父母心",
+   "group": "任务",
+   "path": "Script64/任务/子女天下父母心.lua",
+   "sha256": "069f1e33339a4726ca6567f25694bb63ac845bb2da14935f2baf1047ab3acda2",
+   "bytes": 7205,
+   "kind": "decompiled"
+  },
+  "00259e6e": {
+   "name": "子女综合素养",
+   "group": "任务",
+   "path": "Script64/任务/子女综合素养.lua",
+   "sha256": "e626b62d990216d879416673394ef36381898e4ca47d13b199e6a33b97c2cf6f",
+   "bytes": 9831,
+   "kind": "decompiled"
+  },
+  "0025bf77": {
+   "name": "子女领养",
+   "group": "任务",
+   "path": "Script64/任务/子女领养.lua",
+   "sha256": "61b31230a678e6b87377a5b6ecf88f87b0954289ea52b6f3e71057a6f323ab01",
+   "bytes": 8138,
+   "kind": "decompiled"
+  },
+  "0025d97e": {
+   "name": "寻影九黎",
+   "group": "任务",
+   "path": "Script64/任务/寻影九黎.lua",
+   "sha256": "5c5a350c4d56f9aef5250456cb51f2a15b17bb2996505c022613ac8ca16dd36e",
+   "bytes": 18705,
+   "kind": "decompiled"
+  },
+  "0025fb7b": {
+   "name": "师门任务",
+   "group": "任务",
+   "path": "Script64/任务/师门任务.lua",
+   "sha256": "8e8e7efb7d065e017976455741bbd87f479897a920a5d1468c040ee9faa9a018",
+   "bytes": 37931,
+   "kind": "decompiled"
+  },
+  "00267ca1": {
+   "name": "惩凶打图",
+   "group": "任务",
+   "path": "Script64/任务/惩凶打图.lua",
+   "sha256": "248ec7bc5bdaf1d93ec74c5115d650598973bcd33d49a5c4f23c37ad2e0aaf1a",
+   "bytes": 9562,
+   "kind": "decompiled"
+  },
+  "00269b42": {
+   "name": "挖灵元图",
+   "group": "任务",
+   "path": "Script64/任务/挖灵元图.lua",
+   "sha256": "c8a2fd6e686144fe809153acf3df540d11225d946f2b0fe2ea84d5e397030003",
+   "bytes": 9543,
+   "kind": "decompiled"
+  },
+  "0026bb73": {
+   "name": "捎口信",
+   "group": "任务",
+   "path": "Script64/任务/捎口信.lua",
+   "sha256": "0ee00bece8af731c2b4a5db48ec308b27be500965b20d5725f025332ea22f8b3",
+   "bytes": 1035,
+   "kind": "decompiled"
+  },
+  "0026bf4a": {
+   "name": "新手1-40级",
+   "group": "任务",
+   "path": "Script64/任务/新手1-40级.lua",
+   "sha256": "b4c655fe5663d17b0806f597efd35eca47c330d0eac446e4bb093cb088ff05eb",
+   "bytes": 96122,
+   "kind": "decompiled"
+  },
+  "00280af8": {
+   "name": "武林印",
+   "group": "任务",
+   "path": "Script64/任务/武林印.lua",
+   "sha256": "6228804cd3b6c8356895c5f1de83f2b92b885a0237c63eea78748817e3eb647e",
+   "bytes": 14878,
+   "kind": "decompiled"
+  },
+  "00283bbf": {
+   "name": "武林无字谱",
+   "group": "任务",
+   "path": "Script64/任务/武林无字谱.lua",
+   "sha256": "76653d6b5e630155264a36b33abd19a231733440dd4d29c5bf9e0ed32013d973",
+   "bytes": 2662,
+   "kind": "decompiled"
+  },
+  "002842e0": {
+   "name": "清剿九黎余孽",
+   "group": "任务",
+   "path": "Script64/任务/清剿九黎余孽.lua",
+   "sha256": "ad647a2eaee182368ec78cfe59716f3f9249d4d5ebf47bbe762c55c55f2d076d",
+   "bytes": 3547,
+   "kind": "decompiled"
+  },
+  "00284f56": {
+   "name": "百花缘",
+   "group": "任务",
+   "path": "Script64/任务/百花缘.lua",
+   "sha256": "d9a5bfca4e4cc00d86723ba97c12a6fb67971b59ba4125fb08e4aab23dd4f613",
+   "bytes": 11660,
+   "kind": "decompiled"
+  },
+  "00287c2b": {
+   "name": "绝学引导",
+   "group": "任务",
+   "path": "Script64/任务/绝学引导.lua",
+   "sha256": "807e816e02769c4c0e6922e394bd9e7fbbc104e00d4417935b7c075270528be6",
+   "bytes": 8205,
+   "kind": "decompiled"
+  },
+  "002897e2": {
+   "name": "金针渡劫",
+   "group": "任务",
+   "path": "Script64/任务/金针渡劫.lua",
+   "sha256": "1d3a1a7b60df7c8432a56862d33346fce7076862714ffeb56aa58cc6435dd816",
+   "bytes": 9303,
+   "kind": "decompiled"
+  },
+  "0028b707": {
+   "name": "闲常治务",
+   "group": "任务",
+   "path": "Script64/任务/闲常治务.lua",
+   "sha256": "0c42e59b11b6ca67fea1535a575aff2747cea12300754076d26a090388f0ac81",
+   "bytes": 28527,
+   "kind": "decompiled"
+  },
+  "00291057": {
+   "name": "除恶天劫楼",
+   "group": "任务",
+   "path": "Script64/任务/除恶天劫楼.lua",
+   "sha256": "5d192a130999f9c14022373a2025ec56349bf67fcd45a9fa85c8f36da94b322f",
+   "bytes": 3640,
+   "kind": "decompiled"
+  },
+  "00291c56": {
+   "name": "临危悟道",
+   "group": "任务",
+   "path": "Script64/任务/临危悟道.lua",
+   "sha256": "6efcd050de8a1052c343ff019b3fc919daab8f32aaf04fa1a6763fe9368857e7",
+   "bytes": 5150,
+   "kind": "decompiled"
+  },
+  "00292f75": {
+   "name": "使用路书",
+   "group": "任务",
+   "path": "Script64/任务/使用路书.lua",
+   "sha256": "1163ce3824e57757d87b69245b0f47eea202493b3e0209878014bb31df139656",
+   "bytes": 17799,
+   "kind": "decompiled"
+  },
+  "00296c02": {
+   "name": "购买路书",
+   "group": "任务",
+   "path": "Script64/任务/购买路书.lua",
+   "sha256": "efbadf0c4a06f6591ea272dd72c947d0c0ed880deead41722caa821fb8dc7eb1",
+   "bytes": 1020,
+   "kind": "decompiled"
+  },
+  "00297045": {
+   "name": "活动扫荡",
+   "group": "任务",
+   "path": "Script64/任务/活动扫荡.lua",
+   "sha256": "80bc4189135faef9a5af3858270f2c7c81c0637c3c2d736b291cd51ab6248447",
+   "bytes": 3392,
+   "kind": "decompiled"
+  },
+  "00297d2c": {
+   "name": "购买寻宝图",
+   "group": "任务",
+   "path": "Script64/任务/购买寻宝图.lua",
+   "sha256": "9c7b6648d508ee7bb535c806cfe2966ff2b4bae5a0a0398532c00a779831033b",
+   "bytes": 1174,
+   "kind": "decompiled"
+  },
+  "002981ea": {
+   "name": "使用寻宝图",
+   "group": "任务",
+   "path": "Script64/任务/使用寻宝图.lua",
+   "sha256": "a3e1ee682ef8a8f4552d6a630c669be8ec8d3e54d566e49f08a4d496c9d30a19",
+   "bytes": 12899,
+   "kind": "decompiled"
+  },
+  "0029ad4e": {
+   "name": "购买中级路书",
+   "group": "任务",
+   "path": "Script64/任务/购买中级路书.lua",
+   "sha256": "f0e75a96faab94cba2b4942e2a558117f65ce0843babeaad0c88d2dfa32addc8",
+   "bytes": 1134,
+   "kind": "decompiled"
+  },
+  "0029b224": {
+   "name": "购买高级路书",
+   "group": "任务",
+   "path": "Script64/任务/购买高级路书.lua",
+   "sha256": "c74651e7f0a30b62e7e82ed7d8eb9a42f62731a78953619e58ac818ae501c57b",
+   "bytes": 1051,
+   "kind": "decompiled"
+  },
+  "0029b6a5": {
+   "name": "购买初级路书",
+   "group": "任务",
+   "path": "Script64/任务/购买初级路书.lua",
+   "sha256": "56e57fa052cfe62792423f5c06a108aace9f62cbb0cf204c5e436c5a6c191cdf",
+   "bytes": 1026,
+   "kind": "decompiled"
+  },
+  "0029bb09": {
+   "name": "使用路书(中级)",
+   "group": "任务",
+   "path": "Script64/任务/使用路书(中级).lua",
+   "sha256": "bcdbd7715b8b0b31a53d4ea1e275781ebda7b45f21e85231417f436880f6d043",
+   "bytes": 17997,
+   "kind": "decompiled"
+  },
+  "0029f73e": {
+   "name": "使用路书(高级)",
+   "group": "任务",
+   "path": "Script64/任务/使用路书(高级).lua",
+   "sha256": "6ce67e45d6d4c4d35a7ef54f4d7bd2ad0548cd16155729bda5102c7cc0e1144d",
+   "bytes": 18036,
+   "kind": "decompiled"
+  },
+  "002a33bc": {
+   "name": "使用路书(初级)",
+   "group": "任务",
+   "path": "Script64/任务/使用路书(初级).lua",
+   "sha256": "519e77bf57480ab137d5ac39f2a24f466005ca8679be33d11e4b8fc4579f3812",
+   "bytes": 18155,
+   "kind": "decompiled"
+  },
+  "002a7084": {
+   "name": "一键删关注度0好友",
+   "group": "其他",
+   "path": "Script64/其他/一键删关注度0好友.lua",
+   "sha256": "269a2fe4dcaa64a9c0453ec8b2c283e6107e2704573cd27675fa5c6d7911e44e",
+   "bytes": 1768,
+   "kind": "decompiled"
+  },
+  "002a7741": {
+   "name": "一键删友好度0好友",
+   "group": "其他",
+   "path": "Script64/其他/一键删友好度0好友.lua",
+   "sha256": "7471e90f3e0ec7a6650594a58c4b98f924ed387b5091cb4c01e3ab44204b9f33",
+   "bytes": 1772,
+   "kind": "decompiled"
+  },
+  "002a7df6": {
+   "name": "一键删征召好友",
+   "group": "其他",
+   "path": "Script64/其他/一键删征召好友.lua",
+   "sha256": "f28dab1baee237445267062e17ae402816b74319f7c7f8e0d3f5cf6fe4bd285b",
+   "bytes": 1780,
+   "kind": "decompiled"
+  },
+  "002a84ac": {
+   "name": "九州零点抢店",
+   "group": "其他",
+   "path": "Script64/其他/九州零点抢店.lua",
+   "sha256": "e9f0de813ac72fcca9eb8288f1ad5c965fb8c43c0884db69817f1bb36c47f3f3",
+   "bytes": 2571,
+   "kind": "decompiled"
+  },
+  "002a8d48": {
+   "name": "乱匪密函换天罡强化",
+   "group": "其他",
+   "path": "Script64/其他/乱匪密函换天罡强化.lua",
+   "sha256": "60e37d305727c2897116844cbc7fb04872216aa855a46346bcc92772d9951bb8",
+   "bytes": 753,
+   "kind": "decompiled"
+  },
+  "002a902c": {
+   "name": "乱匪密函换棉布",
+   "group": "其他",
+   "path": "Script64/其他/乱匪密函换棉布.lua",
+   "sha256": "b2afd2484a8f7e6b33fc54f3f014e145d6a6ad1241bcd17b2494903c223ac9c8",
+   "bytes": 750,
+   "kind": "decompiled"
+  },
+  "002a930c": {
+   "name": "乱匪密函换秘银",
+   "group": "其他",
+   "path": "Script64/其他/乱匪密函换秘银.lua",
+   "sha256": "2b8559ada50e6545f5a4dfb3a961d76a27d779a16fb0f7fa60b927884971ad70",
+   "bytes": 751,
+   "kind": "decompiled"
+  },
+  "002a95f0": {
+   "name": "乱匪密函换至尊强化",
+   "group": "其他",
+   "path": "Script64/其他/乱匪密函换至尊强化.lua",
+   "sha256": "326b1272bafdf43eaaf51e9e68578c394a7f345c33cbe72daab455ba36d03c41",
+   "bytes": 753,
+   "kind": "decompiled"
+  },
+  "002a98ce": {
+   "name": "定点抢反",
+   "group": "其他",
+   "path": "Script64/其他/定点抢反.lua",
+   "sha256": "fa70d9a9ae7280a287bd7b16592a354cac1b31741d9e781463162938e687c956",
+   "bytes": 875,
+   "kind": "decompiled"
+  },
+  "002a9c1e": {
+   "name": "定点抢小",
+   "group": "其他",
+   "path": "Script64/其他/定点抢小.lua",
+   "sha256": "feb93c271928b161fe03a877d446b14861e37262cc7033c1eb17ec62318d5137",
+   "bytes": 1439,
+   "kind": "decompiled"
+  },
+  "002aa095": {
+   "name": "找回经验",
+   "group": "其他",
+   "path": "Script64/其他/找回经验.lua",
+   "sha256": "22ec9bbf9f77278303c3e926f05457ae62fba0e62df20b6e97f16bb41799e3c2",
+   "bytes": 834,
+   "kind": "decompiled"
+  },
+  "002aa437": {
+   "name": "抓成年提悟",
+   "group": "其他",
+   "path": "Script64/其他/抓成年提悟.lua",
+   "sha256": "46a8a1cb2ea223e47d5cd4d4363a23453a8fea880e28741c65566482c9fe2253",
+   "bytes": 9327,
+   "kind": "decompiled"
+  },
+  "002ac35d": {
+   "name": "抓珍兽上架商会",
+   "group": "其他",
+   "path": "Script64/其他/抓珍兽上架商会.lua",
+   "sha256": "1434452f22cf1cf2d2f5fdcc685fce960a0cffccaa14d794349dcc874650bbc1",
+   "bytes": 155,
+   "kind": "decompiled"
+  },
+  "002ac448": {
+   "name": "抓珍兽卖NPC",
+   "group": "其他",
+   "path": "Script64/其他/抓珍兽卖NPC.lua",
+   "sha256": "bb2cd5cf59a4a7d89ebdc82c2c208d295e4eb311b9019dc2b2e3e7af4cab6a3f",
+   "bytes": 9327,
+   "kind": "decompiled"
+  },
+  "002ae368": {
+   "name": "抢Boss",
+   "group": "其他",
+   "path": "Script64/其他/抢Boss.lua",
+   "sha256": "6623ffffc4e01055a7fd740bc8986a7d4ae2cde0f94271dc512c383b3da057a1",
+   "bytes": 5142,
+   "kind": "decompiled"
+  },
+  "002af50f": {
+   "name": "抢元宝",
+   "group": "其他",
+   "path": "Script64/其他/抢元宝.lua",
+   "sha256": "e8ee788fb64e364b9377b7a4fbee9902a8bac8c82c781d469d48b3ef7213f227",
+   "bytes": 4278,
+   "kind": "decompiled"
+  },
+  "002b03dc": {
+   "name": "抢大理神秘商人",
+   "group": "其他",
+   "path": "Script64/其他/抢大理神秘商人.lua",
+   "sha256": "7582c2b332d58856dd962d09cec706db041707ac7f3a557f0bcf1b7a7a2cbac2",
+   "bytes": 679,
+   "kind": "decompiled"
+  },
+  "002b0705": {
+   "name": "抢宝石（束河古镇）",
+   "group": "其他",
+   "path": "Script64/其他/抢宝石（束河古镇）.lua",
+   "sha256": "a66a99a56a54c74fd3c4461a8c1a3163a3f17d550a0677df641ce5bdedfc24ca",
+   "bytes": 780,
+   "kind": "decompiled"
+  },
+  "002b0ac5": {
+   "name": "抢打造图（洛阳）",
+   "group": "其他",
+   "path": "Script64/其他/抢打造图（洛阳）.lua",
+   "sha256": "b388c37e0ab2ba35a83fe70daaa9e36e417582272846ea4dd25b4c2c9ca76af6",
+   "bytes": 695,
+   "kind": "decompiled"
+  },
+  "002b0e1c": {
+   "name": "抢打造图（琼州）",
+   "group": "其他",
+   "path": "Script64/其他/抢打造图（琼州）.lua",
+   "sha256": "e0c5a16f37fc2eeccc7c8ac8a990a1c9248b693e12e5b17202c521b65655f827",
+   "bytes": 697,
+   "kind": "decompiled"
+  },
+  "002b1147": {
+   "name": "抢打造图（苏州）",
+   "group": "其他",
+   "path": "Script64/其他/抢打造图（苏州）.lua",
+   "sha256": "2e2e10b9e18d446d67def151a3fd70b11bd12e34b0d21d56d7ab6b9850876c64",
+   "bytes": 691,
+   "kind": "decompiled"
+  },
+  "002b146f": {
+   "name": "抢打造图（辽西）",
+   "group": "其他",
+   "path": "Script64/其他/抢打造图（辽西）.lua",
+   "sha256": "01375c00ed2eb284b00423da8101db323a033c8776efde5df20bb3fc39f6114c",
+   "bytes": 696,
+   "kind": "decompiled"
+  },
+  "002b1796": {
+   "name": "抢洛阳包世商",
+   "group": "其他",
+   "path": "Script64/其他/抢洛阳包世商.lua",
+   "sha256": "4840d860753fb728fcdbe83ce359b627fa45681c9e0a1660b1cf4e13ee09d8e7",
+   "bytes": 719,
+   "kind": "decompiled"
+  },
+  "002b1ae7": {
+   "name": "抢洛阳郎夫人",
+   "group": "其他",
+   "path": "Script64/其他/抢洛阳郎夫人.lua",
+   "sha256": "264aff915c260a86f38aa36bd9ed95f309cc0d91269cd1da193a6134f02e8f7b",
+   "bytes": 648,
+   "kind": "decompiled"
+  },
+  "002b1de4": {
+   "name": "抢箱子",
+   "group": "其他",
+   "path": "Script64/其他/抢箱子.lua",
+   "sha256": "975a8ee46828fc175ce8a0a55b5752f6faff14cc61bed0cd844d7a1f325db265",
+   "bytes": 1594,
+   "kind": "decompiled"
+  },
+  "002b2381": {
+   "name": "抢苏州朱超重",
+   "group": "其他",
+   "path": "Script64/其他/抢苏州朱超重.lua",
+   "sha256": "9928b6d7de4fdf0795e4aba0f1b308fb47659657452480a385db3ca4349620a9",
+   "bytes": 783,
+   "kind": "decompiled"
+  },
+  "002b273c": {
+   "name": "抢苏州范大成",
+   "group": "其他",
+   "path": "Script64/其他/抢苏州范大成.lua",
+   "sha256": "580febfeef6349767eabd1e98e677294010cfed65527eaad86c29ef2448fe5df",
+   "bytes": 639,
+   "kind": "decompiled"
+  },
+  "002b2a3b": {
+   "name": "拆解满级心诀残印",
+   "group": "其他",
+   "path": "Script64/其他/拆解满级心诀残印.lua",
+   "sha256": "a40ea0185d1d5183a6297ab0dcd3c24396da9348e8a977b406f1effe9157626b",
+   "bytes": 1104,
+   "kind": "decompiled"
+  },
+  "002b2eef": {
+   "name": "束河刷霜影",
+   "group": "其他",
+   "path": "Script64/其他/束河刷霜影.lua",
+   "sha256": "f1479f937cedea9cdc37092f050cc066cbbee7c28b19ac940000a9496e367f0f",
+   "bytes": 2170,
+   "kind": "decompiled"
+  },
+  "002b36bd": {
+   "name": "科举答题",
+   "group": "其他",
+   "path": "Script64/其他/科举答题.lua",
+   "sha256": "e0cce64ea4c13e3eaa331a8c7ec1b52fbf947e13d18b00867c5e0000073cef80",
+   "bytes": 3760,
+   "kind": "decompiled"
+  },
+  "002b44c6": {
+   "name": "装备资质鉴定",
+   "group": "其他",
+   "path": "Script64/其他/装备资质鉴定.lua",
+   "sha256": "8ca894ecfe0259caab81fec6cb7cfcd8b68062095ad907da7c99b9f5aeb0bde9",
+   "bytes": 1138,
+   "kind": "decompiled"
+  },
+  "002b49b2": {
+   "name": "许愿果换红宝石",
+   "group": "其他",
+   "path": "Script64/其他/许愿果换红宝石.lua",
+   "sha256": "a65ba3ab2120cfc11331c6a8552fc255252c0b7045eec5a2cae95054e1bbc158",
+   "bytes": 921,
+   "kind": "decompiled"
+  },
+  "002b4cca": {
+   "name": "玫瑰换双倍",
+   "group": "其他",
+   "path": "Script64/其他/玫瑰换双倍.lua",
+   "sha256": "062d15aa5047a5bfc75bf8f0ae84433193d66a0b81817407a01be01b87d5e2f0",
+   "bytes": 959,
+   "kind": "decompiled"
+  },
+  "002b4ff8": {
+   "name": "龚彩云领奖",
+   "group": "其他",
+   "path": "Script64/其他/龚彩云领奖.lua",
+   "sha256": "e38adbbcd9af6bccf8ede2e6b5fd0a740b2704295cc44d56a8066f5ba56c6aae",
+   "bytes": 1184,
+   "kind": "decompiled"
+  },
+  "002b54ac": {
+   "name": "【副本】刷反贼",
+   "group": "副本",
+   "path": "Script64/副本/【副本】刷反贼.lua",
+   "sha256": "d92befa622a6f98a39de3d6216eda7f5706a7b88f271455c5ee25dffb4bbaab1",
+   "bytes": 13004,
+   "kind": "decompiled"
+  },
+  "002b8890": {
+   "name": "【副本】刷棋",
+   "group": "副本",
+   "path": "Script64/副本/【副本】刷棋.lua",
+   "sha256": "f23c72283c4cf3a7176ec0d6dcb75641a3c02e08bef58c0ea9bf129a040451e7",
+   "bytes": 6148,
+   "kind": "decompiled"
+  },
+  "002b9e15": {
+   "name": "【副本】刷箱子",
+   "group": "副本",
+   "path": "Script64/副本/【副本】刷箱子.lua",
+   "sha256": "a6e60a6a1439a5db7d5e9876f126df5510fd51f1708d7b5ef76727c98867292e",
+   "bytes": 6506,
+   "kind": "decompiled"
+  },
+  "002bb430": {
+   "name": "三神幻境(凤鸣)",
+   "group": "副本",
+   "path": "Script64/副本/三神幻境(凤鸣).lua",
+   "sha256": "7474705855ddd7d1701ac2ba41e25f72ced164a48e39cbf38212800b3be6a2ba",
+   "bytes": 1541,
+   "kind": "decompiled"
+  },
+  "002bba5a": {
+   "name": "偷袭门派(宵小)",
+   "group": "副本",
+   "path": "Script64/副本/偷袭门派(宵小).lua",
+   "sha256": "5548938a6b166fca9c9ef51cab278226ae7a10290dadd2a93ac88702f3b0bd9c",
+   "bytes": 23919,
+   "kind": "decompiled"
+  },
+  "002c0fc9": {
+   "name": "兵圣奇阵(12人)",
+   "group": "副本",
+   "path": "Script64/副本/兵圣奇阵(12人).lua",
+   "sha256": "aa7602b7447869e4c30d64197a872df5fc40a4bd24aa6cfc6134d5b8d02ab735",
+   "bytes": 72734,
+   "kind": "decompiled"
+  },
+  "002cf5a7": {
+   "name": "凤鸣王陵(龙纹)",
+   "group": "副本",
+   "path": "Script64/副本/凤鸣王陵(龙纹).lua",
+   "sha256": "657d806a7c12cc7407351f5681895de0287795f889822c9d135ac0b6ba086411",
+   "bytes": 2129,
+   "kind": "decompiled"
+  },
+  "002cfcf9": {
+   "name": "剑破明王境",
+   "group": "副本",
+   "path": "Script64/副本/剑破明王境.lua",
+   "sha256": "1fb497f6fa0ec7d7f962082b7402cffc5930cf481fd21b1c5d4da0ca0ef1efe7",
+   "bytes": 88633,
+   "kind": "decompiled"
+  },
+  "002e1226": {
+   "name": "四绝庄",
+   "group": "副本",
+   "path": "Script64/副本/四绝庄.lua",
+   "sha256": "1c7751bbdf5b2060b184049df46ea1e670e7d9959a1a779bddd5c1402c92b242",
+   "bytes": 4086,
+   "kind": "decompiled"
+  },
+  "002e1e29": {
+   "name": "夜探天波府",
+   "group": "副本",
+   "path": "Script64/副本/夜探天波府.lua",
+   "sha256": "0d7cb45d5f60a0fd7770d99b895c95738b3cb1cd710293ae8bb8df0af6fb1aa5",
+   "bytes": 52163,
+   "kind": "decompiled"
+  },
+  "002eb7bd": {
+   "name": "天降奇兽(刷丹)",
+   "group": "副本",
+   "path": "Script64/副本/天降奇兽(刷丹).lua",
+   "sha256": "823778471fb109e13052db52393c6d236b07292b526f65620cff0bb1e5ea3f8d",
+   "bytes": 12931,
+   "kind": "decompiled"
+  },
+  "002ee7ae": {
+   "name": "天龙幻境",
+   "group": "副本",
+   "path": "Script64/副本/天龙幻境.lua",
+   "sha256": "925657d1296455931262fdb18bac2e9005b2cebf5d04cf5e145269b01ca4d46b",
+   "bytes": 5430,
+   "kind": "decompiled"
+  },
+  "002ef962": {
+   "name": "少室山(大理)",
+   "group": "副本",
+   "path": "Script64/副本/少室山(大理).lua",
+   "sha256": "db8a066cfa9bd89699b0c9f04c6327140342ee131c2b411d88f89e5402c03b4b",
+   "bytes": 60127,
+   "kind": "decompiled"
+  },
+  "002fbab1": {
+   "name": "扫荡副本",
+   "group": "副本",
+   "path": "Script64/副本/扫荡副本.lua",
+   "sha256": "6440e7aaadfc3ca0b4623797bca3487749d63e104bc5a87b23ee537b0f6c3d8e",
+   "bytes": 866,
+   "kind": "decompiled"
+  },
+  "002fbdb4": {
+   "name": "水牢",
+   "group": "副本",
+   "path": "Script64/副本/水牢.lua",
+   "sha256": "46e22d2a5f14e51a587715a15f8ec6bb1aa754eb48b075fbcb9f9ee32c99df61",
+   "bytes": 6229,
+   "kind": "decompiled"
+  },
+  "002fd257": {
+   "name": "汴京三神幻境",
+   "group": "副本",
+   "path": "Script64/副本/汴京三神幻境.lua",
+   "sha256": "6328cff352dd23589863e619fad926faa572defc66d4b19f9c88d1df039e84c6",
+   "bytes": 1625,
+   "kind": "decompiled"
+  },
+  "002fd8cc": {
+   "name": "汴京王陵",
+   "group": "副本",
+   "path": "Script64/副本/汴京王陵.lua",
+   "sha256": "01bcb445899e6c0d36ef0e78063db2945f4a008c3e8b37b06b0c33e55ad715a6",
+   "bytes": 2230,
+   "kind": "decompiled"
+  },
+  "002fe064": {
+   "name": "琅嬛福地(困难)",
+   "group": "副本",
+   "path": "Script64/副本/琅嬛福地(困难).lua",
+   "sha256": "8230feee5a62dfc6677717d3dce6b8695b3429eb7e10ffa47765f5346403d3d6",
+   "bytes": 1681,
+   "kind": "decompiled"
+  },
+  "002fe6b9": {
+   "name": "琅嬛福地",
+   "group": "副本",
+   "path": "Script64/副本/琅嬛福地.lua",
+   "sha256": "783a95e02548b410a66e10c1183a6c5974212fd513950e2eae75bcd17bf4f902",
+   "bytes": 2756,
+   "kind": "decompiled"
+  },
+  "002fef1e": {
+   "name": "缥缈峰(大)",
+   "group": "副本",
+   "path": "Script64/副本/缥缈峰(大).lua",
+   "sha256": "d31cb14dff2f5f7dbabffa5b6351ae5f3844bee28cc0ff0eb4174699107fc983",
+   "bytes": 3307,
+   "kind": "decompiled"
+  },
+  "002ff923": {
+   "name": "聚灵谷困难",
+   "group": "副本",
+   "path": "Script64/副本/聚灵谷困难.lua",
+   "sha256": "3486b7ee97fecc1f7564a169d758748f2efd4aea1e37b5916eb5eb10d632388f",
+   "bytes": 7440,
+   "kind": "decompiled"
+  },
+  "0030129e": {
+   "name": "聚灵谷普通",
+   "group": "副本",
+   "path": "Script64/副本/聚灵谷普通.lua",
+   "sha256": "b24aeba5a93c7a43d73d675c70f57ffc42eb0753584cf5a900216d8873452972",
+   "bytes": 2857,
+   "kind": "decompiled"
+  },
+  "00301bdf": {
+   "name": "聚灵谷简单",
+   "group": "副本",
+   "path": "Script64/副本/聚灵谷简单.lua",
+   "sha256": "2251a53385f34d4f4067233276329fcee71b7cfe9fdeea463a187cef2ee1a913",
+   "bytes": 2863,
+   "kind": "decompiled"
+  },
+  "00302521": {
+   "name": "观山海",
+   "group": "副本",
+   "path": "Script64/副本/观山海.lua",
+   "sha256": "6c81fde4d631f188949c0763c9fb251be81b40cfc6be46d83624142f882eb4b9",
+   "bytes": 88039,
+   "kind": "decompiled"
+  },
+  "00313c18": {
+   "name": "讨伐燕子坞",
+   "group": "副本",
+   "path": "Script64/副本/讨伐燕子坞.lua",
+   "sha256": "e5758b8feb77299e250304fc1f7a6f5a3efe946ae4f7bcdbc935ab4999543ab3",
+   "bytes": 39471,
+   "kind": "decompiled"
+  },
+  "0031bd09": {
+   "name": "蹴鞠大赛(踢球)",
+   "group": "副本",
+   "path": "Script64/副本/蹴鞠大赛(踢球).lua",
+   "sha256": "5fa0bd4b131ee19457d03204f8bdd0cb82718d70c1eac6e2923b35400c759b31",
+   "bytes": 2785,
+   "kind": "decompiled"
+  },
+  "0031c749": {
+   "name": "追捕野猪王(圣兽山)",
+   "group": "副本",
+   "path": "Script64/副本/追捕野猪王(圣兽山).lua",
+   "sha256": "4714cc1dfd39665f89fa92a341be6f4b06e36460c17b47acd2b2d9d2ed666356",
+   "bytes": 5950,
+   "kind": "decompiled"
+  },
+  "0031db5f": {
+   "name": "野猪暴走(圣兽山)",
+   "group": "副本",
+   "path": "Script64/副本/野猪暴走(圣兽山).lua",
+   "sha256": "7f55fbbfedd89bc368b9ffbc271e593327d8512ee37be8da24c8ebb6784c2980",
+   "bytes": 9873,
+   "kind": "decompiled"
+  },
+  "00320005": {
+   "name": "除匪首力破三关",
+   "group": "副本",
+   "path": "Script64/副本/除匪首力破三关.lua",
+   "sha256": "78897d01798d3d497e5c7bd2e762a1e71283dfa0d3d639a00019fcbe611ebd0d",
+   "bytes": 12407,
+   "kind": "decompiled"
+  },
+  "00322b14": {
+   "name": "凤凰陵墓-普通",
+   "group": "副本",
+   "path": "Script64/副本/凤凰陵墓-普通.lua",
+   "sha256": "5eb814e4622f7102c2984825642eff5ed3e00138bfe8c7a9a044a7d33e784a96",
+   "bytes": 43301,
+   "kind": "decompiled"
+  },
+  "0032b023": {
+   "name": "凤凰陵墓-困难",
+   "group": "副本",
+   "path": "Script64/副本/凤凰陵墓-困难.lua",
+   "sha256": "593dc6705fe0637a0aab80827fbcd8bd34d8b6a33299635bbee7bfb2ca8bd3d7",
+   "bytes": 43301,
+   "kind": "decompiled"
+  },
+  "0033352d": {
+   "name": "弈决山河",
+   "group": "副本",
+   "path": "Script64/副本/弈决山河.lua",
+   "sha256": "d99dbb3a8981d0281a93349a478e845ca8805eb5ebb491a20d98a28e6be17579",
+   "bytes": 3056,
+   "kind": "decompiled"
+  },
+  "00334068": {
+   "name": "[功能] 下线",
+   "group": "功能",
+   "path": "Script64/功能/[功能] 下线.lua",
+   "sha256": "cbfc19b506cf96406c315a4f6d022382bb40cc3108217dfbefc2a49c263bb334",
+   "bytes": 473,
+   "kind": "decompiled"
+  },
+  "0033426a": {
+   "name": "[功能] 关机",
+   "group": "功能",
+   "path": "Script64/功能/[功能] 关机.lua",
+   "sha256": "483cdd7f1f736a939fbc63190d74fb161f24e03225c778c2e3a604806c98e3de",
+   "bytes": 394,
+   "kind": "decompiled"
+  },
+  "00334447": {
+   "name": "[功能] 冻结双倍经验",
+   "group": "功能",
+   "path": "Script64/功能/[功能] 冻结双倍经验.lua",
+   "sha256": "38b278cbc553801a28c11e07f52b0d7f54df814eb1365a22680e98924c21b1e6",
+   "bytes": 165,
+   "kind": "decompiled"
+  },
+  "0033452b": {
+   "name": "[功能] 回城",
+   "group": "功能",
+   "path": "Script64/功能/[功能] 回城.lua",
+   "sha256": "9fb9f15cfedba158f0f61af7e6741e9a0127e163286b511bda6940de118c17cd",
+   "bytes": 163,
+   "kind": "decompiled"
+  },
+  "00334626": {
+   "name": "[功能] 领取双倍经验",
+   "group": "功能",
+   "path": "Script64/功能/[功能] 领取双倍经验.lua",
+   "sha256": "f70a10708a6afea04fdc8c38ce9dd2ced04f0fb5d46c6a4d597b633150ded430",
+   "bytes": 172,
+   "kind": "decompiled"
+  },
+  "0033470e": {
+   "name": "修理装备",
+   "group": "功能",
+   "path": "Script64/功能/修理装备.lua",
+   "sha256": "1a0c5b2e11a65d5464a70996d9c8ed9449c08e677dd3f45f05605501815592e8",
+   "bytes": 1010,
+   "kind": "decompiled"
+  },
+  "00334aad": {
+   "name": "兑换幻色勾天彩",
+   "group": "功能",
+   "path": "Script64/功能/兑换幻色勾天彩.lua",
+   "sha256": "62c8b98cf0ccadd939a6a6faa0385efe2cbfe3a5cc09646f515f08ce75e0f0d3",
+   "bytes": 1778,
+   "kind": "decompiled"
+  },
+  "0033503d": {
+   "name": "兑换王权御玺",
+   "group": "功能",
+   "path": "Script64/功能/兑换王权御玺.lua",
+   "sha256": "d4dd50e583c103dc5b3d652e2ca48e626d5edae0e07f76484ac11fbf52d35349",
+   "bytes": 1486,
+   "kind": "decompiled"
+  },
+  "00335565": {
+   "name": "兑换精金石",
+   "group": "功能",
+   "path": "Script64/功能/兑换精金石.lua",
+   "sha256": "5e5f38a2cc4d52c2301eaa915c0a60207bd677b41bb9cdf60a0c919b50a60383",
+   "bytes": 561,
+   "kind": "decompiled"
+  },
+  "003357ff": {
+   "name": "凝聚九天玉碎",
+   "group": "功能",
+   "path": "Script64/功能/凝聚九天玉碎.lua",
+   "sha256": "a2d88e98b51bedee5c2ee08ae3651956f08a3a54655eb7fa763b4f6ec2e284e0",
+   "bytes": 3882,
+   "kind": "decompiled"
+  },
+  "00336540": {
+   "name": "加工材料",
+   "group": "功能",
+   "path": "Script64/功能/加工材料.lua",
+   "sha256": "d0b999a85b0bf69f2f976cc493cf9a22e2131e5a335d28cde14c550b85fb1685",
+   "bytes": 927,
+   "kind": "decompiled"
+  },
+  "003368ab": {
+   "name": "古兰玉兑换宝石",
+   "group": "功能",
+   "path": "Script64/功能/古兰玉兑换宝石.lua",
+   "sha256": "896b4605e1d39cbdbc2141f5dc3c59e750ef7d4c827d7281be1a49c1f6fda68c",
+   "bytes": 3951,
+   "kind": "decompiled"
+  },
+  "003376c9": {
+   "name": "合成中级勾天彩",
+   "group": "功能",
+   "path": "Script64/功能/合成中级勾天彩.lua",
+   "sha256": "2f1ded3baa9baf70ddbfffbc272b2dad025d93c5378ef122392d31e747db2496",
+   "bytes": 2213,
+   "kind": "decompiled"
+  },
+  "00337dd8": {
+   "name": "合成子女套",
+   "group": "功能",
+   "path": "Script64/功能/合成子女套.lua",
+   "sha256": "08fb6d0a3ad4eb4ef9cbbe951c4f34c03705f39e6c97f2979c1e2410c0410e09",
+   "bytes": 4437,
+   "kind": "decompiled"
+  },
+  "00338cee": {
+   "name": "合成宝石",
+   "group": "功能",
+   "path": "Script64/功能/合成宝石.lua",
+   "sha256": "316b67e24aecba9cca8de4b6f8306312de1570e88707e45d04aed00d55b2c6d5",
+   "bytes": 10366,
+   "kind": "decompiled"
+  },
+  "0033b0c8": {
+   "name": "合成幻色勾天彩",
+   "group": "功能",
+   "path": "Script64/功能/合成幻色勾天彩.lua",
+   "sha256": "2fa41906b4ca1f095600118f54270771a0831a2087603cebb5e8cb653da66e3d",
+   "bytes": 2134,
+   "kind": "decompiled"
+  },
+  "0033b7a9": {
+   "name": "合成棉布",
+   "group": "功能",
+   "path": "Script64/功能/合成棉布.lua",
+   "sha256": "2216257a7423bf18940f1c331df5da49cc577dbfd0c7ef283adfb201bf90fd7b",
+   "bytes": 8673,
+   "kind": "decompiled"
+  },
+  "0033d598": {
+   "name": "合成武魂",
+   "group": "功能",
+   "path": "Script64/功能/合成武魂.lua",
+   "sha256": "8d5e823a589fe6d4748d2f82c9c20732d7875f159ba403f27feb2878de53fc22",
+   "bytes": 6281,
+   "kind": "decompiled"
+  },
+  "0033e96f": {
+   "name": "合成秘银",
+   "group": "功能",
+   "path": "Script64/功能/合成秘银.lua",
+   "sha256": "3e08127fbacfc05ba74f026c4f175a5f772e2f7f436ccc81c9ec38cbd1c99846",
+   "bytes": 8673,
+   "kind": "decompiled"
+  },
+  "0034075e": {
+   "name": "合成精铁",
+   "group": "功能",
+   "path": "Script64/功能/合成精铁.lua",
+   "sha256": "cd1b434edb4bd6529c952b099ade86df4f6656ed20647cb201f80b33e7413583",
+   "bytes": 8673,
+   "kind": "decompiled"
+  },
+  "00342553": {
+   "name": "合成高级勾天彩",
+   "group": "功能",
+   "path": "Script64/功能/合成高级勾天彩.lua",
+   "sha256": "805129978499814a115fec84e4712ad1756810f71079c7909da71d316ee779f4",
+   "bytes": 2134,
+   "kind": "decompiled"
+  },
+  "00342c4a": {
+   "name": "合成魂冰珠",
+   "group": "功能",
+   "path": "Script64/功能/合成魂冰珠.lua",
+   "sha256": "d48c9eb2f5afeb5a4243b37f357f5dd06deb3b2194f9e812dbc330dacddaf7c8",
+   "bytes": 5046,
+   "kind": "decompiled"
+  },
+  "00343dc9": {
+   "name": "合成魂玉",
+   "group": "功能",
+   "path": "Script64/功能/合成魂玉.lua",
+   "sha256": "f8fd036019f8168506be71c8834993f82197ddbb6235f408c3c082a3c7cb5847",
+   "bytes": 1605,
+   "kind": "decompiled"
+  },
+  "00344393": {
+   "name": "合成龙纹",
+   "group": "功能",
+   "path": "Script64/功能/合成龙纹.lua",
+   "sha256": "860a255163c91c2e2de54353eb33920b605ae3dcc1c39320dbf57fc649be8f07",
+   "bytes": 8561,
+   "kind": "decompiled"
+  },
+  "003461b4": {
+   "name": "名士斋礼物兑换",
+   "group": "功能",
+   "path": "Script64/功能/名士斋礼物兑换.lua",
+   "sha256": "7d765af0403f1c7407cc6bc218a9cb5122fd99675e420d7769040fedd602deb0",
+   "bytes": 6895,
+   "kind": "decompiled"
+  },
+  "0034751d": {
+   "name": "名士赠礼",
+   "group": "功能",
+   "path": "Script64/功能/名士赠礼.lua",
+   "sha256": "12bda7c7bdfe86b06eeadaf1d5782368b7939dfc7c20792e78d158fd9eb74c5e",
+   "bytes": 7223,
+   "kind": "decompiled"
+  },
+  "00348a98": {
+   "name": "宝石兑换券",
+   "group": "功能",
+   "path": "Script64/功能/宝石兑换券.lua",
+   "sha256": "ea4db5ce43f64107b08ac8529e418ce3a04855c495503e40e065c2a4a93869eb",
+   "bytes": 3082,
+   "kind": "decompiled"
+  },
+  "0034932d": {
+   "name": "宝石雕琢",
+   "group": "功能",
+   "path": "Script64/功能/宝石雕琢.lua",
+   "sha256": "3c71653d0fcc42e57d8a16eebe51134799f16cfe685bc6abfdf848218151377f",
+   "bytes": 6495,
+   "kind": "decompiled"
+  },
+  "0034a9b3": {
+   "name": "拆解珍兽套",
+   "group": "功能",
+   "path": "Script64/功能/拆解珍兽套.lua",
+   "sha256": "359420197d79d861759161a30d5007015cfb1510f2f00bfe2d581d0b5f30265c",
+   "bytes": 2231,
+   "kind": "decompiled"
+  },
+  "0034b22d": {
+   "name": "材料点金",
+   "group": "功能",
+   "path": "Script64/功能/材料点金.lua",
+   "sha256": "a1411052ede77fa2f7881f7002e82f6414854a3260415075fc5a527168c04bac",
+   "bytes": 3201,
+   "kind": "decompiled"
+  },
+  "0034bc02": {
+   "name": "点修炼",
+   "group": "功能",
+   "path": "Script64/功能/点修炼.lua",
+   "sha256": "5dce105976d91afaad59a38ea556d5987e49394e08ea9c80254938879aecbc61",
+   "bytes": 7113,
+   "kind": "decompiled"
+  },
+  "0034d3a7": {
+   "name": "点心法",
+   "group": "功能",
+   "path": "Script64/功能/点心法.lua",
+   "sha256": "9ad66f069fd8c0402386c632d112e41601ec10681fc52edb7872158496a85421",
+   "bytes": 5653,
+   "kind": "decompiled"
+  },
+  "0034e5e3": {
+   "name": "真元凝元",
+   "group": "功能",
+   "path": "Script64/功能/真元凝元.lua",
+   "sha256": "48b93a39cde11374148e7999d70788e0744a2ffa3379b19c43c46269f752422f",
+   "bytes": 2185,
+   "kind": "decompiled"
+  },
+  "0034eded": {
+   "name": "真元淬解",
+   "group": "功能",
+   "path": "Script64/功能/真元淬解.lua",
+   "sha256": "4e1215780caa159262de47bdbe7db22666b5116b9316fb4c387d4b7eb1ce97ab",
+   "bytes": 535,
+   "kind": "decompiled"
+  },
+  "0034f06e": {
+   "name": "经验纳元领取",
+   "group": "功能",
+   "path": "Script64/功能/经验纳元领取.lua",
+   "sha256": "dcc6f750bd971baaf4005177567eefca4c5ddb1718af2a971fbe46da28e147db",
+   "bytes": 493,
+   "kind": "decompiled"
+  },
+  "0034f2ae": {
+   "name": "除邪惩恶领取",
+   "group": "功能",
+   "path": "Script64/功能/除邪惩恶领取.lua",
+   "sha256": "6585f7a9369c6210ce9b900790104f3976bdab583123c9060133c95e3f40413d",
+   "bytes": 460,
+   "kind": "decompiled"
+  },
+  "0034f4e5": {
+   "name": "提取纳元金丹",
+   "group": "功能",
+   "path": "Script64/功能/提取纳元金丹.lua",
+   "sha256": "58cd5f1fa26e875f0f36ac1a3b5df58c4063b9470b09bf5a9186a4f5c19f6c07",
+   "bytes": 525,
+   "kind": "decompiled"
+  },
+  "0034f757": {
+   "name": "经验纳元结束",
+   "group": "功能",
+   "path": "Script64/功能/经验纳元结束.lua",
+   "sha256": "c545870353239105230b56922515ff9914bbb1a27449d9823bf7ff1fd1dd0151",
+   "bytes": 428,
+   "kind": "decompiled"
+  },
+  "0034f95c": {
+   "name": "经验纳元暂停",
+   "group": "功能",
+   "path": "Script64/功能/经验纳元暂停.lua",
+   "sha256": "f3b0935c227d080508b5938dab552b8250cfe70f3a9023717f64d28854262af2",
+   "bytes": 493,
+   "kind": "decompiled"
+  },
+  "0034fb9a": {
+   "name": "兑换藏宝图",
+   "group": "功能",
+   "path": "Script64/功能/兑换藏宝图.lua",
+   "sha256": "f90711f836c90a0e759cfdbb372bb973996da590e8aedc2275ee327831bc5f37",
+   "bytes": 1036,
+   "kind": "decompiled"
+  },
+  "0034fff0": {
+   "name": "帮会副本",
+   "group": "帮庄",
+   "path": "Script64/帮庄/帮会副本.lua",
+   "sha256": "723043eb0163f920c9698b98ac5368d75ab75b70d9411fd7c3e42cbd682d27e5",
+   "bytes": 3717,
+   "kind": "decompiled"
+  },
+  "00350c2c": {
+   "name": "帮会疑踪",
+   "group": "帮庄",
+   "path": "Script64/帮庄/帮会疑踪.lua",
+   "sha256": "e44ef2ea167cc2dc3d7ae8c31f3336544bd02a8b4787b90f63bf35903985c206",
+   "bytes": 3501,
+   "kind": "decompiled"
+  },
+  "00351748": {
+   "name": "帮会神兵阁刷怪",
+   "group": "帮庄",
+   "path": "Script64/帮庄/帮会神兵阁刷怪.lua",
+   "sha256": "7deb7a9f69c9645e6581838d135ff693b3d18c6e3613b90a87789f1e58bd53aa",
+   "bytes": 2926,
+   "kind": "decompiled"
+  },
+  "003521ee": {
+   "name": "帮会福利宝箱",
+   "group": "帮庄",
+   "path": "Script64/帮庄/帮会福利宝箱.lua",
+   "sha256": "fad5b79767639ffad53c0f9bc841e7b05c57cddfa37d6709fb622d32d76d648d",
+   "bytes": 1608,
+   "kind": "decompiled"
+  },
+  "003527dd": {
+   "name": "庄园养鱼",
+   "group": "帮庄",
+   "path": "Script64/帮庄/庄园养鱼.lua",
+   "sha256": "452d4b9bc192a3b8230a1d23c09d9fe721f3152cb3ad495f8741a09cea979156",
+   "bytes": 5847,
+   "kind": "decompiled"
+  },
+  "00353b78": {
+   "name": "庄园奇遇",
+   "group": "帮庄",
+   "path": "Script64/帮庄/庄园奇遇.lua",
+   "sha256": "3ae10a0c08224205bf1e7be89370872e9f8a9baf99aad30e25f993c104316438",
+   "bytes": 13954,
+   "kind": "decompiled"
+  },
+  "00356a7f": {
+   "name": "庄园种植",
+   "group": "帮庄",
+   "path": "Script64/帮庄/庄园种植.lua",
+   "sha256": "a40770643e86d6164754a06b655cc2df16a2bdd2e38a0588dd3c5f5f4c7e4a47",
+   "bytes": 6146,
+   "kind": "decompiled"
+  },
+  "00358006": {
+   "name": "庄园血脉觉醒",
+   "group": "帮庄",
+   "path": "Script64/帮庄/庄园血脉觉醒.lua",
+   "sha256": "362ece62b10bbb3e2e322d2ded502e0c9a33eda762ca4d00708e2c90c0d00c18",
+   "bytes": 4672,
+   "kind": "decompiled"
+  },
+  "003591b8": {
+   "name": "庄园采矿",
+   "group": "帮庄",
+   "path": "Script64/帮庄/庄园采矿.lua",
+   "sha256": "ef64ae3da885f8fd0c4622937bc9ed7515e0d20842c553de492456b84765e734",
+   "bytes": 6205,
+   "kind": "decompiled"
+  },
+  "0035a761": {
+   "name": "戍卫帮会",
+   "group": "帮庄",
+   "path": "Script64/帮庄/戍卫帮会.lua",
+   "sha256": "f745da9190f326268c1f93f9f2417a4dd6cec953e5a26a6585cdda09dd7c36bc",
+   "bytes": 12652,
+   "kind": "decompiled"
+  },
+  "0035db1f": {
+   "name": "领取上周紫微奖励",
+   "group": "帮庄",
+   "path": "Script64/帮庄/领取上周紫微奖励.lua",
+   "sha256": "71a3315f643dabc82b9cc020d95cd81b90f1cfd9a189bbd9a17e83fffa4f2580",
+   "bytes": 1154,
+   "kind": "decompiled"
+  },
+  "0035df3d": {
+   "name": "领取剑指金陵渡奖励",
+   "group": "帮庄",
+   "path": "Script64/帮庄/领取剑指金陵渡奖励.lua",
+   "sha256": "d0183f4eb6f3aa99af57f6509e9fc0ffe0cb395246a2fe87e25931b0c42e4411",
+   "bytes": 1842,
+   "kind": "decompiled"
+  },
+  "0035e4c6": {
+   "name": "领取战功奖励",
+   "group": "帮庄",
+   "path": "Script64/帮庄/领取战功奖励.lua",
+   "sha256": "da0c44b19555bca9b8a48101e0b8e00554984c975b32d7e274fa0d9bd178f8f8",
+   "bytes": 1041,
+   "kind": "decompiled"
+  },
+  "0035e8d2": {
+   "name": "领取福源礼盒",
+   "group": "帮庄",
+   "path": "Script64/帮庄/领取福源礼盒.lua",
+   "sha256": "e1c3440f66ad27c68c31f7f83673794bab42b817e2e2ff8e9cbbac7790958d6a",
+   "bytes": 838,
+   "kind": "decompiled"
+  },
+  "0035ec11": {
+   "name": "刷怪无相神兵阁",
+   "group": "帮庄",
+   "path": "Script64/帮庄/刷怪无相神兵阁.lua",
+   "sha256": "f8416236e7d3b81355967b029e0942b9fe0b08b7819fda7ac4ab17c4487400a2",
+   "bytes": 3097,
+   "kind": "decompiled"
+  },
+  "0035f720": {
+   "name": "[02] 采集脚本",
+   "group": "常用",
+   "path": "Script64/常用/[02] 采集脚本.lua",
+   "sha256": "2358e18e584b2e0ccdfa5f5e37a1df71c393b6e587a7c30864cfc178cde39a64",
+   "bytes": 4610,
+   "kind": "decompiled"
+  },
+  "003607d9": {
+   "name": "[03] 种地脚本",
+   "group": "常用",
+   "path": "Script64/常用/[03] 种地脚本.lua",
+   "sha256": "5a6fcbd9a9cc7a58e5514459f5c40fe25f928825a6e5ad3fa94bc0040b09fd3b",
+   "bytes": 19956,
+   "kind": "decompiled"
+  },
+  "00364c48": {
+   "name": "[05] 漕运",
+   "group": "常用",
+   "path": "Script64/常用/[05] 漕运.lua",
+   "sha256": "ff236dc067e1804e15417a2c23fb28e4b68b010c2a9fc13d2ca51184543eebc1",
+   "bytes": 11189,
+   "kind": "decompiled"
+  },
+  "00367515": {
+   "name": "[07] 钓鱼加工",
+   "group": "常用",
+   "path": "Script64/常用/[07] 钓鱼加工.lua",
+   "sha256": "8ce099142de3a0ea2668d8469408b007dba7dd2e0439813ea83785ad3f4b4fe8",
+   "bytes": 7013,
+   "kind": "decompiled"
+  },
+  "00368d15": {
+   "name": "团战打架",
+   "group": "常用",
+   "path": "Script64/常用/团战打架.lua",
+   "sha256": "45e4fe2d6ccc06e4c7adfc49835761f6fc9571924171e3e3ea3460743307d595",
+   "bytes": 15316,
+   "kind": "decompiled"
+  },
+  "0036c43f": {
+   "name": "大理种花",
+   "group": "常用",
+   "path": "Script64/常用/大理种花.lua",
+   "sha256": "468b22b8c0c7116c48a1a2809beca0f19d5bdfd18395fbdea26c96e86fd855f6",
+   "bytes": 7971,
+   "kind": "decompiled"
+  },
+  "0036e251": {
+   "name": "天外马贼",
+   "group": "常用",
+   "path": "Script64/常用/天外马贼.lua",
+   "sha256": "4714c05d33b1583cab07f4ac4f4b5473605292b22a901fd6ad06ec2253465fbd",
+   "bytes": 45843,
+   "kind": "decompiled"
+  },
+  "003771af": {
+   "name": "宋辽大战",
+   "group": "常用",
+   "path": "Script64/常用/宋辽大战.lua",
+   "sha256": "a19d0c44f7528745b24bd216d92b65e9babf63ed66e510e74cc14ded1cd5a999",
+   "bytes": 7756,
+   "kind": "decompiled"
+  },
+  "00378b88": {
+   "name": "属地马贼",
+   "group": "常用",
+   "path": "Script64/常用/属地马贼.lua",
+   "sha256": "eebbee791a06958df3398d9b28ffdc1ed89f3a1c36ce57163d5ca7da0b74a92f",
+   "bytes": 15205,
+   "kind": "decompiled"
+  },
+  "0037bcdc": {
+   "name": "峨嵋加血机",
+   "group": "常用",
+   "path": "Script64/常用/峨嵋加血机.lua",
+   "sha256": "cd68132b49b397e9fc3fea2c6f271001b7fd7582024fb03575a3afb841b0d090",
+   "bytes": 7889,
+   "kind": "decompiled"
+  },
+  "0037d84b": {
+   "name": "崇武试炼",
+   "group": "常用",
+   "path": "Script64/常用/崇武试炼.lua",
+   "sha256": "04d75d4ad528c448392450fb492a1d8914c5a6ce2dbac0c2795a01f7699308ea",
+   "bytes": 3851,
+   "kind": "decompiled"
+  },
+  "0037e50f": {
+   "name": "帮会宣战点火",
+   "group": "常用",
+   "path": "Script64/常用/帮会宣战点火.lua",
+   "sha256": "263158548a1b6a92e3a790cf6d9a82b538adb4300d46718fa296cd972908166c",
+   "bytes": 2114,
+   "kind": "decompiled"
+  },
+  "0037edf5": {
+   "name": "拭剑天下",
+   "group": "常用",
+   "path": "Script64/常用/拭剑天下.lua",
+   "sha256": "b802c3d4005ce4b8cfc7127fdca133accadbf6cb59cc1d15718ea29e75fcc5bb",
+   "bytes": 11931,
+   "kind": "decompiled"
+  },
+  "00381690": {
+   "name": "新刷怪",
+   "group": "常用",
+   "path": "Script64/常用/新刷怪.lua",
+   "sha256": "ddf5797fb2d0e4cd34959d5db64b9f2e90fb854435a5d834828b992ef4b4df13",
+   "bytes": 4183,
+   "kind": "decompiled"
+  },
+  "003824d1": {
+   "name": "星落九野",
+   "group": "常用",
+   "path": "Script64/常用/星落九野.lua",
+   "sha256": "807b4aa037d7d7b8215dbe3f36ecf96cd0936c6e287eddd0eeccee3e2db1b65a",
+   "bytes": 2877,
+   "kind": "decompiled"
+  },
+  "00382f48": {
+   "name": "死亡统计",
+   "group": "常用",
+   "path": "Script64/常用/死亡统计.lua",
+   "sha256": "53791457feefb894eb81c7cf5f41da9d0b73213c3e7b489893727f225ad5e4c7",
+   "bytes": 2286,
+   "kind": "decompiled"
+  },
+  "003837b4": {
+   "name": "自动刷马贼",
+   "group": "常用",
+   "path": "Script64/常用/自动刷马贼.lua",
+   "sha256": "a88619f0e0cf89b41a9ec45d6a07599638d4cefeb59424ed8477ed1266d2afa3",
+   "bytes": 54733,
+   "kind": "decompiled"
+  },
+  "0038f06e": {
+   "name": "自动挖藏宝图",
+   "group": "常用",
+   "path": "Script64/常用/自动挖藏宝图.lua",
+   "sha256": "dd6981c635d123f63770e540a34fb1beb2861fc02d20088268e9ef7dfab830d0",
+   "bytes": 14890,
+   "kind": "decompiled"
+  },
+  "003921c4": {
+   "name": "采集天脉玄晶",
+   "group": "常用",
+   "path": "Script64/常用/采集天脉玄晶.lua",
+   "sha256": "88d0e52f54c67ef59cbdf70b405cf8fdcd8e5e9db622e7cf8eba343be3e3f231",
+   "bytes": 3450,
+   "kind": "decompiled"
+  },
+  "00392eb4": {
+   "name": "金币元宝互换",
+   "group": "常用",
+   "path": "Script64/常用/金币元宝互换.lua",
+   "sha256": "01dd0aa8c494ca15406aefff7e9cfa3bf329a8ec5dd7385d26db1bc292fca522",
+   "bytes": 12264,
+   "kind": "decompiled"
+  },
+  "00395187": {
+   "name": "自动开启箱子奖励",
+   "group": "常用",
+   "path": "Script64/常用/自动开启箱子奖励.lua",
+   "sha256": "dbcd2f156126a5e87cec2903b15313d79d0cab82041dcc3c3ce6a9419d773ef9",
+   "bytes": 465,
+   "kind": "decompiled"
+  },
+  "0039536f": {
+   "name": "坐标刷马",
+   "group": "数据",
+   "path": "Script64/数据/坐标刷马.lua",
+   "sha256": "2174d95949ff705e242b8c5d6bb3d3bd010c416267be377fa95c8c3c829aab8d",
+   "bytes": 8225,
+   "kind": "decompiled"
+  },
+  "00397a7a": {
+   "name": "坐标天降奇兽",
+   "group": "数据",
+   "path": "Script64/数据/坐标天降奇兽.lua",
+   "sha256": "438e944ba6a0866274cd7b45c5365e61c8b36a85b71305043af72b9fffb17cd3",
+   "bytes": 779,
+   "kind": "decompiled"
+  },
+  "00397f8b": {
+   "name": "坐标摆摊",
+   "group": "数据",
+   "path": "Script64/数据/坐标摆摊.lua",
+   "sha256": "5fd3fb649ab59b76faeaba1d72fd4182473883e5706bd90e5e095dde495fea6c",
+   "bytes": 917,
+   "kind": "decompiled"
+  },
+  "003982b3": {
+   "name": "坐标清剿九黎余孽",
+   "group": "数据",
+   "path": "Script64/数据/坐标清剿九黎余孽.lua",
+   "sha256": "9b685eb8ec5975e1e77145a9efebbe0f5136027146737fa6756973f8afd494c8",
+   "bytes": 208,
+   "kind": "decompiled"
+  },
+  "003983dc": {
+   "name": "科举",
+   "group": "数据",
+   "path": "Script64/数据/科举.lua",
+   "sha256": "23458ebc2133e056b55f38a1ad278809e92531c396c2abd4431f942563e1f831",
+   "bytes": 863617,
+   "kind": "decompiled"
+  },
+  "00427f3f": {
+   "name": "一千零一个愿望",
+   "group": "日常",
+   "path": "Script64/日常/一千零一个愿望.lua",
+   "sha256": "f8cb686a4b65e34b9718a108df92e2c5570f1e590eea616221a1e92c65342039",
+   "bytes": 2583,
+   "kind": "decompiled"
+  },
+  "004287bb": {
+   "name": "一键日常",
+   "group": "日常",
+   "path": "Script64/日常/一键日常.lua",
+   "sha256": "25313bf24de4dc74bceec3b1b1efd39edfcb4f9ffb74a176c3efbda5d6e12c99",
+   "bytes": 1917,
+   "kind": "decompiled"
+  },
+  "00428eb3": {
+   "name": "上缴天脉玄晶",
+   "group": "日常",
+   "path": "Script64/日常/上缴天脉玄晶.lua",
+   "sha256": "429bb5a675e2bccda258bf8d13831a43c67f6f0def19d60edb467c7e9d61cce0",
+   "bytes": 1166,
+   "kind": "decompiled"
+  },
+  "00429270": {
+   "name": "幸运快活三",
+   "group": "日常",
+   "path": "Script64/日常/幸运快活三.lua",
+   "sha256": "81be84c2eb6dcd8d018093d2f21c5745a66832aa2f3b259f0d0b14077cfe0e19",
+   "bytes": 3214,
+   "kind": "decompiled"
+  },
+  "00429e14": {
+   "name": "找回内息",
+   "group": "日常",
+   "path": "Script64/日常/找回内息.lua",
+   "sha256": "2c944839e7cb9a599d57e7c4912ffaf48a11cb273b0c7c678bcbdbea5d37b739",
+   "bytes": 752,
+   "kind": "decompiled"
+  },
+  "0042a183": {
+   "name": "提交五行法帖",
+   "group": "日常",
+   "path": "Script64/日常/提交五行法帖.lua",
+   "sha256": "efe9626d62b6411345bb6740ef4441519ef75fc043d84e3b0c2147e6c1a6b35b",
+   "bytes": 2634,
+   "kind": "decompiled"
+  },
+  "0042a927": {
+   "name": "提交紫微灵草",
+   "group": "日常",
+   "path": "Script64/日常/提交紫微灵草.lua",
+   "sha256": "57a28f18daa9651c4ff5471442701085ae6a3700fdc03b91b0c8526548c57eb6",
+   "bytes": 2043,
+   "kind": "decompiled"
+  },
+  "0042af8e": {
+   "name": "杯酒尽江湖",
+   "group": "日常",
+   "path": "Script64/日常/杯酒尽江湖.lua",
+   "sha256": "a2d8056d77bf9910db904cd8ec5c99e96f2dfa00d398ee655039c1b93e15c7d3",
+   "bytes": 5627,
+   "kind": "decompiled"
+  },
+  "0042c112": {
+   "name": "领取周道具奖励",
+   "group": "日常",
+   "path": "Script64/日常/领取周道具奖励.lua",
+   "sha256": "f2b28c9fd97f97b5fa2641ba9d6a7ac0e66fade840dc6a5ebd43955c5aa1eb98",
+   "bytes": 550,
+   "kind": "decompiled"
+  },
+  "0042c38c": {
+   "name": "领取天脉福泽",
+   "group": "日常",
+   "path": "Script64/日常/领取天脉福泽.lua",
+   "sha256": "e9019baac09776b24fdce5a752f3140a4c4813349b1cf5d9ec7d3d6417130b53",
+   "bytes": 492,
+   "kind": "decompiled"
+  },
+  "0042c5fe": {
+   "name": "领取安全评分奖励",
+   "group": "日常",
+   "path": "Script64/日常/领取安全评分奖励.lua",
+   "sha256": "f1ccc91b0f7e6a07a549b33d0e157de5268e41dcb1eae89831e8be7dba062827",
+   "bytes": 827,
+   "kind": "decompiled"
+  },
+  "0042c956": {
+   "name": "领取师徒心连心",
+   "group": "日常",
+   "path": "Script64/日常/领取师徒心连心.lua",
+   "sha256": "5fec2338890502b1f5163de0757c0f819ce60f543771311d9e583610ad5af8b6",
+   "bytes": 977,
+   "kind": "decompiled"
+  },
+  "0042cd40": {
+   "name": "领取波斯玫瑰",
+   "group": "日常",
+   "path": "Script64/日常/领取波斯玫瑰.lua",
+   "sha256": "c5423f91fc720c6829f8ed0bd4e5335c3c8c94efa165b2ed1c8656b3a889fa55",
+   "bytes": 923,
+   "kind": "decompiled"
+  },
+  "0042d0d2": {
+   "name": "领取活跃好礼",
+   "group": "日常",
+   "path": "Script64/日常/领取活跃好礼.lua",
+   "sha256": "b00ab60b408c7e76b5684129bab13178194eb18d5f9f1b169619e4a07aa63011",
+   "bytes": 227,
+   "kind": "decompiled"
+  },
+  "0042d1e7": {
+   "name": "领取霸者天下奖励",
+   "group": "日常",
+   "path": "Script64/日常/领取霸者天下奖励.lua",
+   "sha256": "78ebaf7f8936022d13f823b2eb51119a4865820868bbc6a37f99e19eb2bc8ed6",
+   "bytes": 1718,
+   "kind": "decompiled"
+  },
+  "0042d778": {
+   "name": "领取鲜花种子",
+   "group": "日常",
+   "path": "Script64/日常/领取鲜花种子.lua",
+   "sha256": "36f87b3f9e6f97ad7b83bf4fb55caebc83c27de759327f71caa5970411591206",
+   "bytes": 914,
+   "kind": "decompiled"
+  },
+  "0042dafd": {
+   "name": "合成四绘卷",
+   "group": "活动",
+   "path": "Script64/活动/合成四绘卷.lua",
+   "sha256": "8e37d84586b60e40c39e0b0b48aea80b68b7542a43e64ea046d455b356dcf4b6",
+   "bytes": 797,
+   "kind": "decompiled"
+  },
+  "0042de32": {
+   "name": "逆袭",
+   "group": "活动",
+   "path": "Script64/活动/逆袭.lua",
+   "sha256": "48d0e67f8a897233a23452c316817eed2bb8bfbfaa1ac957510b0f313e22f899",
+   "bytes": 32674,
+   "kind": "decompiled"
+  },
+  "004354bc": {
+   "name": "战江湖",
+   "group": "活动",
+   "path": "Script64/活动/战江湖.lua",
+   "sha256": "2cc45a96c7a770ae48db272e781eeb532bb423397396cb42a66db2720ff4be6b",
+   "bytes": 1096,
+   "kind": "decompiled"
+  },
+  "0043595d": {
+   "name": "侠客行",
+   "group": "活动",
+   "path": "Script64/活动/侠客行.lua",
+   "sha256": "a75ff0edccf5b90d3dfee2acf7abfa3c170163beb84beaab6d7bae41dc3f4c92",
+   "bytes": 7157,
+   "kind": "decompiled"
+  },
+  "00436cf5": {
+   "name": "豪气满江湖",
+   "group": "活动",
+   "path": "Script64/活动/豪气满江湖.lua",
+   "sha256": "62d95a26484a28b0b264e37db6d9b15b22343eb7eaa71df0c60e49f08ae38cc9",
+   "bytes": 2615,
+   "kind": "decompiled"
+  },
+  "0043776f": {
+   "name": "盛景繁绘",
+   "group": "活动",
+   "path": "Script64/活动/盛景繁绘.lua",
+   "sha256": "276c5ce82c69d36e9db2549272b87dfb69bbfe1ba5697b61513b9d1267e60483",
+   "bytes": 6721,
+   "kind": "decompiled"
+  },
+  "0043905b": {
+   "name": "湖心往事",
+   "group": "活动",
+   "path": "Script64/活动/湖心往事.lua",
+   "sha256": "7b5e773656c93b64cad60b9d1f9226b5cf5b928d7cc0ac34546895229e446246",
+   "bytes": 2041,
+   "kind": "decompiled"
+  },
+  "00439737": {
+   "name": "倩心阁兑换",
+   "group": "活动",
+   "path": "Script64/活动/倩心阁兑换.lua",
+   "sha256": "44f1fec1123a274ad93da975e2491237470c51cde5e6a7885b8242d1a3726ec4",
+   "bytes": 2760,
+   "kind": "decompiled"
+  },
+  "0043a061": {
+   "name": "使用金纹铜钱",
+   "group": "活动",
+   "path": "Script64/活动/使用金纹铜钱.lua",
+   "sha256": "83bb3fb3df6cba3b80292996c9eb61cb76522731e817975b783025c4a3311d27",
+   "bytes": 1220,
+   "kind": "decompiled"
+  },
+  "0043a50d": {
+   "name": "金元礼赠",
+   "group": "活动",
+   "path": "Script64/活动/金元礼赠.lua",
+   "sha256": "38899e9d10820d12ca431e030f4acabd8608fe4dad952ddbc723572230961b99",
+   "bytes": 440,
+   "kind": "decompiled"
+  },
+  "0043a727": {
+   "name": "领取群豪榜奖励",
+   "group": "活动",
+   "path": "Script64/活动/领取群豪榜奖励.lua",
+   "sha256": "35309311d5f04989ff9a87a7a236ccdc8184f8c8f49d1894810bb0dfa930a609",
+   "bytes": 681,
+   "kind": "decompiled"
+  },
+  "0043a9a2": {
+   "name": "山河赴约",
+   "group": "活动",
+   "path": "Script64/活动/山河赴约.lua",
+   "sha256": "884eaac6a951d48e3a1f384168e17bb4720ff006a0956588ea9e74109bae811b",
+   "bytes": 601,
+   "kind": "decompiled"
+  },
+  "0043ac4d": {
+   "name": "莲池相宝",
+   "group": "活动",
+   "path": "Script64/活动/莲池相宝.lua",
+   "sha256": "2a5579dc95fcae5b8e573b160b36249cb748d71fab2f9cc119eddfd64a05d72b",
+   "bytes": 996,
+   "kind": "decompiled"
+  },
+  "0043b0a1": {
+   "name": "祈鸿金-金币",
+   "group": "活动",
+   "path": "Script64/活动/祈鸿金-金币.lua",
+   "sha256": "4892551df9c19f375f4c5c7992417d24e8522d187a5446402c681fcf27902537",
+   "bytes": 1083,
+   "kind": "decompiled"
+  },
+  "0043b4bf": {
+   "name": "祈鸿金-交子",
+   "group": "活动",
+   "path": "Script64/活动/祈鸿金-交子.lua",
+   "sha256": "e433e9f00c8445d6e3682429828a03ec7e9dc04e0eeecd11121462b5287ead0d",
+   "bytes": 931,
+   "kind": "decompiled"
+  },
+  "0043b846": {
+   "name": "蒲雪饮冰",
+   "group": "活动",
+   "path": "Script64/活动/蒲雪饮冰.lua",
+   "sha256": "d615ae75a105ceeefa7b8f12e05e5085a52c789f92f93d012fd5f88cd16c1812",
+   "bytes": 2309,
+   "kind": "decompiled"
+  },
+  "0043c03c": {
+   "name": "清泉茗茶-碧螺春",
+   "group": "活动",
+   "path": "Script64/活动/清泉茗茶-碧螺春.lua",
+   "sha256": "006c7100f119438fcd9815c64898b774272c8501bfd3a2acdbcdfd2b1f703d36",
+   "bytes": 9858,
+   "kind": "decompiled"
+  },
+  "0043e0aa": {
+   "name": "清泉茗茶-龙井",
+   "group": "活动",
+   "path": "Script64/活动/清泉茗茶-龙井.lua",
+   "sha256": "a5c8cc4e64f6b5d7c4b5cd642e018d568813033784f4d5a0e1ca19d4bf5ec15f",
+   "bytes": 9858,
+   "kind": "decompiled"
+  },
+  "00440116": {
+   "name": "清泉茗茶-普洱",
+   "group": "活动",
+   "path": "Script64/活动/清泉茗茶-普洱.lua",
+   "sha256": "01e7ff073fa60468192442939dec11898a535aa176488e362733a1bfeda62f18",
+   "bytes": 9858,
+   "kind": "decompiled"
+  },
+  "00442184": {
+   "name": "清泉茗茶-竹叶青",
+   "group": "活动",
+   "path": "Script64/活动/清泉茗茶-竹叶青.lua",
+   "sha256": "56d72e5bf3b44419be9e34e1c502ec622cbd40a4fa93a9b5127df922c16722ca",
+   "bytes": 9858,
+   "kind": "decompiled"
+  },
+  "004441ef": {
+   "name": "行笔绘伏夏",
+   "group": "活动",
+   "path": "Script64/活动/行笔绘伏夏.lua",
+   "sha256": "8e3ee96cefab960bba5bf6bd5f0e9184399766e4637dcf3addefad84cbaf7339",
+   "bytes": 683,
+   "kind": "decompiled"
+  },
+  "00444592": {
+   "name": "楚汉之战",
+   "group": "活动",
+   "path": "Script64/活动/楚汉之战.lua",
+   "sha256": "0c0b95c14b6b55da5ee18c1e0c54c4f83b0d9cc12a2dc28ff7dc4c7a7d45063b",
+   "bytes": 3806,
+   "kind": "decompiled"
+  },
+  "0044533c": {
+   "name": "红线相忆礼随心",
+   "group": "活动",
+   "path": "Script64/活动/红线相忆礼随心.lua",
+   "sha256": "ebc921e312ff9a3db14bf1c50705d688975ee8ad17bf4706b9d57d41e95051ae",
+   "bytes": 1463,
+   "kind": "decompiled"
+  },
+  "00445897": {
+   "name": "千百渡他(困难)",
+   "group": "活动",
+   "path": "Script64/活动/千百渡他(困难).lua",
+   "sha256": "01bd7343fd56ff668f7403135ba339a75772febe33717a31c437e92a8e8153ed",
+   "bytes": 2183,
+   "kind": "decompiled"
+  },
+  "00445fe7": {
+   "name": "千百渡他(普通)",
+   "group": "活动",
+   "path": "Script64/活动/千百渡他(普通).lua",
+   "sha256": "bb36f3c02407ea9d084d526b970e8863a9780682203b1aa62289e7e020769903",
+   "bytes": 2183,
+   "kind": "decompiled"
+  },
+  "00446737": {
+   "name": "千百渡他(简单)",
+   "group": "活动",
+   "path": "Script64/活动/千百渡他(简单).lua",
+   "sha256": "4bd5746a2d921e1fc1e6fa10165542c4c2b8a0629dc8d2f685aefa1e73e33c54",
+   "bytes": 2313,
+   "kind": "decompiled"
+  },
+  "00446ef5": {
+   "name": "楚歌难渡(困难)",
+   "group": "活动",
+   "path": "Script64/活动/楚歌难渡(困难).lua",
+   "sha256": "0dec2e68295d822f3b8372ee1745a610e007da36c68adf17a6b49ca773a41bd2",
+   "bytes": 7391,
+   "kind": "decompiled"
+  },
+  "004486c3": {
+   "name": "楚歌难渡(普通)",
+   "group": "活动",
+   "path": "Script64/活动/楚歌难渡(普通).lua",
+   "sha256": "0933214903aaac85b3022008b66bd8a43bae1b91772fecf14d54a80c748f3a03",
+   "bytes": 7391,
+   "kind": "decompiled"
+  },
+  "00449e91": {
+   "name": "楚歌难渡(简单)",
+   "group": "活动",
+   "path": "Script64/活动/楚歌难渡(简单).lua",
+   "sha256": "5639986b8e8a1ead32f7b339a49405d3e45b3b148f05783db0429ea22bfc3b7f",
+   "bytes": 7391,
+   "kind": "decompiled"
+  },
+  "0044b65f": {
+   "name": "虞花苦渡(普通)",
+   "group": "活动",
+   "path": "Script64/活动/虞花苦渡(普通).lua",
+   "sha256": "e12392c4d651d048b543b56e9949513bd7ae1a9ceee49867b0cda19be8bd893a",
+   "bytes": 8671,
+   "kind": "decompiled"
+  },
+  "0044d295": {
+   "name": "虞花苦渡(困难)",
+   "group": "活动",
+   "path": "Script64/活动/虞花苦渡(困难).lua",
+   "sha256": "08aad52bae1543e3ce9ee08e754862abb1335c6813d087e2d32a50a0a5a64546",
+   "bytes": 8665,
+   "kind": "decompiled"
+  },
+  "0044eec5": {
+   "name": "虞花苦渡(简单)",
+   "group": "活动",
+   "path": "Script64/活动/虞花苦渡(简单).lua",
+   "sha256": "285af07c957c262c0702a0b705e021d0e9983cbd34832bdcd762533a4bbe46a1",
+   "bytes": 7983,
+   "kind": "decompiled"
+  },
+  "00450a02": {
+   "name": "情寄虞兮",
+   "group": "活动",
+   "path": "Script64/活动/情寄虞兮.lua",
+   "sha256": "6b1cb701af110eb0c0cafeb683faf6e9c023ef2b1e7d127cdcdfe977872f84d4",
+   "bytes": 2320,
+   "kind": "decompiled"
+  },
+  "00451266": {
+   "name": "叹姻缘",
+   "group": "活动",
+   "path": "Script64/活动/叹姻缘.lua",
+   "sha256": "332e9c54b681ab91fe10007001f27412f25705bb9c7a420c7a76630070484631",
+   "bytes": 8666,
+   "kind": "decompiled"
+  },
+  "0045297d": {
+   "name": "霸王别姬颂千年",
+   "group": "活动",
+   "path": "Script64/活动/霸王别姬颂千年.lua",
+   "sha256": "0190137a0f45e6608ba76c87e8e108405ef23c503e775559e9d932ad6a746c4f",
+   "bytes": 456,
+   "kind": "decompiled"
+  },
+  "00452b92": {
+   "name": "问画朔源",
+   "group": "活动",
+   "path": "Script64/活动/问画朔源.lua",
+   "sha256": "dec932ccf01a89859b48d1c62a5d87ae5bb800b2a7b7b6fa76e1135622a14bb9",
+   "bytes": 4803,
+   "kind": "decompiled"
+  },
+  "00453a9f": {
+   "name": "渡别乌江(简单)",
+   "group": "活动",
+   "path": "Script64/活动/渡别乌江(简单).lua",
+   "sha256": "e5efdd8dd81285239e6a0d3b4a3e5a4bf1cfc777ed44709709e7ac4f0f6093b9",
+   "bytes": 6539,
+   "kind": "decompiled"
+  },
+  "00454fcd": {
+   "name": "渡别乌江(困难)",
+   "group": "活动",
+   "path": "Script64/活动/渡别乌江(困难).lua",
+   "sha256": "bf582520d6809e038bc13e6dd4a6986f4c506abbacec08e3f877349fba782648",
+   "bytes": 6547,
+   "kind": "decompiled"
+  },
+  "00456501": {
+   "name": "渡别乌江(普通)",
+   "group": "活动",
+   "path": "Script64/活动/渡别乌江(普通).lua",
+   "sha256": "28afc257b69c457509a5f7b1744be0ac1a6a5cb60c0434590bbb8a90947b14e8",
+   "bytes": 6547,
+   "kind": "decompiled"
+  },
+  "00457a35": {
+   "name": "领取良缘会奖励",
+   "group": "活动",
+   "path": "Script64/活动/领取良缘会奖励.lua",
+   "sha256": "275814ce60dc53bdc8c850dfb53e7068e1af3b675d152dacc6673f198cc619d8",
+   "bytes": 388,
+   "kind": "decompiled"
+  },
+  "00457c3f": {
+   "name": "侠骨丹心",
+   "group": "活动",
+   "path": "Script64/活动/侠骨丹心.lua",
+   "sha256": "f5e47ef52484f1449b7f999accc4296dbd55d3f38ab57cb0d24325dfe3d878ba",
+   "bytes": 6423,
+   "kind": "decompiled"
+  },
+  "0045934a": {
+   "name": "暗袭萧阿刺(困难)",
+   "group": "活动",
+   "path": "Script64/活动/暗袭萧阿刺(困难).lua",
+   "sha256": "f090e09e501e8a7da92c113c494e7518e7720f0a1a2e9f424b85bdef4d76147f",
+   "bytes": 4808,
+   "kind": "decompiled"
+  },
+  "0045a610": {
+   "name": "暗袭萧阿刺(普通)",
+   "group": "活动",
+   "path": "Script64/活动/暗袭萧阿刺(普通).lua",
+   "sha256": "e8d11cac91899df557d8175c02ff8ae25a74cf96acafd9be65a2e8eb32cfc7e5",
+   "bytes": 4808,
+   "kind": "decompiled"
+  },
+  "0045b8d6": {
+   "name": "暗袭萧阿刺(简单)",
+   "group": "活动",
+   "path": "Script64/活动/暗袭萧阿刺(简单).lua",
+   "sha256": "b72bc17b09a21dcc1e0042ccc1af5a43ae271f0cd1c0308fddb504712aa1b285",
+   "bytes": 4807,
+   "kind": "decompiled"
+  },
+  "0045cb96": {
+   "name": "山河万里行",
+   "group": "活动",
+   "path": "Script64/活动/山河万里行.lua",
+   "sha256": "45594f6179a1f1b484208d1f12cfcc536b871266c2dfe1f44cebcad5971bacaf",
+   "bytes": 1189,
+   "kind": "decompiled"
+  },
+  "0045d0bd": {
+   "name": "寒山侠影",
+   "group": "活动",
+   "path": "Script64/活动/寒山侠影.lua",
+   "sha256": "2c446b784ba01157db8d9870be72108004fbc832f95b92ce59513152ae29b0c1",
+   "bytes": 389,
+   "kind": "decompiled"
+  },
+  "0045d2b4": {
+   "name": "[08] 自动摆摊",
+   "group": "物品",
+   "path": "Script64/物品/[08] 自动摆摊.lua",
+   "sha256": "4bfce4f176110e87b7de2ee4ae8f705a43ed065095a58faac6c56f450d38d76a",
+   "bytes": 14955,
+   "kind": "decompiled"
+  },
+  "004601a4": {
+   "name": "[功能] 买卖补给",
+   "group": "物品",
+   "path": "Script64/物品/[功能] 买卖补给.lua",
+   "sha256": "65aceb89b0132e439d0096b043044f563cbf21b9df51dfc5e9c4d123ebf1e4f3",
+   "bytes": 223,
+   "kind": "decompiled"
+  },
+  "004602c2": {
+   "name": "[功能] 物品存仓",
+   "group": "物品",
+   "path": "Script64/物品/[功能] 物品存仓.lua",
+   "sha256": "61fd32b22a3fc762079f4d0ba43d54405e5682946aad38d160c6a8f6aac3e974",
+   "bytes": 152,
+   "kind": "decompiled"
+  },
+  "00460396": {
+   "name": "一键交易",
+   "group": "物品",
+   "path": "Script64/物品/一键交易.lua",
+   "sha256": "af7b7277f9c9310365655d9610c14c70603c2dd9ba6ce3b7ff91813fa43fe9e2",
+   "bytes": 205,
+   "kind": "decompiled"
+  },
+  "0046049c": {
+   "name": "交易给老板号",
+   "group": "物品",
+   "path": "Script64/物品/交易给老板号.lua",
+   "sha256": "048dca27213073362333164fc391a5d372e2484e54897050f738c0452ccf46e8",
+   "bytes": 11063,
+   "kind": "decompiled"
+  },
+  "004626e3": {
+   "name": "仓库取出物品",
+   "group": "物品",
+   "path": "Script64/物品/仓库取出物品.lua",
+   "sha256": "3a4be9b7141954779757ba423eda025fb9213720fd4d67fb0416b04958a8e2ec",
+   "bytes": 152,
+   "kind": "decompiled"
+  },
+  "004627b4": {
+   "name": "商会取物",
+   "group": "物品",
+   "path": "Script64/物品/商会取物.lua",
+   "sha256": "7386515f8f103f0003ccb3ba68bd364b0ab49d48cfa8f0e6799b39bbb89d33a5",
+   "bytes": 495,
+   "kind": "decompiled"
+  },
+  "00462a35": {
+   "name": "商会存物",
+   "group": "物品",
+   "path": "Script64/物品/商会存物.lua",
+   "sha256": "f69d20d128077b9acfde31f6bfc21949eae6f98b8d2ca40a6074ec224058e0c6",
+   "bytes": 4150,
+   "kind": "decompiled"
+  },
+  "0046388b": {
+   "name": "商会比价",
+   "group": "物品",
+   "path": "Script64/物品/商会比价.lua",
+   "sha256": "332bb5c0955bcec22a89aecb6d606ddc52c76ae7c4a7dc4728606444bdcee872",
+   "bytes": 4947,
+   "kind": "decompiled"
+  },
+  "00464940": {
+   "name": "商会管理(物品店)",
+   "group": "物品",
+   "path": "Script64/物品/商会管理(物品店).lua",
+   "sha256": "9e0028b330632b9ae561bead3316aa6f0c737740f27097fa764a02c59988681a",
+   "bytes": 8281,
+   "kind": "decompiled"
+  },
+  "004664f6": {
+   "name": "天外寄售",
+   "group": "物品",
+   "path": "Script64/物品/天外寄售.lua",
+   "sha256": "ca13124fd5dab734a9dc41bee16d44d3a954036404e8a9ab843029cd4f93bf8c",
+   "bytes": 14091,
+   "kind": "decompiled"
+  },
+  "004690da": {
+   "name": "定点收购",
+   "group": "物品",
+   "path": "Script64/物品/定点收购.lua",
+   "sha256": "c5ebe3b669d3f8ac9890e53a13c15ac1f9cdb07a0df618848c864dbc97d975e7",
+   "bytes": 2956,
+   "kind": "decompiled"
+  },
+  "004699da": {
+   "name": "扫商会",
+   "group": "物品",
+   "path": "Script64/物品/扫商会.lua",
+   "sha256": "bfe193b1f2a02ed39897c5e6f3e52a786e0c165df88898e4f2aeee3c222fe781",
+   "bytes": 3756,
+   "kind": "decompiled"
+  },
+  "0046a533": {
+   "name": "扫地摊",
+   "group": "物品",
+   "path": "Script64/物品/扫地摊.lua",
+   "sha256": "fa4a68344979581c19a821cedf6d9f2f31b65bb4dcb338ba730a1b35c1badfea",
+   "bytes": 3680,
+   "kind": "decompiled"
+  },
+  "0046b03a": {
+   "name": "扫街收购",
+   "group": "物品",
+   "path": "Script64/物品/扫街收购.lua",
+   "sha256": "a2b6a02b83047ca9622f9779f16263b6cd45a646997257b6a003546ff0345806",
+   "bytes": 3803,
+   "kind": "decompiled"
+  },
+  "0046bb89": {
+   "name": "扫钱庄",
+   "group": "物品",
+   "path": "Script64/物品/扫钱庄.lua",
+   "sha256": "90b1241bd43e270d1985a8bd9433e9b487a0f1194c8f11afc5395d196280afbe",
+   "bytes": 3252,
+   "kind": "decompiled"
+  },
+  "0046c580": {
+   "name": "老板接收交易",
+   "group": "物品",
+   "path": "Script64/物品/老板接收交易.lua",
+   "sha256": "e6e28660ff91032bf182563d146c3ebf4edb68c492823f7880a19aa626f6fcbf",
+   "bytes": 5836,
+   "kind": "decompiled"
+  },
+  "0046d747": {
+   "name": "购买中都行商",
+   "group": "物品",
+   "path": "Script64/物品/购买中都行商.lua",
+   "sha256": "7787694d4cb52253e428cb6d7ba691f819276448079f46d533c1927de0b937d6",
+   "bytes": 5768,
+   "kind": "decompiled"
+  },
+  "0046ec80": {
+   "name": "购买云锦行物品",
+   "group": "物品",
+   "path": "Script64/物品/购买云锦行物品.lua",
+   "sha256": "48f46c8eeb2c9a3fbeb1b5dc47021dfcdeb1b75e813a660264b182739070652e",
+   "bytes": 5904,
+   "kind": "decompiled"
+  },
+  "0047029f": {
+   "name": "购买元丹坊",
+   "group": "物品",
+   "path": "Script64/物品/购买元丹坊.lua",
+   "sha256": "9ae35a6da45d5694abe56f36deec1e79ff5698b5d426bb5c38160b87268814d4",
+   "bytes": 2691,
+   "kind": "decompiled"
+  },
+  "00470b01": {
+   "name": "购买半价红利商品",
+   "group": "物品",
+   "path": "Script64/物品/购买半价红利商品.lua",
+   "sha256": "ee71390b1b2f14b2d84d532c73f74e298be92221ac116cf3d3417e7d71bfed8d",
+   "bytes": 2217,
+   "kind": "decompiled"
+  },
+  "00471348": {
+   "name": "购买天荒商行",
+   "group": "物品",
+   "path": "Script64/物品/购买天荒商行.lua",
+   "sha256": "63b33cd033faf22516dee42478a728d803759ad6be56e1e31832ce2f9dd956e3",
+   "bytes": 7246,
+   "kind": "decompiled"
+  },
+  "00472c05": {
+   "name": "购买寒纹玉物品",
+   "group": "物品",
+   "path": "Script64/物品/购买寒纹玉物品.lua",
+   "sha256": "205ad529e0b3e5ddc2661450daf37addaacebd45bf6b5a0aea314b6c1c32f61d",
+   "bytes": 5007,
+   "kind": "decompiled"
+  },
+  "00473eae": {
+   "name": "购买归山阁物品",
+   "group": "物品",
+   "path": "Script64/物品/购买归山阁物品.lua",
+   "sha256": "8addaa6f1dd46a7df61d9dc52134f1517466e9c9b19aed66213c42d339a057b3",
+   "bytes": 6815,
+   "kind": "decompiled"
+  },
+  "00475055": {
+   "name": "购买战功商品",
+   "group": "物品",
+   "path": "Script64/物品/购买战功商品.lua",
+   "sha256": "62725480dccb6c3589501ab795812f57af32c92163ca370923b2b18919b1a553",
+   "bytes": 3590,
+   "kind": "decompiled"
+  },
+  "00475d8d": {
+   "name": "购买玲珑阁物品",
+   "group": "物品",
+   "path": "Script64/物品/购买玲珑阁物品.lua",
+   "sha256": "0893af56a141669b5b3a2c02005c34b6a5a014fd9da09971197e11cd4b47c3d1",
+   "bytes": 7137,
+   "kind": "decompiled"
+  },
+  "0047764f": {
+   "name": "购买百宝阁商品",
+   "group": "物品",
+   "path": "Script64/物品/购买百宝阁商品.lua",
+   "sha256": "e5586a2f989f23cc787ad7aa9c3e45dbf4df38b344f7e5ad3b332f19d803f8b0",
+   "bytes": 3426,
+   "kind": "decompiled"
+  },
+  "00478334": {
+   "name": "购买赠点物品",
+   "group": "物品",
+   "path": "Script64/物品/购买赠点物品.lua",
+   "sha256": "04f1405f08fe36992b9d57f328b3d67a931030275d97b4c6a7b3c0e3de43354a",
+   "bytes": 6133,
+   "kind": "decompiled"
+  },
+  "004795c7": {
+   "name": "购买鎏金礼匣",
+   "group": "物品",
+   "path": "Script64/物品/购买鎏金礼匣.lua",
+   "sha256": "252cc5a83702c58e1ad96f13385ed4038731c304d28b351da54be15f4f254731",
+   "bytes": 3799,
+   "kind": "decompiled"
+  },
+  "0047a37d": {
+   "name": "钱庄寄售",
+   "group": "物品",
+   "path": "Script64/物品/钱庄寄售.lua",
+   "sha256": "e9c9d67b78e39fa4cdc2be57b184955b56f5ef88d089f60376d6275aa5961a7d",
+   "bytes": 10048,
+   "kind": "decompiled"
+  },
+  "0047c352": {
+   "name": "销毁清理背包",
+   "group": "物品",
+   "path": "Script64/物品/销毁清理背包.lua",
+   "sha256": "90e59747eee7159597ea95bd3e9a9cbb3045b15cceea00ee416b9deeb3cf38b4",
+   "bytes": 192,
+   "kind": "decompiled"
+  },
+  "0047c440": {
+   "name": "鬼市千金阁买物",
+   "group": "物品",
+   "path": "Script64/物品/鬼市千金阁买物.lua",
+   "sha256": "260d22004e6345117fb9b938c1665f6bb1406f3d18753d0362c9ad85cbe2982c",
+   "bytes": 2426,
+   "kind": "decompiled"
+  },
+  "0047cbd0": {
+   "name": "bag",
+   "group": "系统",
+   "path": "Script64/系统/bag.lua",
+   "sha256": "9f11b2d41bee2de13737e1fa2735c3b424e2ba9b647746d32eb948c3d61487e3",
+   "bytes": 136650,
+   "kind": "decompiled"
+  },
+  "0049878b": {
+   "name": "caiji",
+   "group": "系统",
+   "path": "Script64/系统/caiji.lua",
+   "sha256": "a7fe5b94a7f019b40a06a4d48c04a4dfd62065ef7624615dbeb88991ffd059ee",
+   "bytes": 17641,
+   "kind": "decompiled"
+  },
+  "0049c027": {
+   "name": "common",
+   "group": "系统",
+   "path": "Script64/系统/common.lua",
+   "sha256": "21c5ea147eed7d326af1e4f24130799b6821ea85102e1a862878aa935d45b445",
+   "bytes": 65033,
+   "kind": "decompiled"
+  },
+  "004ab809": {
+   "name": "common_2",
+   "group": "系统",
+   "path": "Script64/系统/common_2.lua",
+   "sha256": "a1a0a544ef598e621fd3c0ea74efe60dc84f728beefad05d4a12ff160bf44ffa",
+   "bytes": 106592,
+   "kind": "decompiled"
+  },
+  "004c3b9c": {
+   "name": "daguai",
+   "group": "系统",
+   "path": "Script64/系统/daguai.lua",
+   "sha256": "475c9d474164d21a77eaf43cd00ee95de2f68bc5697d2747a3a3eb078f81dc94",
+   "bytes": 56798,
+   "kind": "decompiled"
+  },
+  "004cf8d9": {
+   "name": "fnE2C",
+   "group": "系统",
+   "path": "Script64/系统/fnE2C.lua",
+   "sha256": "78fd9d15c5704cc42c75c1c3645daef950c1a4b4522aff80a5ebbac38790adef",
+   "bytes": 4603,
+   "kind": "decompiled"
+  },
+  "004d098b": {
+   "name": "fn三神幻境",
+   "group": "系统",
+   "path": "Script64/系统/fn三神幻境.lua",
+   "sha256": "6c421204ee3d6cada4b5ba2d14f3b4368a8ae6a0ad9666f5ac273dcee3f0ab17",
+   "bytes": 19267,
+   "kind": "decompiled"
+  },
+  "004d4635": {
+   "name": "fn修理装备",
+   "group": "系统",
+   "path": "Script64/系统/fn修理装备.lua",
+   "sha256": "58f7c80c2d2f0734b9f8a02069d84b51863e8809d22a2bd63dfe31a11ed13a7b",
+   "bytes": 18312,
+   "kind": "decompiled"
+  },
+  "004d841e": {
+   "name": "fn元丹坊",
+   "group": "系统",
+   "path": "Script64/系统/fn元丹坊.lua",
+   "sha256": "7d860208b04518a57bce818ebf904fda076385bff03a2cf447f9036c4c238106",
+   "bytes": 7696,
+   "kind": "decompiled"
+  },
+  "004da0d3": {
+   "name": "fn兼容接口",
+   "group": "系统",
+   "path": "Script64/系统/fn兼容接口.lua",
+   "sha256": "565fcdc88b2bf324ea78dc0701d6960dd5cd83868186bb447dd46a273ce97577",
+   "bytes": 8431,
+   "kind": "decompiled"
+  },
+  "004dc4b9": {
+   "name": "fn剧情_一品堂",
+   "group": "系统",
+   "path": "Script64/系统/fn剧情_一品堂.lua",
+   "sha256": "99ddce8113ad477369536b0dd7b9cbcffb9c2f35bb807e7de27f9bb8c90edd96",
+   "bytes": 10745,
+   "kind": "decompiled"
+  },
+  "004de8ed": {
+   "name": "fn剧情_万劫谷",
+   "group": "系统",
+   "path": "Script64/系统/fn剧情_万劫谷.lua",
+   "sha256": "6e26aaf8848cf0ce79752cc832196ba12e823ce0f33c08dc387e33874459ebdf",
+   "bytes": 10647,
+   "kind": "decompiled"
+  },
+  "004e0f25": {
+   "name": "fn剧情_少室山",
+   "group": "系统",
+   "path": "Script64/系统/fn剧情_少室山.lua",
+   "sha256": "543fc78f5dbcf9e9ac1f005c546589031587bdf397297475afbebf5e0ccdef11",
+   "bytes": 18381,
+   "kind": "decompiled"
+  },
+  "004e4386": {
+   "name": "fn剧情_擂鼓山",
+   "group": "系统",
+   "path": "Script64/系统/fn剧情_擂鼓山.lua",
+   "sha256": "1e968af7c600b5ba17cdc919e509d8f4089bb229db7a622d2c59e52e5c6ceea9",
+   "bytes": 7392,
+   "kind": "decompiled"
+  },
+  "004e5d55": {
+   "name": "fn剧情_燕子坞",
+   "group": "系统",
+   "path": "Script64/系统/fn剧情_燕子坞.lua",
+   "sha256": "7655365db02a2cd9c8028b920c2ef4f147b0a843262b560b85c9e780dc3a33ac",
+   "bytes": 10702,
+   "kind": "decompiled"
+  },
+  "004e835b": {
+   "name": "fn剧情_聚贤庄",
+   "group": "系统",
+   "path": "Script64/系统/fn剧情_聚贤庄.lua",
+   "sha256": "f6d8153583000f9397e2432e91435a175419607f4393defa0dd66e3960804f40",
+   "bytes": 11218,
+   "kind": "decompiled"
+  },
+  "004eaaa7": {
+   "name": "fn剧情_苍茫山",
+   "group": "系统",
+   "path": "Script64/系统/fn剧情_苍茫山.lua",
+   "sha256": "c8f7d657901e899700d7b21b75cc145f9240a59e2113f073626398a2ef833e12",
+   "bytes": 12226,
+   "kind": "decompiled"
+  },
+  "004ed3ee": {
+   "name": "fn四绝庄",
+   "group": "系统",
+   "path": "Script64/系统/fn四绝庄.lua",
+   "sha256": "869ba2dcb7db84ff3c2242a2a090613a5ab95430ba5740327a58ad2e4fc8fc80",
+   "bytes": 40050,
+   "kind": "decompiled"
+  },
+  "004f593d": {
+   "name": "fn抢购",
+   "group": "系统",
+   "path": "Script64/系统/fn抢购.lua",
+   "sha256": "2618750782e7d24c00a9a9eb4606e12ba2760ece44017f7f567a81fc967bffbe",
+   "bytes": 7671,
+   "kind": "decompiled"
+  },
+  "004f727b": {
+   "name": "fn王陵",
+   "group": "系统",
+   "path": "Script64/系统/fn王陵.lua",
+   "sha256": "215da27e8cd02af55c28daeb3e4077d956eb2898e5a2c905c24d919983756e8c",
+   "bytes": 11745,
+   "kind": "decompiled"
+  },
+  "004f9aa5": {
+   "name": "fn琅嬛福地",
+   "group": "系统",
+   "path": "Script64/系统/fn琅嬛福地.lua",
+   "sha256": "a6c3f6aeb97f9f98e4289b9f77a4f4445c301455c01d0f48ba72235e90cb3cb4",
+   "bytes": 34562,
+   "kind": "decompiled"
+  },
+  "005007ad": {
+   "name": "fn缥缈峰",
+   "group": "系统",
+   "path": "Script64/系统/fn缥缈峰.lua",
+   "sha256": "9aa48023db57a9e6bd0621c8bcfc7f027b193c16229347cc6458af22868761fd",
+   "bytes": 63260,
+   "kind": "decompiled"
+  },
+  "0050c192": {
+   "name": "fn聚灵谷",
+   "group": "系统",
+   "path": "Script64/系统/fn聚灵谷.lua",
+   "sha256": "c3900c9c627b2de905abfe57492ce1dc000bdcb6564b68c6b18b21fca6d305cb",
+   "bytes": 19967,
+   "kind": "decompiled"
+  },
+  "005106ce": {
+   "name": "functions",
+   "group": "系统",
+   "path": "Script64/系统/functions.lua",
+   "sha256": "0585049ed47cd08333d16e975203c2a1a23a58edc88e7bc30105b76b62da1e1c",
+   "bytes": 101253,
+   "kind": "decompiled"
+  },
+  "00536473": {
+   "name": "graph",
+   "group": "系统",
+   "path": "Script64/系统/graph.lua",
+   "sha256": "fd6f5ba397be092c3ce951270b9ab988f3a5e620df66a675f891db99f7a549f9",
+   "bytes": 31006,
+   "kind": "decompiled"
+  },
+  "00538db9": {
+   "name": "jiaoyi",
+   "group": "系统",
+   "path": "Script64/系统/jiaoyi.lua",
+   "sha256": "10185fd37097cd5b4cfaffb44e96209d5853e0d0c756edca8123ab64689b48b2",
+   "bytes": 3192,
+   "kind": "decompiled"
+  },
+  "00539ae4": {
+   "name": "json",
+   "group": "系统",
+   "path": "Script64/系统/json.lua",
+   "sha256": "53133dd6f58ba5105ab09ab180510556b7e6e914baa257fd59647f60c31e2174",
+   "bytes": 7595,
+   "kind": "decompiled"
+  },
+  "0053b980": {
+   "name": "leavescene",
+   "group": "系统",
+   "path": "Script64/系统/leavescene.lua",
+   "sha256": "537851012cc5dcf3729920fb5b149ea43e24cce70790beea8736a31ec8c91169",
+   "bytes": 3853,
+   "kind": "decompiled"
+  },
+  "0053c654": {
+   "name": "login",
+   "group": "系统",
+   "path": "Script64/系统/login.lua",
+   "sha256": "403d06e855552a3e58402b4fb8f0c3c0b4bbc0593ec4957697088042d07b6734",
+   "bytes": 22566,
+   "kind": "decompiled"
+  },
+  "00541346": {
+   "name": "lua-star",
+   "group": "系统",
+   "path": "Script64/系统/lua-star.lua",
+   "sha256": "8c496118f83d5f75806c4fc871d5b385401c0a0b2530dcf1589473fae835b340",
+   "bytes": 3513,
+   "kind": "decompiled"
+  },
+  "0054210f": {
+   "name": "mission",
+   "group": "系统",
+   "path": "Script64/系统/mission.lua",
+   "sha256": "25d978b228c13c235e5756a3b95564f983194fc9052eeab4ff448e205e3a393b",
+   "bytes": 6899,
+   "kind": "decompiled"
+  },
+  "00543797": {
+   "name": "pet",
+   "group": "系统",
+   "path": "Script64/系统/pet.lua",
+   "sha256": "92b7b45d7de5ebfc6fc1f44527935d0bc86b2cd88bd4b2f0788c5e0086825344",
+   "bytes": 6389,
+   "kind": "decompiled"
+  },
+  "005450ab": {
+   "name": "pkfun",
+   "group": "系统",
+   "path": "Script64/系统/pkfun.lua",
+   "sha256": "6c915ea0afe669732874d38b53aaba8f714df5c9a582c0d55ffd466b14b7df35",
+   "bytes": 4197,
+   "kind": "decompiled"
+  },
+  "0054608a": {
+   "name": "player",
+   "group": "系统",
+   "path": "Script64/系统/player.lua",
+   "sha256": "f83774f143d4e0f94ce86a45fd3c66b9a85d0d4be530556c39c7c39e3260bd09",
+   "bytes": 6488,
+   "kind": "decompiled"
+  },
+  "00547bce": {
+   "name": "shanghui",
+   "group": "系统",
+   "path": "Script64/系统/shanghui.lua",
+   "sha256": "4a65eb0597d1bf2abedf8a5e9497245f19b332c4f86674a781e255f10b2171e1",
+   "bytes": 69834,
+   "kind": "decompiled"
+  },
+  "00555832": {
+   "name": "skill",
+   "group": "系统",
+   "path": "Script64/系统/skill.lua",
+   "sha256": "a22763679795cc07e5e16e8229f0f24e6b7fa4a8967d13415242fd3c0ae46b0e",
+   "bytes": 22492,
+   "kind": "decompiled"
+  },
+  "0055a207": {
+   "name": "syszs",
+   "group": "系统",
+   "path": "Script64/系统/syszs.lua",
+   "sha256": "a6a7afdcc4d8899fdfdc5774dfc9c0978c57bb012c808e773893f7cc240aa081",
+   "bytes": 510,
+   "kind": "decompiled"
+  },
+  "0055a49e": {
+   "name": "target",
+   "group": "系统",
+   "path": "Script64/系统/target.lua",
+   "sha256": "2e2d4002cf01b2ad05b4222eaab2216cd74033df90eeaf1b902c50089b559db5",
+   "bytes": 4847,
+   "kind": "decompiled"
+  },
+  "0055b610": {
+   "name": "team",
+   "group": "系统",
+   "path": "Script64/系统/team.lua",
+   "sha256": "4bf735ed95905aeb048e87bd9108a9da484704a6c1ab6cc33704b8ca6935a80e",
+   "bytes": 18612,
+   "kind": "decompiled"
+  },
+  "0055fe64": {
+   "name": "thcheckteam",
+   "group": "系统",
+   "path": "Script64/系统/thcheckteam.lua",
+   "sha256": "d62d1f638ebec817d2d78b19a6941f16bd713775b369a9cc58e8f0950462b87c",
+   "bytes": 24474,
+   "kind": "decompiled"
+  },
+  "00564c67": {
+   "name": "thhelp",
+   "group": "系统",
+   "path": "Script64/系统/thhelp.lua",
+   "sha256": "7fd908e9ae17a151eca6c49f0d82de628bcf2bb9135bf99b70e00d63b121a917",
+   "bytes": 21103,
+   "kind": "decompiled"
+  },
+  "00569428": {
+   "name": "fn琅嬛福地_旧版",
+   "group": "系统",
+   "path": "Script64/系统/fn琅嬛福地_旧版.lua",
+   "sha256": "dd0d8b291a73cbd7fe0be411c19516da79625823fa83dbf2056304935bec1722",
+   "bytes": 33878,
+   "kind": "decompiled"
+  },
+  "acf806d3": {
+   "name": "数据·坐标刷马",
+   "group": "数据",
+   "path": "script/数据/坐标刷马.lua",
+   "sha256": "c16bec009d7c4a2e22d7263fed00819072d111004f25f5a11f62218a355734b2",
+   "bytes": 5890,
+   "kind": "plain"
+  },
+  "d5aeafab": {
+   "name": "数据·坐标天降奇兽",
+   "group": "数据",
+   "path": "script/数据/坐标天降奇兽.lua",
+   "sha256": "12fb2641e9754b6cd694dcb925dd2c69b666ee9c8f24ce802d6e480623c276bc",
+   "bytes": 879,
+   "kind": "plain"
+  },
+  "668724cd": {
+   "name": "数据·坐标摆摊",
+   "group": "数据",
+   "path": "script/数据/坐标摆摊.lua",
+   "sha256": "2b1dc6288cbb590b33284381100fe3a7c7734dc38ec2098f15169db4b10999e7",
+   "bytes": 1189,
+   "kind": "plain"
+  },
+  "70798208": {
+   "name": "数据·坐标清剿九黎余孽",
+   "group": "数据",
+   "path": "script/数据/坐标清剿九黎余孽.lua",
+   "sha256": "c2445d7d66a7f62671f9bcb9e08714221a39baa84c72deb184f6b7fac8f9f860",
+   "bytes": 289,
+   "kind": "plain"
+  },
+  "ddcf67aa": {
+   "name": "数据·科举",
+   "group": "数据",
+   "path": "script/数据/科举.lua",
+   "sha256": "f63ad899a90ee03762447ab86447d5dd27728777c7aa1ee63f455918d36474d2",
+   "bytes": 880358,
+   "kind": "plain"
+  },
+  "529c72a2": {
+   "name": "自定义·[例] 等待到时间",
+   "group": "自定义",
+   "path": "script/自定义/[例] 等待到时间.lua",
+   "sha256": "016b479ca14f604bd7343c8a1fa37851efbfe24186d67c387b4f6a494eb97eee",
+   "bytes": 454,
+   "kind": "plain"
+  },
+  "4c446946": {
+   "name": "自定义·[例] 等待队伍人数",
+   "group": "自定义",
+   "path": "script/自定义/[例] 等待队伍人数.lua",
+   "sha256": "f5e8d2eed9477c6e354b98b5c3d8c50aaf3fb8796a2696b8a800d591654bc853",
+   "bytes": 458,
+   "kind": "plain"
+  },
+  "56813fff": {
+   "name": "自定义·[自定义] 接口说明",
+   "group": "自定义",
+   "path": "script/自定义/[自定义] 接口说明.lua",
+   "sha256": "6d4c76e575cfa585af61ba291faba3ce22486de704e2a758a67d6205ddc4e5a2",
+   "bytes": 7383,
+   "kind": "plain"
+  },
+  "1d53e4c9": {
+   "name": "自定义·仓库取钱",
+   "group": "自定义",
+   "path": "script/自定义/仓库取钱.lua",
+   "sha256": "4cc3bcd918d29f0ff6e895fce3aefc217fa0c65f96632990b84f8c5c88092b2d",
+   "bytes": 367,
+   "kind": "plain"
+  },
+  "5a5b2dc1": {
+   "name": "自定义·仓库存钱",
+   "group": "自定义",
+   "path": "script/自定义/仓库存钱.lua",
+   "sha256": "b447a5d2abc1cd3faf509cd327e4a5c8dfdd60cff3f62103a4d71cf125e33793",
+   "bytes": 90,
+   "kind": "plain"
+  },
+  "44badad6": {
+   "name": "自定义·兑换元宝票",
+   "group": "自定义",
+   "path": "script/自定义/兑换元宝票.lua",
+   "sha256": "88870541e5bf93f95a5fd77eb491fbeff6e8a25a213e9750a790064d8b46c770",
+   "bytes": 993,
+   "kind": "plain"
+  },
+  "e9df561a": {
+   "name": "自定义·古兰玉换宝石",
+   "group": "自定义",
+   "path": "script/自定义/古兰玉换宝石.lua",
+   "sha256": "e080dc623b84af2ff3e500e036264f96d713d1758562c29633a8cc9ad7cad851",
+   "bytes": 453,
+   "kind": "plain"
+  },
+  "cb62fabc": {
+   "name": "自定义·合成宝石(不绑)",
+   "group": "自定义",
+   "path": "script/自定义/合成宝石(不绑).lua",
+   "sha256": "21b23d5426f59e6581b417c3226a58088a67200b427bf0e332cb2955a62e44ee",
+   "bytes": 373,
+   "kind": "plain"
+  },
+  "8cba6bb6": {
+   "name": "自定义·合成宝石(混合)",
+   "group": "自定义",
+   "path": "script/自定义/合成宝石(混合).lua",
+   "sha256": "63d5e5561be09194e2ef315f4f6941344014e0e0ae48c024d987657d4d7fb2d7",
+   "bytes": 388,
+   "kind": "plain"
+  },
+  "1c123786": {
+   "name": "自定义·合成宝石(绑定)",
+   "group": "自定义",
+   "path": "script/自定义/合成宝石(绑定).lua",
+   "sha256": "6b759889e71a5133fe5620b6820477e11b343e55aa9f01b63265476227a5e0b1",
+   "bytes": 367,
+   "kind": "plain"
+  },
+  "1cdfdb19": {
+   "name": "自定义·商会取钱",
+   "group": "自定义",
+   "path": "script/自定义/商会取钱.lua",
+   "sha256": "2702baeb9f18fa8f7e5dfbfe371e59b0ead41e42eb9fa5a1550273b9a630ecd3",
+   "bytes": 192,
+   "kind": "plain"
+  },
+  "c991c5d8": {
+   "name": "自定义·扫荡三神",
+   "group": "自定义",
+   "path": "script/自定义/扫荡三神.lua",
+   "sha256": "5671d7b9331139427bc6eec66c5279942265752a7fabcd4056f67a36e81619e0",
+   "bytes": 372,
+   "kind": "plain"
+  },
+  "5128b78d": {
+   "name": "自定义·扫荡兵圣奇阵",
+   "group": "自定义",
+   "path": "script/自定义/扫荡兵圣奇阵.lua",
+   "sha256": "03a9f2d04f3d58c0f82c8da292cf930d9aed1f7123a9dd1906eafd47cb796253",
+   "bytes": 383,
+   "kind": "plain"
+  },
+  "00de8251": {
+   "name": "自定义·扫荡凤鸣王陵",
+   "group": "自定义",
+   "path": "script/自定义/扫荡凤鸣王陵.lua",
+   "sha256": "c64a1ba611e4f1e87e416ddd38584ede8c87a1092a1fe13d83e0212f84b4dcab",
+   "bytes": 387,
+   "kind": "plain"
+  },
+  "074e91b8": {
+   "name": "自定义·扫荡四绝",
+   "group": "自定义",
+   "path": "script/自定义/扫荡四绝.lua",
+   "sha256": "76bfd2502105d1890bba8442dc1092a15f8928707b0ebcaf1feeafab767d81ed",
+   "bytes": 369,
+   "kind": "plain"
+  },
+  "c575ebaa": {
+   "name": "自定义·扫荡少室",
+   "group": "自定义",
+   "path": "script/自定义/扫荡少室.lua",
+   "sha256": "db4f6d278c7203ab04e00576f5b529081a30094fbbcbb1a60212252b472f2749",
+   "bytes": 369,
+   "kind": "plain"
+  },
+  "125047ac": {
+   "name": "自定义·扫荡燕子",
+   "group": "自定义",
+   "path": "script/自定义/扫荡燕子.lua",
+   "sha256": "9f212be9fb24bca0b2000ca8f3699ce140c851a12d0dc023101c31fa63957a40",
+   "bytes": 369,
+   "kind": "plain"
+  },
+  "25d87fb2": {
+   "name": "自定义·扫荡王陵",
+   "group": "自定义",
+   "path": "script/自定义/扫荡王陵.lua",
+   "sha256": "10a1c28ae433732871101cf3b9ce9395ef15fefc1fe458c42bca99fb83bcf16e",
+   "bytes": 372,
+   "kind": "plain"
+  },
+  "c8d8dedf": {
+   "name": "自定义·扫荡福地",
+   "group": "自定义",
+   "path": "script/自定义/扫荡福地.lua",
+   "sha256": "e448e47c30e4bde17d407b96d13ddf40dfd80288369e3f6a14dcf80f5df579b1",
+   "bytes": 378,
+   "kind": "plain"
+  },
+  "943e1f47": {
+   "name": "自定义·扫荡福地困难",
+   "group": "自定义",
+   "path": "script/自定义/扫荡福地困难.lua",
+   "sha256": "a3880d88e993229dfbd77b5e68c004f0b4505af3108a85976802ff02425c5308",
+   "bytes": 378,
+   "kind": "plain"
+  },
+  "1bc60501": {
+   "name": "自定义·扫荡福地普通",
+   "group": "自定义",
+   "path": "script/自定义/扫荡福地普通.lua",
+   "sha256": "98c34e7361e30a15e32821011fc3e8ff8bedc4946ca15c8f527d15521399a5b2",
+   "bytes": 394,
+   "kind": "plain"
+  },
+  "8224b345": {
+   "name": "自定义·扫荡缥缈峰",
+   "group": "自定义",
+   "path": "script/自定义/扫荡缥缈峰.lua",
+   "sha256": "9293a627530e84ce81c8c690d994cf39a88c2c7af9d21750e6c4d322cfce53cc",
+   "bytes": 372,
+   "kind": "plain"
+  },
+  "f7ae94fe": {
+   "name": "自定义·扫荡老三",
+   "group": "自定义",
+   "path": "script/自定义/扫荡老三.lua",
+   "sha256": "83ee9e098d50c2b08a203fbd9a048f25bc2b64ce4a88e50de95ba60a9109c5c7",
+   "bytes": 320,
+   "kind": "plain"
+  },
+  "da06cc78": {
+   "name": "自定义·每日签到",
+   "group": "自定义",
+   "path": "script/自定义/每日签到.lua",
+   "sha256": "cfba641a8091f4de9bbdc8948520e7fdbb8c71801cb343c90f6430e34b671317",
+   "bytes": 768,
+   "kind": "plain"
+  },
+  "32d0b6fc": {
+   "name": "自定义·波斯玫瑰换强化",
+   "group": "自定义",
+   "path": "script/自定义/波斯玫瑰换强化.lua",
+   "sha256": "830ebbc80f65e53376967f54e0b9d8f794c2b4c1e066c951d7e351087f99dc88",
+   "bytes": 1024,
+   "kind": "plain"
+  },
+  "0b5b1e35": {
+   "name": "自定义·玫瑰换强化",
+   "group": "自定义",
+   "path": "script/自定义/玫瑰换强化.lua",
+   "sha256": "331238c2fcac7807dc9482258258ed8b144b4e8196c29f213345b879fbc41f30",
+   "bytes": 1019,
+   "kind": "plain"
+  },
+  "3caa2809": {
+   "name": "自定义·窗口闪烁报警",
+   "group": "自定义",
+   "path": "script/自定义/窗口闪烁报警.lua",
+   "sha256": "f5dbaff96aa73044170d1be6f96630425e97fd77aa08fd9d1220b4087f3be6f2",
+   "bytes": 243,
+   "kind": "plain"
+  },
+  "bd37bc27": {
+   "name": "自定义·等待到时间",
+   "group": "自定义",
+   "path": "script/自定义/等待到时间.lua",
+   "sha256": "7607e21d97937883c627700cce8bdc24832c19e6fc6fcdb4d9d0c18e35a19cd9",
+   "bytes": 69,
+   "kind": "plain"
+  },
+  "fdff6a22": {
+   "name": "自定义·自动组队(例)",
+   "group": "自定义",
+   "path": "script/自定义/自动组队(例).lua",
+   "sha256": "d3f67913444eb70ab70810455aa77241035673ba1a7bbb3836561836d9545d52",
+   "bytes": 594,
+   "kind": "plain"
+  },
+  "4a844ae5": {
+   "name": "自定义·许愿果换强化",
+   "group": "自定义",
+   "path": "script/自定义/许愿果换强化.lua",
+   "sha256": "7a2d3c39a389d760a923d0ec8997dbaca246d8fe42d6a6ce253d19f1c48fb350",
+   "bytes": 1027,
+   "kind": "plain"
+  },
+  "1f720aad": {
+   "name": "自定义·锦囊宝箱消化",
+   "group": "自定义",
+   "path": "script/自定义/锦囊宝箱消化.lua",
+   "sha256": "9db74ab996089858eef1323526ffc01177e21f78010823b2eac752c5cefcd980",
+   "bytes": 376,
+   "kind": "plain"
+  }
+ },
+ "fixed": {
+  "Script64/任务/师门任务.lua": [
+   "表键 望兽坪 → [\"望兽坪\"]（1 处）"
+  ],
+  "Script64/任务/新手1-40级.lua": [
+   "字段 .少林 → [\"少林\"]（1 处）",
+   "字段 .星宿 → [\"星宿\"]（1 处）",
+   "字段 .天龙 → [\"天龙\"]（1 处）",
+   "字段 .唐门 → [\"唐门\"]（1 处）"
+  ],
+  "Script64/任务/闲常治务.lua": [
+   "表键 少林 → [\"少林\"]（1 处）",
+   "表键 星宿 → [\"星宿\"]（1 处）",
+   "表键 天龙 → [\"天龙\"]（1 处）",
+   "表键 唐门 → [\"唐门\"]（1 处）"
+  ],
+  "Script64/功能/材料点金.lua": [
+   "字段 .点秘银 → [\"点秘银\"]（2 处）"
+  ],
+  "Script64/功能/点心法.lua": [
+   "表键 少林 → [\"少林\"]（1 处）",
+   "表键 星宿 → [\"星宿\"]（1 处）",
+   "表键 天龙 → [\"天龙\"]（1 处）",
+   "表键 唐门 → [\"唐门\"]（1 处）"
+  ],
+  "Script64/帮庄/庄园养鱼.lua": [
+   "表键 早熟鲤鱼 → [\"早熟鲤鱼\"]（1 处）",
+   "表键 早熟三文鱼 → [\"早熟三文鱼\"]（1 处）",
+   "表键 中熟鲤鱼 → [\"中熟鲤鱼\"]（1 处）",
+   "表键 中熟三文鱼 → [\"中熟三文鱼\"]（1 处）",
+   "表键 晚熟鲤鱼 → [\"晚熟鲤鱼\"]（1 处）",
+   "表键 晚熟三文鱼 → [\"晚熟三文鱼\"]（1 处）"
+  ],
+  "Script64/常用/属地马贼.lua": [
+   "字段 .属地马贼 → [\"属地马贼\"]（19 处）"
+  ],
+  "Script64/数据/坐标摆摊.lua": [
+   "局部变量 摆摊坐标 → bt_pos（6 处）",
+   "字段 .洛阳 → [\"洛阳\"]（1 处）",
+   "字段 .苏州 → [\"苏州\"]（1 处）",
+   "局部变量 运行摆摊时先取一次物品 → bt_get_item_first（2 处）"
+  ],
+  "Script64/活动/领取群豪榜奖励.lua": [
+   "长字符串开头多出的换行（1 处，反编译器输出问题）"
+  ],
+  "Script64/活动/祈鸿金-金币.lua": [
+   "长字符串开头多出的换行（1 处，反编译器输出问题）"
+  ],
+  "Script64/活动/祈鸿金-交子.lua": [
+   "长字符串开头多出的换行（1 处，反编译器输出问题）"
+  ],
+  "Script64/系统/common.lua": [
+   "长字符串开头多出的换行（1 处，反编译器输出问题）"
+  ],
+  "Script64/系统/common_2.lua": [
+   "表键 洛阳 → [\"洛阳\"]（1 处）",
+   "表键 苏州 → [\"苏州\"]（1 处）"
+  ],
+  "Script64/系统/fnE2C.lua": [
+   "局部变量 脚本名 → script_name（2 处）",
+   "局部变量 开始时间 → start_time（4 处）",
+   "局部变量 结束时间 → end_time（1 处）"
+  ],
+  "Script64/系统/fn元丹坊.lua": [
+   "长字符串开头多出的换行（1 处，反编译器输出问题）"
+  ],
+  "Script64/系统/functions.lua": [
+   "SDQY_HuoDong 中 strAll 作用域被反编译提前结束，按字节码移回 if 内"
+  ],
+  "Script64/系统/graph.lua": [
+   "表键 洛阳 → [\"洛阳\"]（31 处）",
+   "表键 雁南 → [\"雁南\"]（6 处）",
+   "表键 苏州 → [\"苏州\"]（27 处）",
+   "表键 玄武岛 → [\"玄武岛\"]（20 处）",
+   "表键 少林寺 → [\"少林寺\"]（24 处）",
+   "表键 天龙寺 → [\"天龙寺\"]（24 处）",
+   "表键 盐湖 → [\"盐湖\"]（3 处）",
+   "表键 玉溪 → [\"玉溪\"]（3 处）",
+   "表键 龙泉 → [\"龙泉\"]（4 处）",
+   "表键 武夷 → [\"武夷\"]（5 处）",
+   "表键 琼州 → [\"琼州\"]（2 处）",
+   "表键 塔林 → [\"塔林\"]（1 处）"
+  ],
+  "script/数据/坐标摆摊.lua": [
+   "局部变量 摆摊坐标 → bt_pos（6 处）",
+   "局部变量 运行摆摊时先取一次物品 → bt_get_item_first（2 处）"
+  ],
+  "script/自定义/[例] 等待到时间.lua": [
+   "全局名 输入屏幕文本 → _ENV[\"输入屏幕文本\"]（2 处）",
+   "全局名 等待到指定时间 → _ENV[\"等待到指定时间\"]（1 处）"
+  ],
+  "script/自定义/[例] 等待队伍人数.lua": [
+   "全局名 输入屏幕文本 → _ENV[\"输入屏幕文本\"]（2 处）",
+   "全局名 等待队伍人数 → _ENV[\"等待队伍人数\"]（1 处）"
+  ],
+  "script/自定义/窗口闪烁报警.lua": [
+   "全局名 音乐报警 → _ENV[\"音乐报警\"]（1 处）",
+   "全局名 闪烁窗口 → _ENV[\"闪烁窗口\"]（1 处）"
+  ],
+  "script/自定义/自动组队(例).lua": [
+   "全局名 创建队伍 → _ENV[\"创建队伍\"]（1 处）",
+   "全局名 等待 → _ENV[\"等待\"]（2 处）",
+   "全局名 解散队伍 → _ENV[\"解散队伍\"]（1 处）",
+   "全局名 申请进组 → _ENV[\"申请进组\"]（1 处）"
+  ]
+ }
+}
