@@ -37,6 +37,14 @@ int runLoginTests(const QString &root,const QString &report){
         LoginFlow flow;
         require(flow.next(login::Loading)==0,"boot must wait");require(flow.next(login::Server)==login::SelectServer,"server selection missing");flow.issued(login::SelectServer);require(flow.next(login::Server)==0,"server command repeated");
         require(flow.next(login::Account)==login::SubmitAccount,"credential command missing");flow.issued(login::SubmitAccount);for(int i=0;i<300;++i)require(flow.next(login::Account)==0,"password submitted again");checks.append("Each server and credential command is issued once");
+        {LoginFlow retry;retry.issued(login::SelectServer);require(!retry.shouldRetry(login::Account,60000),"retry before credentials");retry.issued(login::SubmitAccount);retry.presses=1;
+         require(!retry.shouldRetry(login::Account,9000)&&retry.shouldRetry(login::Account,10000)&&!retry.shouldRetry(login::Roles,60000),"login retry timing");
+         retry.issued(login::RetryLogon);require(!retry.shouldRetry(login::Account,60000),"login pressed more than twice");checks.append("A login press that leaves the screen unchanged for 10 s is pressed once more, never more");}
+        {LoginFlow typed;typed.issued(login::SelectServer);typed.issued(login::SubmitAccount);
+         require(!typed.shouldRetry(login::Account,60000,false)&&typed.shouldRetry(login::Account,0,true),"typed credentials not pressed once the password shows");
+         typed.issued(login::RetryLogon);require(!typed.shouldRetry(login::Account,9000,true)&&typed.shouldRetry(login::Account,10000,true),"deferred press not retried after 10 s");
+         typed.issued(login::RetryLogon);require(!typed.shouldRetry(login::Account,60000,true),"login pressed more than twice");
+         checks.append("Typed credentials are pressed once the password box shows them, then at most once more");}
         QByteArray typed;size_t inputLength=0;
         auto capture=[&](unsigned char c){typed.append(char(c));return true;};
         require(login::sendPasswordInput("012345",7,capture)&&typed=="012345","secure password input did not send characters in order");
@@ -67,6 +75,10 @@ int runLoginTests(const QString &root,const QString &report){
         require(ClientStore::loginFingerprint(" OwnedFixture ")==ClientStore::loginFingerprint("ownedfixture@sohu.com"),"protected account spelling changed fingerprint");require(ClientStore::loginFingerprint("ownedfixture")!=ClientStore::loginFingerprint("otherfixture"),"different test accounts conflated");checks.append("Protected login account guard recognizes case and email spellings without storing a clear identifier in diagnostics");
         login::Packet expired;expired.status=login::Rejected;expired.error=WAIT_TIMEOUT;require(login::transientQueryFailure(expired),"expired startup query cannot wait");expired.command=login::SubmitAccount;require(!login::transientQueryFailure(expired),"expired account action would be resent");expired.command=login::Query;expired.error=ERROR_INVALID_DATA;require(!login::transientQueryFailure(expired),"invalid process or thread identity would be retried");checks.append("An expired read-only callback can recover while identity failures and account actions cannot be replayed");
         QPoint point;require(officialSkinPoint(1470,787,point)&&point==QPoint(1343,608),"Official shared skin point mismatch");require(officialSkinPoint(650,414,point)&&point==QPoint(577,301),"Official alternate skin point mismatch");require(officialSkinPoint(2940,1574,point)&&point==QPoint(2686,1216),"DPI scale mismatch");require(!officialSkinPoint(800,600,point)&&!officialSkinPoint(0,0,point),"Unrelated window accepted as official skin");checks.append("Hash-locked public skin geometry supports exact and DPI-scaled layouts and refuses unrelated windows");
+        {const QByteArray log="[11_07:22_57:18_789][04428|25116]: LaunchSystem::workThread exit running ... m_nUpdateExit : 2\n[11_07:19_11_27_000][11936|1]: LaunchSystem::workThread exit running ... m_nUpdateExit : 2\n";
+         require(launchLogUpdateFinished(log,4428)&&launchLogUpdateFinished(log,11936),"Launch.log update-finished line not matched for a 4- or 5-digit pid");
+         require(!launchLogUpdateFinished(log,428)&&!launchLogUpdateFinished(log,30900),"Launch.log line matched another launcher");
+         checks.append("Launch.log update-finished line matches zero-padded 4-digit and 5-digit launcher pids only");}
     }catch(const std::exception &e){failure=QString::fromUtf8(e.what());}
     QString error;ClientStore::writeJson(report,{{"status",failure.isEmpty()?"pass":"fail"},{"checks",checks},{"error",failure},{"real_account_submitted",false}},error);
     return failure.isEmpty()&&error.isEmpty()?0:1;

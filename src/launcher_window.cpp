@@ -11,6 +11,7 @@
 #include "task_completion.hpp"
 
 #include "official_launcher.hpp"
+#include "multi_open.hpp"
 
 #include "gameplay_client.hpp"
 
@@ -170,7 +171,7 @@ MainWindow::MainWindow(const QString &requestedRoot,const QString &script,bool t
 
     setWindowTitle("TLBB 启动器 · 0.15.0");resize(690,360);setMinimumSize(620,330);setFont(QFont("Microsoft YaHei UI",9));
 
-    setStyleSheet(QStringLiteral("QWidget{background:#f3f5f7;color:#1d2c3f;} QLineEdit,QComboBox,QListWidget{background:white;border:1px solid #cbd3df;padding:5px;} QPushButton{background:white;border:1px solid #cbd3df;border-radius:3px;padding:5px 9px;} QGroupBox{border:1px solid #cbd3df;margin-top:8px;padding:10px;} QGroupBox::title{subcontrol-origin:margin;left:8px;padding:0 4px;}") + QString::fromLatin1(checkboxStyle));
+    setStyleSheet(QStringLiteral("QWidget{background:#f3f5f7;color:#1d2c3f;} QLineEdit,QComboBox,QListWidget{background:white;border:1px solid #cbd3df;padding:5px;} QPushButton{background:white;border:1px solid #cbd3df;border-radius:3px;padding:5px 9px;} QGroupBox{border:1px solid #cbd3df;margin-top:8px;padding:10px;} QGroupBox::title{subcontrol-origin:margin;left:8px;padding:0 4px;}") + checkboxStyleSheet());
 
     auto *central=new QWidget;setCentralWidget(central);auto *outer=new QVBoxLayout(central);outer->setContentsMargins(12,12,12,8);
 
@@ -182,7 +183,7 @@ MainWindow::MainWindow(const QString &requestedRoot,const QString &script,bool t
 
     auto *row=new QHBoxLayout;auto *left=new QVBoxLayout;accounts_=new QListWidget;accounts_->setMaximumWidth(205);accounts_->setMinimumWidth(150);left->addWidget(accounts_,1);auto *ab=new QHBoxLayout;auto *add=new QPushButton("添加账号"),*edit=new QPushButton("编辑");ab->addWidget(add);ab->addWidget(edit);left->addLayout(ab);row->addLayout(left);
 
-    auto *group=new QGroupBox("登录配置");auto *form=new QFormLayout(group);district_=new QComboBox;district_->setEditable(true);district_->addItem("网通-华北网通一区");server_=new QComboBox;server_->setEditable(true);server_->addItem("五台山");district_->lineEdit()->setPlaceholderText("选择或输入游戏大区");server_->lineEdit()->setPlaceholderText("选择或输入服务器名称");role_=new QComboBox;form->addRow("大区",district_);form->addRow("服务器",server_);form->addRow("角色",role_);multi_=new QCheckBox("允许多开");multi_->setChecked(store_.launcher.value("multi_open").toBool());form->addRow(multi_);row->addWidget(group,1);outer->addLayout(row,1);
+    auto *group=new QGroupBox("登录配置");auto *form=new QFormLayout(group);district_=new QComboBox;district_->setEditable(true);district_->addItem("网通-华北网通一区");server_=new QComboBox;server_->setEditable(true);server_->addItem("五台山");district_->lineEdit()->setPlaceholderText("选择或输入游戏大区");server_->lineEdit()->setPlaceholderText("选择或输入服务器名称");role_=new QComboBox;form->addRow("大区",district_);form->addRow("服务器",server_);form->addRow("角色",role_);multi_=new QCheckBox("允许多开");multi_->setChecked(true);multi_->hide();row->addWidget(group,1);outer->addLayout(row,1);
 
     auto *bottom=new QHBoxLayout;status_=new QLabel(error.isEmpty()?"就绪":error);status_->setWordWrap(true);bottom->addWidget(status_,1);auto *start=new QPushButton("开始游戏");startButton_=start;start->setObjectName("startGame");start->setStyleSheet("background:#146e78;color:white;padding:7px 18px;");bottom->addWidget(start);outer->addLayout(bottom);
 
@@ -270,6 +271,7 @@ void MainWindow::refreshGames(){games_=discoverGames(gameRoot());for(auto key:to
         else if(ready.size()>1){status_->setText("发现多个官方启动器，已停止自动开始，未发送账号密码");loginAudit("ambiguous_official_launcher");launchTime_.invalidate();setLoginBusy(false);}
 
         else if(observed.value("phase").toString()=="waiting_official_update")status_->setText("等待官方更新完成，完成后自动开始游戏");
+        else if(observed.value("phase").toString()=="unsupported_launcher_skin")status_->setText("官方启动器界面已更新，程序不认识按钮位置；请手动点一次“开始游戏”，进游戏后照常自动登录");
 
     }
 
@@ -287,9 +289,14 @@ void MainWindow::launchGame(){if(loginWorker_||launchTime_.isValid()){cancelLogi
 
     if(!testMode_&&!selectedAccount_.isEmpty()){QJsonObject account;for(const auto &v:store_.launcher.value("accounts").toArray())if(v.toObject().value("id").toString()==selectedAccount_)account=v.toObject();const auto cli=QCoreApplication::arguments();const int protectedAt=cli.indexOf("--protected-login-hash");const auto protectedHash=!protectedLoginFingerprint_.isEmpty()?protectedLoginFingerprint_:(protectedAt>=0&&protectedAt+1<cli.size()?cli[protectedAt+1]:QString());if(!protectedHash.isEmpty()&&!account.value("login").toString().isEmpty()&&ClientStore::loginFingerprint(account.value("login").toString())==protectedHash){status_->setText("此账号用于保留的在线角色，请选择另一个测试账号");return;}QByteArray secret;QString error;bool valid=!account.value("login").toString().trimmed().isEmpty()&&account.value("credential_ref").toString()==selectedAccount_&&store_.readPassword(selectedAccount_,secret,error);SecureZeroMemory(secret.data(),SIZE_T(secret.size()));secret.clear();if(!valid){status_->setText(error.isEmpty()?"请编辑账号，输入账号密码并勾选本机加密保存密码":error);return;}if(district_->currentText().trimmed().isEmpty()||server_->currentText().trimmed().isEmpty()||role_->currentData().toInt()>3){status_->setText("请填写大区、服务器，并选择角色 1 至 3");return;}}
 
+    // 允许多开：the game itself stops at two clients; free its two instance slots in the running games.
+    QString multiOpenNote;
+    if(!existing.isEmpty()){QList<quint32> pids;for(const auto &g:existing)pids.append(quint32(g.pid));QString why;const int released=multi_open::releaseInstanceLimit(pids,why);
+        loginAudit("multi_open_release",{{"games",int(pids.size())},{"released",released},{"detail",why}});
+        if(existing.size()>=2&&!released)multiOpenNote="；未能解除游戏的双开限制"+(why.isEmpty()?QString():"（"+why+"）");}
     officialPoll_.invalidate();officialStartTime_.invalidate();lastLauncherProbe_={};loginAudit("launch_requested",{{"saved_account_selected",!selectedAccount_.isEmpty()},{"preexisting_game_count",existing.size()}});
 
-    launchButtonSent_=false;beforeLaunch_.clear();for(const auto &g:existing)beforeLaunch_.insert(g.pid);launchFamily_.clear();pendingIdentity_=selectedIdentity();launcherProcess_=new QProcess(this);auto *process=launcherProcess_;process->setProgram(launch);process->setWorkingDirectory(gameRoot());connect(process,&QProcess::started,this,[this,process]{launchFamily_.insert(quint32(process->processId()));});connect(process,&QProcess::errorOccurred,this,[this,process](QProcess::ProcessError error){if(launcherProcess_!=process)return;launchTime_.invalidate();setLoginBusy(false);status_->setText("游戏启动器启动失败："+process->errorString());if(error==QProcess::FailedToStart){launcherProcess_=nullptr;process->deleteLater();}});connect(process,qOverload<int,QProcess::ExitStatus>(&QProcess::finished),this,[this,process]{if(launcherProcess_==process)launcherProcess_=nullptr;process->deleteLater();});process->start();launchTime_.start();if(refreshTimer_)refreshTimer_->setInterval(100);setLoginBusy(true);status_->setText(selectedAccount_.isEmpty()?"未选择保存的账号；官方启动器打开后请手动登录":"等待官方启动器完成更新并打开游戏；游戏出现后自动选择区服、登录账号和角色");
+    launchButtonSent_=false;beforeLaunch_.clear();for(const auto &g:existing)beforeLaunch_.insert(g.pid);launchFamily_.clear();pendingIdentity_=selectedIdentity();launcherProcess_=new QProcess(this);auto *process=launcherProcess_;process->setProgram(launch);process->setWorkingDirectory(gameRoot());connect(process,&QProcess::started,this,[this,process]{launchFamily_.insert(quint32(process->processId()));});connect(process,&QProcess::errorOccurred,this,[this,process](QProcess::ProcessError error){if(launcherProcess_!=process)return;launchTime_.invalidate();setLoginBusy(false);status_->setText("游戏启动器启动失败："+process->errorString());if(error==QProcess::FailedToStart){launcherProcess_=nullptr;process->deleteLater();}});connect(process,qOverload<int,QProcess::ExitStatus>(&QProcess::finished),this,[this,process]{if(launcherProcess_==process)launcherProcess_=nullptr;process->deleteLater();});process->start();launchTime_.start();if(refreshTimer_)refreshTimer_->setInterval(100);setLoginBusy(true);status_->setText(selectedAccount_.isEmpty()?"未选择保存的账号；官方启动器打开后请手动登录":"等待官方启动器完成更新并打开游戏；游戏出现后自动选择区服、登录账号和角色");if(!multiOpenNote.isEmpty())status_->setText(status_->text()+multiOpenNote);
 
 }
 
@@ -681,7 +688,7 @@ int MainWindow::runUiTests(const QString &fixtureRoot,const QString &report){
 
         require(sessions_.isEmpty(),"Unbound fixture unexpectedly attached");press(owned[0],VK_HOME,0x5101);require(wait([&]{auto *s=sessions_.value(owned[0]);return s&&s->ready;}),"Home binding failed");record("Home binds an already-running unbound foreground fixture");
 
-        auto *a=sessions_.value(owned[0]);require(a->panel->diagnostics().value("tab_count").toInt()==9,"Wrong task tab count");require(GetWindow(reinterpret_cast<HWND>(a->panel->winId()),GW_OWNER)==reinterpret_cast<HWND>(a->info.window),"Panel owner mismatch");record("Independent panel uses fixed game HWND owner and nine functional tabs");
+        auto *a=sessions_.value(owned[0]);require(a->panel->diagnostics().value("tab_count").toInt()==9,"Wrong task tab count");require(GetWindow(reinterpret_cast<HWND>(a->panel->winId()),GW_OWNER)==nullptr,"Panel is owned by a window and would stay above / minimize with the game");record("Independent panel is a standalone window with nine functional tabs");
 
         a->panel->selectTask("plant");a->panel->showForGame();wait([]{return false;},100);a->panel->screenshot(QFileInfo(report).absolutePath()+"/session-native.png");
 
@@ -853,7 +860,6 @@ int MainWindow::runUiTests(const QString &fixtureRoot,const QString &report){
         a->panel->runtime("owned battle fixture",true,false,QJsonObject{{"battle",battleState}},0);a->panel->selectTab("技能");qApp->processEvents();
         a->panel->screenshot(QFileInfo(report).absolutePath()+"/battle-maintenance.png");record("Battle vitals, battleLearned actions and role-specific recovery controls are wired");
 
-        multi_->setChecked(false);launchGame();require(!launchTime_.isValid(),"Unchecked multi-open launched another game");record("Unchecked multi-open blocks duplicate starts");
 
         multi_->setChecked(true);launchGame();require(wait([&]{for(auto *s:sessions_)if(s->source=="launcher"&&s->ready)return true;return false;},10000),"Launcher-owned child auto binding failed");quint32 third=0;for(auto *s:sessions_)if(s->source=="launcher")third=s->info.pid;require(third!=0&&launchButtonSent_,"Missing Launch.bin start-button handoff");owned<<third;record("Start Game follows Launch.exe to Launch.bin, presses its start button once and binds the new game");
 

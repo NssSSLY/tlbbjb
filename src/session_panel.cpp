@@ -46,15 +46,14 @@ SessionPanel::SessionPanel(GameInfo target, QJsonObject data) : QWidget(nullptr,
     setWindowTitle(QString("%1 · 任务面板").arg(game.pid));
     setFont(QFont("Microsoft YaHei UI", 9));
     resize(1120, 710); setMinimumSize(1000, 620);
-    setStyleSheet(QStringLiteral("QWidget{background:#f3f5f7;color:#1e2c3d;} QLabel{background:transparent;} QGroupBox{border:1px solid #ccd5e0;margin-top:8px;padding:10px;background:white;} QGroupBox::title{subcontrol-origin:margin;left:8px;padding:0 4px;} QLineEdit,QComboBox,QSpinBox,QDoubleSpinBox,QPlainTextEdit,QTableWidget,QListWidget{background:white;border:1px solid #c9d2df;padding:4px;} QPushButton{background:white;border:1px solid #c9d2df;border-radius:3px;padding:5px 9px;} QPushButton:disabled{color:#8995a5;} QTabWidget::pane{border:0;} QTabBar::tab{padding:8px 11px;background:white;border:1px solid #d1d9e3;} QTabBar::tab:selected{background:#e0f0f1;color:#096d77;border-bottom:2px solid #146e78;}") + QString::fromLatin1(checkboxStyle));
+    setStyleSheet(QStringLiteral("QWidget{background:#f3f5f7;color:#1e2c3d;} QLabel{background:transparent;} QGroupBox{border:1px solid #ccd5e0;margin-top:8px;padding:10px;background:white;} QGroupBox::title{subcontrol-origin:margin;left:8px;padding:0 4px;} QLineEdit,QComboBox,QSpinBox,QDoubleSpinBox,QPlainTextEdit,QTableWidget,QListWidget{background:white;border:1px solid #c9d2df;padding:4px;} QPushButton{background:white;border:1px solid #c9d2df;border-radius:3px;padding:5px 9px;} QPushButton:disabled{color:#8995a5;} QTabWidget::pane{border:0;} QTabBar::tab{padding:8px 11px;background:white;border:1px solid #d1d9e3;} QTabBar::tab:selected{background:#e0f0f1;color:#096d77;border-bottom:2px solid #146e78;}") + checkboxStyleSheet());
     catalog_ = ClientStore::readJson(QCoreApplication::applicationDirPath()+"/tasks/catalog.json").value("tasks").toArray();
     if (catalog_.isEmpty()) catalog_ = QJsonArray{QJsonObject{{"id","plant"},{"name","种植"},{"category","生活"},{"family","plant"}}};
     if (!profile_.contains("tasks")) profile_.insert("tasks",QJsonObject{});
     if (!profile_.contains("queue")) profile_.insert("queue",QJsonArray{});
     normalizeOriginalTasks();
     build();
-    // A fixed owner never changes when another game gains focus.
-    SetWindowLongPtrW(reinterpret_cast<HWND>(winId()), GWLP_HWNDPARENT, LONG_PTR(game.window));
+    // A standalone window: an owned one always stays above the game and minimizes with it.
 }
 QJsonObject SessionPanel::profile() const { return profile_; }
 SessionPanel::~SessionPanel(){tearingDown_=true;}
@@ -437,7 +436,7 @@ void SessionPanel::buildLegacy(){
 void SessionPanel::setProfile(QJsonObject p){const auto status=lastRuntimeStatus_;const auto live=lastLive_;const bool ready=lastReady_,busy=lastBusy_;const auto bytes=lastBytes_;tearingDown_=true;auto *old=layout();std::function<void(QLayout*)> clear=[&](QLayout *l){while(auto *item=l->takeAt(0)){if(item->widget())delete item->widget();else if(item->layout())clear(item->layout());delete item;}};clear(old);delete old;profile_=migrateTaskProfile(p);normalizeOriginalTasks();tearingDown_=false;build();runtime(status,ready,busy,live,bytes);}
 void SessionPanel::runtime(QString text,bool ready,bool running,QJsonObject live,qint64 bytes){lastRuntimeStatus_=text;lastReady_=ready;lastBusy_=running;lastLive_=live;lastBytes_=bytes;refreshBattle();start_->setEnabled(ready&&!running);pause_->setEnabled(ready&&running);stop_->setEnabled(ready);QString identity=profile_.value("nickname").toString(QString("PID %1").arg(game.pid));if(live.value("position_valid").toBool())text+=QString(" · %1 %2,%3").arg(live.value("map").toString()).arg(live.value("x").toDouble(),0,'f',1).arg(live.value("y").toDouble(),0,'f',1);status_->setText(identity+" · "+text+QString(" · Worker %1 MiB").arg(bytes/1048576.0,0,'f',1));}
 void SessionPanel::appendLog(const QString &line){logs_->appendPlainText(line);}
-void SessionPanel::showForGame(){if(!IsWindow(reinterpret_cast<HWND>(game.window)))return;if(shown)shown();showNormal();SetWindowLongPtrW(reinterpret_cast<HWND>(winId()),GWLP_HWNDPARENT,LONG_PTR(game.window));raise();activateWindow();}
+void SessionPanel::showForGame(){if(!IsWindow(reinterpret_cast<HWND>(game.window)))return;if(shown)shown();showNormal();raise();activateWindow();}
 void SessionPanel::retire(){tearingDown_=true;runRequested={};flowRequested={};pauseRequested={};stopRequested={};reloadRequested={};detachRequested={};saveRequested={};copyRequested={};associateRequested={};favoritesChanged={};hide();}
 void SessionPanel::closeEvent(QCloseEvent *e){if(!tearingDown_&&saveRequested)saveRequested();hide();e->ignore();}
 QJsonObject SessionPanel::diagnostics()const{return {{"pid",int(game.pid)},{"panel_hwnd",QString::number(quintptr(winId()))},{"owner_hwnd",QString::number(game.window)},{"tab_count",tabs_->count()},{"visible",isVisible()},{"profile",profile_}};}

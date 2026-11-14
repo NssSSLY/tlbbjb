@@ -109,7 +109,7 @@ template<class Test>void yezhuTests(const QString &root,Test test){
     auto must=[](bool v,const char *s){if(!v)throw std::runtime_error(s);};QJsonArray report;
     auto run=[&](YezhuFake &h,QJsonObject cfg,std::string &why){
         const QString id=h.hunt?"dungeon_0031c749":"dungeon_0031db5f";
-        cfg.insert("legacy_id",id);cfg.insert("combat",true);cfg.insert("dungeon_wait_seconds",5);
+        cfg.insert("legacy_id",id);cfg.insert("combat",true);cfg.insert("dungeon_wait_seconds",5);cfg.insert("dungeon_team_wait_seconds",30);
         QJsonObject entry;QString path,error;must(resolveLegacyEntry(root+"/scripts/legacy",id,entry,path,error),qPrintable(error));
         must(entry.value("validation_contract")==QJsonValue("yezhu_flow_v1"),"Yezhu has no completion contract");
         auto source=prepareResidentScript(root+"/scripts/legacy",path,cfg,error);must(!source.isEmpty(),qPrintable(error));must(!source.contains("__original_rules="),"Yezhu still loads the vendor framework");
@@ -147,7 +147,7 @@ template<class Test>void yezhuTests(const QString &root,Test test){
         std::string why;
         {YezhuFake h;h.full=true;failed(h,{},why);must(h.entries==0,"Full bag entered");}
         {YezhuFake h;h.together=false;failed(h,{{"dungeon_team_count",3}},why);must(h.entries==0,"Scattered team entered");}
-        {YezhuFake h;h.noEntry=true;failed(h,{},why);must(h.entries==1,"Entry replayed without feedback");}
+        {YezhuFake h;h.noEntry=true;failed(h,{},why);must(h.entries>=1&&h.entries<=6,"Entry retried beyond the team patience");}
         {YezhuFake h;h.noLeave=true;failed(h,{},why);must(h.receipt.isEmpty(),"Completed without leaving");}
         {YezhuFake h;h.scene=231;h.x=60;h.y=81;h.noBoss=true;failed(h,{{"dungeon_battle_seconds",30}},why);must(h.receipt.isEmpty(),"Completed without a boss");}
     });

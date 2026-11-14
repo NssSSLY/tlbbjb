@@ -155,7 +155,7 @@ struct YanziFake:ResidentFake {
 template<class Test>void yanziTests(const QString &root,Test test){
     auto must=[](bool x,const char *s){if(!x)throw std::runtime_error(s);};QJsonArray report;
     auto run=[&](YanziFake &h,QJsonObject cfg,std::string &why,bool healOnly=false){
-        cfg.insert("legacy_id","yanzi");cfg.insert("combat",true);cfg.insert("dungeon_wait_seconds",5);
+        cfg.insert("legacy_id","yanzi");cfg.insert("combat",true);cfg.insert("dungeon_wait_seconds",5);cfg.insert("dungeon_team_wait_seconds",30);
         QJsonObject entry;QString path,error;must(resolveLegacyEntry(root+"/scripts/legacy","yanzi",entry,path,error),qPrintable(error));
         must(entry.value("validation_contract")==QJsonValue("yanzi_flow_v1"),"Yanzi has no completion contract");
         auto source=prepareResidentScript(root+"/scripts/legacy",path,cfg,error);must(!source.isEmpty(),qPrintable(error));must(!source.contains("__original_rules="),"Yanzi still loads mixed vendor framework");
@@ -194,7 +194,7 @@ template<class Test>void yanziTests(const QString &root,Test test){
     });
     test("yanzi_no_feedback_is_not_replayed_or_completed",[&]{
         for(int i=0;i<9;++i){YanziFake h;h.noEntry=i==0;h.noStart=i==1;h.noTunnel=i==2;h.noExit=i==3;h.noCount=i==4;h.badCampaign=i==5;h.reused=i==6;h.poison=i==7;h.noAntidote=i==7;h.hasPet=i==8;h.noPetReceipt=i==8;std::string why;
-            must(run(h,{},why)==resident::Vm::Failed,(why+"\n"+h.logText).c_str());must(h.entries<=1&&h.duanStarts<=1&&h.qianStarts<=1&&h.tunnels<=1&&h.receipt.isEmpty(),"Yanzi replayed uncertain action or marked done");}
+            must(run(h,{},why)==resident::Vm::Failed,(why+"\n"+h.logText).c_str());must((h.noEntry?h.entries<=6:h.entries<=1)&&h.duanStarts<=1&&h.qianStarts<=1&&h.tunnels<=1&&h.receipt.isEmpty(),"Yanzi replayed uncertain action or marked done");}
     });
     test("yanzi_preconditions_limits_stale_messages_and_invalid_ice",[&]{
         for(int i=0;i<3;++i){YanziFake h;h.full=i==0;h.together=i!=1;h.teamNearby=i!=2;std::string why;must(run(h,{},why)==resident::Vm::Failed&&h.entries==0,why.c_str());}

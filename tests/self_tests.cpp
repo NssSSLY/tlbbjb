@@ -36,6 +36,7 @@
 #include "long_task_tests.hpp"
 #include "short_task_tests.hpp"
 #include "daily_routine_tests.hpp"
+#include "layout_tests.hpp"
 #include <QDateTime>
 #include <QCoreApplication>
 #include <QCryptographicHash>
@@ -630,7 +631,10 @@ int runSelfTests(const QString &root, const QString &reportPath) {
             case gameplay::Dismount:g.log<<"dismount";return {0};
             case gameplay::DoubleTimer:return {g.timer};
             case gameplay::VipLevel:return {g.vip};
-            case gameplay::MsgBoxText:{const auto name=QString::fromWCharArray(gameplay::msgBoxTexts[a.ints[0]]);g.log<<"msgbox:"+name;if(name.contains("冻结"))g.timer=0;return {1};}
+            case gameplay::MsgBoxText:{const auto name=QString::fromWCharArray(gameplay::msgBoxTexts[a.ints[0]]);
+                // The simulated game never shows the cross-scene route prompt; pathing only checks for it.
+                if(name.contains("跨场景"))return {0};
+                g.log<<"msgbox:"+name;if(name.contains("冻结"))g.timer=0;return {1};}
             case gameplay::QuitGame:g.log<<"quit";return {1};
             case gameplay::XingYunCount:return {-1};
             case gameplay::VipRefresh:g.log<<"viprefresh";return {1};
@@ -1082,6 +1086,7 @@ int runSelfTests(const QString &root, const QString &reportPath) {
     longTaskTests(root,test);
     shortTaskTests(root,test);
     dailyRoutineTests(root,test);
+    layoutTests(root,test);
     originalRulesTests(root,temp.path(),test);
     dailyTaskTests(root,temp.path(),test);
     QJsonObject report{{"status", failure.isEmpty() ? "pass" : "fail"},

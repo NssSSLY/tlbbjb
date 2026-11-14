@@ -125,7 +125,7 @@ struct MingwangFake:ResidentFake {
 template<class Test>void mingwangTests(const QString &root,Test test){
     auto must=[](bool v,const char *s){if(!v)throw std::runtime_error(s);};QJsonArray report;
     auto run=[&](MingwangFake &h,QJsonObject cfg,std::string &why){
-        cfg.insert("legacy_id","dungeon_002cfcf9");cfg.insert("combat",true);cfg.insert("dungeon_wait_seconds",5);cfg.insert("dungeon_team_count",3);
+        cfg.insert("legacy_id","dungeon_002cfcf9");cfg.insert("combat",true);cfg.insert("dungeon_wait_seconds",5);cfg.insert("dungeon_team_wait_seconds",30);cfg.insert("dungeon_team_count",3);
         QJsonObject entry;QString path,error;must(resolveLegacyEntry(root+"/scripts/legacy","dungeon_002cfcf9",entry,path,error),qPrintable(error));
         must(entry.value("validation_contract")==QJsonValue("mingwang_flow_v1"),"Mingwang has no completion contract");
         auto source=prepareResidentScript(root+"/scripts/legacy",path,cfg,error);must(!source.isEmpty(),qPrintable(error));must(!source.contains("__original_rules="),"Mingwang still loads the vendor framework");
@@ -159,7 +159,7 @@ template<class Test>void mingwangTests(const QString &root,Test test){
         {MingwangFake h;h.needClaim=true;finished(h,{},why);must(h.claimed&&logged(h,"领取入场资格"),"Entry claim not used");}
         {MingwangFake h;h.full=true;failed(h,{},why);must(h.entries==0,"Full bag entered");}
         {MingwangFake h;h.together=false;failed(h,{},why);must(h.entries==0,"Scattered team entered");}
-        {MingwangFake h;h.noEntry=true;failed(h,{},why);must(h.entries==2&&h.receipt.isEmpty(),"Entry replayed beyond the claim retry");}
+        {MingwangFake h;h.noEntry=true;failed(h,{},why);must(h.entries>=2&&h.entries<=8&&h.receipt.isEmpty(),"Entry retried beyond the team patience");}
         {MingwangFake h;h.noStart=true;failed(h,{},why);must(h.starts==1&&h.receipt.isEmpty(),"Trial start replayed");}
         {MingwangFake h;h.wipe=true;failed(h,{},why);must(why.find("重新出现")!=std::string::npos,why.c_str());}
     });

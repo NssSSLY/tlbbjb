@@ -139,7 +139,7 @@ struct BingshengFake:ResidentFake {
 template<class Test>void bingshengTests(const QString &root,Test test){
     auto must=[](bool v,const char *s){if(!v)throw std::runtime_error(s);};QJsonArray report;
     auto run=[&](BingshengFake &h,QJsonObject cfg,std::string &why){
-        cfg.insert("legacy_id","bingsheng");cfg.insert("combat",true);cfg.insert("dungeon_wait_seconds",5);
+        cfg.insert("legacy_id","bingsheng");cfg.insert("combat",true);cfg.insert("dungeon_wait_seconds",5);cfg.insert("dungeon_team_wait_seconds",30);
         QJsonObject entry;QString path,error;must(resolveLegacyEntry(root+"/scripts/legacy","bingsheng",entry,path,error),qPrintable(error));
         must(entry.value("validation_contract")==QJsonValue("bingsheng_flow_v1"),"Bingsheng has no completion contract");
         auto source=prepareResidentScript(root+"/scripts/legacy",path,cfg,error);must(!source.isEmpty(),qPrintable(error));must(!source.contains("__original_rules="),"Bingsheng still loads the vendor framework");
@@ -182,7 +182,7 @@ template<class Test>void bingshengTests(const QString &root,Test test){
         {BingshengFake h;h.full=true;failed(h,{},why);must(h.entries==0,"Full bag entered");}
         {BingshengFake h;h.raidSize=6;failed(h,{},why);must(h.entries==0,"Small raid entered");}
         {BingshengFake h;h.emei=1;failed(h,{},why);must(h.entries==0,"Raid with one 峨嵋 entered");}
-        {BingshengFake h;h.noEntry=true;failed(h,{},why);must(h.entries==1,"Entry replayed without feedback");}
+        {BingshengFake h;h.noEntry=true;failed(h,{},why);must(h.entries>=1&&h.entries<=6,"Entry retried beyond the team patience");}
         {BingshengFake h;h.noCount=true;failed(h,{},why);must(h.receipt.isEmpty(),"Count without increase was completed");}
         {BingshengFake h;h.noOut=true;failed(h,{},why);must(h.receipt.isEmpty(),"Still inside was completed");}
     });

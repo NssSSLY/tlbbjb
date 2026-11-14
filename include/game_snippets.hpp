@@ -265,8 +265,9 @@ inline constexpr GiftRule xzGifts[]={{L"乔峰",L"剑谱"},{L"乔峰",L"女儿�
 // NPC shop items a task may buy one at a time (武林印：金创药、白玉瓶；买卖补给：药品与珍兽用品).
 inline constexpr const wchar_t *shopItems[]={L"金创药",L"白玉瓶",L"归灵丸",L"回旋金球",L"珍兽滋补丹",L"珍兽回春丹",L"珍兽万补丹",L"珍兽回神丹",
     L"超级珍兽滋补丹",L"超级珍兽回春丹",L"珍兽延年丹"};
-// MessageBox_Self texts accepted by specific task or route handlers.
-inline constexpr const wchar_t *msgBoxTexts[]={L"解冻",L"确定进行冻结",L"需要使用角色自身经验",L"功力丹",L"你确认要开启跨场景自动寻路吗"};
+// MessageBox_Self texts accepted by specific task or route handlers. The last, empty entry is the
+// original rules' unconditional MessageBox_Self_OK_Clicked(): OK on whatever box is shown.
+inline constexpr const wchar_t *msgBoxTexts[]={L"解冻",L"确定进行冻结",L"需要使用角色自身经验",L"功力丹",L"你确认要开启跨场景自动寻路吗",L""};
 inline constexpr const char *closableWindows[]={"SweepPage","Shop","BigBank","Bank","Packet_Temporary","Gemcompose","PS_ShopMag",
     "Quest","EquipBaoJian_YuLuan_Tips","EquipBaoJian_TianHuo_Tips","EquipBaoJian_YunShui_Tips","ZhongXiaItem","WuhunQuest","GoldRecycle_GiftShop","GiveGift","LongwenLevelUp","SelfEquip"};
 inline constexpr const char *uiEvents[]={"OPEN_SAFECENTER_SAFESCORE"};
@@ -466,8 +467,25 @@ inline const char *snippetSource(uint32_t id){
         " return -1,-1,-1 end";
     case MissionVar:return
         "return function(slot,n) if DataPool:GetPlayerMission_InUse(slot)==1 then return DataPool:GetPlayerMission_Variable(slot,n) end return -1 end";
-    case PlayerState:return "return function() return Player:GetState() or -1 end";
-    case Dismount:return "return function(buff) if Player and type(Player.DispelBuffByName)=='function' then if Player:DispelBuffByName(buff) then return 1 end return 0 end if type(GetMountID)=='function' and GetMountID()==-1 then return 0 end return -1 end";
+    // -1 when this build has no Player:GetState (callers then stop waiting instead of failing).
+    case PlayerState:return "return function() if not Player or type(Player.GetState)~='function' then return -1 end return Player:GetState() or -1 end";
+    // 1 dismount issued, 0 not mounted, 2 = press the self context menu's 下坐骑 item natively,
+    // -1 = no route; the text then lists related functions the game exposes.
+    // The game's own route is the self right-click menu item Myself_DisbondRide, whose Clicked handler
+    // (ContexMenu layout) is ContexMenu_OtherPlayer_Clicked("Ride").
+    case Dismount:return
+        "return function(buff) if Player and type(Player.DispelBuffByName)=='function' then if Player:DispelBuffByName(buff) then return 1 end return 0 end\n"
+        " if type(GetMountID)=='function' and GetMountID()==-1 then return 0 end\n"
+        // Calling ContexMenu_OtherPlayer_Clicked from outside fails (`this:ClosePopMenu`, live test).
+        // The mount skill is a toggle, the same call the original uses to mount and to dismount.
+        " if type(GetMountID)=='function' and Player and type(Player.UseSkillInLua_Const)=='function' then Player:UseSkillInLua_Const() return 1 end\n"
+        " if rawget(_G,'ContexMenu_Env') then return 2 end\n"
+        " local seen,names={},{} local function scan(t,prefix) if type(t)~='table' then return end for k,v in pairs(t) do\n"
+        "  if type(k)=='string' and not seen[prefix..k] and (string.find(k,'Mount') or string.find(k,'Ride') or string.find(k,'Horse') or string.find(k,'Buff') or string.find(k,'State')) then\n"
+        "   seen[prefix..k]=true table.insert(names,prefix..k) end end end\n"
+        " scan(Player,'Player.') local mt=Player and getmetatable(Player) if type(mt)=='table' then scan(mt,'Player.') scan(mt.__index,'Player.') end\n"
+        " for k,v in pairs(_G) do if type(k)=='string' and type(v)=='function' and (string.find(k,'Mount') or string.find(k,'Ride') or string.find(k,'Horse')) then table.insert(names,k) end end\n"
+        " return -1,table.concat(names,' ') end";
     case DoubleTimer:return
         "return function() local e=MainMenuBar_Env local w=type(e)=='table' and e.MainMenuBar_Doub_Watch\n"
         " if w and w:IsVisible() then return tonumber(w:GetProperty('Timer')) or 0 end return 0 end";
@@ -475,7 +493,9 @@ inline const char *snippetSource(uint32_t id){
     case MsgBoxText:return
         "return function(want) local e=MessageBox_Self_Env if type(e)~='table' or not e.this or not e.this:IsVisible() then return 0 end\n"
         " local t=e.MessageBox_Self_Text and e.MessageBox_Self_Text:GetText() or ''\n"
-        " if string.find(t,want,1,true) then e.MessageBox_Self_OK_Clicked() return 1 end return 0 end";
+        " if not string.find(t,want,1,true) then return 0 end\n"
+        // Newer builds no longer expose the OK handler in this table; 2 = matched, press the button natively.
+        " local f=rawget(e,'MessageBox_Self_OK_Clicked') if type(f)=='function' then f() return 1 end return 2 end";
     case QuitGame:return "return function() QuitApplication('quit') return 1 end";
     case XingYunCount:return
         "return function() local e=XingYun_Env if type(e)~='table' or not e.this or not e.this:IsVisible() then return -1 end local c=0\n"

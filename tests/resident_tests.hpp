@@ -13,7 +13,7 @@
 #include <functional>
 namespace tlbb {
 struct ResidentFake:resident::Host {
-    uint64_t evaluations=0;int casts=0,kills=0,boss=0,stops=0,scene=3;double x=64,y=64;bool low=false,uncertain=false;int entryScene=3;
+    uint64_t evaluations=0;int casts=0,kills=0,boss=0,stops=0,scene=3;double x=64,y=64;bool low=false,uncertain=false,mounted=false;int entryScene=3;
     std::string logText;
     resident::Values snippet(uint32_t id,const gameplay::SnippetArgs &a)override{
         using resident::Value;using resident::Values;
@@ -25,6 +25,7 @@ struct ResidentFake:resident::Host {
         case gameplay::PlayerData:return {Value(a.ints[0]==4&&low?10:100)};
         case gameplay::TeamCount:return {Value(3)};
         case gameplay::WindowVisible:return {Value(0)};
+        case gameplay::MsgBoxText:return {Value(0)}; // no message box is ever shown here
         case gameplay::BagSpace:return {Value(5)};
         case gameplay::DictText:return {Value(1),Value(QString::fromWCharArray(a.text).toStdString())};
         case gameplay::DebugMessages:return {Value(1),Value(std::string())};
@@ -45,13 +46,17 @@ struct ResidentFake:resident::Host {
         if(op=="battle_self_identity")return {Value(5),Value(500)};
         if(op=="alert")return {};
         if(op=="mechanism_snapshot")return {Value(scene),Value(0),Value(std::string())};
-        if(op=="object_buff_ids")return {Value(0),Value(std::string())};
+        if(op=="resource_objects")return {Value(scene),Value(0),Value(std::string())}; // no 矿地 nearby
+        if(op=="object_buff_ids")return mounted?resident::Values{Value(1),Value(std::string("77"))}:resident::Values{Value(0),Value(std::string())};
         throw std::runtime_error("Unknown fixture host call");
     }
     resident::Values evaluate(const std::string &code,const std::string&,int count)override{
         using resident::Value;++evaluations;
         if(code.find("Player:GetData")!=std::string::npos&&count==2)return {Value(100),Value(100)};
         if(code.find("Player:GetData")!=std::string::npos)return {Value(low&&code.find("MAXHP")==std::string::npos?10:100)};
+        // The mount skill toggles the mount buff, which Lua_GetBuffInfo then names.
+        if(code.find("UseSkillInLua_Const")!=std::string::npos){mounted=!mounted;return {};}
+        if(code.find("Lua_GetBuffInfo(77)")!=std::string::npos)return {Value(QString::fromUtf8("坐骑：测试马|").toStdString())};
         if(code=="echo")return {Value(double(evaluations)),Value(std::string("无白名单直调")),Value(),Value(true)};
         if(code=="many"){resident::Values values;for(int i=1;i<=32;++i)values.emplace_back(i);return values;}
         if(code=="throw")throw std::runtime_error("uncertain fixture call");
@@ -171,7 +176,7 @@ template<class Test>void residentTests(const QString &root,const QString &tempor
             source.replace("local ok,err=pcall(chunk)","local ok,err=xpcall(chunk,__offline_traceback)");
             resident::Vm vm(host,true);std::string why;
             if(!vm.start(source.toStdString(),why))row.insert("start_error",QString::fromStdString(why));
-            else{finish(vm,8000);row.insert("state",int(vm.state()));row.insert("error",QString::fromStdString(vm.error()).left(400));}
+            else{finish(vm,9000);row.insert("state",int(vm.state()));row.insert("error",QString::fromStdString(vm.error()).left(400));}
             results.append(row);
         }
         must(results.size()>=300,"generic task sweep incomplete");

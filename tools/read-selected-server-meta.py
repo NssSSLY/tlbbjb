@@ -12,7 +12,7 @@ pid=int(sys.argv[1]);h=k.OpenProcess(0x410,False,pid);assert h
 try:
  path=c.create_unicode_buffer(32768);length=w.DWORD(len(path));assert k.QueryFullProcessImageNameW(h,0,path,c.byref(length))
  assert Path(path.value).resolve()==(ROOT.parent/'Bin64/Game.exe').resolve()
- assert hashlib.sha256(Path(path.value).read_bytes()).hexdigest()=='72f4898ee04d2e8a6d94ff6d45cdc183dfa655eae40c31ddc67dcc2099d9c00d'
+ assert hashlib.sha256(Path(path.value).read_bytes()).hexdigest()=='47d9d3ead930824347e63b07d521fc3af986f9a2597c4f3f6ecfcd536f7e6d9f'
  base=c.c_void_p();need=w.DWORD();assert p.EnumProcessModules(h,c.byref(base),8,c.byref(need))
  def read(at,size):
   assert 0x10000<=at<0x7fffffffffff and size<=128

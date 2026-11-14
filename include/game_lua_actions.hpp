@@ -1,6 +1,7 @@
 #pragma once
 #include "game_lua_login.hpp"
 #include "game_snippets.hpp"
+#include "cegui_press.hpp"
 #include <algorithm>
 #include <cstdio>
 #include <cmath>
@@ -174,6 +175,15 @@ inline bool runGameSnippet(HMODULE module,void *object,uint32_t id,const gamepla
         str(text);num(i[0]);num(i[1]);str(extra[0]);str(extra[1]);break;}
     default:break;
     }
-    return runSnippet(module,object,gameplay::snippetSource(id),args,n,gameplay::snippetIssuesAction(id),out,mayHaveIssued,detail);
+    if(!runSnippet(module,object,gameplay::snippetSource(id),args,n,gameplay::snippetIssuesAction(id),out,mayHaveIssued,detail))return false;
+    if(id==gameplay::MsgBoxText&&out.count>=1&&out.numbers[0]==2){
+        // The box and its text were confirmed in the same game tick; press its own OK button.
+        out.numbers[0]=cegui::pressButton("MessageBox_Self_OK_Button")?1:0;
+    }
+    if(id==gameplay::Dismount&&out.count>=1&&out.numbers[0]==2){
+        // The self right-click menu's 下坐骑 item, fired as a click without opening the menu.
+        out.numbers[0]=cegui::pressButton("Myself_DisbondRide",true,"MenuItem")?1:-1;
+    }
+    return true;
 }
 }

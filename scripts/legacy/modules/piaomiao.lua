@@ -86,7 +86,7 @@ function Piaomiao.run(injected)
         assert(a.name==b.name and a.limit==b.limit and b.used>=a.used,'缥缈峰活动记录发生变化或次数回退')
     end
     local function gather(point)
-        wait('等待队伍集合',function() return api.teamReady(team) and api.teamTogether() and api.teamNear(point,20) end)
+        wait('等待队伍集合',function() return api.teamReady(team) and api.teamTogether() and api.teamNear(point,20) end,DungeonApi.teamPatience())
     end
     -- 乌老大 stands at x=117 before his fight; anywhere else, in NPC form, he has been beaten.
     local function wldBeaten(o) return o.class~='怪物' and o.hp>0 and math.floor(o.x)~=117 end
@@ -483,10 +483,10 @@ function Piaomiao.run(injected)
             api.space();api.prepareBattle()
             if world().scene~=SCENE then
                 api.openNpc(entrance);gather(entrance)
-                if api.isLeader() then
+                DungeonApi.enterRetry(api,'确认进入缥缈峰',function() return world().scene==SCENE end,function()
+                    CloseAllWindow();api.openNpc(entrance)
                     assert(api.selectOption({mode.option},true),'程青霜没有所选难度的选项：'..tostring(cfg.dpmf_type or '普通'))
-                end
-                wait('确认进入缥缈峰',function() return world().scene==SCENE end)
+                end)
             end
             fight(before);completed=completed+1;log('本轮完成（'..completed..'/'..rounds..'）')
         end

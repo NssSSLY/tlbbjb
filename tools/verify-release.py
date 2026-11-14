@@ -86,6 +86,16 @@ assert native["passed"] and native["remaining_sessions"]==0
 assert core["status"]=="pass"
 assert login["status"]=="pass"
 run(["--ui-smoke",out/"launcher-native.png","--data-root",out/"smoke-data","--report",out/"launcher-smoke.json"])
+# Users install into folders with Chinese names; the launcher, unpacking and plugins must all survive that.
+chinese=out/"中文 安装目录"
+if chinese.exists():shutil.rmtree(chinese)
+chinese.mkdir(parents=True)
+for name in ["TLBB.exe","TLBBRuntime.dll","TLBBEngine.dll"]:shutil.copy2(exe.parent/name,chinese/name)
+shutil.copytree(exe.parent/"scripts",chinese/"scripts")
+result=subprocess.run([str(chinese/"TLBB.exe"),"--ui-smoke",str(out/"launcher-chinese.png"),"--data-root",str(out/"smoke-data-chinese"),"--report",str(out/"launcher-chinese.json")],env=env,capture_output=True,timeout=60,creationflags=subprocess.CREATE_NO_WINDOW)
+assert result.returncode==0,f"Launcher failed in a Chinese install folder: {result.returncode}"
+assert (out/"launcher-chinese.json").is_file(),"Chinese install folder wrote no report"
+shutil.rmtree(chinese)
 report={"status":"pass","exe":str(exe),"sha256":hashlib.sha256(exe.read_bytes()).hexdigest(),"developer_path_removed":True,"core_test_count":core["passed_count"],"native_ui_check_count":len(native["checks"]),"native_ui_process_exit":process.returncode,"native_hotkeys_verified_on_owned_fixtures":native["native_hotkey_input_verified_on_owned_fixtures"],"real_game_tested":False,"gameplay_actions_sent":0,"host_working_set_peak":max(s["host_working_set"] for s in samples),"host_private_peak":max(s["host_private"] for s in samples),"sampling_duration_seconds":samples[-1]["seconds"],"long_duration_performance_tested":False}
 report["engine_sha256"]=hashlib.sha256((exe.parent/"TLBBEngine.dll").read_bytes()).hexdigest()
 report["runtime_sha256"]=hashlib.sha256((exe.parent/"TLBBRuntime.dll").read_bytes()).hexdigest()

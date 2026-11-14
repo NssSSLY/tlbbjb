@@ -505,7 +505,7 @@ function Mingwang.run(injected)
             if world().scene~=SCENE then
                 api.space();api.prepareBattle()
                 api.openNpc(entrance)
-                wait('等待队伍集合',function() return api.teamReady(team) and api.teamTogether() and api.teamNear(entrance,20) end,math.max(waitMs,70000))
+                wait('等待队伍集合',function() return api.teamReady(team) and api.teamTogether() and api.teamNear(entrance,20) end,DungeonApi.teamPatience())
                 if api.isLeader() then
                     api.selectOption({'#{RGPT_231130_02}'},true);api.sleep(600);QuestFrameAcceptClicked(600)
                 end
@@ -522,7 +522,10 @@ function Mingwang.run(injected)
                         api.selectOption({'#{RGPT_231130_02}'},true);api.sleep(600);QuestFrameAcceptClicked(600)
                     end
                 end
-                wait('确认进入明王境',function() return world().scene==SCENE end,math.max(waitMs,60000))
+                DungeonApi.enterRetry(api,'确认进入明王境',function() return world().scene==SCENE end,function()
+                    CloseAllWindow();api.openNpc(entrance);api.sleep(500)
+                    api.selectOption({'#{RGPT_231130_02}'},true);api.sleep(600);QuestFrameAcceptClicked(600)
+                end,{skipFirst=true})
             end
             stayed=not fight();completed=completed+1;log('本轮完成（'..completed..'/'..rounds..'）')
         end

@@ -10,16 +10,33 @@ local oldMessage,oldColor=PushDebugMessage,PushColorMsg
 local state
 local claimResults={rose="#{SDJZH_091106_04}",seed="#{SDJZH_091106_23}"}
 local bagFull="#{SDJZH_091106_24}"
+-- Game text carries colour, line-break and item codes (#cFF0000, #r, #W, #{_ITEM...}); the
+-- NPC reply may also wrap the dictionary sentence in more text. Compare the plain words.
+local function plainText(v)
+    v=tostring(v or ""):gsub("#c%x%x%x%x%x%x",""):gsub("#{_[^}]*}",""):gsub("#%a","")
+    return (v:gsub("[%s%p]",""):gsub("，",""):gsub("。",""):gsub("！",""):gsub("：",""))
+end
+local translations={}
+local function translate(key)
+    if translations[key]~=nil then return translations[key] end
+    local dictionaryKey=key:match("^#{([%w_]+)}$");local plain=""
+    if dictionaryKey then
+        local translated=GetDictionaryString(dictionaryKey)
+        if type(translated)=="string" and translated~=key and translated~=dictionaryKey then plain=plainText(translated) end
+    end
+    translations[key]=plain;return plain
+end
 local function matchesDictionary(value,key)
-    if type(value)~="string" then return false end
-    value=value:gsub("#c%x%x%x%x%x%x",""):gsub("^%s+",""):gsub("%s+$","")
-    if value==key then return true end
-    local dictionaryKey=key:match("^#{([%w_]+)}$")
-    if not dictionaryKey then return false end
-    local translated=GetDictionaryString(dictionaryKey)
-    if type(translated)~="string" or translated=="" or translated==key or translated==dictionaryKey then return false end
-    translated=translated:gsub("#c%x%x%x%x%x%x",""):gsub("^%s+",""):gsub("%s+$","")
-    return value~="" and value==translated
+    if type(value)~="string" or value=="" then return false end
+    if value:find(key,1,true) then return true end
+    local plain,wanted=plainText(value),translate(key)
+    -- Short fragments could match unrelated lines; require a real sentence.
+    return #wanted>=9 and #plain>0 and plain:find(wanted,1,true)~=nil
+end
+-- The game's own bottom-screen message list, where claim results also appear.
+local function messageShows(key)
+    local wanted=translate(key);if #wanted<9 then return false end
+    local ok,found=pcall(oldDebug,wanted);return ok and found==true
 end
 local gems={['红宝石']=true,['绿宝石']=true,['紫玉']=true,['祖母绿']=true,['黄晶石']=true,['蓝晶石']=true,
     ['红晶石']=true,['绿晶石']=true,['黄玉']=true,['皓石']=true,['月光石']=true,['碧玺']=true,['变石']=true}
@@ -57,9 +74,9 @@ local function observe(v)
     v=tostring(v or "")
     if state.kind=="gulanyu" then state.limited=state.limited or limitText(v)
     elseif state.kind=="shitu" then
-        local text=v:gsub("#c%x%x%x%x%x%x",""):gsub("%s+",""):gsub("，",""):gsub("。",""):gsub("！",""):gsub(",",""):gsub("!","")
-        state.done=state.done or text:find("今天已经参加过此活动",1,true)~=nil
-            or text:find("今日已经参加过此活动",1,true)~=nil
+        local text=plainText(v)
+        state.done=state.done or text:find("已经参加过此活动",1,true)~=nil
+            or text:find("已参加过此活动",1,true)~=nil or text:find("今天已经领取",1,true)~=nil
     elseif state.kind=="xingyun" then
         if v:find("已经参加",1,true) then state.done=true end
         if v:find("再等60分钟",1,true) then state.cooldown=true end
@@ -76,6 +93,7 @@ local function observeShituNpc()
         observe(oldNpc(index))
         if state.done then break end
     end
+    if not state.done then for _,line in ipairs({"已经参加过此活动","今天已经领取"}) do local ok,found=pcall(oldDebug,line);if ok and found==true then state.done=true end end end
     return state.done
 end
 -- Check only immediately before a new claim or participation; already-completed
@@ -85,13 +103,22 @@ local function requireClaimSpace()
     assert(type(space)=="number" and space==math.floor(space) and space>0,
         "背包没有可用空位或空位无法读取，未提交领取，请先整理背包")
 end
+local function freeSlots()
+    local ok,space=pcall(Bag.GetSpaceNum,Bag,0)
+    return ok and type(space)=="number" and space==math.floor(space) and space or nil
+end
 local function observeClaimNpc()
-    -- Check each NPC response separately; joining all entries prevents an
-    -- exact comparison with the reference rule's dictionary text.
+    -- Check each NPC response separately, then the bottom-screen messages.
     local _,count=oldNpcAll();count=tonumber(count) or 0
     for index=0,math.min(31,math.max(-1,count-1)) do
         observe(oldNpc(index))
         if state.done or state.bagFull then break end
+    end
+    if not state.done and messageShows(claimResults[state.kind]) then state.done=true end
+    if not state.bagFull and messageShows(bagFull) then state.bagFull=true end
+    -- The claimed item takes a bag slot: fewer free slots after this submit is the item arriving.
+    if not state.done and state.claimPending and state.slotsBefore then
+        local now=freeSlots();if now and now<state.slotsBefore then state.done=true;state.byBag=true end
     end
     return state.done
 end
@@ -141,6 +168,7 @@ function QuestFrameOptionClicked_Item(option,mode,wait)
             if state.done then CloseAllWindow();error(TaskLifecycle.skip("already_done","NPC 已确认今日领取状态"),0) end
             if state.claimPending then error("领取请求已提交，但游戏状态未确认；停止且不重复领取") end
             requireClaimSpace()
+            state.slotsBefore=freeSlots()
             local ok=oldOption(option,mode,wait)
             if ok then
                 state.claimPending=true
@@ -301,7 +329,7 @@ local function verify()
         if state.done then return "failed","幸运快活三已参加，但奖励领取状态未确认" end
     elseif claimResults[state.kind] then
         if state.bagFull then return "failed","背包需要清理，未确认领取完成" end
-        if state.done then return state.claimPending and "done" or "already_done",(state.kind=="rose" and "波斯玫瑰" or "鲜花种子").."：已由游戏对话确认完成" end
+        if state.done then return state.claimPending and "done" or "already_done",(state.kind=="rose" and "波斯玫瑰" or "鲜花种子")..(state.byBag and "：领取后背包空位减少，已确认领取" or "：已由游戏对话确认完成") end
     end
     return "failed","原规则已退出，但任务完成条件未确认"
 end

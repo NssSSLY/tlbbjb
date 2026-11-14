@@ -8,6 +8,38 @@ local function resolve(s)
     local key=s:match("^#{([%w_]+)}$")
     return key and GetDictionaryString(key) or s
 end
+-- 等队员：用户规则是“要开始进行，不要光等待就停止”。队伍集合 / 进场统一等这么久（默认 180 秒，
+-- 30–900 可调），期间队长主动反复对话；超过才判定这一项无法进行，标记失败，任务列表继续下一项。
+function DungeonApi.teamPatience()
+    local c=TaskConfig or {};local n=tonumber(c.dungeon_team_wait_seconds or 180) or 180
+    return math.max(30,math.min(n,900))*1000
+end
+-- 进场：队员没接任务 / 没准备好 / 没走到时 NPC 不放行。队长每 6 秒重新对话并选入场选项一次，
+-- 直到 inside() 为真；队员只等队长带队。attempt 出错（选项暂时不在等）不算失败，下一轮再试。
+-- opts.skipFirst：调用前已经对话选过一次（首轮带有完成判定等），从第二次起才重新对话。
+-- opts.leader：团队副本由团长判定，覆盖队伍的队长判定。
+function DungeonApi.enterRetry(api,name,inside,attempt,opts)
+    opts=opts or {}
+    local began,tries,limit=api.now(),0,DungeonApi.teamPatience()
+    local leader=opts.leader
+    if leader==nil then leader=type(api.isLeader)~='function' or api.isLeader() end
+    while not inside() do
+        tries=tries+1
+        if leader and not (opts.skipFirst and tries==1) then
+            if tries>1 then api.log(name..' · 队员未就绪或未进入，重新对话（第 '..tries..' 次）') end
+            local ok,why=pcall(attempt)
+            if not ok then api.log(name..' · 本次进入对话未成功，稍后重试：'..tostring(why)) end
+        elseif tries==1 and not leader then api.log(name..' · 等待队长带队进入') end
+        local t=api.now()
+        repeat
+            if inside() then return true end
+            if api.maintain then api.maintain() end
+            api.sleep(250)
+        until api.now()-t>=6000
+        assert(api.now()-began<limit,name..'：已等待 '..math.floor(limit/1000)..' 秒仍未进入（队员未接任务、未准备好或未到场），本项标记失败，继续下一项')
+    end
+    return true
+end
 function DungeonApi.new()
     local api={now=GetTickCount,sleep=Sleep,log=PushDebugMessage}
     local sharedSignatures={}
@@ -339,6 +371,8 @@ function DungeonApi.new()
     end
     api.progress=function(def,m,context) return def.progress(api,m,context) end
     api.maintain=function() return R.maintain and R.maintain() or false end
+    api.teamPatience=DungeonApi.teamPatience
+    api.enterRetry=function(name,inside,attempt) return DungeonApi.enterRetry(api,name,inside,attempt) end
     -- What to do about dying, per the task's setting. 停止 keeps the old rule: low health stops the task while the character still lives.
     -- A rescue is accepted when the game offers one. 出窍回城 walks out through 孟婆; open-world tasks then carry on (api.RESUME), dungeons end the run.
     api.RESUME='\0resume-after-death'
@@ -351,8 +385,19 @@ function DungeonApi.new()
     api.alive=function(minimum,message,resume)
         local cfg=TaskConfig or {}
         local mode=tostring(cfg.revive_mode or '停止')
-        if mode=='停止' then assert(GetHPPercent()>minimum,message);return true end
-        local function state() return GetLuaValue('-- dungeon:player-state\nreturn Player:GetState()','n') end
+        if mode=='停止' then
+            if GetHPPercent()>minimum then return true end
+            -- GetHPPercent reads 0 while a floor or scene loads (max HP not readable yet). Stop only on
+            -- three valid low readings in a row; an unreadable sample is a load, not low health.
+            for _=1,3 do
+                api.sleep(300)
+                local hp,max=Player:GetData('HP'),Player:GetData('MAXHP')
+                if type(hp)~='number' or type(max)~='number' or hp<0 or max<=0 then return true end
+                if hp*100//max>minimum then return true end
+            end
+            assert(false,message)
+        end
+        local function state() return GetLuaValue('-- dungeon:player-state\nif not Player or type(Player.GetState)~="function" then return -1 end return Player:GetState()','n') end
         if state()~=9 then return true end
         api.log('角色死亡，'..mode)
         pcall(api.stopAttack)

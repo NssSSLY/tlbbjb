@@ -127,7 +127,7 @@ struct TianboFake:ResidentFake {
 template<class Test>void tianboTests(const QString &root,Test test){
     auto must=[](bool v,const char *s){if(!v)throw std::runtime_error(s);};QJsonArray report;
     auto run=[&](TianboFake &h,QJsonObject cfg,std::string &why){
-        cfg.insert("legacy_id","dungeon_002e1e29");cfg.insert("combat",true);cfg.insert("dungeon_wait_seconds",5);
+        cfg.insert("legacy_id","dungeon_002e1e29");cfg.insert("combat",true);cfg.insert("dungeon_wait_seconds",5);cfg.insert("dungeon_team_wait_seconds",30);
         QJsonObject entry;QString path,error;must(resolveLegacyEntry(root+"/scripts/legacy","dungeon_002e1e29",entry,path,error),qPrintable(error));
         must(entry.value("validation_contract")==QJsonValue("tianbo_flow_v1"),"Tianbo has no completion contract");
         auto source=prepareResidentScript(root+"/scripts/legacy",path,cfg,error);must(!source.isEmpty(),qPrintable(error));must(!source.contains("__original_rules="),"Tianbo still loads the vendor framework");
@@ -163,7 +163,7 @@ template<class Test>void tianboTests(const QString &root,Test test){
         {TianboFake h;h.raidSize=8;failed(h,{},why);must(h.entries==0,"Small raid entered");}
         {TianboFake h;h.raidSize=8;finished(h,{{"dungeon_team_count",8}},why);must(h.entries==1,"Team setting ignored");}
         {TianboFake h;h.memberOutside=true;failed(h,{},why);must(h.entries==0,"Raid member outside entered");}
-        {TianboFake h;h.noEntry=true;failed(h,{},why);must(h.entries==1,"Entry replayed");}
+        {TianboFake h;h.noEntry=true;failed(h,{},why);must(h.entries>=1&&h.entries<=6,"Entry retried beyond the team patience");}
         {TianboFake h;h.noOpen=true;failed(h,{},why);must(h.opens==1,"Open replayed");}
         {TianboFake h;h.noLeave=true;failed(h,{},why);must(h.leaves==3&&h.receipt.isEmpty(),"Leave not bounded");}
         {TianboFake h;h.noCount=true;failed(h,{},why);must(h.receipt.isEmpty(),"Completed without the count");}

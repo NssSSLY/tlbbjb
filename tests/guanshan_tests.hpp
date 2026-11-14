@@ -146,7 +146,7 @@ struct GuanshanFake:ResidentFake {
 template<class Test>void guanshanTests(const QString &root,Test test){
     auto must=[](bool v,const char *s){if(!v)throw std::runtime_error(s);};QJsonArray report;
     auto run=[&](GuanshanFake &h,QJsonObject cfg,std::string &why){
-        cfg.insert("legacy_id","guanshan");cfg.insert("combat",true);cfg.insert("dungeon_wait_seconds",5);cfg.insert("dungeon_team_count",3);
+        cfg.insert("legacy_id","guanshan");cfg.insert("combat",true);cfg.insert("dungeon_wait_seconds",5);cfg.insert("dungeon_team_wait_seconds",30);cfg.insert("dungeon_team_count",3);
         QJsonObject entry;QString path,error;must(resolveLegacyEntry(root+"/scripts/legacy","guanshan",entry,path,error),qPrintable(error));
         must(entry.value("validation_contract")==QJsonValue("guanshan_flow_v1"),"Guanshan has no completion contract");
         auto source=prepareResidentScript(root+"/scripts/legacy",path,cfg,error);must(!source.isEmpty(),qPrintable(error));must(!source.contains("__original_rules="),"Guanshan still loads the vendor framework");
@@ -181,7 +181,7 @@ template<class Test>void guanshanTests(const QString &root,Test test){
         {GuanshanFake h;h.week=0;finished(h,{},why);must(h.entries==0&&h.receipt.contains("already_done"),"Weekly limit not respected");}
         {GuanshanFake h;h.full=true;failed(h,{},why);must(h.entries==0,"Full bag entered");}
         {GuanshanFake h;h.together=false;failed(h,{},why);must(h.entries==0,"Scattered team entered");}
-        {GuanshanFake h;h.noEntry=true;failed(h,{},why);must(h.entries==1,"Entry replayed without feedback");}
+        {GuanshanFake h;h.noEntry=true;failed(h,{},why);must(h.entries>=1&&h.entries<=6,"Entry retried beyond the team patience");}
         {GuanshanFake h;h.noOpen=true;failed(h,{},why);must(h.opens==1&&h.receipt.isEmpty(),"Open replayed or completed without a fight");}
         {GuanshanFake h;h.noLeave=true;failed(h,leaveAtSix,why);must(h.leaves==1&&h.receipt.isEmpty(),"Leave replayed or completed without leaving");}
         {GuanshanFake h;h.noCount=true;failed(h,leaveAtSix,why);must(why.find("剩余次数")!=std::string::npos&&h.receipt.isEmpty(),why.c_str());}

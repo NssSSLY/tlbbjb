@@ -400,7 +400,7 @@ function PushEvent(event,arg) assert(event=='3HUAN_OPEN_UI_RESULT' and arg==1) W
         for(int school=0;school<16;++school)test("school_"+std::to_string(school)+"_learned_actions","{}","W.school="+std::to_string(school),"local s=BattleSupport.new(true) assert(s.school=="+std::to_string(school)+" and #s.skills==4)","",0,0);
         test("taohua_uses_eng_not_rage","{}","W.school=13","local s=BattleSupport.new(true) assert(s.rage==45)","",0,0);
         test("unknown_school_keeps_id","{}","W.school=99","local s=BattleSupport.new(true) assert(s.school==99)","",0,0);
-        test("oversized_skill_list_rejected","{}","W.skillCount=257",start,"技能动作数量",0,0);
+        test("oversized_skill_count_uses_full_scan","{}","W.skillCount=257","local s=BattleSupport.new(true) assert(#s.skills==4)","",0,0);
         test("full_256_slot_count_supported","{}","W.skillCount=256 W.highSkill=true","local s=BattleSupport.new(true) assert(#s.skills==5 and s.skills[5].index==255)","",0,0);
         test("missing_count_uses_bounded_sparse_slots","{}","GetActionNum=nil W.highSkill=true","local s=BattleSupport.new(true) assert(#s.skills==5 and s.skills[5].index==255)","",0,0);
         test("count_query_failure_uses_bounded_slots","{}","function GetActionNum() error('unsupported kind') end","local s=BattleSupport.new(true) assert(#s.skills==4)","",0,0);

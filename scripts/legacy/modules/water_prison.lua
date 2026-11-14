@@ -46,7 +46,7 @@ function WaterPrison.run(injected)
                 if api.isLeader() then
                     api.openNpc(outer.npc)
                     if api.limit(outer) then return {status='limit_reached',message='NPC 确认水牢已达上限；本次已完成 '..completed..' 轮'} end
-                    wait('等待队伍',function() return api.teamReady(team) end)
+                    wait('等待队伍',function() return api.teamReady(team) end,DungeonApi.teamPatience())
                     enter('接取外层任务');api.accept(outer)
                 end
                 m=wait('等待外层任务',function() local current=mission(outer);if not current then api.acceptShared(outer) end;return current end)
@@ -58,7 +58,7 @@ function WaterPrison.run(injected)
                     if not outer.inside(world()) then
                         if not n then assert(Bag:GetItemCount('水牢令牌')>0,'背包缺少水牢令牌，未提交入场') end
                         api.openNpc(inner.npc)
-                        wait('等待队伍集合',function() return api.teamReady(team) end)
+                        wait('等待队伍集合',function() return api.teamReady(team) end,DungeonApi.teamPatience())
                         if api.isLeader() then
                             enter('接取水牢与入场')
                             api.enterMission(inner)

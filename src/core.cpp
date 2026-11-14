@@ -1,3 +1,4 @@
+#include "game_layout.hpp"
 #include "core.hpp"
 #include "builtin_resources.hpp"
 #include "live_layout.hpp"
@@ -146,11 +147,9 @@ bool ProcessBinding::open(quint32 pid, const QString &root, const QString &expec
 bool LiveGameReader::open(const ProcessBinding &binding, QString &error) {
     binding_ = nullptr;
     base_ = 0;
-    QFile image(binding.info().path);
-    QCryptographicHash hash(QCryptographicHash::Sha256);
-    if (!image.open(QIODevice::ReadOnly) || !hash.addData(&image) ||
-        hash.result().toHex() != live::imageSha256) {
-        error = "当前游戏版本尚未适配真实位置与移动";
+    std::string why;
+    if (!layout::ensure(reinterpret_cast<const wchar_t *>(binding.info().path.utf16()), why)) {
+        error = "当前游戏版本无法自动识别内存布局：" + QString::fromStdString(why);
         return false;
     }
     HMODULE base = nullptr;

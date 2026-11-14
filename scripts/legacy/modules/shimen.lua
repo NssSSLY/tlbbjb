@@ -1231,7 +1231,7 @@ function Shimen.run()
         return {name=name,x=x,y=y,scene=scene}
     end
     local function plain(desc) local at=desc:find('#G小提示',1,true);return at and desc:sub(1,at-1) or desc end
-    local function state() return GetLuaValue('-- shimen:state\nreturn Player:GetState()','n') end
+    local function state() return GetLuaValue('-- shimen:state\nif not Player or type(Player.GetState)~="function" then return -1 end return Player:GetState()','n') end
     local function casting(seconds)
         api.sleep(300)
         local began=api.now()
@@ -1357,6 +1357,14 @@ function Shimen.run()
     end
     local function catchMission(m,v)
         if cfg.xzk187==true then return abandon('抓宝宝（已设置放弃）') end
+        -- Checked when a catch ring actually comes up, not at the start: a full pet bar only matters here.
+        do
+            local n,lv,extra=GetLuaValue("-- shimen:petbar\nreturn Pet:GetPet_Count(),Player:GetData('LEVEL'),Player:GetData('PET_EXTRANUM')",'nnn')
+            if type(n)=='number' and type(lv)=='number' then
+                local max=(lv<21 and 2 or lv<41 and 3 or lv<61 and 4 or lv<81 and 5 or 6)+(tonumber(extra) or 0)
+                if n>=math.min(max,10) then error('师门任务：这一环要抓宝宝，但珍兽栏已满；请留出空位，或打开“不做抓宝宝”',0) end
+            end
+        end
         local info=v[5]==3210 and {name='成年北极熊',x=236,y=208,scene=112} or petInfo(m.desc)
         if not info then return skip('抓宝宝（任务描述解析失败）') end
         log('抓 '..info.name)
@@ -1460,10 +1468,6 @@ function Shimen.run()
     end
     local function body()
         api.validate(def,cfg)
-        if cfg.xzk187~=true and petBarFull() then
-            local m=current()
-            if not (m and vars(m.slot)[0]==1 and vars(m.slot)[4]==5) then error('师门任务：珍兽栏已满，抓宝宝环会失败；请留出空位，或打开“不做抓宝宝”',0) end
-        end
         local full=false
         while round<rounds do
             assert(api.now()<deadline,'师门任务超过总时限')

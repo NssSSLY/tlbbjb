@@ -73,7 +73,7 @@ function Cuju.run(injected)
                 api.openNpc(npc)
                 log('等待队伍集合');local began=api.now()
                 while not (team<=1 or (api.teamReady(team) and api.teamTogether())) do
-                    assert(api.now()-began<math.max(waitMs,70000),'蹴鞠大赛：等待队伍集合超时')
+                    assert(api.now()-began<DungeonApi.teamPatience(),'蹴鞠大赛：等待队伍集合超时')
                     api.maintain();api.sleep(250)
                 end
                 assert(api.selectOption({'横扫牡丹碗'},true),npc.name..'没有横扫牡丹碗选项，活动可能未开放')

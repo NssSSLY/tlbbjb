@@ -1,3 +1,4 @@
+#include "game_layout.hpp"
 #include "resident_protocol.hpp"
 #include "resident_clock.hpp"
 #include "resident_native.hpp"
@@ -18,12 +19,12 @@ struct Adapter:Host {
     uintptr_t base=uintptr_t(GetModuleHandleW(nullptr));HWND window=nullptr;uint32_t flags=0;bool combatTask=false;
     uint32_t kills=0;bool boss=false;uint64_t rawCalls=0;std::string latest,battle,taskResult;
     std::unique_ptr<GameTextSession> gameText;
-    live::Snapshot world(){live::Snapshot s;if(!live::signature(GetCurrentProcess(),base)||!live::snapshot(GetCurrentProcess(),base,s))throw std::runtime_error("Character world state is unavailable");return s;}
+    live::Snapshot world(){live::Snapshot s;if(!layout::ready(base)||!live::snapshot(GetCurrentProcess(),base,s))throw std::runtime_error("Character world state is unavailable");return s;}
     explicit Adapter(HWND hwnd,uint32_t allow,bool combat):window(hwnd),flags(allow),combatTask(combat){
-        world();uintptr_t registration=0;if(!live::get(GetCurrentProcess(),base+0x1056970,registration))throw std::runtime_error("Game Lua registration is unavailable");
+        world();uintptr_t registration=0;if(!live::get(GetCurrentProcess(),base+live::luaGlobal,registration))throw std::runtime_error("Game Lua registration is unavailable");
         gameText=std::make_unique<GameTextSession>(GetModuleHandleW(L"LuaPlus.dll"),reinterpret_cast<void*>(registration));
     }
-    bool sameGameLua(){uintptr_t registration=0;return live::get(GetCurrentProcess(),base+0x1056970,registration)&&gameText->sameOwner(reinterpret_cast<void*>(registration));}
+    bool sameGameLua(){uintptr_t registration=0;return live::get(GetCurrentProcess(),base+live::luaGlobal,registration)&&gameText->sameOwner(reinterpret_cast<void*>(registration));}
     void ensure(){world();if(!sameGameLua()){gameText->abandon();throw std::runtime_error("Game Lua state changed; start a new task after login");}}
     ~Adapter(){if(gameText)try{if(!sameGameLua())gameText->abandon();}catch(...){gameText->abandon();}}
     Values evaluate(const std::string &source,const std::string &format,int count)override{ensure();++rawCalls;return gameText->evaluate(source,format,count);}
@@ -83,6 +84,27 @@ struct Adapter:Host {
             for(const auto &o:rows){std::snprintf(line,sizeof(line),"%d\t%d\t%d\t%.9g\t%.9g\n",o.kind,o.client,o.server,double(o.x),double(o.y));text+=line;}
             return {Value(s.scene),Value(int(rows.size())),Value(std::move(text))};
         }
+        if(op=="resource_objects"){
+            // 矿地 objects: identity, position, resource type and name from the resource definition.
+            const auto s=world();const auto began=GetTickCount64();
+            auto read=[&](uintptr_t at,void *to,size_t n){return GetTickCount64()-began<=12&&live::read(GetCurrentProcess(),at,to,n);};
+            auto get=[&](uintptr_t at,auto &v){return read(at,&v,sizeof(v));};
+            std::vector<combat::Mechanism> rows;
+            if(!combat::mechanismSnapshot(read,base,s.player,rows,2))throw std::runtime_error("Resource object layout/list changed");
+            std::string text;int count=0;
+            for(const auto &o:rows){
+                uintptr_t vt=0,def=0,namePtr=0;int type=-1;
+                if(!get(o.object,vt)||vt!=base+combat::resourceVtable)continue;
+                if(!get(o.object+0x140,def)||!def||!get(def+0x2c,type)||!get(def+8,namePtr)||!namePtr)throw std::runtime_error("Resource definition unreadable");
+                char raw[65]{};if(!read(namePtr,raw,64))throw std::runtime_error("Resource name unreadable");raw[64]=0;
+                wchar_t wide[65]{};const int wn=MultiByteToWideChar(936,0,raw,-1,wide,64);
+                char utf8[200]{};if(wn<=0||WideCharToMultiByte(CP_UTF8,0,wide,-1,utf8,199,nullptr,nullptr)<=0)throw std::runtime_error("Resource name encoding invalid");
+                for(char *c=utf8;*c;++c)if(*c=='\t'||*c=='\n'||*c=='\r')*c=' ';
+                char line[320];std::snprintf(line,sizeof(line),"%d\t%d\t%.9g\t%.9g\t%d\t%s\n",o.client,o.server,double(o.x),double(o.y),type,utf8);
+                text+=line;++count;
+            }
+            return {Value(s.scene),Value(count),Value(std::move(text))};
+        }
         if(op=="enemy_players"){
             // Other players the game itself rates as enemies: the same relation function objects() uses for NPCs.
             const auto s=world();const auto began=GetTickCount64();
@@ -91,7 +113,7 @@ struct Adapter:Host {
             std::vector<combat::Mechanism> rows;
             if(!combat::mechanismSnapshot(read,base,s.player,rows))throw std::runtime_error("Player object layout/list changed");
             uintptr_t relation=0,table=0,fn=0;
-            if(!get(base+0x1054eb8,relation)||!get(relation,table)||!get(table+0x2c0,fn)||fn<base+0x1000||fn>=base+0xa00000)throw std::runtime_error("Enemy relation interface mismatch");
+            if(!get(base+live::relationGlobal,relation)||!get(relation,table)||!get(table+0x2c0,fn)||fn<base+0x1000||fn>=base+0xa00000)throw std::runtime_error("Enemy relation interface mismatch");
             using Enemy=int (*)(void*,void*,void*,int);
             std::string text;char line[160];int count=0;
             for(const auto &o:rows){
@@ -164,7 +186,7 @@ struct Adapter:Host {
             if(!std::isfinite(o.x)||!std::isfinite(o.y)||!std::isfinite(o.hp)||o.id<0||o.server<0||o.hp<0||o.hp>100)throw std::runtime_error("Invalid object position/health");
             o.distance=std::hypot(o.x-s.x,o.y-s.y);
             uintptr_t relation=0,table=0,fn=0;
-            if(!get(base+0x1054eb8,relation)||!get(relation,table)||!get(table+0x2c0,fn)||fn<base+0x1000||fn>=base+0xa00000)throw std::runtime_error("Enemy relation interface mismatch");
+            if(!get(base+live::relationGlobal,relation)||!get(relation,table)||!get(table+0x2c0,fn)||fn<base+0x1000||fn>=base+0xa00000)throw std::runtime_error("Enemy relation interface mismatch");
             using Enemy=int (*)(void*,void*,void*,int);
             o.hostile=o.hp>0&&reinterpret_cast<Enemy>(fn)(reinterpret_cast<void*>(relation),reinterpret_cast<void*>(s.player),reinterpret_cast<void*>(n.object),0)!=0;out.push_back(o);
         }

@@ -73,7 +73,7 @@ struct YijueFake:ResidentFake {
 template<class Test>void yijueTests(const QString &root,Test test){
     auto must=[](bool v,const char *s){if(!v)throw std::runtime_error(s);};QJsonArray report;
     auto run=[&](YijueFake &h,QJsonObject cfg,std::string &why){
-        cfg.insert("legacy_id","dungeon_0033352d");cfg.insert("combat",true);cfg.insert("dungeon_wait_seconds",5);
+        cfg.insert("legacy_id","dungeon_0033352d");cfg.insert("combat",true);cfg.insert("dungeon_wait_seconds",5);cfg.insert("dungeon_team_wait_seconds",30);
         QJsonObject entry;QString path,error;must(resolveLegacyEntry(root+"/scripts/legacy","dungeon_0033352d",entry,path,error),qPrintable(error));
         must(entry.value("validation_contract")==QJsonValue("yijue_flow_v1"),"Yijue has no completion contract");
         auto source=prepareResidentScript(root+"/scripts/legacy",path,cfg,error);must(!source.isEmpty(),qPrintable(error));must(!source.contains("__original_rules="),"Yijue still loads the vendor framework");

@@ -154,7 +154,7 @@ function QuestBook.new(api,o)
     end
     function E.PlayerStateTimeOut(state,seconds)
         local began=api.now();E.Sleep(300)
-        while tonumber(raw('state\nreturn Player:GetState()','n'))==state and api.now()-began<seconds*1000 do E.Sleep(200) end
+        while tonumber(raw('state\nif not Player or type(Player.GetState)~="function" then return -1 end return Player:GetState()','n'))==state and api.now()-began<seconds*1000 do E.Sleep(200) end
     end
     -- Dialog.
     function E.QuestFrameOptionClicked_Item(text,mode,ms)

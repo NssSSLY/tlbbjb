@@ -54,7 +54,7 @@ template<class Test>void saodangTests(const QString &root,Test test){
     auto must=[](bool v,const char *s){if(!v)throw std::runtime_error(s);};
     const QString id="dungeon_002fbab1";const char *contract="saodang_flow_v1";
     auto run=[&](SaodangFake &h,QJsonObject cfg,std::string &why){
-        cfg.insert("legacy_id",id);cfg.insert("dungeon_wait_seconds",5);
+        cfg.insert("legacy_id",id);cfg.insert("dungeon_wait_seconds",5);cfg.insert("dungeon_team_wait_seconds",30);
         QJsonObject entry;QString path,error;must(resolveLegacyEntry(root+"/scripts/legacy",id,entry,path,error),qPrintable(error));
         must(entry.value("validation_contract")==QJsonValue(contract),"Saodang has no completion contract");
         auto source=prepareResidentScript(root+"/scripts/legacy",path,cfg,error);must(!source.isEmpty(),qPrintable(error));must(!source.contains("__original_rules="),"Saodang still loads the vendor framework");

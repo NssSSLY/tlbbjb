@@ -81,7 +81,7 @@ struct WaterFake:ResidentFake {
 template<class Test>void waterPrisonTests(const QString &root,Test test){
     auto must=[](bool v,const char *why){if(!v)throw std::runtime_error(why);};QJsonArray cases;
     auto run=[&](WaterFake &h,QJsonObject config,std::string &why){
-        config.insert("legacy_id","dungeon_002fbdb4");config.insert("combat",true);config.insert("dungeon_wait_seconds",5);
+        config.insert("legacy_id","dungeon_002fbdb4");config.insert("combat",true);config.insert("dungeon_wait_seconds",5);config.insert("dungeon_team_wait_seconds",30);
         QJsonObject metadata;QString entry,error;must(resolveLegacyEntry(root+"/scripts/legacy","dungeon_002fbdb4",metadata,entry,error),qPrintable(error));
         must(metadata.value("validation_contract")==QJsonValue("water_prison_v1")&&metadata.value("combat").toBool(),"Water entry contract/combat declaration missing");
         const auto source=prepareResidentScript(root+"/scripts/legacy",entry,config,error);must(!source.isEmpty()&&error.isEmpty(),qPrintable(error));

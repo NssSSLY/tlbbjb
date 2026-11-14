@@ -19,7 +19,7 @@ local function open(label,minutes,def0)
     end
     function S.ui(code) GetLuaValue('-- short:ui\n'..code,'',0) end
     function S.wait(ms) S.check();api.maintain();api.sleep(ms) end
-    function S.state() return GetLuaValue('-- short:state\nreturn Player:GetState()','n') end
+    function S.state() return GetLuaValue('-- short:state\nif not Player or type(Player.GetState)~="function" then return -1 end return Player:GetState()','n') end
     -- Casting or gathering, as the reference waits for it (5 and 8).
     function S.busy(seconds)
         api.sleep(300)

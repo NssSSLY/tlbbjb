@@ -1,3 +1,4 @@
+#include "game_layout.hpp"
 #include "resident_client.hpp"
 #include "builtin_resources.hpp"
 #include <QJsonDocument>
@@ -55,7 +56,8 @@ bool ResidentChannel::open(quint32 pid,const QString &created,const QString &roo
     auto &p=*p_;if(p.packet){error="Resident channel is already open";return false;}
     if(!p.binding.open(pid,root,created)){error=p.binding.error;return false;}
     auto hash=[](const QString &path,const char *expected){QFile f(BuiltinResources::path(QDir::cleanPath(path)));if(!f.open(QIODevice::ReadOnly))return false;QCryptographicHash h(QCryptographicHash::Sha256);return h.addData(&f)&&h.result().toHex()==expected;};
-    if(!hash(p.binding.info().path,live::imageSha256)||!hash(root+"/Bin64/LuaPlus.dll",login::luaPlusSha256)||!hash(root+"/Bin64/CEGUIBase.dll",login::ceguiSha256)){error="Resident engine: unsupported game/SDK version";return false;}
+    {std::string why;if(!layout::ensure(reinterpret_cast<const wchar_t*>(p.binding.info().path.utf16()),why)){error="当前游戏版本无法自动识别内存布局："+QString::fromStdString(why);return false;}}
+    (void)hash;
     for(const auto &g:discoverGames(root))if(g.pid==pid&&g.created==created)p.window=reinterpret_cast<HWND>(g.window);
     DWORD owner=0;p.thread=GetWindowThreadProcessId(p.window,&owner);if(owner!=pid||!p.thread){error="Game window identity is unavailable";return false;}
     const auto path=QDir::toNativeSeparators(QCoreApplication::applicationDirPath()+"/TLBBEngine.dll");

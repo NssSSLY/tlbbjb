@@ -62,6 +62,17 @@ for _,name in ipairs({'mePetGetHappy','mePetCheckHappy'}) do
     helpers[name]='local function '..name..'(guid) if guid==0 or guid==-1 then return 100,-1 end '
         ..'error("原程序游戏内辅助函数未接入：'..name..'（已配置珍兽 GUID）") end'
 end
+-- pet.lua Pet:Relax: recall the pet that is out, through the game's own 珍兽休息 action (the same
+-- route DungeonPetGuard uses). Returns true when the recall was issued, false when nothing could be done.
+helpers.mePetRelax=[[local function mePetRelax()
+    local a=Pet and Pet.GetPetRelaxAction and Pet:GetPetRelaxAction()
+    if not a or type(a.GetID)~='function' then return false end
+    local id=a:GetID() if type(id)~='number' or id<=0 then return false end
+    local b=Packet_Env and Packet_Env.Packet_Space_Line10_Row10_button
+    if not b then return false end
+    local previous=b:GetActionItem() b:SetActionItem(id)
+    local ok=pcall(b.DoAction,b) b:SetActionItem(previous)
+    return ok end]]
 for _,name in ipairs({'meIsNeedCheckMibao','meIsUnlockMibao','meUnLockMibao','meIsMissionOutline'}) do
     helpers[name]='local '..name..'='..name..' or function() error("原生接口未接入：'..name..'") end'
 end
@@ -124,6 +135,13 @@ function GetConfigList(_,name) return OriginalConfig.list(value(name),name) end
 GetConfigListCtrlEx=GetConfigList
 function GetItemConfigText(_,name) return ReadConfigText(nil,name) end
 function GetConfigPath() return "" end
+-- The reference program's per-character 运行配置.ini (e.g. 种地记录). Kept for this run only: after a
+-- restart the script finds no record and takes its own "no record" branch, as with a new character.
+do
+    local records={}
+    function PlayerConfigGet(key,app) return records[tostring(app).."\0"..tostring(key)] or "" end
+    function PlayerConfigSet(key,text,app) records[tostring(app).."\0"..tostring(key)]=tostring(text or "") end
+end
 local selectedDungeonConfig = ({["00320005"]=true,["00313c18"]=true,["002e1226"]=true,["002ef962"]=true,["002fef1e"]=true})[entry.original_token] == true
 function GetUserConfig(key) if (selectedDungeonConfig or entry.original_token=="0034fff0") and key=="CONFIG_PATH" then return "" end return nil end
 
@@ -190,6 +208,21 @@ function EnumMemberInfo(kind)
     end
     assert(#members==count,"队伍成员数量不一致")
     return members
+end
+-- 矿地 objects for Enum2X*: ore / herb spots and farm fields (CTripperObject_Resource). Name and the
+-- resource type come from the game's resource definition; zwType is that type (710000 ore, 711001 growing,
+-- 711002 ripe crop), which the original planting script compares directly.
+function __resourceObjects()
+    local scene,count,rows=CombatRuntime.host("resource_objects")
+    assert(scene==GetSceneID() and whole(count,0,512) and type(rows)=="string","矿地对象快照不可读")
+    local own=playerlib.CGetPos();local out={}
+    for client,server,x,y,kind,name in rows:gmatch("(%-?%d+)\t(%-?%d+)\t([^\t]+)\t([^\t]+)\t(%-?%d+)\t([^\n]*)\n") do
+        client,server,x,y,kind=tonumber(client),tonumber(server),tonumber(x),tonumber(y),tonumber(kind)
+        out[#out+1]=setmetatable({id=client,server_id=server,class="矿地",x=x,y=y,dst=math.sqrt((x-own.x)^2+(y-own.y)^2),
+            name=name,zwType=kind,type=kind,hp=100,hostile=0},__missingObjectFields)
+    end
+    assert(#out==count,"矿地对象数量不一致")
+    return out
 end
 -- 玩家 objects for Enum2X*: other players in this scene from the native snapshot; team members carry the
 -- roster's name/HP/school, others the game's name for that object. MP is not readable and says so.
@@ -264,7 +297,7 @@ local function noDelete() error("原脚本要删除物品，本程序不执行�
 DiscardBagItem,DiscardTempBagItem,ShutDown=noDelete,noDelete,function() error("原脚本要关机，本程序不执行，已停止",0) end
 -- DoSystem(22) is GetMainPath: the reference program's folder. Its data\坐标 route files are served below.
 function DoSystem(kind) if kind==4 then return end if kind==22 then return "original\\" end error("原程序系统操作未接入：DoSystem("..tostring(kind)..")",0) end
-function GetPlayerState() return rawLua("return Player:GetState()","n") end
+function GetPlayerState() return rawLua("if not Player or type(Player.GetState)~='function' then return -1 end return Player:GetState()","n") end
 if entry.original_token=="00320005" then Player.GetHPP=function() return GetHPPercent() end end
 if entry.original_token=="00320005" then Player.GetMPP=function() return GetMPPercent() end end
 -- Every task reads the fighting pet through the native-level reader (playerlib.CGetFightPetGUID below): -1 for
@@ -273,8 +306,17 @@ function Player:GetFightPetGUID() return playerlib.CGetFightPetGUID() end
 if selectedDungeonConfig then local oldClearBag=ClearBag; ClearBag=function(...) local space=Bag:GetSpaceNum(0); if type(space)=="number" and space>0 then return true end; return oldClearBag(...) end end
 if entry.original_token=="00320005" or entry.original_token=="00313c18" or entry.original_token=="002cf5a7" or entry.original_token=="002b54ac" or entry.original_token=="0031c749" or entry.original_token=="0031db5f" or entry.original_token=="002bba5a" or entry.original_token=="002fd257" or entry.original_token=="002bb430" or entry.original_token=="002fe064" or entry.original_token=="002fe6b9" then Player.IsLeader=function() local n=tonumber(rawLua("return tonumber(Player:IsLeader())","n")); assert(n==0 or n==1,"cannot read team leader state"); return n==1 end end
 function TableCount(t) local n=0 if type(t)=="table" then for _ in pairs(t) do n=n+1 end end return n end
-local scenes={["洛阳"]=0,["苏州"]=1,["大理"]=2,["楼兰"]=246,["凤鸣镇"]=850,["金陵"]=762}
-function CGetSceneIDByName(name) name=tostring(name or ""):gsub("%d线$","") return scenes[name] or -1 end
+-- Scene numbers confirmed in this project (小蜜 route table + 清剿九黎余孽 NPC list).
+local scenes={["洛阳"]=0,["苏州"]=1,["大理"]=2,["楼兰"]=246,["凤鸣镇"]=850,["金陵"]=762,["钱庄"]=224,["雁南"]=18,["雁北"]=19,["无量山"]=6,["剑阁"]=7,["辽西"]=21,["太湖"]=4,["西湖"]=30,["敦煌"]=8,["嵩山"]=3,["草原"]=20,["长白山"]=22,["黄龙府"]=23,["镜湖"]=5,["龙泉"]=31,["武夷"]=32,["梅岭"]=33,["南海"]=34,["琼州"]=35,["洱海"]=24,["苍山"]=25,["石林"]=26,["玉溪"]=27,["南诏"]=28,["苗疆"]=29,["玄武岛"]=112,["圣兽山"]=201,["漠南青原"]=855,["忘川花海"]=856,["天岐南淮"]=857}
+function CGetSceneIDByName(name)
+    -- Originals cut names after "级" assuming 2-byte GBK; in UTF-8 that leaves a stray byte in front.
+    name=tostring(name or ""):gsub("^[\128-\191]+",""):gsub("%d线$","")
+    local id=scenes[name]
+    if id then return id end
+    if GetSceneName and GetSceneName()==name then return GetSceneID() end
+    -- Same as the original: -1 for a name it does not know; the script decides what that means.
+    return -1
+end
 -- The reference program kept per-character text files under g_public_dir; none exist here and io.open finds
 -- nothing, so scripts take their own "file missing" branch.
 g_public_dir=g_public_dir or ""
@@ -337,7 +379,7 @@ do
     end
 end
 
--- Bag containers: 0 all, 1 道具, 2 材料, 10 锦囊, 11 仓库, 13/14 交易双方. Item class / type are not readable.
+-- Bag containers: 0 all, 1 道具, 2 材料, 3 任务栏 (quest bag, as daily_tasks / shimen read it), 10 锦囊, 11 仓库, 13/14 交易双方. Item class / type are not readable.
 local enumSource=[[local kind=%d local t=''
 local function add(a,index,bind,lock)
   if a and a:GetID()~=0 then t=t..a:GetID()..'\t'..(a:GetName() or '')..'\t'..(a:GetNum() or 1)..'\t'..index..'\t'..bind..'\t'..lock..'\n' end end
@@ -345,11 +387,12 @@ local function bag(name,base,n) for i=0,n-1 do local a,locked=PlayerPackage:Enum
   local bind=0 if GetItemBindStatus then bind=GetItemBindStatus(base+i) or 0 end add(a,base+i,bind,locked and 1 or 0) end end
 if kind==0 or kind==1 then bag('base',0,DataPool:GetBaseBag_Num()) end
 if kind==0 or kind==2 then bag('material',100,DataPool:GetMatBag_Num()) end
+if kind==3 then bag('quest',200,DataPool:GetTaskBag_Num()) end
 if kind==10 then for i=0,119 do local a,locked=Bank:EnumTemItem(i) add(a,i,0,locked and 1 or 0) end end
 if kind==11 then for k=0,9 do local b,n=Bank:GetRentBoxInfo(k) if b and n and n>0 then for i=1,n do local a,locked=Bank:EnumItem(b+i-1) add(a,b+i-1,0,locked and 1 or 0) end end end end
 if kind==13 or kind==14 then local name='ex_self' if kind==14 then name='ex_other' end for i=0,GetActionNum(name)-1 do add(EnumAction(i,name),i,0,0) end end
 return t]]
-local bagKinds={[0]=true,[1]=true,[2]=true,[10]=true,[11]=true,[13]=true,[14]=true}
+local bagKinds={[0]=true,[1]=true,[2]=true,[3]=true,[10]=true,[11]=true,[13]=true,[14]=true}
 local function enumBag(kind,strict)
     assert(bagKinds[math.floor(tonumber(kind) or -1)],"背包类型读取尚未接入："..tostring(kind).."（3 任务栏 / 4 / 12 拾取等）")
     local text=rawLua(string.format(enumSource,math.floor(tonumber(kind) or 0)),"s") or ""

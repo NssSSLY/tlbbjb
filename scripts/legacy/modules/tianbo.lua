@@ -439,10 +439,13 @@ function Tianbo.run(injected)
                         local members=DungeonTactics.raid();local inside=0
                         for _,m in ipairs(members) do if m.inside then inside=inside+1 end end
                         return #members>=teamCount and inside>=teamCount
-                    end,math.max(waitMs,120000))
+                    end,DungeonApi.teamPatience())
                     assert(api.selectOption({option},true),'穆小妹没有所选模式的选项')
                 end
-                wait('确认进入天波府',function() return world().scene==SCENE end,math.max(waitMs,60000))
+                DungeonApi.enterRetry(api,'确认进入天波府',function() return world().scene==SCENE end,function()
+                    CloseAllWindow();api.openNpc(entrance)
+                    assert(api.selectOption({option},true),'穆小妹没有所选模式的选项')
+                end,{skipFirst=true,leader=DungeonTactics.raidLeader()})
             end
             fight(before);completed=completed+1;log('本轮完成（'..completed..'/'..rounds..'）')
         end

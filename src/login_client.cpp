@@ -1,3 +1,4 @@
+#include "game_layout.hpp"
 #include "login_client.hpp"
 #include "client_store.hpp"
 #include "core.hpp"
@@ -24,7 +25,8 @@ struct Channel {
     ~Channel(){if(library)FreeLibrary(library);}
     bool open(quint32 pid,const QString &created,const QString &root,QString &error){
         if(!binding.open(pid,root,created)){error="无法绑定本次启动的游戏进程";return false;}
-        if(!hashFile(binding.info().path,live::imageSha256)||!hashFile(root+"/Bin64/CEGUIBase.dll",login::ceguiSha256)||!hashFile(root+"/Bin64/LuaPlus.dll",login::luaPlusSha256)){error="当前游戏版本与登录适配版本不符，已停止自动登录";return false;}
+        // The engine resolves its own addresses inside the game; this checks the file first so a mismatch is reported here, before anything is loaded.
+        {std::string why;if(!layout::ensure(reinterpret_cast<const wchar_t*>(binding.info().path.utf16()),why)){error="当前游戏版本无法自动识别登录接口，已停止自动登录："+QString::fromStdString(why);return false;}}
         auto games=discoverGames(root);for(const auto &g:games)if(g.pid==pid&&g.created==created)window=reinterpret_cast<HWND>(g.window);
         DWORD owner=0;thread=GetWindowThreadProcessId(window,&owner);if(!window||owner!=pid||!thread){error="游戏窗口尚未就绪";return false;}
         auto path=QDir::toNativeSeparators(QCoreApplication::applicationDirPath()+"/TLBBEngine.dll");
@@ -82,7 +84,7 @@ int runLoginWorker(const QStringList &args){
     ClientStore store(arg(args,"--data-root"));if(!store.load(error)){event(error,"failed");return 2;}
     QJsonObject account;for(const auto &value:store.launcher.value("accounts").toArray())if(value.toObject().value("id")==identity.value("account"))account=value.toObject();
     if(account.isEmpty()||account.value("login").toString().trimmed().isEmpty()||account.value("credential_ref").toString()!=identity.value("account").toString()){event("此账号缺少本机加密密码，请编辑账号后重新开始","failed");return 2;}
-    LoginFlow flow;QElapsedTimer total,unchanged;total.start();unchanged.start();unsigned previous=999;int lastCommand=0;QJsonObject roles;unsigned failures=0;bool modeTried=false;
+    LoginFlow flow;QElapsedTimer total,unchanged;total.start();unchanged.start();unsigned previous=999;int lastCommand=0;QJsonObject roles;unsigned failures=0;bool modeTried=false;int notices=0;
     const unsigned desiredMode=account.value("login").toString().contains('@')?2:1;
     while(total.elapsed()<300000&&channel.binding.alive()){
         login::Packet state;fillIdentity(state,identity);
@@ -95,13 +97,17 @@ int runLoginWorker(const QStringList &args){
                 Sleep(1000);continue;}
             event(error,"failed",{{"stage",int(state.stage)},{"bridge_status",int(state.status)},{"win32_error",int(state.error)}});return 2;
         }
-        if(previous!=state.stage){previous=state.stage;unchanged.restart();event(stageText(state.stage));}
+        if(previous!=state.stage){previous=state.stage;unchanged.restart();event(state.stage==login::Manual&&state.prompt[0]?stageText(state.stage)+QString("（窗口：%1）").arg(QString::fromWCharArray(state.prompt)):stageText(state.stage),"status",{{"prompt",QString::fromWCharArray(state.prompt)}});}
         int next=flow.next(login::Stage(state.stage));
+        if(next==0&&flow.shouldRetry(login::Stage(state.stage),unchanged.elapsed(),state.passwordFilled))next=login::RetryLogon;
+        if(next==0&&flow.credentialsSent&&flow.presses==0&&state.stage==login::Account&&unchanged.elapsed()>8000){event("密码输入后 8 秒仍未进入密码框，未按登录；请手动输入密码后点登录","failed");return 2;}
         if(flow.serverSent&&(state.stage==login::Account||state.stage==login::Roles)&&!state.selectedMatches){event("游戏实际区服与配置不一致，自动登录已停止，没有继续提交账号或角色操作","failed");return 2;}
         if(next==-2){event("游戏已进入其他登录阶段或已在线，已停止自动提交；可正常使用 Home 绑定","skipped");return 0;}
         if(next==-1){event("已检测到角色进入游戏","complete",{{"roles",roles},{"nickname",roles.value(QString::number(identity.value("slot").toInt()))},{"verified_world_samples",flow.worldSamples}});return 0;}
-        const qint64 stageBudget=lastCommand==0&&state.stage==login::Loading?90000:45000;
-        if(state.stage!=login::Manual&&unchanged.elapsed()>stageBudget){event(state.stage==login::Account?"账号登录未通过或连接超时，请检查游戏提示；没有重复提交密码":"登录阶段等待超时，请检查游戏窗口","failed");return 2;}
+        // The server can take more than half a minute to answer a login press (seen live: ~34 s).
+        const qint64 stageBudget=(lastCommand==0&&state.stage==login::Loading)||(state.stage==login::Account&&flow.presses>0)?90000:45000;
+        if(state.stage!=login::Manual&&unchanged.elapsed()>stageBudget){event(state.stage==login::Account?QString("账号登录未通过或连接超时（当前账号框%1、密码框%2），请检查游戏提示；没有重复提交密码").arg(state.accountFilled?"有内容":"为空",state.passwordFilled?"有内容":"为空"):QString("登录阶段等待超时，请检查游戏窗口"),"failed",{{"account_filled",int(state.accountFilled)},{"password_filled",int(state.passwordFilled)}});return 2;}
+        if(next==0&&state.stage==login::Manual&&state.noticeOk&&notices<3){next=login::DismissNotice;++notices;}
         if(next==login::SubmitAccount&&state.inputMode!=desiredMode){if(modeTried){event("游戏未切换到所需账号密码登录方式，请在游戏中手动切换后登录","failed");return 2;}next=login::SetAccountMode;modeTried=true;}
         if(next>0){
             login::Packet action;fillIdentity(action,identity);action.command=unsigned(next);action.inputMode=desiredMode;
@@ -110,7 +116,13 @@ int runLoginWorker(const QStringList &args){
                 if(!converted){SecureZeroMemory(action.password,sizeof(action.password));event("账号或密码包含此版本游戏不支持的字符","failed");return 2;}}
             if(!channel.call(action,error)){event(error,"failed",{{"command",next},{"stage",int(action.stage)},{"bridge_status",int(action.status)},{"win32_error",int(action.error)}});return 2;}
             if(!action.actionIssued){event("游戏需要人工验证，本次未提交操作");Sleep(1000);continue;}
+            if(next==login::DismissNotice){event(QString("已点击登录提示窗口的确定（%1）").arg(QString::fromWCharArray(action.prompt)),"issued",{{"command",next}});previous=999;Sleep(1000);continue;}
             flow.issued(next);lastCommand=next;unchanged.restart();
+            const char *routes[]={"","游戏登录脚本","按钮点击事件","原生点击"};const QString route=QString::fromUtf8(routes[action.pressRoute<4?action.pressRoute:0]);
+            if(next==login::RetryLogon){event(QString(flow.presses==1?"密码框已显示，已按登录（方式：%1；账号框%2、密码框%3），等待游戏确认":"登录按钮按下后 10 秒无变化，已再按一次登录（未重新输入密码；方式：%1；账号框%2、密码框%3）").arg(route,action.accountFilled?"有内容":"为空",action.passwordFilled?"有内容":"为空"),"issued",{{"command",next},{"press_route",int(action.pressRoute)}});Sleep(1000);continue;}
+            if(next==login::SubmitAccount&&action.pressRoute)flow.presses=1;
+            if(next==login::SubmitAccount&&!action.pressRoute){event("账号密码已输入，等待密码框显示后再按登录","issued",{{"command",next}});Sleep(500);continue;}
+            if(next==login::SubmitAccount){event(QString("已触发登录按钮（方式：%1；账号框%2、密码框%3），等待游戏确认").arg(route,action.accountFilled?"有内容":"为空",action.passwordFilled?"有内容":"为空"),"issued",{{"command",next},{"stage",int(action.stage)},{"press_route",int(action.pressRoute)},{"account_filled",int(action.accountFilled)},{"password_filled",int(action.passwordFilled)}});Sleep(1000);continue;}
             event(next==login::SubmitAccount?"已触发登录按钮，等待游戏确认":"已提交登录步骤，等待游戏确认","issued",{{"command",next},{"stage",int(action.stage)}});
             if(next==login::SelectRole||next==login::EnterWorld){for(int i=0;i<3;++i){auto name=QString::fromWCharArray(action.roleNames[i]).trimmed();if(!name.isEmpty())roles.insert(QString::number(i+1),name);}}
         }

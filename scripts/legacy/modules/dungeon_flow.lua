@@ -10,6 +10,8 @@ function DungeonFlow.run(def,cfg,api)
     local battleTimeout=integer(tonumber(cfg.dungeon_battle_seconds or 1200),30,3600,"战斗超时秒数")*1000
     local team=integer(tonumber(cfg.dungeon_team_count or cfg["老三环"] or 3),0,6,"队伍人数")
     team=math.max(3,team)
+    -- 队长等队员接任务 / 准备：一直对话重试，直到进入副本；超过这个时长才放弃本项，让任务列表继续。
+    local patience=integer(tonumber(cfg.dungeon_team_wait_seconds or 180),30,900,"等待队员秒数")*1000
     local phase,completed="",0
     local function enter(name)
         if phase~=name then phase=name;api.log(def.name.." · "..name) end
@@ -81,11 +83,24 @@ function DungeonFlow.run(def,cfg,api)
                 enter("准备战斗");api.prepareBattle()
                 if not def.inside(assert(api.world(),"场景不可读")) then
                     enter("等待队伍")
-                    wait("等待队伍",function() return api.teamReady(team) end)
+                    wait("等待队伍",function() return api.teamReady(team) end,patience)
+                    local function insideNow() local p=api.world();return p and def.inside(p) and p end
                     if api.isLeader() then
-                        enter("进入副本");api.openNpc(def.npc);api.enter(def)
+                        -- 队员没接任务或没准备好时 NPC 不放行：隔几秒再对话一次，直到进入。
+                        local began,tries=api.now(),0
+                        while not insideNow() do
+                            tries=tries+1
+                            enter(tries==1 and "进入副本" or "等待队员接任务 / 准备（第 "..tries.." 次对话）")
+                            local okTalk,why=pcall(function() api.openNpc(def.npc);api.enter(def) end)
+                            if not okTalk and tries==1 then api.log(def.name.."：进入对话未成功，继续重试："..tostring(why)) end
+                            local t=api.now()
+                            repeat if insideNow() then break end api.sleep(250) until api.now()-t>=6000
+                            if not insideNow() then
+                                assert(api.now()-began<patience,def.name.."：已等待 "..math.floor(patience/1000).." 秒，队员仍未接任务或未准备好，跳过本项")
+                            end
+                        end
                     end
-                    wait("等待进入副本",function() local p=api.world();return p and def.inside(p) and p end)
+                    wait("等待进入副本",insideNow,patience)
                 end
                 local inside=assert(api.world(),"副本场景不可读")
                 local scene=inside.scene

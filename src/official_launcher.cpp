@@ -24,8 +24,12 @@ static bool updateFinished(const QString &root,quint32 pid,const QString &create
     const auto createdMs=qint64(created.toULongLong()/10000ULL)-11644473600000LL;
     if(QFileInfo(file).lastModified().toMSecsSinceEpoch()+1000<createdMs)return false;
     if(file.size()>256*1024)file.seek(file.size()-256*1024);
-    const QByteArray bytes=file.read(256*1024),owner="["+QByteArray::number(pid)+"|";
-    for(const auto &line:bytes.split('\n'))if(line.contains(owner)&&line.contains("LaunchSystem::workThread exit running")&&line.contains("m_nUpdateExit : 2"))return true;
+    return launchLogUpdateFinished(file.read(256*1024),pid);
+}
+bool launchLogUpdateFinished(const QByteArray &log,quint32 pid){
+    // Launch.log pads the pid to five digits ("[04428|"); pids under 10000 never matched before.
+    const QByteArray owner="["+QByteArray::number(pid).rightJustified(5,'0')+"|";
+    for(const auto &line:log.split('\n'))if(line.contains(owner)&&line.contains("LaunchSystem::workThread exit running")&&line.contains("m_nUpdateExit : 2"))return true;
     return false;
 }
 QJsonObject tryOfficialStart(quint32 pid,const QString &created,const QString &root,bool issue){

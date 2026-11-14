@@ -208,7 +208,7 @@ template<class Test>void sijueTests(const QString &root,Test test){
         b=c;b.remove("sijue_bell_role");must(!validateLegacyConfig(b,error),"Old Sijue queue without assignment accepted");
     });
     auto run=[&](SijueFake &h,QJsonObject c,std::string &why,bool healOnly=false){
-        c.insert("legacy_id","sijue");c.insert("combat",true);c.insert("dungeon_wait_seconds",5);
+        c.insert("legacy_id","sijue");c.insert("combat",true);c.insert("dungeon_wait_seconds",5);c.insert("dungeon_team_wait_seconds",30);
         QJsonObject meta;QString path,error;must(resolveLegacyEntry(root+"/scripts/legacy","sijue",meta,path,error),qPrintable(error));
         must(meta.value("validation_contract")==QJsonValue("sijue_flow_v1"),"Sijue completion contract missing");
         auto source=prepareResidentScript(root+"/scripts/legacy",path,c,error);must(!source.isEmpty()&&error.isEmpty(),qPrintable(error));

@@ -5,8 +5,12 @@
 namespace tlbb::combat {
 // Current image RTTI COLs d618c8/d61b48/d624e8, all primary subobjects.
 // Reference 180133810 reads common position +4c/+54 and maps Special to traps.
-inline constexpr uintptr_t selfVtable=0xc37f28,otherVtable=0xc3b978,specialVtable=0xc3f498,lootVtable=0xc3fc28;
-inline constexpr uintptr_t inputGlobal=0x105d608,inputVtable=0xb277a8,openLootFunction=0x226e80;
+inline uintptr_t selfVtable=0xc37d28,otherVtable=0xc3b748,specialVtable=0xc3f298,lootVtable=0xc3fa28;
+// CTripperObject_Resource (RTTI COL d61fc0): ore / herb spots and farm fields (原脚本“矿地”).
+// +0x140 points to its resource definition: +0x08 GBK name (铜矿, 晚产彩棉（生长中）), +0x2c type
+// (710000 ore; 711001 growing, 711002 ripe crop). Read live 2026-11-09 on 苏州 fields and 镜湖 ore.
+inline uintptr_t resourceVtable=0xc40688;
+inline uintptr_t inputGlobal=0x105c608,inputVtable=0xb27618,openLootFunction=0x225170;
 struct Mechanism {int client=-1,server=-1,kind=0;float x=0,y=0;uintptr_t object=0;}; // 1 other player, 2 trap, 3 ItemBox
 // Loot is a separate selection: existing trap/player consumers never see kind 3.
 template<class Read> bool mechanismSnapshot(Read read,uintptr_t base,uintptr_t self,std::vector<Mechanism> &out,int mode=0){ // mode 0 players and traps, 1 loot, 2 every object (kind 4)

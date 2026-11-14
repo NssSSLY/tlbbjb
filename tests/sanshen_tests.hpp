@@ -121,7 +121,7 @@ struct SanshenFake:ResidentFake {
 template<class Test>void sanshenTests(const QString &root,Test test){
     auto must=[](bool v,const char *s){if(!v)throw std::runtime_error(s);};QJsonArray report;
     auto run=[&](SanshenFake &h,QJsonObject cfg,std::string &why,const QString &id="sanshen"){
-        cfg.insert("legacy_id",id);cfg.insert("combat",true);cfg.insert("dungeon_wait_seconds",5);cfg.insert("dungeon_team_count",3);
+        cfg.insert("legacy_id",id);cfg.insert("combat",true);cfg.insert("dungeon_wait_seconds",5);cfg.insert("dungeon_team_wait_seconds",30);cfg.insert("dungeon_team_count",3);
         QJsonObject entry;QString path,error;must(resolveLegacyEntry(root+"/scripts/legacy",id,entry,path,error),qPrintable(error));
         must(entry.value("validation_contract")==QJsonValue("sanshen_flow_v1"),"Sanshen has no completion contract");
         auto source=prepareResidentScript(root+"/scripts/legacy",path,cfg,error);must(!source.isEmpty(),qPrintable(error));must(!source.contains("__original_rules="),"Sanshen still loads the vendor framework");
@@ -169,7 +169,7 @@ template<class Test>void sanshenTests(const QString &root,Test test){
         {SanshenFake h;h.used=h.limit;finished(h,{},why);must(h.entries==0&&h.receipt.contains("already_done"),"Daily count not respected");}
         {SanshenFake h;h.full=true;failed(h,{},why);must(h.entries==0,"Full bag entered");}
         {SanshenFake h;h.together=false;failed(h,{},why);must(h.entries==0,"Scattered team entered");}
-        {SanshenFake h;h.noEntry=true;failed(h,{},why);must(h.entries==1,"Entry replayed without feedback");}
+        {SanshenFake h;h.noEntry=true;failed(h,{},why);must(h.entries>=1&&h.entries<=6,"Entry retried beyond the team patience");}
         {SanshenFake h;h.noOpen=true;failed(h,{},why);must(h.opens[1]==1&&h.receipt.isEmpty(),"Unseal replayed or completed");}
         {SanshenFake h;h.noExit=true;failed(h,{},why);must(h.exits<=3&&h.receipt.isEmpty(),"Exit without leaving was completed");}
         {SanshenFake h;h.noCount=true;failed(h,{},why);must(h.exits==1&&h.receipt.isEmpty(),"Count without increase was completed");}

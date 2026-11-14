@@ -56,7 +56,7 @@ function Langhuan.run(fixedMode,injected)
         return name
     end
     local function gather(point)
-        wait('等待队伍集合',function() return api.teamReady(team) and api.teamTogether() and api.teamNear(point,20) end)
+        wait('等待队伍集合',function() return api.teamReady(team) and api.teamTogether() and api.teamNear(point,20) end,DungeonApi.teamPatience())
     end
 
     local function fight(before)
@@ -344,10 +344,10 @@ function Langhuan.run(fixedMode,injected)
             api.space();api.prepareBattle()
             if world().scene~=SCENE then
                 api.openNpc(entrance);gather(entrance)
-                if api.isLeader() then
+                DungeonApi.enterRetry(api,'确认进入琅嬛福地',function() return world().scene==SCENE end,function()
+                    CloseAllWindow();api.openNpc(entrance)
                     assert(api.selectOption({mode.option},true),'李青萝没有所选难度的选项：'..modeName)
-                end
-                wait('确认进入琅嬛福地',function() return world().scene==SCENE end)
+                end)
             end
             fight(before);completed=completed+1;log('本轮完成（'..completed..'/'..rounds..'）')
         end

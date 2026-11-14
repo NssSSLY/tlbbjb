@@ -122,7 +122,7 @@ function Xiaoaci.run(enterKey)
                 api.openNpc(entrance)
                 log('等待队伍集合');local began=api.now()
                 while not gathered() do
-                    assert(api.now()-began<math.max(waitMs,70000),'暗袭萧阿刺：等待队伍集合超时')
+                    assert(api.now()-began<DungeonApi.teamPatience(),'暗袭萧阿刺：等待队伍集合超时')
                     api.maintain();api.sleep(250)
                 end
                 local T=DungeonTactics.new(api,entrance.scene,bossNames);T.watch({'WSTZ_260403_108'});T.readMessages()

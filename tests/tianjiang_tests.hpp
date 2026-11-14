@@ -40,7 +40,7 @@ template<class Test>void tianjiangTests(const QString &root,Test test){
     auto must=[](bool v,const char *s){if(!v)throw std::runtime_error(s);};
     const QString id="dungeon_002eb7bd";
     auto run=[&](TianjiangFake &h,QJsonObject cfg,std::string &why){
-        cfg.insert("legacy_id",id);cfg.insert("combat",true);cfg.insert("dungeon_wait_seconds",5);cfg.insert("tianjiang_search_minutes",1);
+        cfg.insert("legacy_id",id);cfg.insert("combat",true);cfg.insert("dungeon_wait_seconds",5);cfg.insert("dungeon_team_wait_seconds",30);cfg.insert("tianjiang_search_minutes",1);
         QJsonObject entry;QString path,error;must(resolveLegacyEntry(root+"/scripts/legacy",id,entry,path,error),qPrintable(error));
         must(entry.value("validation_contract")==QJsonValue("tianjiang_flow_v1"),"Tianjiang has no completion contract");
         auto source=prepareResidentScript(root+"/scripts/legacy",path,cfg,error);must(!source.isEmpty(),qPrintable(error));must(!source.contains("__original_rules="),"Tianjiang still loads the vendor framework");

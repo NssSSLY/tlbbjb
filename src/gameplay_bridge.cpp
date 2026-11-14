@@ -1,3 +1,4 @@
+#include "game_layout.hpp"
 #include "gameplay_protocol.hpp"
 #include "game_lua_actions.hpp"
 #include "combat_world.hpp"
@@ -14,7 +15,7 @@ struct Name {union{char small[16];const char *pointer;};uint64_t length=0,capaci
 struct Ui {
     void *manager=nullptr;
     bool (*present)(void*,const Name&)=nullptr;void *(*window)(void*,const Name&)=nullptr;
-    bool (*visible)(void*,bool)=nullptr;void (*hide)(void*)=nullptr;
+    bool (*visible)(void*,bool)=nullptr;void (*hide)(void*)=nullptr;bool (*disabled)(void*,bool)=nullptr;
     // DebugListBox_ListBox is a CEGUI Listbox (FalagardInfoList::AddInfo -> Listbox::addItem).
     int messages(wchar_t *out,int capacity){
         auto dll=GetModuleHandleW(L"CEGUIBase.dll");if(!dll||capacity<2)return -1;
@@ -40,6 +41,7 @@ struct Ui {
         window=game_lua::api<decltype(window)>(dll,"?getWindow@WindowManager@CEGUI@@QEBAPEAVWindow@2@AEBV?$StringBaseT@D@2@@Z");
         visible=game_lua::api<decltype(visible)>(dll,"?isVisible@Window@CEGUI@@QEBA_N_N@Z");
         hide=game_lua::api<decltype(hide)>(dll,"?hide@Window@CEGUI@@QEAAXXZ");
+        disabled=game_lua::api<decltype(disabled)>(dll,"?isDisabled@Window@CEGUI@@QEBA_N_N@Z");
         manager=singleton?singleton():nullptr;return manager&&present&&window&&visible&&hide;
     }
     void *find(const char *p){Name name(p);return present(manager,name)?window(manager,name):nullptr;}
@@ -62,9 +64,17 @@ struct Ui {
             std::snprintf(name,96,"%s_Date_%d_Today",chosen,day);if(shown(name,true)){today=day;++found;}
             std::snprintf(name,96,"%s_Date_%d_Mark",chosen,day);if(shown(name,true))++packet.signedDays;
         }
-        if(found!=1||packet.signedDays>31)return chosen;
+        if(packet.signedDays>31)return chosen;
+        // The sign button turns into a disabled "已签到" once today is signed. The game sets it
+        // from the same day flag as the check mark, so it confirms today on its own.
+        std::snprintf(name,96,"%s_Date_Sign",chosen);auto *button=find(name);
+        const bool buttonSigned=packet.frameVisible&&button&&disabled&&visible(button,false)&&disabled(button,false);
+        if(found!=1){
+            if(!buttonSigned)return chosen;
+            SYSTEMTIME now{};GetLocalTime(&now);today=now.wDay;
+        }
         packet.today=today;std::snprintf(name,96,"%s_Date_%d_Mark",chosen,today);
-        packet.signedToday=shown(name,true);packet.stateReady=1;return chosen;
+        packet.signedToday=shown(name,true)||buttonSigned;packet.stateReady=1;return chosen;
     }
 };
 void execute(gameplay::Packet &p){
@@ -75,7 +85,7 @@ void execute(gameplay::Packet &p){
         ||now>p.expires||p.expires-now>5000||p.frameKind>3||!gameplay::validCommand(p.command,p.argument)){reject(ERROR_INVALID_DATA,L"动作身份、参数或时限无效");return;}
     wchar_t path[32768]{};GetModuleFileNameW(nullptr,path,32768);const auto name=std::wcsrchr(path,L'\\');
     const auto base=uintptr_t(GetModuleHandleW(nullptr));live::Snapshot world;
-    if(!name||_wcsicmp(name+1,L"Game.exe")||!live::signature(GetCurrentProcess(),base)||!live::snapshot(GetCurrentProcess(),base,world)){reject(ERROR_REVISION_MISMATCH,L"角色未进入游戏或版本未适配");return;}
+    if(!name||_wcsicmp(name+1,L"Game.exe")||!layout::ready(base)||!live::snapshot(GetCurrentProcess(),base,world)){reject(ERROR_REVISION_MISMATCH,L"角色未进入游戏或版本未适配");return;}
     Ui ui;if(!ui.init()){reject(ERROR_MOD_NOT_FOUND,L"游戏界面接口未就绪");return;}
     for(const char *modal:{"Pswprotect_BackGround_Frame","Logon_FZKCheckFail_Frame","OnlyChangyoujia_Logon_Frame"})if(ui.shown(modal))p.manual=1;
     if(p.command==gameplay::RunSnippet){
@@ -91,7 +101,7 @@ void execute(gameplay::Packet &p){
             auto read=[&](uintptr_t at,void *to,size_t n){return GetTickCount64()-scanStarted<=12&&live::read(GetCurrentProcess(),at,to,n);};
             auto enemy=[&](uintptr_t player,uintptr_t npc){
                 uintptr_t system=0,vt=0,fn=0;
-                if(!live::get(GetCurrentProcess(),base+0x1054eb8,system)||!live::get(GetCurrentProcess(),system,vt)
+                if(!live::get(GetCurrentProcess(),base+live::relationGlobal,system)||!live::get(GetCurrentProcess(),system,vt)
                     ||vt<base+0xa00000||vt>base+0x1000000||!live::get(GetCurrentProcess(),vt+0x2c0,fn)||fn<base+0x1000||fn>=base+0xa00000)return -1;
                 using Relation=int (*)(void*,void*,void*,int);
                 return reinterpret_cast<Relation>(fn)(reinterpret_cast<void*>(system),reinterpret_cast<void*>(player),reinterpret_cast<void*>(npc),0)!=0?1:0;
@@ -116,7 +126,7 @@ void execute(gameplay::Packet &p){
             if(!live::get(GetCurrentProcess(),world.player+0x28,client)||!live::get(GetCurrentProcess(),world.player+0x2c,server)||client<0||server<0){reject(ERROR_INVALID_DATA,L"角色身份不可读，停攻未确认");return;}
             p.args.ints[0]=client;p.args.ints[1]=server;
         }
-        uintptr_t object=0;if(!live::get(GetCurrentProcess(),base+0x1056970,object)||object<0x10000){reject(ERROR_NOT_READY,L"游戏脚本登记对象尚未就绪");return;}
+        uintptr_t object=0;if(!live::get(GetCurrentProcess(),base+live::luaGlobal,object)||object<0x10000){reject(ERROR_NOT_READY,L"游戏脚本登记对象尚未就绪");return;}
         game_lua::LuaResult result;bool mayHaveIssued=false;
         if(!game_lua::runGameSnippet(GetModuleHandleW(L"LuaPlus.dll"),reinterpret_cast<void*>(object),p.argument,p.args,result,mayHaveIssued,p.detail)){
             p.actionIssued=mayHaveIssued;p.error=ERROR_INVALID_FUNCTION;InterlockedExchange(&p.status,gameplay::Rejected);return;
@@ -130,7 +140,7 @@ void execute(gameplay::Packet &p){
     if(p.command!=gameplay::Query&&p.manual){reject(ERROR_BUSY,L"请先完成游戏验证");return;}
     if(p.command==gameplay::DailySign||p.command==gameplay::ClaimMonthlyReward){
         if(p.command==gameplay::ClaimMonthlyReward&&(!p.frameVisible||!p.stateReady||!p.signedToday)){reject(ERROR_NOT_READY,L"今日签到状态尚未确认，未提交奖励请求");return;}
-        uintptr_t object=0;if(!live::get(GetCurrentProcess(),base+0x1056970,object)||object<0x10000){reject(ERROR_NOT_READY,L"游戏脚本登记对象尚未就绪");return;}
+        uintptr_t object=0;if(!live::get(GetCurrentProcess(),base+live::luaGlobal,object)||object<0x10000){reject(ERROR_NOT_READY,L"游戏脚本登记对象尚未就绪");return;}
         bool mayHaveIssued=false;
         if(!game_lua::monthlySign(GetModuleHandleW(L"LuaPlus.dll"),reinterpret_cast<void*>(object),p.command==gameplay::DailySign?0:int(p.argument),mayHaveIssued,p.detail)){
             p.actionIssued=mayHaveIssued;p.error=ERROR_INVALID_FUNCTION;InterlockedExchange(&p.status,gameplay::Rejected);return;

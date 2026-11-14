@@ -1,3 +1,4 @@
+#include "game_layout.hpp"
 #include "bridge_protocol.hpp"
 #include "live_layout.hpp"
 #include <cwchar>
@@ -41,7 +42,7 @@ static void execute(bridge::Packet &packet, HWND window) {
     }
     auto base = reinterpret_cast<uintptr_t>(GetModuleHandleW(nullptr));
     live::Snapshot state;
-    if (!live::signature(GetCurrentProcess(), base) || !live::snapshot(GetCurrentProcess(), base, state)) {
+    if (!layout::ready(base) || !live::snapshot(GetCurrentProcess(), base, state)) {
         reject(ERROR_REVISION_MISMATCH);
         return;
     }

@@ -238,7 +238,7 @@ function Wangling.run(kind,injected)
                 -- Crossing servers can break the team up: the reference waits 70 seconds for it to re-form.
                 wait('等待队伍集合',function()
                     return api.teamReady(team) and api.teamTogether() and api.teamNear({scene=world().scene,x=npc.x,y=npc.y},20)
-                end,math.max(waitMs,70000))
+                end,DungeonApi.teamPatience())
                 if api.isLeader() then
                     assert(api.selectOption({'#{FMZLW_111219_03}'},true),'萧陵没有入场选项')
                     api.sleep(1000)
@@ -253,7 +253,10 @@ function Wangling.run(kind,injected)
                         error('王陵：队员今日已完成（'..table.concat(names,'、')..'），请调整队伍后重新运行；本程序不自动踢人',0)
                     end
                 end
-                wait('确认进入王陵',function() return world().scene==SCENE end)
+                DungeonApi.enterRetry(api,'确认进入王陵',function() return world().scene==SCENE end,function()
+                    CloseAllWindow();api.openNpc(npc)
+                    assert(api.selectOption({'#{FMZLW_111219_03}'},true),'萧陵没有入场选项')
+                end,{skipFirst=true})
             end
             fight(before);completed=completed+1;log('本轮完成（'..completed..'/'..rounds..'）')
         end

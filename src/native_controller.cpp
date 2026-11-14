@@ -1,3 +1,4 @@
+#include "game_layout.hpp"
 #include "native_controller.hpp"
 #include "bridge_protocol.hpp"
 #include "core.hpp"
@@ -26,12 +27,9 @@ QJsonObject bridgeCommand(quint32 pid, const QString &created, const QString &ro
     if (!binding.open(pid, root, created, fixture))
         return fail(binding.error);
     if (!fixture) {
-        QFile image(binding.info().path);
-        if (!image.open(QIODevice::ReadOnly))
-            return fail("无法验证游戏版本");
-        QCryptographicHash hash(QCryptographicHash::Sha256);
-        if (!hash.addData(&image) || hash.result().toHex() != live::imageSha256)
-            return fail("游戏版本未适配，拒绝调用动作");
+        std::string why;
+        if (!layout::ensure(reinterpret_cast<const wchar_t *>(binding.info().path.utf16()), why))
+            return fail("当前游戏版本无法自动识别内存布局，拒绝调用动作：" + QString::fromStdString(why));
     }
     HMODULE base = nullptr;
     DWORD needed = 0;

@@ -1,3 +1,4 @@
+#include "game_layout.hpp"
 #include "gameplay_client.hpp"
 #include "core.hpp"
 #include "live_layout.hpp"
@@ -23,9 +24,8 @@ bool GameplayChannel::open(quint32 pid,const QString &created,const QString &roo
     if(p_->library){error="动作通道已打开";return false;}
     if(!p_->binding.open(pid,root,created)){error=p_->binding.error;return false;}
     auto hash=[](const QString &path,const char *expected){QFile file(path);if(!file.open(QIODevice::ReadOnly))return false;QCryptographicHash h(QCryptographicHash::Sha256);return h.addData(&file)&&h.result().toHex()==expected;};
-    if(!hash(p_->binding.info().path,live::imageSha256)||!hash(root+"/Bin64/CEGUIBase.dll",login::ceguiSha256)||!hash(root+"/Bin64/LuaPlus.dll",login::luaPlusSha256)){
-        error="当前游戏/界面/脚本 SDK 版本未适配";return false;
-    }
+    {std::string why;if(!layout::ensure(reinterpret_cast<const wchar_t*>(p_->binding.info().path.utf16()),why)){error="当前游戏版本无法自动识别内存布局："+QString::fromStdString(why);return false;}}
+    (void)hash;
     for(const auto &game:discoverGames(root))if(game.pid==pid&&game.created==created)p_->window=reinterpret_cast<HWND>(game.window);
     DWORD owner=0;p_->thread=GetWindowThreadProcessId(p_->window,&owner);
     if(!p_->window||owner!=pid||!p_->thread){error="未找到当前会话的游戏窗口";return false;}

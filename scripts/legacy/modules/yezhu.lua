@@ -219,7 +219,7 @@ function Yezhu.run(kind,injected)
         api.space();api.prepareBattle()
         api.openNpc(K.npc)
         if not lead then return nil,true end
-        wait('等待队伍集合',function() return gathered() and (team<=1 or api.teamNear({scene=SSS,x=K.npc.x,y=K.npc.y},20)) end,math.max(waitMs,70000))
+        wait('等待队伍集合',function() return gathered() and (team<=1 or api.teamNear({scene=SSS,x=K.npc.x,y=K.npc.y},20)) end,DungeonApi.teamPatience())
         assert(api.selectOption({'追捕野猪王'},true),'云飘飘没有追捕野猪王选项')
         wait('确认进入副本',function() return world().scene==K.scene end)
     end
@@ -262,7 +262,7 @@ function Yezhu.run(kind,injected)
                 end
                 if found then
                     api.log(title..'：发现灵兽 '..cand.name)
-                    wait('等待队伍集合',gathered,math.max(waitMs,70000))
+                    wait('等待队伍集合',gathered,DungeonApi.teamPatience())
                     assert(api.selectOption({'拯救灵兽'},true),'灵兽的拯救选项已消失')
                     wait('确认进入副本',function() return world().scene==K.scene end)
                     return

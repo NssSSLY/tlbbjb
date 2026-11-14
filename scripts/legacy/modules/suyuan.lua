@@ -251,7 +251,7 @@ function Suyuan.run(kind,variant)
                 api.openNpc(def.npc)
                 log('等待队伍集合');local began=api.now()
                 while not gathered() do
-                    assert(api.now()-began<math.max(waitMs,70000),title..'：等待队伍集合超时')
+                    assert(api.now()-began<DungeonApi.teamPatience(),title..'：等待队伍集合超时')
                     api.maintain();api.sleep(250)
                 end
                 local T=DungeonTactics.new(api,TOWN,bossNames);T.watch(K.refuse);T.readMessages()

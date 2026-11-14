@@ -1274,12 +1274,49 @@
         "跑漕运"
       ],
       "category": "日常",
-      "family": "cargo",
+      "family": "legacy",
       "source_refs": [
-        "S06"
+        "tlzz:@..\\tlzs\\Script64\\常用\\[05] 漕运.lua"
       ],
-      "source_scope": "旧版官网资料，路线与次数待本服核对",
-      "adapter_status": "unadapted"
+      "source_scope": "运行原程序「[05] 漕运」的原 Lua（规则未改），设置项换成中文说明。会买卖货物，需要打开“允许支付”和出售相关开关。",
+      "adapter_status": "integrated_pending_live",
+      "original_library_tokens": [
+        "00364c48"
+      ],
+      "timeout_seconds": 3600,
+      "requires_resident": true,
+      "generic_original": true,
+      "risks": [
+        "spend",
+        "sell"
+      ],
+      "combat": true,
+      "settings": [
+        {
+          "key": "打压",
+          "label": "打压（压价收购）",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "哄抬",
+          "label": "哄抬（抬价出售）",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "跑一次",
+          "label": "只跑一次",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "不打怪",
+          "label": "途中不打怪",
+          "type": "bool",
+          "default": false
+        }
+      ]
     },
     {
       "id": "treasure_quest",
@@ -1502,18 +1539,95 @@
         "抢种植"
       ],
       "category": "生活",
-      "family": "plant",
+      "family": "legacy",
       "source_refs": [
-        "S09",
-        "S10"
+        "tlzz:@..\\tlzs\\Script64\\常用\\[03] 种地脚本.lua"
       ],
-      "source_scope": "官网生活资料与用户需求",
-      "adapter_status": "unadapted",
-      "requires": [
-        "planting_state",
-        "inventory",
-        "plant_action",
-        "action_feedback"
+      "source_scope": "运行原程序「种地脚本」的原 Lua（规则未改），设置项换成中文说明。可能买种子、存仓或出售，需要打开“允许支付”。",
+      "adapter_status": "integrated_pending_live",
+      "original_library_tokens": [
+        "003607d9"
+      ],
+      "timeout_seconds": 1800,
+      "requires_resident": true,
+      "generic_original": true,
+      "risks": [
+        "spend",
+        "transfer"
+      ],
+      "settings": [
+        {
+          "key": "zhk11",
+          "label": "作物：1–10 粮食（1 小麦…10 蚕豆），12–21 棉麻（12 苎麻…21 彩棉）",
+          "type": "number",
+          "default": 1,
+          "min": 1,
+          "max": 22
+        },
+        {
+          "key": "zhk9",
+          "label": "精力不足时：0 改晚产继续种，其他值 停止",
+          "type": "number",
+          "default": 0,
+          "min": -1,
+          "max": 20
+        },
+        {
+          "key": "xzk55",
+          "label": "只在指定城市种",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "zhk10",
+          "label": "指定城市：0 洛阳 1 苏州 2 大理 3 太湖 4 楼兰 6 束河古镇",
+          "type": "number",
+          "default": 0,
+          "min": 0,
+          "max": 6
+        },
+        {
+          "key": "zhk39",
+          "label": "背包满时：0 停止 1 存仓 2 出售",
+          "type": "number",
+          "default": 0,
+          "min": 0,
+          "max": 2
+        },
+        {
+          "key": "xzk54",
+          "label": "等作物完全成熟再收（晚产）",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "xzk159",
+          "label": "等待成熟时去安全点",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "bjk98",
+          "label": "安全地图（遇险时去的地图名，空则不去）",
+          "type": "text",
+          "default": ""
+        },
+        {
+          "key": "bjk24",
+          "label": "安全点 X",
+          "type": "number",
+          "default": 0,
+          "min": 0,
+          "max": 999999999
+        },
+        {
+          "key": "bjk96",
+          "label": "安全点 Y",
+          "type": "number",
+          "default": 0,
+          "min": 0,
+          "max": 999999999
+        }
       ]
     },
     {
@@ -1521,13 +1635,85 @@
       "name": "钓鱼",
       "aliases": [],
       "category": "生活",
-      "family": "gather",
+      "family": "legacy",
       "source_refs": [
-        "S09",
-        "S10"
+        "tlzz:@..\\tlzs\\Script64\\常用\\[07] 钓鱼加工.lua"
       ],
-      "source_scope": "官网生活资料",
-      "adapter_status": "unadapted"
+      "source_scope": "运行原程序「钓鱼加工」的原 Lua（规则未改），设置项换成中文说明。可能买鱼饵，需要打开“允许支付”。",
+      "adapter_status": "integrated_pending_live",
+      "original_library_tokens": [
+        "00367515"
+      ],
+      "timeout_seconds": 3600,
+      "requires_resident": true,
+      "generic_original": true,
+      "risks": [
+        "spend"
+      ],
+      "combat": true,
+      "settings": [
+        {
+          "key": "bjk71",
+          "label": "钓鱼地图名",
+          "type": "text",
+          "default": ""
+        },
+        {
+          "key": "bjk72",
+          "label": "钓鱼点 X",
+          "type": "number",
+          "default": 0,
+          "min": 0,
+          "max": 999999999
+        },
+        {
+          "key": "bjk73",
+          "label": "钓鱼点 Y",
+          "type": "number",
+          "default": 0,
+          "min": 0,
+          "max": 999999999
+        },
+        {
+          "key": "bjk74",
+          "label": "只钓这些鱼（空格分隔，空为全部）",
+          "type": "text",
+          "default": ""
+        },
+        {
+          "key": "bjk75",
+          "label": "鱼饵",
+          "type": "choice",
+          "choices": [
+            "蚯蚓",
+            "虹虫",
+            "沙蚕"
+          ],
+          "default": "蚯蚓"
+        },
+        {
+          "key": "bjk76",
+          "label": "鱼饵不足时购买数量（0 不买）",
+          "type": "number",
+          "default": 0,
+          "min": 0,
+          "max": 999999999
+        },
+        {
+          "key": "xzk89",
+          "label": "钓完后烹饪加工",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "bjk3",
+          "label": "运行多少分钟后结束（0 不限）",
+          "type": "number",
+          "default": 0,
+          "min": 0,
+          "max": 999999999
+        }
+      ]
     },
     {
       "id": "mine",
@@ -1536,26 +1722,278 @@
         "挖矿"
       ],
       "category": "生活",
-      "family": "gather",
+      "family": "legacy",
       "source_refs": [
-        "S09",
-        "S10"
+        "tlzz:@..\\tlzs\\Script64\\常用\\[02] 采集脚本.lua"
       ],
-      "source_scope": "官网生活资料",
-      "adapter_status": "unadapted"
+      "source_scope": "运行原程序「采集脚本」的原 Lua（规则未改），设置项换成中文说明。缺矿锄时会买，需要打开“允许支付”；坐标按“采集地图”选的地图走。",
+      "adapter_status": "integrated_pending_live",
+      "original_library_tokens": [
+        "0035f720"
+      ],
+      "timeout_seconds": 3600,
+      "requires_resident": true,
+      "generic_original": true,
+      "risks": [
+        "spend"
+      ],
+      "combat": true,
+      "settings": [
+        {
+          "key": "lbk12",
+          "label": "要挖的矿点名称（逗号分隔，填游戏里矿点的名字）",
+          "type": "text",
+          "default": ""
+        },
+        {
+          "key": "采集地图",
+          "label": "采集地图（只列出已核对场景号的地图）",
+          "type": "choice",
+          "choices": [
+            "10-9级天岐南淮",
+            "10-9级忘川花海",
+            "10-9级漠南青原",
+            "10级梅岭",
+            "10级草原",
+            "1级剑阁",
+            "1级太湖",
+            "1级嵩山",
+            "1级敦煌",
+            "1级无量山",
+            "1级镜湖",
+            "2级西湖",
+            "3级洱海",
+            "4级雁南",
+            "5级龙泉",
+            "6级苍山",
+            "7级雁北",
+            "8级武夷",
+            "9级石林"
+          ],
+          "default": "10-9级天岐南淮"
+        },
+        {
+          "key": "xzk26",
+          "label": "缺矿锄时自动购买",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "bjk132",
+          "label": "精力比较下限（原选项 jlmin）",
+          "type": "number",
+          "default": 0,
+          "min": 0,
+          "max": 999999999
+        },
+        {
+          "key": "bjk93",
+          "label": "精力比较上限（原选项 jlmax，原默认 250）",
+          "type": "number",
+          "default": 250,
+          "min": 0,
+          "max": 999999999
+        },
+        {
+          "key": "zhk8",
+          "label": "精力不足时：0 去安全点休息，1 停止，-1 只提示",
+          "type": "number",
+          "default": 0,
+          "min": -1,
+          "max": 20
+        },
+        {
+          "key": "xzk53",
+          "label": "原选项 jctq（xzk53）",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "xzk143",
+          "label": "原选项 ylxs（xzk143）",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "xzk144",
+          "label": "原选项 cjyd（xzk144）",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "xzk145",
+          "label": "不用珍兽（原选项 byzq）",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "xzk191",
+          "label": "低血时不回城加血",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "bjk98",
+          "label": "安全地图（遇险时去的地图名，空则不去）",
+          "type": "text",
+          "default": ""
+        },
+        {
+          "key": "bjk24",
+          "label": "安全点 X",
+          "type": "number",
+          "default": 0,
+          "min": 0,
+          "max": 999999999
+        },
+        {
+          "key": "bjk96",
+          "label": "安全点 Y",
+          "type": "number",
+          "default": 0,
+          "min": 0,
+          "max": 999999999
+        }
+      ]
     },
     {
       "id": "herb",
       "name": "采药",
       "aliases": [],
       "category": "生活",
-      "family": "gather",
+      "family": "legacy",
       "source_refs": [
-        "S09",
-        "S10"
+        "tlzz:@..\\tlzs\\Script64\\常用\\[02] 采集脚本.lua"
       ],
-      "source_scope": "官网生活资料",
-      "adapter_status": "unadapted"
+      "source_scope": "运行原程序「采集脚本」的原 Lua（规则未改），设置项换成中文说明。缺采药镰时会买，需要打开“允许支付”；坐标按“采集地图”选的地图走。",
+      "adapter_status": "integrated_pending_live",
+      "original_library_tokens": [
+        "0035f720"
+      ],
+      "timeout_seconds": 3600,
+      "requires_resident": true,
+      "generic_original": true,
+      "risks": [
+        "spend"
+      ],
+      "combat": true,
+      "settings": [
+        {
+          "key": "lbk12",
+          "label": "要采的草药名称（逗号分隔，填游戏里草药点的名字）",
+          "type": "text",
+          "default": ""
+        },
+        {
+          "key": "采集地图",
+          "label": "采集地图（只列出已核对场景号的地图）",
+          "type": "choice",
+          "choices": [
+            "10-9级天岐南淮",
+            "10-9级忘川花海",
+            "10-9级漠南青原",
+            "10级梅岭",
+            "10级草原",
+            "1级剑阁",
+            "1级太湖",
+            "1级嵩山",
+            "1级敦煌",
+            "1级无量山",
+            "1级镜湖",
+            "2级西湖",
+            "3级洱海",
+            "4级雁南",
+            "5级龙泉",
+            "6级苍山",
+            "7级雁北",
+            "8级武夷",
+            "9级石林"
+          ],
+          "default": "10-9级天岐南淮"
+        },
+        {
+          "key": "xzk27",
+          "label": "缺采药镰时自动购买",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "bjk132",
+          "label": "精力比较下限（原选项 jlmin）",
+          "type": "number",
+          "default": 0,
+          "min": 0,
+          "max": 999999999
+        },
+        {
+          "key": "bjk93",
+          "label": "精力比较上限（原选项 jlmax，原默认 250）",
+          "type": "number",
+          "default": 250,
+          "min": 0,
+          "max": 999999999
+        },
+        {
+          "key": "zhk8",
+          "label": "精力不足时：0 去安全点休息，1 停止，-1 只提示",
+          "type": "number",
+          "default": 0,
+          "min": -1,
+          "max": 20
+        },
+        {
+          "key": "xzk53",
+          "label": "原选项 jctq（xzk53）",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "xzk143",
+          "label": "原选项 ylxs（xzk143）",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "xzk144",
+          "label": "原选项 cjyd（xzk144）",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "xzk145",
+          "label": "不用珍兽（原选项 byzq）",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "xzk191",
+          "label": "低血时不回城加血",
+          "type": "bool",
+          "default": false
+        },
+        {
+          "key": "bjk98",
+          "label": "安全地图（遇险时去的地图名，空则不去）",
+          "type": "text",
+          "default": ""
+        },
+        {
+          "key": "bjk24",
+          "label": "安全点 X",
+          "type": "number",
+          "default": 0,
+          "min": 0,
+          "max": 999999999
+        },
+        {
+          "key": "bjk96",
+          "label": "安全点 Y",
+          "type": "number",
+          "default": 0,
+          "min": 0,
+          "max": 999999999
+        }
+      ]
     },
     {
       "id": "grind",

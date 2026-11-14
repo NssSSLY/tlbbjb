@@ -69,7 +69,7 @@ function Yanzi.run(injected)
         assert(a.name==b.name and a.limit==b.limit and b.used>=a.used,'燕子坞活动记录发生变化或次数回退')
     end
     local function gather(point)
-        wait('等待队伍集合',function() return api.teamReady(team) and api.teamTogether() and api.teamNear(point,20) end)
+        wait('等待队伍集合',function() return api.teamReady(team) and api.teamTogether() and api.teamNear(point,20) end,DungeonApi.teamPatience())
     end
     local function supply()
         local item=api.item('悲酥清风解药');if item.total>0 then return item end
@@ -277,13 +277,13 @@ function Yanzi.run(injected)
             api.space();api.prepareBattle()
             if world().scene~=236 then
                 api.openNpc(entrance);gather(entrance)
-                if api.isLeader() then
+                DungeonApi.enterRetry(api,'确认进入燕子坞',function() return world().scene==236 end,function()
+                    CloseAllWindow();api.openNpc(entrance)
                     if not api.selectOption({mode[1]},true) then
                         api.selectOption({'讨伐燕子坞'},false)
-                        wait('等待所选难度入场选项',function() return api.selectOption({mode[1]},true) end)
+                        wait('等待所选难度入场选项',function() return api.selectOption({mode[1]},true) end,6000)
                     end
-                end
-                wait('确认进入燕子坞',function() return world().scene==236 end)
+                end)
             end
             fight(before);completed=completed+1;log('本轮完成（'..completed..'/'..rounds..'）')
         end

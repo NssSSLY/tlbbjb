@@ -248,7 +248,7 @@ function Juling.run(mode,injected)
     -- 简单 and 普通: at (153,146) in scene 112 the two beasts stand 6 apart. Their level cannot be read; their spot tells them apart.
     local function enterTown()
         if world().scene~=112 or d2(world(),153,146)>9 then MoveTo(153,146,112) end
-        wait('等待队伍集合',gathered,math.max(waitMs,70000))
+        wait('等待队伍集合',gathered,DungeonApi.teamPatience())
         if not isLead() then return true end
         local T=DungeonTactics.new(api,112,bossNames)
         local npc

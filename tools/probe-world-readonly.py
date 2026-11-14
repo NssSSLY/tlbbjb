@@ -65,7 +65,7 @@ try:
     world=ptr(base+0x105fbc8)
     vtable=ptr(world)
     funcs={hex(offset):ptr(vtable+offset) for offset in [0x80,0x110,0x118]}
-    object_system=ptr(base+0x105ca30)
+    object_system=ptr(base+0x105ba30)
     player=ptr(object_system+0x108)
     coordinates=struct.unpack('<3f',read(player+0x4c,12))
     scene=ptr(world+0x127c8)

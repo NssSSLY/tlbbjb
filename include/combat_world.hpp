@@ -4,7 +4,8 @@
 #include <initializer_list>
 namespace tlbb::combat {
 // Hash-locked Game.exe ABI. Evidence: combat-research/{static-vtables,manager*,targethp}.
-inline constexpr uintptr_t managerGlobal=0x105ca30,managerVtable=0xc2fb18,npcVtable=0xc39b48;
+// Set per process by game_layout.hpp; defaults are the 2026-11-07 build for offline fixtures.
+inline uintptr_t managerGlobal=0x105ba30,managerVtable=0xc2f8b8,npcVtable=0xc39918;
 struct Target { int client=-1,server=-1;float hp=0,x=0,y=0;uintptr_t object=0; };
 struct Scan { Target target;int status=1,enemies=0;double selfHp=0; };
 inline double percent(float v){return v<=1?v*100:v;}

@@ -91,7 +91,7 @@ function Shuaxiang.run(injected)
             if GetTeamCount()>0 and api.isLeader() or GetTeamCount()==0 then
                 log('等待队伍集合');local began=api.now()
                 while not (team<=1 or (api.teamReady(team) and api.teamTogether())) do
-                    assert(api.now()-began<math.max(waitMs,70000),'刷箱子：等待队伍集合超时')
+                    assert(api.now()-began<DungeonApi.teamPatience(),'刷箱子：等待队伍集合超时')
                     api.maintain();api.sleep(250)
                 end
                 assert(api.selectOption({cfg.xzk190==true and '#{LLXB_8815_26}' or '#{LLXB_8815_25}'},true),'金久灵没有入场选项')

@@ -116,7 +116,7 @@ struct QuestFake:PvpFake {
 template<class Test>void longTaskTests(const QString &root,Test test){
     auto must=[](bool v,const char *s){if(!v)throw std::runtime_error(s);};
     auto run=[&](SmallFake &h,const QString &id,const char *contract,QJsonObject cfg,std::string &why,uint64_t limit=8000000){
-        cfg.insert("legacy_id",id);cfg.insert("combat",true);if(!cfg.contains("dungeon_wait_seconds"))cfg.insert("dungeon_wait_seconds",5);
+        cfg.insert("legacy_id",id);cfg.insert("combat",true);if(!cfg.contains("dungeon_wait_seconds"))cfg.insert("dungeon_wait_seconds",5);cfg.insert("dungeon_team_wait_seconds",30);
         QJsonObject entry;QString path,error;must(resolveLegacyEntry(root+"/scripts/legacy",id,entry,path,error),qPrintable(error));
         must(entry.value("validation_contract")==QJsonValue(contract),"Missing completion contract");
         auto source=prepareResidentScript(root+"/scripts/legacy",path,cfg,error);must(!source.isEmpty(),qPrintable(error));must(!source.contains("__original_rules="),"Flow still loads the vendor framework");
@@ -194,7 +194,9 @@ template<class Test>void longTaskTests(const QString &root,Test test){
         {ShimenFake h;h.queue={typed(2)};failed(h,"shimen",sm,one,why);must(why.find("允许放弃")!=std::string::npos&&h.abandons==0,why.c_str());}
         {ShimenFake h;h.queue={typed(1,"#Y馒头#W 找 #{_INFOAIM10,10,1,店主}")};failed(h,"shimen",sm,one,why);must(why.find("允许放弃")!=std::string::npos&&h.buys==0,"Bought without permission");}
         {ShimenFake h;h.queue={typed(2),typed(3,"",0,1,0)};finished(h,"shimen",sm,{{"bjk29",1},{"shimen_abandon",true}},why);must(h.abandons==1&&h.handins==1,"Abandon then next");}
-        {ShimenFake h;h.petCount=6;failed(h,"shimen",sm,one,why);must(why.find("珍兽栏已满")!=std::string::npos,why.c_str());}
+        // A full pet bar stops only when a catch ring actually comes up; other rings run as usual.
+        {ShimenFake h;h.petCount=6;h.queue={typed(5)};failed(h,"shimen",sm,one,why);must(why.find("珍兽栏已满")!=std::string::npos,why.c_str());}
+        {ShimenFake h;h.petCount=6;h.queue={typed(3,"",0,1,0)};finished(h,"shimen",sm,{{"bjk29",1}},why);must(h.handins==1,"Full pet bar blocked a ring that needs no pet");}
         {ShimenFake h;h.petCount=6;h.queue={typed(3,"",0,1,0)};finished(h,"shimen",sm,{{"bjk29",1},{"xzk187",true}},why);must(h.handins==1,"Pet-free run");}
     });
     test("shimen_stops",[&]{

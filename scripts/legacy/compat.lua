@@ -19,7 +19,14 @@ local function text_result(...)
 end
 fmt=string.format
 
-function PushDebugMessage(v) log(text(v)) end
+-- The originals pass printf-style arguments ("采集：%s 读取坐标失败", name).
+function PushDebugMessage(v, ...)
+    if select("#", ...) > 0 and type(v) == "string" then
+        local ok, formatted = pcall(string.format, v, ...)
+        if ok then v = formatted end
+    end
+    log(text(v))
+end
 DebugMessage = PushDebugMessage
 PushColorMsg = PushDebugMessage
 LogMsg = PushDebugMessage
@@ -95,39 +102,78 @@ local function near(scene, x, y, range)
 end
 
 -- 原 MoveTo 调用游戏 AutoRunToTargetEx 后等待到达。停滞 8 秒重新提交，最多 4 次。
-function MoveTo(x, y, scene, range, deadline)
+-- The game's cross-scene auto-route prompt appears whenever a run or NPC target crosses maps.
+-- Only that exact prompt is accepted; any other box is left alone.
+local route_noted = false
+local function confirm_route()
+    local routePrompt = S.msgbox and S.msgbox["你确认要开启跨场景自动寻路吗"]
+    if routePrompt and game(S.MsgBoxText, { routePrompt }) == 1 then
+        if not route_noted then route_noted = true; log("已确认跨场景自动寻路提示") end
+        return true
+    end
+    return false
+end
+-- The originals call MoveTo(x, y, scene, space, mount, continueCheck, moveCallback, ...): the 5th argument
+-- is "use mount", not a deadline; continueCheck() returning false stops; moveCallback(x, y, scene) runs each
+-- tick (种地 looks for empty fields there) and returns false to stop or a new {x, y, sceneID} to retarget.
+-- 保护调用；精简沙盒里没有 pcall 时不调用（只用于坐骑这类可选动作）。
+function try_call(f, ...)
+    if type(f) ~= "function" or type(pcall) ~= "function" then return false end
+    return pcall(f, ...)
+end
+function MoveTo(x, y, scene, range, deadline, continueCheck, moveCallback)
+    if type(deadline) ~= "number" then deadline = nil end
+    if type(continueCheck) ~= "function" then continueCheck = nil end
+    if type(moveCallback) ~= "function" then moveCallback = nil end
     x, y = tonumber(x), tonumber(y)
     if not x or not y then error("MoveTo 坐标无效") end
     scene = tonumber(scene); if not scene or scene < 0 then scene = GetSceneID() end
     if scene < 0 then error("当前场景不可读，未提交寻路") end
     range = tonumber(range) or 2
-    if near(scene, x, y, range) then return true end
+    local s0, px0, py0 = position()
+    local d2 = s0 and s0 == scene and (px0 - x) ^ 2 + (py0 - y) ^ 2 or nil
+    if d2 and d2 <= range * range then return true end
+    -- 原程序 MoveCheckMount：距离 25 以上或跨场景时先召唤坐骑。
+    if not moveCallback and type(pcall) == "function" and not (d2 and d2 <= 625) then try_call(UseMount) end
     if NavigationCatalog and NavigationCatalog.runtime_enabled==true and GetSceneID()~=scene then
         if not NavigationRuntime then LoadScript('navigation_runtime') end
         -- Same-map hop approaches do not recurse into cross-map planning.
-        if NavigationRuntime.travel(scene,x,y,range,MoveTo) then return true end
+        if not moveCallback and not continueCheck and NavigationRuntime.travel(scene,x,y,range,MoveTo) then return true end
     end
     local issued, start, progress, lx, ly = 0, GetTickCount(), 0, nil, nil
-    local route_confirmed = false
     while true do
         assert(not deadline or GetTickCount()<deadline,'导航超过总时限')
-        if issued == 0 or GetTickCount() - progress > 8000 then
-            if issued >= 4 then error(string.format("寻路未到达：场景 %s (%s,%s)", scene, x, y)) end
+        -- 原地停住 3 秒（上坐骑、对话打断等）就重新提交寻路，不再空等。
+        if issued == 0 or GetTickCount() - progress > 3000 then
+            if issued >= 10 then
+                local here = GetSceneID()
+                if here and here >= 0 and here ~= scene then
+                    error(string.format("无法从当前场景 %s 自动寻路到场景 %s；副本或活动场景里请先离开再运行", here, scene))
+                end
+                error(string.format("寻路未到达：场景 %s (%s,%s)", scene, x, y))
+            end
             game(S.RunTo, { scene }, { x, y })
             issued, progress = issued + 1, GetTickCount()
         end
         Sleep(500)
         local s, px, py = position()
         if s and near(scene, x, y, range) then return true end
-        -- Only accept the game's specific cross-scene auto-route prompt; other dialogs stay untouched.
-        if s and s ~= scene and not route_confirmed then
-            local routePrompt = S.msgbox["你确认要开启跨场景自动寻路吗"]
-            if routePrompt and game(S.MsgBoxText, { routePrompt }) == 1 then
-                route_confirmed = true
-                progress = GetTickCount()
-                log("已确认跨场景自动寻路提示")
+        if continueCheck and continueCheck() == false then return false end
+        if moveCallback then
+            local began = GetTickCount()
+            local go, retarget = moveCallback(x, y, scene)
+            if go == false then return false end
+            if type(retarget) == "table" and tonumber(retarget.x) and tonumber(retarget.y) then
+                x, y = tonumber(retarget.x), tonumber(retarget.y)
+                scene = tonumber(retarget.sceneID) or scene
+                issued, progress = 0, 0
+            elseif GetTickCount() - began > 1000 then
+                -- The callback did work in place (planting, harvesting): start the run again afresh.
+                issued, progress = 0, 0
             end
         end
+        -- The prompt can come back after each re-issued run; confirm it every time it shows.
+        if s and s ~= scene and confirm_route() then progress = GetTickCount() end
         if not s then progress = GetTickCount()
         elseif lx and math.abs(px - lx) + math.abs(py - ly) > 0.5 then progress = GetTickCount() end
         if s then lx, ly = px, py end
@@ -139,12 +185,15 @@ local function quest_open(ms)
     local start = GetTickCount()
     repeat
         if game(S.QuestOptions) == 1 then return true end
+        confirm_route()
         Sleep(200)
     until GetTickCount() - start > ms
     return false
 end
 function TalkNpc(name, sleep)
     game(S.NpcTarget, nil, nil, trim(name))
+    -- An NPC on another map starts a cross-scene route; its prompt shows within a moment.
+    for _ = 1, 4 do Sleep(250); if confirm_route() then break end end
     if sleep then Sleep(sleep) end
 end
 local function talk_at(name, x, y, scene, deadline)
@@ -226,7 +275,9 @@ end
 function QuestFrameAcceptClicked(sleep) quest_button(1, 0, sleep) end
 function QuestFrameNextClicked(sleep) quest_button(2, 0, sleep) end
 function QuestFrameMissionComplete(item, sleep) quest_button(3, tonumber(item) or 0, sleep) end
-function MessageBox_Self_OK_Clicked() GetLuaValue("setmetatable(_G, {__index = MessageBox_Self_Env});MessageBox_Self_OK_Clicked()") end
+-- Same as the original: OK on the box that is showing. Goes through the message-box snippet so newer
+-- builds, whose OK handler is no longer in MessageBox_Self_Env, press the box's own OK button.
+function MessageBox_Self_OK_Clicked() return game(S.MsgBoxText, { S.msgbox[""] }) == 1 end
 
 function IsWindowVisible(window, action)
     window = trim(window)
@@ -843,12 +894,51 @@ function GetMissionVariable(slot, n)
 end
 function GetMissionComplete(slot) return GetMissionVariable(slot, 0) end
 function GoToScene(x, y, scene, space) return MoveTo(x, y, scene, tonumber(space) or 2) end
--- 原程序下马后还会等坐骑状态消失、必要时放轻功；这里固定等 1 秒。
+-- 坐骑状态：>=0 为坐骑 Buff ID，-1 未骑乘，-2 读不到。
+-- 本版本没有 GetMountID（实测），按原程序 IsMount 的办法看自身 Buff 里有没有“坐骑：”。
+local function mount_id()
+    local okId, client, server = try_call(host, "battle_self_identity")
+    if not okId or type(client) ~= "number" or type(server) ~= "number" then return -2 end
+    local okBuff, count, ids = try_call(host, "object_buff_ids", string.format("%d:%d", client, server))
+    if not okBuff or type(ids) ~= "string" then return -2 end
+    for id in ids:gmatch("%d+") do
+        local okText, t = try_call(GetLuaValue, "local r={Lua_GetBuffInfo(" .. id .. ")} local s='' for k=2,#r do if type(r[k])=='string' then s=s..r[k]..'|' end end return s", "s")
+        if not okText or type(t) ~= "string" then return -2 end
+        if t:find("坐骑", 1, true) then return tonumber(id) end
+    end
+    return -1
+end
+local function wait_mount(want_mounted, ms)
+    local start = GetTickCount()
+    repeat
+        local id = mount_id()
+        if id == -2 then Sleep(800) return end
+        if (id ~= -1) == want_mounted then return true end
+        Sleep(150)
+    until GetTickCount() - start > ms
+    return false
+end
+function IsMount() return mount_id() >= 0 end
+-- 原程序同样用坐骑技能（开关）上下坐骑：Player:UseSkillInLua_Const()。
+function UseMount()
+    if mount_id() ~= -1 then return end
+    if not try_call(GetLuaValue, "Player:UseSkillInLua_Const()", "", 0) then return end
+    wait_mount(true, 3000)
+end
+-- 下坐骑后等坐骑状态消失（最多 3 秒），再继续任务。
 function Dismount(sleep)
-    local result = game(S.Dismount, nil, nil, "坐骑：")
-    if result == -1 then error("下坐骑接口尚未适配当前游戏版本，未使用任务物品") end
+    local id = mount_id()
+    if id == -1 then return true end
+    -- 已确认骑乘：坐骑技能是开关，再放一次即下马（原程序 UseMount 用同一调用）。
+    if id >= 0 and try_call(GetLuaValue, "Player:UseSkillInLua_Const()", "", 0) then
+        wait_mount(false, 3000)
+        if sleep then Sleep(sleep) end
+        return false
+    end
+    local result, found = text_result(S.Dismount, nil, nil, "坐骑：")
+    if result == -1 then error("下坐骑接口尚未适配当前游戏版本，未使用任务物品；游戏现有相关接口：" .. (found ~= "" and found or "无")) end
     if result ~= 1 then return true end
-    Sleep(1000)
+    wait_mount(false, 3000)
     if sleep then Sleep(sleep) end
     return false
 end

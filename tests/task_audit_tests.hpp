@@ -86,7 +86,7 @@ template<class Test>void taskAuditTests(const QString &root,Test test){
         out.write(QJsonDocument(QJsonObject{{"passed",true},{"registered_entries",results.size()},{"resident_entries",residentCount},{"external_entries",externalCount},
             {"strict_completion_contracts",contracts},{"largest_resident_package_bytes",double(maximum)},{"game_actions_sent",0},{"real_game_tested",false},{"entries",results}}).toJson());
         const int xiaomi=148; // imported 小蜜文本 tasks (docs/XIAOMI_SCRIPT_MAP.md)
-        must(results.size()==269+xiaomi&&residentCount==268+xiaomi&&externalCount==1&&contracts==85,"Task runtime audit coverage changed");
+        must(results.size()==274+xiaomi&&residentCount==273+xiaomi&&externalCount==1&&contracts==85,"Task runtime audit coverage changed");
         QString error;QJsonObject missing{{"legacy_id","not_registered"},{"timeout_seconds",300},{"engine","游戏内 Lua"}};
         must(!validateLegacyConfig(missing,error),"Unregistered non-combat task passed preflight");
         missing.insert("legacy_id","shimen");must(!validateLegacyConfig(missing,error),"Unadapted Shimen passed preflight");

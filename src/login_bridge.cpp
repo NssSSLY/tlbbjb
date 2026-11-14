@@ -1,5 +1,7 @@
+#include "game_layout.hpp"
 #include "login_protocol.hpp"
 #include "game_lua_login.hpp"
+#include "game_lua_actions.hpp"
 #include "live_layout.hpp"
 #include "game_text.hpp"
 #include "login_password_input.hpp"
@@ -93,9 +95,9 @@ bool nativeString(uintptr_t at,wchar_t *out,size_t cap){
 }
 bool serverMatch(login::Packet &p,uintptr_t base){
     uintptr_t manager=0,begin=0,end=0;
-    if(!live::get(GetCurrentProcess(),base+0x105d568,manager)||!live::get(GetCurrentProcess(),manager+8,begin)||!live::get(GetCurrentProcess(),manager+16,end)||end<begin||(end-begin)%96||(end-begin)/96>128)return false;
+    if(!live::get(GetCurrentProcess(),base+live::serverManagerGlobal,manager)||!live::get(GetCurrentProcess(),manager+8,begin)||!live::get(GetCurrentProcess(),manager+16,end)||end<begin||(end-begin)%96||(end-begin)/96>128)return false;
     using ServerInfo=void *(*)(void*,int,int);
-    auto info=reinterpret_cast<ServerInfo>(base+0x636740);
+    auto info=reinterpret_cast<ServerInfo>(base+live::serverInfoFunction);
     int matches=0;
     for(unsigned a=0;a<(end-begin)/96;++a){
         wchar_t area[129]{};int count=0;
@@ -107,15 +109,49 @@ bool serverMatch(login::Packet &p,uintptr_t base){
 }
 bool selectedServer(login::Packet &p,uintptr_t base){
     uintptr_t manager=0,begin=0,end=0;int area=-1,server=-1,count=0;
-    if(!live::get(GetCurrentProcess(),base+0x105d568,manager)||!live::get(GetCurrentProcess(),manager+8,begin)||!live::get(GetCurrentProcess(),manager+16,end)||!live::get(GetCurrentProcess(),manager+0x60,area)||!live::get(GetCurrentProcess(),manager+0x64,server)||area<0||server<0||end<begin||(end-begin)%96||(end-begin)/96>128||unsigned(area)>=(end-begin)/96)return false;
+    if(!live::get(GetCurrentProcess(),base+live::serverManagerGlobal,manager)||!live::get(GetCurrentProcess(),manager+8,begin)||!live::get(GetCurrentProcess(),manager+16,end)||!live::get(GetCurrentProcess(),manager+0x60,area)||!live::get(GetCurrentProcess(),manager+0x64,server)||area<0||server<0||end<begin||(end-begin)%96||(end-begin)/96>128||unsigned(area)>=(end-begin)/96)return false;
     if(!nativeString(begin+uintptr_t(area)*96+8,p.currentDistrict,129)||!live::get(GetCurrentProcess(),begin+uintptr_t(area)*96+0x58,count)||count<1||count>1024||server>=count)return false;
-    using ServerInfo=void *(*)(void*,int,int);auto info=reinterpret_cast<ServerInfo>(base+0x636740);
+    using ServerInfo=void *(*)(void*,int,int);auto info=reinterpret_cast<ServerInfo>(base+live::serverInfoFunction);
     auto *entry=info(reinterpret_cast<void*>(manager),area,server);
     if(!entry||!nativeString(uintptr_t(entry)+16,p.currentServer,129))return false;
     return login::sameDistrict(p.currentDistrict,p.district)&&!std::wcscmp(p.currentServer,p.server);
 }
+// The login button's own Clicked handler in the game's LogOn layout is "LogOn_CheckAccount();".
+// Calling it directly runs the same game code as a real click; the native button click is only a fallback.
+// Route used is reported back: 1 script handler, 2 button Clicked event, 3 native onClicked.
+// Live test: calling LogOn_CheckAccount() from outside left the screen unchanged (no `this` window, so the
+// handler fails), yet it was counted as pressed. The button's own Clicked event is what a real click
+// fires: the game runs the layout handler with its window context. Try that first.
+unsigned pressLogon(uintptr_t base,Ui &ui){
+    if(ui.press("LogOn_LogOnGame"))return 2;
+    uintptr_t object=0;
+    if(live::get(GetCurrentProcess(),base+live::luaGlobal,object)&&object>=0x10000){
+        // Interface scripts run in their window's own table (LogOn_Env), not in _G.
+        static const char source[]=
+            "return function() local e=rawget(_G,'LogOn_Env') local f=type(e)=='table' and rawget(e,'LogOn_CheckAccount') or nil\n"
+            " if type(f)~='function' then f=rawget(_G,'LogOn_CheckAccount') end if type(f)~='function' then return 0 end f() return 1 end";
+        game_lua::LuaResult result;bool issued=false;wchar_t detail[97]{};
+        if(game_lua::runSnippet(GetModuleHandleW(L"LuaPlus.dll"),reinterpret_cast<void*>(object),source,nullptr,0,true,result,issued,detail)&&result.count>=1&&result.numbers[0]==1)return 1;
+        if(issued)return 1; // the game call may have run; never press again in the same step
+    }
+    return ui.pressNative("LogOn_LogOnGame")?3:0;
+}
+// "<frame>：<message text>" for the log, so an unknown prompt can be named after one live run.
+void promptLabel(Ui &ui,const char *frame,wchar_t (&out)[65]){
+    int n=0;for(;frame[n]&&n<40;++n)out[n]=wchar_t(frame[n]);out[n]=0;
+    const char *info=!std::strcmp(frame,"SelectServerQuest_Frame")?"SelectServerQuest_InfoWindow":!std::strcmp(frame,"LoginOverTime_Frame")?"LoginOverTime_InfoWindow":nullptr;
+    auto *w=info?ui.find(info):nullptr;if(!w)return;
+    const char *text=ui.cstr(ui.text(w));char buf[97]{};
+    if(!text||!live::read(GetCurrentProcess(),uintptr_t(text),buf,96)||!buf[0])return;
+    wchar_t wide[64]{};if(MultiByteToWideChar(CP_UTF8,0,buf,-1,wide,63)<=1)return;
+    if(n<62){out[n++]=L':';for(int i=0;wide[i]&&n<64;++i)out[n++]=wide[i];out[n]=0;}
+}
+bool filled(Ui &ui,const char *name){
+    auto *w=ui.find(name);const char *current=w?ui.cstr(ui.text(w)):nullptr;char first=0;
+    const bool any=current&&live::read(GetCurrentProcess(),uintptr_t(current),&first,1)&&first;SecureZeroMemory(&first,sizeof(first));return any;
+}
 bool selectThroughGameLua(uintptr_t base,int area,int server,wchar_t (&detail)[65]){
-    uintptr_t object=0;if(!live::get(GetCurrentProcess(),base+0x1056970,object)||object<0x10000){std::wcsncpy(detail,L"登录接口对象尚未就绪",64);return false;}
+    uintptr_t object=0;if(!live::get(GetCurrentProcess(),base+live::luaGlobal,object)||object<0x10000){std::wcsncpy(detail,L"登录接口对象尚未就绪",64);return false;}
     return game_lua::selectServer(GetModuleHandleW(L"LuaPlus.dll"),reinterpret_cast<void*>(object),area,server,detail);
 }
 void execute(login::Packet &p,HWND gameWindow){
@@ -124,15 +160,26 @@ void execute(login::Packet &p,HWND gameWindow){
     FILETIME c{},e{},k{},u{};GetProcessTimes(GetCurrentProcess(),&c,&e,&k,&u);
     const auto now=GetTickCount64();
     if(now>p.expires){reject(WAIT_TIMEOUT);return;}
-    if(p.targetThread!=GetCurrentThreadId()||p.created!=((uint64_t(c.dwHighDateTime)<<32)|c.dwLowDateTime)||p.expires-now>5000||p.command<login::Query||p.command>login::SetAccountMode){reject(ERROR_INVALID_DATA);return;}
+    if(p.targetThread!=GetCurrentThreadId()||p.created!=((uint64_t(c.dwHighDateTime)<<32)|c.dwLowDateTime)||p.expires-now>5000||p.command<login::Query||p.command>login::DismissNotice){reject(ERROR_INVALID_DATA);return;}
     wchar_t path[32768]{};GetModuleFileNameW(nullptr,path,32768);const auto *name=std::wcsrchr(path,L'\\');
     auto base=uintptr_t(GetModuleHandleW(nullptr));
-    if(!name||_wcsicmp(name+1,L"Game.exe")||!live::signature(GetCurrentProcess(),base)){reject(ERROR_REVISION_MISMATCH);return;}
+    if(!name||_wcsicmp(name+1,L"Game.exe")||!layout::ready(base)){reject(ERROR_REVISION_MISMATCH);return;}
     if(!std::wmemchr(p.district,0,129)||!std::wmemchr(p.server,0,129)){reject(ERROR_INVALID_PARAMETER);return;}
     Ui ui;if(!ui.init()){reject(ERROR_MOD_NOT_FOUND);return;}
     // Unknown authentication dialogs are never accepted; these known ones explicitly require a person.
-    const char *prompts[]={"Pswprotect_BackGround_Frame","Logon_FZKCheckFail_Frame","SelectServerQuest_Frame","OnlyChangyoujia_Logon_Frame","LoginOverTime_Frame"};
-    for(auto prompt:prompts)if(ui.shown(prompt)){p.stage=login::Manual;std::wcsncpy(p.prompt,L"游戏验证或提示窗口，请人工处理",64);SecureZeroMemory(p.password,sizeof(p.password));InterlockedExchange(&p.status,2);return;}
+    // FangChenMi_Frame_1: the 畅游+ / 密保卡 / 实名认证 notice after the password is accepted (live
+    // screenshot); its 确定 is FangChenMi_Accept (Interface.axp FangChenMi.layout.xml).
+    const char *prompts[]={"FangChenMi_Frame_1","Pswprotect_BackGround_Frame","Logon_FZKCheckFail_Frame","SelectServerQuest_Frame","OnlyChangyoujia_Logon_Frame","LoginOverTime_Frame"};
+    for(auto prompt:prompts)if(ui.shown(prompt)){
+        p.stage=login::Manual;promptLabel(ui,prompt,p.prompt);
+        // The login message box with only 确定 showing (no 取消 / 退出) is a plain notice, such as the
+        // 畅游+ / real-name notice after a successful login. Pressing 确定 is what a person does there.
+        const bool fcm=!std::strcmp(prompt,"FangChenMi_Frame_1");
+        const char *ok=fcm?"FangChenMi_Accept":"SelectServerQuest_Button1";
+        const bool notice=fcm?ui.shown(ok):!std::strcmp(prompt,"SelectServerQuest_Frame")&&ui.shown(ok)&&!ui.shown("SelectServerQuest_Button2")&&!ui.shown("SelectServerQuest_Quit");
+        p.noticeOk=notice?1:0;
+        if(p.command==login::DismissNotice){if(!notice){reject(ERROR_INVALID_STATE);return;}if(!ui.press(ok)){reject(ERROR_NOT_READY);return;}p.actionIssued=1;}
+        SecureZeroMemory(p.password,sizeof(p.password));SecureZeroMemory(p.account,sizeof(p.account));InterlockedExchange(&p.status,2);return;}
     live::Snapshot liveState;
     if(ui.shown("SelectRole_Frame"))p.stage=login::Roles;
     else if(ui.shown("LogOn_Frame"))p.stage=login::Account;
@@ -141,6 +188,7 @@ void execute(login::Packet &p,HWND gameWindow){
     const unsigned desiredMode=p.inputMode;
     p.inputMode=ui.enabled(ui.find("LogOn_MailID"))?2:ui.enabled(ui.find("LogOn_ID"))?1:0;
     p.selectedMatches=selectedServer(p,base);
+    if(p.stage==login::Account){p.accountFilled=filled(ui,p.inputMode==2?"LogOn_MailID":"LogOn_ID");p.passwordFilled=filled(ui,"LogOn_PassWord");}
     if(p.stage==login::Roles||(p.command==login::Query&&p.stage==login::World)){for(int i=0;i<3;++i){char key[80]{};const char *suffix=i==0?"":i==1?"2":"3";std::snprintf(key,80,"SelectRole_TargetInfo_Create%s",suffix);if(ui.shown(key))continue;std::snprintf(key,80,"SelectRole_TargetInfo_Name_Text%s",suffix);ui.read(key,p.roleNames[i],65,p.stage==login::World);}}
     if(p.command==login::SelectServer){
         if(p.stage!=login::Server||!serverMatch(p,base)){reject(ERROR_NOT_FOUND);return;}
@@ -172,7 +220,17 @@ void execute(login::Packet &p,HWND gameWindow){
         });
         SecureZeroMemory(p.password,sizeof(p.password));
         if(!sent){reject(ERROR_INVALID_DATA);return;}
-        if(!ui.pressNative("LogOn_LogOnGame")){reject(ERROR_NOT_READY);return;}p.actionIssued=1;
+        p.passwordFilled=filled(ui,"LogOn_PassWord");p.accountFilled=filled(ui,desiredMode==2?"LogOn_MailID":"LogOn_ID");
+        // The safe password box shows the typed text a moment later. Pressing now sends an empty
+        // password and the game's error box then swallows the next press, so wait for it (RetryLogon).
+        if(p.passwordFilled){p.pressRoute=pressLogon(base,ui);if(!p.pressRoute){reject(ERROR_NOT_READY);return;}}
+        p.actionIssued=1;
+    }else if(p.command==login::RetryLogon){
+        // Same filled-in fields, one more press. The password box must still hold the typed text.
+        auto *password=ui.find("LogOn_PassWord");const char *current=password?ui.cstr(ui.text(password)):nullptr;char first=0;
+        const bool filled=current&&live::read(GetCurrentProcess(),uintptr_t(current),&first,1)&&first;SecureZeroMemory(&first,sizeof(first));
+        if(p.stage!=login::Account||!p.selectedMatches||!filled||!ui.enabled(ui.find("LogOn_LogOnGame"))){reject(ERROR_NOT_READY);return;}
+        p.pressRoute=pressLogon(base,ui);if(!p.pressRoute){reject(ERROR_NOT_READY);return;}p.actionIssued=1;
     }else if(p.command==login::SelectRole||p.command==login::EnterWorld){
         if(p.stage!=login::Roles||!p.selectedMatches||p.slot<1||p.slot>3||!p.roleNames[p.slot-1][0]){reject(ERROR_NOT_FOUND);return;}
         char key[80]{};

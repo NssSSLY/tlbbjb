@@ -387,7 +387,7 @@ function Bingsheng.run(injected)
                         end
                         assert(#members<=12,'兵圣奇阵：团队超过 12 人')
                         return #members>=teamCount and inside>=teamCount and emei>=2
-                    end,math.max(waitMs,120000))
+                    end,DungeonApi.teamPatience())
                     if cfg.xzk260~=false then
                         assert(api.selectOption({option},true),'高阳没有所选模式的选项：'..difficulty)
                     else log('团队已就绪，等待手动进入') end

@@ -191,7 +191,7 @@ function Shaoshi.run(injected)
         assert(a.name==b.name and a.limit==b.limit and b.used>=a.used,'少室山活动记录发生变化或次数回退')
     end
     local function gather(point)
-        wait('等待队伍集合',function() return api.teamReady(team) and api.teamTogether() and api.teamNear(point,20) end)
+        wait('等待队伍集合',function() return api.teamReady(team) and api.teamTogether() and api.teamNear(point,20) end,DungeonApi.teamPatience())
     end
 
     local function fight(before)
@@ -708,7 +708,10 @@ function Shaoshi.run(injected)
                         return {status=completed>0 and 'done' or 'already_done',message='朱丹臣提示今日已完成少室山；本次完成 '..completed..' 轮'}
                     end
                 end
-                wait('确认进入少室山',function() return world().scene==SCENE end)
+                DungeonApi.enterRetry(api,'确认进入少室山',function() return world().scene==SCENE end,function()
+                    CloseAllWindow();api.openNpc(entrance)
+                    assert(api.selectOption({mode.option},true),'朱丹臣没有所选难度的选项：'..tostring(cfg.sss_type or '普通'))
+                end,{skipFirst=true})
             end
             fight(before);completed=completed+1;log('本轮完成（'..completed..'/'..rounds..'）')
         end

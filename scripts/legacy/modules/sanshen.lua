@@ -301,11 +301,11 @@ function Sanshen.run(kind,injected)
                 api.openNpc(npc)
                 wait('等待队伍集合',function()
                     return api.teamReady(team) and api.teamTogether() and api.teamNear({scene=world().scene,x=npc.x,y=npc.y},20)
-                end,math.max(waitMs,70000))
-                if api.isLeader() then
+                end,DungeonApi.teamPatience())
+                DungeonApi.enterRetry(api,'确认进入三神幻境',function() return world().scene==SCENE end,function()
+                    CloseAllWindow();api.openNpc(npc)
                     assert(api.selectOption({'#{FMYZ_180529_2}'},true),'碧落没有入场选项')
-                end
-                wait('确认进入三神幻境',function() return world().scene==SCENE end)
+                end)
             end
             fight(before);completed=completed+1;log('本轮完成（'..completed..'/'..rounds..'）')
         end

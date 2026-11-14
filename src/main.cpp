@@ -25,11 +25,11 @@ static QString value(const QStringList &arguments, const QString &key, const QSt
 #ifdef TLBB_APP_DLL
 // Packaged release: TLBB.exe is a small launcher that loads this DLL and enters here.
 extern "C" __declspec(dllexport) int TLBBAppMain(int argc, char **argv) {
-    // The launcher's process environment does not reach this C runtime's copy, which is what Qt reads for plugins.
+    // Qt finds its plugins beside the unpacked runtime. A library path keeps a non-ASCII install folder intact, which QT_PLUGIN_PATH does not.
     wchar_t runtime[4096];
     const DWORD runtimeLength = GetEnvironmentVariableW(L"TLBB_RUNTIME", runtime, 4096);
     if (runtimeLength > 0 && runtimeLength < 4096)
-        qputenv("QT_PLUGIN_PATH", QString::fromWCharArray(runtime, int(runtimeLength)).toUtf8());
+        QCoreApplication::addLibraryPath(QString::fromWCharArray(runtime, int(runtimeLength)));
 #else
 int main(int argc, char **argv) {
 #endif

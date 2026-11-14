@@ -19,7 +19,6 @@
     "orig_0046c580": "原脚本要处理指定物品（删除类），本程序不执行，已停止",
     "pet_comprehension": "原程序游戏内辅助函数未接入：meGetAllPet",
     "pet_sell_npc": "原程序系统操作未接入：DoSystem(1002)",
-    "plant_script": "原程序系统操作未接入：DoSystem(6)",
     "roadbook": "对象类型尚未接入：包裹",
     "tlzz_huodong_sweep#原脚本": "bad argument #2 to 'fmt' (number expected, got nil)",
     "tlzz_jiagong#原脚本": "原脚本调用了本程序尚未接入的函数：IsPlayerFollow（?:-1: attempt to call a nil value (field 'IsPlay",

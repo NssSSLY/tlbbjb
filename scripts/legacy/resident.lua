@@ -72,6 +72,7 @@ CSleep=Sleep
 function EnumObjects() return nativeObjects() end
 local alive={}
 local withPlayers=false -- set while an Enum2X call asks for the 玩家 class
+local withResources=false -- set while an Enum2X call asks for the 矿地 class
 -- Fields the reference objects carried that this program cannot read yet. Reading one stops the task by name;
 -- a nil here would make comparisons such as tBoss.target==Player:GetTID() silently false and skip mechanics.
 local unreadableFields={target="当前攻击目标",title="称号（如少室山“对萧远山造成伤害”）",state="对象状态",level="等级",menpai="门派",guid="GUID",mp="蓝量",mpp="蓝量百分比",baseptr="内存地址"}
@@ -91,6 +92,7 @@ function EnumEnvObj()
     end
     alive=nextAlive -- only identities in this bounded snapshot survive.
     if withPlayers then for _,p in ipairs(__playerObjects()) do result[#result+1]=p end end
+    if withResources then for _,r in ipairs(__resourceObjects()) do result[#result+1]=r end end
     return result
 end
 Team=Team or {}
@@ -120,7 +122,45 @@ function Team:GetBasicMembers()
     end
     return members
 end
+-- 采矿 / 采药开工前按顺序检查：学会生活技能 → 背包或手上有工具（没有就按原程序从锦囊、仓库取或去买）
+-- → 设置了要采的物品 → 再去所选地图找点。原脚本只有勾选“缺工具自动购买”才检查工具，也不查技能。
+local gatherKinds={mine={skill="采矿",tool="矿锄"},herb={skill="采药",tool="采药镰"}}
+local function lifeSkillLevel(skill)
+    local level=GetLuaValue(string.format([[
+        local n=GetActionNum("life") if type(n)~='number' then return -1 end
+        for i=1,n do local a=EnumAction(i-1,"life") local id=a and a:GetID() or 0
+            if id~=0 then local life=LifeAbility:GetLifeAbility_Number(id)
+                local name=Player:GetAbilityInfo(life,"name")
+                if type(name)=='string' and string.find(name,%q,1,true) then return tonumber(Player:GetAbilityInfo(life,"level")) or 0 end
+            end
+        end
+        return 0]],skill),"n")
+    return tonumber(level) or -1
+end
+local function gatherPreflight(param)
+    local kind=gatherKinds[tostring((TaskConfig or {}).legacy_id or "")]
+    if not kind then return end
+    local level=lifeSkillLevel(kind.skill)
+    assert(level~=-1,"生活技能列表不可读，未开始"..kind.skill)
+    assert(level>0,"没有学会“"..kind.skill.."”生活技能，无法"..kind.skill.."；本项标记失败，继续下一项")
+    PushDebugMessage(kind.skill.."：技能 "..level.." 级")
+    local function hasTool()
+        if #Bag:SearchItemName(kind.tool)>0 then return true end
+        local held=GetLuaValue("local a=EnumAction(0,'equip') return a and a:GetName() or ''","s")
+        return type(held)=="string" and held~="" and string.find(kind.tool,held,1,true)~=nil
+    end
+    if not hasTool() then CaiJiCheckTool(kind.tool) end
+    assert(hasTool(),"背包里没有“"..kind.tool.."”，锦囊、仓库也没取到（自动购买需要打开“允许支付”）；本项标记失败，继续下一项")
+    PushDebugMessage(kind.skill.."：工具 "..kind.tool.." 已备好")
+    assert(type(param)=="table" and type(param.item)=="string" and #param.item>=2,"没有设置要"..kind.skill.."的物品名称（任务参数里填写），本项标记失败")
+    PushDebugMessage(kind.skill.."：目标 "..param.item)
+end
 afterLoad=function(name)
+    if name=="caiji" and type(CaiJiOnAction)=="function" then
+        local original=CaiJiOnAction
+        CaiJiOnAction=function(param,...) gatherPreflight(param);return original(param,...) end
+        return
+    end
     if name~="original_filters" then return end
     local originalName,originalClass=Enum2XByName,Enum2XByClass
     -- mask: NPC, 怪物, 玩家, 珍兽, 宝箱. Players come from __playerObjects when the task provides it.
@@ -137,15 +177,19 @@ afterLoad=function(name)
     end
     Enum2XByClass=function(kind,...)
         assert(type(kind)=="string","对象类型尚未接入："..tostring(kind))
-        local count,players=0,false
+        local count,players,resources=0,false,false
         for class in kind:gmatch("%S+") do
             if class=="玩家" then assert(type(__playerObjects)=="function","玩家对象枚举尚未适配");players=true
+            elseif class=="矿地" then
+                -- Ore / herb spots and farm fields: CTripperObject_Resource, read with name and type.
+                assert(type(__resourceObjects)=="function","矿地对象枚举尚未适配");resources=true
             else assert(class=="NPC" or class=="怪物","对象类型尚未接入："..class) end
             count=count+1
         end
         assert(count>0,"对象类型不可为空")
-        if not players then return originalClass(kind,...) end
-        withPlayers=true;local ok,result=pcall(originalClass,kind,...);withPlayers=false
+        if not players and not resources then return originalClass(kind,...) end
+        withPlayers,withResources=players,resources
+        local ok,result=pcall(originalClass,kind,...);withPlayers,withResources=false,false
         if not ok then error(result,0) end return result
     end
 end

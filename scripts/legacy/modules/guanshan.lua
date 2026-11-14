@@ -560,7 +560,7 @@ function Guanshan.run(injected)
             if not inside(world()) then
                 api.space();api.prepareBattle()
                 api.openNpc(entrance)
-                wait('等待队伍集合',function() return api.teamReady(team) and api.teamTogether() and api.teamNear(entrance,20) end)
+                wait('等待队伍集合',function() return api.teamReady(team) and api.teamTogether() and api.teamNear(entrance,20) end,DungeonApi.teamPatience())
                 local leader=api.isLeader()
                 if leader then api.selectOption({'#{PTFB_191228_02}'},true);api.sleep(1000) end
                 -- Entry window, then the stage window: leader confirms a layer, then members confirm.

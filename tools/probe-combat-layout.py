@@ -5,7 +5,7 @@ from ctypes import wintypes as W
 ROOT=Path(__file__).resolve().parents[1]
 p=argparse.ArgumentParser();p.add_argument('--pid',type=int,required=True);a=p.parse_args()
 game=ROOT.parent/'Bin64/Game.exe'
-assert hashlib.sha256(game.read_bytes()).hexdigest()=='72f4898ee04d2e8a6d94ff6d45cdc183dfa655eae40c31ddc67dcc2099d9c00d'
+assert hashlib.sha256(game.read_bytes()).hexdigest()=='47d9d3ead930824347e63b07d521fc3af986f9a2597c4f3f6ecfcd536f7e6d9f'
 k=C.WinDLL('kernel32',use_last_error=True);ps=C.WinDLL('psapi',use_last_error=True)
 k.OpenProcess.argtypes=[W.DWORD,W.BOOL,W.DWORD];k.OpenProcess.restype=W.HANDLE
 k.CloseHandle.argtypes=[W.HANDLE]
@@ -23,7 +23,7 @@ try:
         b=C.create_string_buffer(size);got=C.c_size_t();assert k.ReadProcessMemory(h,at,b,size,C.byref(got)) and got.value==size
         total+=size;return b.raw
     def ptr(at):return struct.unpack('<Q',read(at,8))[0]
-    manager=ptr(base+0x105ca30);vtable=ptr(manager)
+    manager=ptr(base+0x105ba30);vtable=ptr(manager)
     out=dict(pid=a.pid,manager_head=read(manager,0x110).hex(),vtable_rva=hex(vtable-base),functions={hex(i):hex(ptr(vtable+i)-base) for i in range(0,0xb8,8)},bytes_read=total,game_actions_issued=0)
     (ROOT/'artifacts/combat-research/object-manager.json').write_text(json.dumps(out,indent=2),encoding='utf-8')
     print(json.dumps({key:val for key,val in out.items() if key!='manager_head'}))

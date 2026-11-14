@@ -396,11 +396,16 @@ function Fenghuang.run(mode,injected)
                 end
                 api.space();api.prepareBattle()
                 api.openNpc(entrance)
-                wait('等待队伍集合',gathered,math.max(waitMs,70000))
+                wait('等待队伍集合',gathered,DungeonApi.teamPatience())
                 api.selectOption({'#{FHCL_240708_295}'},true);api.sleep(1000)
                 api.selectOption({mode==2 and '#{FHCL_240708_158}' or '#{FHCL_240708_6}'},true);api.sleep(1000)
                 CloseAllWindow()
-                wait('确认进入凤凰陵墓',function() return world().scene==SCENE end,math.max(waitMs,60000))
+                DungeonApi.enterRetry(api,'确认进入凤凰陵墓',function() return world().scene==SCENE end,function()
+                    api.openNpc(entrance)
+                    api.selectOption({'#{FHCL_240708_295}'},true);api.sleep(1000)
+                    api.selectOption({mode==2 and '#{FHCL_240708_158}' or '#{FHCL_240708_6}'},true);api.sleep(1000)
+                    CloseAllWindow()
+                end,{skipFirst=true})
             end
             inside=not fight(before);completed=completed+1;log('本轮完成（'..completed..'/'..rounds..'）')
             if inside then break end

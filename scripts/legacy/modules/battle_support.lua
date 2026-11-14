@@ -104,7 +104,9 @@ function Support.skillList()
     -- Some game builds do not expose GetActionNum('skill'). A missing count
     -- must not prevent enumeration of the already-adapted 0..255 action slots.
     local count=GetLuaValue("if type(GetActionNum)~='function' then return nil end local ok,n=pcall(GetActionNum,'skill') if ok then return n end return nil","",1)
-    if count~=nil then num(count,"技能动作数量",0,256);assert(count==math.floor(count),"技能数量不是整数") end
+    -- An unusable count (text, out of range, fractional) falls back to the same full scan.
+    count=tonumber(count)
+    if count and (count~=count or count<0 or count>256 or count~=math.floor(count)) then count=nil end
     -- GetActionNum returns a count; the first action index is zero.
     local last=count and count>0 and math.min(255,count-1) or 255
     local result,seen={},{}
@@ -183,7 +185,15 @@ function Support.refresh(s,force)
     if not force and GetTickCount()-s.last<500 then return end
     s.last=GetTickCount()
     -- 原 Player.GetRage：桃花岛（编号 13）用 ENG，其他已知门派用 RAGE。
-    s.hp,s.maxhp,s.mp,s.maxmp,s.rage,s.school=raw("-- TLBB_BATTLE_VITALS_V1\nlocal m=Player:GetData('MEMPAI') local r=Player:GetData(m==13 and 'ENG' or 'RAGE') return Player:GetData('HP'),Player:GetData('MAXHP'),Player:GetData('MP'),Player:GetData('MAXMP'),(r or -1),m","nnnnnn")
+    -- 刚切进副本时属性还没下发，生命上限会短暂读到 0（实测）；最多再读 8 秒，等到有效再判定。
+    local started=GetTickCount()
+    repeat
+        s.hp,s.maxhp,s.mp,s.maxmp,s.rage,s.school=raw("-- TLBB_BATTLE_VITALS_V1\nlocal m=Player:GetData('MEMPAI') local r=Player:GetData(m==13 and 'ENG' or 'RAGE') return Player:GetData('HP'),Player:GetData('MAXHP'),Player:GetData('MP'),Player:GetData('MAXMP'),(r or -1),m","nnnnnn")
+        local settled=type(s.maxhp)=="number" and s.maxhp>=1 and type(s.hp)=="number" and s.hp<=s.maxhp
+            and type(s.maxmp)=="number" and type(s.mp)=="number" and s.mp<=s.maxmp
+        if settled or GetTickCount()-started>8000 then break end
+        Sleep(400)
+    until false
     if s.rage<0 then s.rage=nil end
     num(s.maxhp,"人物生命上限",1,1e12);num(s.hp,"人物生命",0,s.maxhp)
     num(s.maxmp,"人物气量上限",0,1e12);num(s.mp,"人物气量",0,s.maxmp)

@@ -16,6 +16,15 @@ inline std::string convert(const std::string &s,UINT from,UINT to){
     if(lossy)throw std::runtime_error("Game text conversion lost characters");
     return result;
 }
+// Text coming back from the game (tooltips, chat, NPC lines) can hold bytes that are not valid GBK;
+// it is shown, never executed, so decode it tolerantly instead of failing the whole task.
+inline std::string fromGame(const std::string &s){
+    if(s.empty())return {};
+    const int n=MultiByteToWideChar(936,0,s.data(),int(s.size()),nullptr,0);if(n<=0)return {};
+    std::wstring w(size_t(n),0);MultiByteToWideChar(936,0,s.data(),int(s.size()),w.data(),n);
+    const int size=WideCharToMultiByte(CP_UTF8,0,w.data(),n,nullptr,0,nullptr,nullptr);if(size<=0)return {};
+    std::string result(size_t(size),0);WideCharToMultiByte(CP_UTF8,0,w.data(),n,result.data(),size,nullptr,nullptr);return result;
+}
 // One persistent official Lua 5.0 child state per resident task. The parent's stack is never used.
 // No function-name whitelist: the installed, trusted task controls the game Lua text it executes.
 class GameTextSession {
@@ -61,11 +70,11 @@ public:
     Values evaluate(const std::string &utf8,const std::string &format,int count){
         if(count<0||count>32||utf8.size()>128*1024||(!format.empty()&&int(format.size())!=count))throw std::runtime_error("Game Lua source/result bounds exceeded");
         for(char c:format)if(c!='n'&&c!='l'&&c!='s'&&c!='b')throw std::runtime_error("GetLuaValue formats are n/l/s/b");
-        const auto source=convert(utf8,CP_UTF8,936);set_(vm_,1);
+        const auto source=[&]{try{return convert(utf8,CP_UTF8,936);}catch(const std::exception &x){throw std::runtime_error(std::string("Game Lua source is not valid UTF-8 / GBK text: ")+x.what());}}();set_(vm_,1);
         struct Reset{void *vm;Index set;~Reset(){set(vm,1);}}reset{vm_,set_};
         auto type=function<Type>("lua_type");auto text=function<const char *(*)(void*,int)>("lua_tostring");
         auto load=function<int (*)(void*,const char*,size_t,const char*)>("luaL_loadbuffer");
-        auto fail=[&]{const auto why=type(vm_,-1)==4?text(vm_,-1):nullptr;throw std::runtime_error(why?convert(why,936,CP_UTF8):"Game Lua execution failed");};
+        auto fail=[&]{const auto why=type(vm_,-1)==4?text(vm_,-1):nullptr;throw std::runtime_error(why?fromGame(why):"Game Lua execution failed");};
         if(load(vm_,source.data(),source.size(),"=task.game")!=0)fail();
         function<Index>("lua_pushvalue")(vm_,1);function<int (*)(void*,int)>("lua_setfenv")(vm_,2);
         instructions_=0;deadline_=std::chrono::steady_clock::now()+std::chrono::milliseconds(2);active_=this;hook_(vm_,budget,8,1000);
@@ -77,7 +86,7 @@ public:
             if(requested=='s'||(!requested&&t==4)){
                 const auto p=text(vm_,at);if(!p)throw std::runtime_error("Game Lua result is not text");
                 const auto n=function<size_t (*)(void*,int)>("lua_strlen")(vm_,at);total+=n;if(total>64*1024)throw std::runtime_error("Game Lua results exceed 64 KiB");
-                out.emplace_back(convert(std::string(p,n),936,CP_UTF8));
+                out.emplace_back(fromGame(std::string(p,n)));
             }else if(requested=='n'||requested=='l'||(!requested&&t==3)){
                 if(t!=3)throw std::runtime_error("Game Lua result is not numeric");
                 const auto n=function<double (*)(void*,int)>("lua_tonumber")(vm_,at);

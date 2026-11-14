@@ -288,14 +288,14 @@ function Sijue.run(injected)
             if not m then
                 api.space();api.prepareBattle();api.openNpc(def.npc)
                 if api.limit(def) then return {status='limit_reached',message='NPC 确认四绝庄已达上限；本次完成 '..completed..' 轮'} end
-                wait('等待队伍集合',function() return api.teamReady(team) and api.teamTogether() end)
+                wait('等待队伍集合',function() return api.teamReady(team) and api.teamTogether() end,DungeonApi.teamPatience())
                 if api.isLeader() then api.accept(def) end
                 m=wait('等待四绝庄任务',function() local v=mission();if not v then api.acceptShared(def) end;return v end)
             end
             if m.status==0 then
                 api.prepareBattle()
                 if not def.inside(world()) then
-                    api.openNpc(def.npc);wait('等待入场队伍',function() return api.teamReady(team) and api.teamTogether() end)
+                    api.openNpc(def.npc);wait('等待入场队伍',function() return api.teamReady(team) and api.teamTogether() end,DungeonApi.teamPatience())
                     if api.isLeader() then
                         if not api.selectOption(def.enter,true) then
                             api.selectOption(def.accept,false)

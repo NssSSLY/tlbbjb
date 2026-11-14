@@ -163,7 +163,7 @@ struct FenghuangFake:ResidentFake {
 template<class Test>void fenghuangTests(const QString &root,Test test){
     auto must=[](bool v,const char *s){if(!v)throw std::runtime_error(s);};QJsonArray report;
     auto run=[&](FenghuangFake &h,QJsonObject cfg,std::string &why,const QString &id="dungeon_00322b14"){
-        cfg.insert("legacy_id",id);cfg.insert("combat",true);cfg.insert("dungeon_wait_seconds",5);
+        cfg.insert("legacy_id",id);cfg.insert("combat",true);cfg.insert("dungeon_wait_seconds",5);cfg.insert("dungeon_team_wait_seconds",30);
         QJsonObject entry;QString path,error;must(resolveLegacyEntry(root+"/scripts/legacy",id,entry,path,error),qPrintable(error));
         must(entry.value("validation_contract")==QJsonValue("fenghuang_flow_v1"),"Fenghuang has no completion contract");
         auto source=prepareResidentScript(root+"/scripts/legacy",path,cfg,error);must(!source.isEmpty(),qPrintable(error));must(!source.contains("__original_rules="),"Fenghuang still loads the vendor framework");
@@ -198,7 +198,7 @@ template<class Test>void fenghuangTests(const QString &root,Test test){
         {FenghuangFake h;h.used=1;finished(h,{},why);must(h.entries==0&&h.claims==1&&h.receipt.contains("already_done"),"Daily limit not respected");}
         {FenghuangFake h;h.full=true;failed(h,{},why);must(h.entries==0,"Full bag entered");}
         {FenghuangFake h;h.together=false;failed(h,{},why);must(h.entries==0,"Scattered team entered");}
-        {FenghuangFake h;h.noEntry=true;failed(h,{},why);must(h.entries==1,"Entry replayed");}
+        {FenghuangFake h;h.noEntry=true;failed(h,{},why);must(h.entries>=1&&h.entries<=6,"Entry retried beyond the team patience");}
     });
     test("fenghuang_no_feedback_and_wipe",[&]{
         std::string why;
